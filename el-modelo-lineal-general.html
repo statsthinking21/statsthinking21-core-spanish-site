@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 14 El Modelo Lineal General | Statistical Thinking for the 21st Century</title>
+  <meta name="description" content="A book about statistics." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 14 El Modelo Lineal General | Statistical Thinking for the 21st Century" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A book about statistics." />
+  <meta name="github-repo" content="poldrack/psych10-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 14 El Modelo Lineal General | Statistical Thinking for the 21st Century" />
+  
+  <meta name="twitter:description" content="A book about statistics." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="modeling-continuous-relationships.html"/>
+<link rel="next" href="comparar-medias.html"/>
+<script src="book_assets/header-attrs-2.7/header-attrs.js"></script>
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129414074-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129414074-1');
+</script>
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#por-qué-existe-este-libro"><i class="fa fa-check"></i><b>0.1</b> ¿Por qué existe este libro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#la-era-dorada-de-la-información"><i class="fa fa-check"></i><b>0.2</b> La era dorada de la información</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#la-importancia-de-hacer-estadísticas"><i class="fa fa-check"></i><b>0.3</b> La importancia de hacer estadísticas</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#un-libro-de-código-abierto-open-source"><i class="fa fa-check"></i><b>0.4</b> Un libro de código abierto (open source)</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>0.5</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducción.html"><a href="introducción.html#qué-es-el-pensamiento-estadístico"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es el pensamiento estadístico?</a></li>
+<li class="chapter" data-level="1.2" data-path="introducción.html"><a href="introducción.html#lidiar-con-la-ansiedad-estadística"><i class="fa fa-check"></i><b>1.2</b> Lidiar con la ansiedad estadística</a></li>
+<li class="chapter" data-level="1.3" data-path="introducción.html"><a href="introducción.html#qué-puede-hacer-la-estadística-por-nosotres"><i class="fa fa-check"></i><b>1.3</b> ¿Qué puede hacer la estadística por nosotres?</a></li>
+<li class="chapter" data-level="1.4" data-path="introducción.html"><a href="introducción.html#las-grandes-ideas-de-la-estadística"><i class="fa fa-check"></i><b>1.4</b> Las grandes ideas de la estadística</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introducción.html"><a href="introducción.html#aprendiendo-de-los-datos"><i class="fa fa-check"></i><b>1.4.1</b> Aprendiendo de los datos</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introducción.html"><a href="introducción.html#agregación-aggregation"><i class="fa fa-check"></i><b>1.4.2</b> Agregación (<em>aggregation</em>)</a></li>
+<li class="chapter" data-level="1.4.3" data-path="introducción.html"><a href="introducción.html#incertidumbre"><i class="fa fa-check"></i><b>1.4.3</b> Incertidumbre</a></li>
+<li class="chapter" data-level="1.4.4" data-path="introducción.html"><a href="introducción.html#muestreo-de-una-población"><i class="fa fa-check"></i><b>1.4.4</b> Muestreo de una población</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introducción.html"><a href="introducción.html#causalidad-y-estadística"><i class="fa fa-check"></i><b>1.5</b> Causalidad y estadística</a></li>
+<li class="chapter" data-level="1.6" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>1.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="1.7" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>1.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html"><i class="fa fa-check"></i><b>2</b> Trabajar con Datos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#qué-son-los-datos"><i class="fa fa-check"></i><b>2.1</b> ¿Qué son los datos?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#datos-cualitativos"><i class="fa fa-check"></i><b>2.1.1</b> Datos Cualitativos</a></li>
+<li class="chapter" data-level="2.1.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#datos-cuantitativos"><i class="fa fa-check"></i><b>2.1.2</b> Datos cuantitativos</a></li>
+<li class="chapter" data-level="2.1.3" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#tipos-de-números"><i class="fa fa-check"></i><b>2.1.3</b> Tipos de números</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#mediciones-discretas-versus-continuas"><i class="fa fa-check"></i><b>2.2</b> Mediciones Discretas versus Continuas</a></li>
+<li class="chapter" data-level="2.3" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#qué-constituye-a-una-buena-medición"><i class="fa fa-check"></i><b>2.3</b> ¿Qué constituye a una buena medición?</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#confiabilidad"><i class="fa fa-check"></i><b>2.3.1</b> Confiabilidad</a></li>
+<li class="chapter" data-level="2.3.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#validez"><i class="fa fa-check"></i><b>2.3.2</b> Validez</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#objetivos-de-aprendizaje-1"><i class="fa fa-check"></i><b>2.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="2.5" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#lecturas-sugeridas-1"><i class="fa fa-check"></i><b>2.5</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="2.6" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>2.6</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#escalas-de-medición"><i class="fa fa-check"></i><b>2.6.1</b> Escalas de medición</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="resumir-datos.html"><a href="resumir-datos.html"><i class="fa fa-check"></i><b>3</b> Resumir datos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="resumir-datos.html"><a href="resumir-datos.html#por-qué-resumir-datos"><i class="fa fa-check"></i><b>3.1</b> ¿Por qué resumir datos?</a></li>
+<li class="chapter" data-level="3.2" data-path="resumir-datos.html"><a href="resumir-datos.html#resumiendo-datos-usando-tablas"><i class="fa fa-check"></i><b>3.2</b> Resumiendo datos usando tablas</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="resumir-datos.html"><a href="resumir-datos.html#frequency-distributions"><i class="fa fa-check"></i><b>3.2.1</b> Distribuciones de frecuencias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="resumir-datos.html"><a href="resumir-datos.html#cumulative-distributions"><i class="fa fa-check"></i><b>3.2.2</b> Distribuciones acumuladas</a></li>
+<li class="chapter" data-level="3.2.3" data-path="resumir-datos.html"><a href="resumir-datos.html#plotting-histograms"><i class="fa fa-check"></i><b>3.2.3</b> Graficar histogramas</a></li>
+<li class="chapter" data-level="3.2.4" data-path="resumir-datos.html"><a href="resumir-datos.html#bins-de-un-histograma"><i class="fa fa-check"></i><b>3.2.4</b> Bins de un histograma</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="resumir-datos.html"><a href="resumir-datos.html#representaciones-idealizadas-de-distribuciones"><i class="fa fa-check"></i><b>3.3</b> Representaciones idealizadas de distribuciones</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="resumir-datos.html"><a href="resumir-datos.html#asimetría-sesgo"><i class="fa fa-check"></i><b>3.3.1</b> Asimetría (sesgo)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="resumir-datos.html"><a href="resumir-datos.html#distribuciones-con-colas-largas"><i class="fa fa-check"></i><b>3.3.2</b> Distribuciones con colas largas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="resumir-datos.html"><a href="resumir-datos.html#objetivos-de-aprendizaje-2"><i class="fa fa-check"></i><b>3.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="3.5" data-path="resumir-datos.html"><a href="resumir-datos.html#lecturas-sugeridas-2"><i class="fa fa-check"></i><b>3.5</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>4</b> Visualización de Datos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-visualization.html"><a href="data-visualization.html#anatomía-de-una-gráfica"><i class="fa fa-check"></i><b>4.1</b> Anatomía de una gráfica</a></li>
+<li class="chapter" data-level="4.2" data-path="data-visualization.html"><a href="data-visualization.html#principios-de-una-buena-visibilización"><i class="fa fa-check"></i><b>4.2</b> Principios de una buena visibilización</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="data-visualization.html"><a href="data-visualization.html#muestra-los-datos-y-haz-que-destaquen"><i class="fa fa-check"></i><b>4.2.1</b> Muestra los datos y haz que destaquen</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-visualization.html"><a href="data-visualization.html#maximizar-la-porporción-datostinta-dataink-ratio"><i class="fa fa-check"></i><b>4.2.2</b> Maximizar la porporción datos/tinta (data/ink ratio)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data-visualization.html"><a href="data-visualization.html#evita-gráficas-basura"><i class="fa fa-check"></i><b>4.2.3</b> Evita gráficas basura</a></li>
+<li class="chapter" data-level="4.2.4" data-path="data-visualization.html"><a href="data-visualization.html#evita-distorsionar-los-datos"><i class="fa fa-check"></i><b>4.2.4</b> Evita distorsionar los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-visualization.html"><a href="data-visualization.html#acomodando-las-limitaciones-humanas"><i class="fa fa-check"></i><b>4.3</b> Acomodando las limitaciones humanas</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-visualization.html"><a href="data-visualization.html#limitaciones-perceptuales"><i class="fa fa-check"></i><b>4.3.1</b> Limitaciones perceptuales</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-visualization.html"><a href="data-visualization.html#corrigiendo-otros-factores"><i class="fa fa-check"></i><b>4.4</b> Corrigiendo otros factores</a></li>
+<li class="chapter" data-level="4.5" data-path="data-visualization.html"><a href="data-visualization.html#objetivos-de-aprendizaje-3"><i class="fa fa-check"></i><b>4.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="4.6" data-path="data-visualization.html"><a href="data-visualization.html#lecturas-y-videos-sugeridos"><i class="fa fa-check"></i><b>4.6</b> Lecturas y videos sugeridos</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fitting-models.html"><a href="fitting-models.html"><i class="fa fa-check"></i><b>5</b> Ajustar modelos a datos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="fitting-models.html"><a href="fitting-models.html#qué-es-un-modelo"><i class="fa fa-check"></i><b>5.1</b> ¿Qué es un modelo?</a></li>
+<li class="chapter" data-level="5.2" data-path="fitting-models.html"><a href="fitting-models.html#modelado-estadístico-un-ejemplo"><i class="fa fa-check"></i><b>5.2</b> Modelado estadístico: Un ejemplo</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="fitting-models.html"><a href="fitting-models.html#mejorando-nuestro-modelo"><i class="fa fa-check"></i><b>5.2.1</b> Mejorando nuestro modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="fitting-models.html"><a href="fitting-models.html#qué-hace-que-un-modelo-sea-bueno"><i class="fa fa-check"></i><b>5.3</b> ¿Qué hace que un modelo sea “bueno”?</a></li>
+<li class="chapter" data-level="5.4" data-path="fitting-models.html"><a href="fitting-models.html#overfitting"><i class="fa fa-check"></i><b>5.4</b> ¿Un modelo puede ser demasiado bueno?</a></li>
+<li class="chapter" data-level="5.5" data-path="fitting-models.html"><a href="fitting-models.html#el-modelo-más-simple-la-media"><i class="fa fa-check"></i><b>5.5</b> El modelo más simple: La media</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="fitting-models.html"><a href="fitting-models.html#la-mediana"><i class="fa fa-check"></i><b>5.5.1</b> La mediana</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="fitting-models.html"><a href="fitting-models.html#la-moda"><i class="fa fa-check"></i><b>5.6</b> La moda</a></li>
+<li class="chapter" data-level="5.7" data-path="fitting-models.html"><a href="fitting-models.html#variabilidad-qué-tan-bien-se-ajusta-la-media-a-los-datos"><i class="fa fa-check"></i><b>5.7</b> Variabilidad: ¿Qué tan bien se ajusta la media a los datos?</a></li>
+<li class="chapter" data-level="5.8" data-path="fitting-models.html"><a href="fitting-models.html#usar-simulaciones-para-entender-la-estadística"><i class="fa fa-check"></i><b>5.8</b> Usar simulaciones para entender la estadística</a></li>
+<li class="chapter" data-level="5.9" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-z"><i class="fa fa-check"></i><b>5.9</b> Puntajes Z</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="fitting-models.html"><a href="fitting-models.html#interpretando-puntajes-z"><i class="fa fa-check"></i><b>5.9.1</b> Interpretando Puntajes Z</a></li>
+<li class="chapter" data-level="5.9.2" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-estandarizados"><i class="fa fa-check"></i><b>5.9.2</b> Puntajes Estandarizados</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="fitting-models.html"><a href="fitting-models.html#objetivos-de-aprendizaje-4"><i class="fa fa-check"></i><b>5.10</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="5.11" data-path="fitting-models.html"><a href="fitting-models.html#apéndice-1"><i class="fa fa-check"></i><b>5.11</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="fitting-models.html"><a href="fitting-models.html#proof-that-the-sum-of-errors-from-the-mean-is-zero"><i class="fa fa-check"></i><b>5.11.1</b> Proof that the sum of errors from the Mean is zero”</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>6</b> Probabilidad</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="probability.html"><a href="probability.html#qué-es-la-probabilidad"><i class="fa fa-check"></i><b>6.1</b> ¿Qué es la probabilidad?</a></li>
+<li class="chapter" data-level="6.2" data-path="probability.html"><a href="probability.html#cómo-determinamos-probabilidades"><i class="fa fa-check"></i><b>6.2</b> ¿Cómo determinamos probabilidades?</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="probability.html"><a href="probability.html#creencia-personal"><i class="fa fa-check"></i><b>6.2.1</b> Creencia personal</a></li>
+<li class="chapter" data-level="6.2.2" data-path="probability.html"><a href="probability.html#empirical-frequency"><i class="fa fa-check"></i><b>6.2.2</b> Frecuencia empírica</a></li>
+<li class="chapter" data-level="6.2.3" data-path="probability.html"><a href="probability.html#probabilidad-clásica"><i class="fa fa-check"></i><b>6.2.3</b> Probabilidad clásica</a></li>
+<li class="chapter" data-level="6.2.4" data-path="probability.html"><a href="probability.html#resolviendo-el-problema-de-de-méré"><i class="fa fa-check"></i><b>6.2.4</b> Resolviendo el problema de de Méré</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="probability.html"><a href="probability.html#distribuciones-de-probabilidad"><i class="fa fa-check"></i><b>6.3</b> Distribuciones de probabilidad</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="probability.html"><a href="probability.html#distribuciones-de-probabilidad-acumuladas"><i class="fa fa-check"></i><b>6.3.1</b> Distribuciones de probabilidad acumuladas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="probability.html"><a href="probability.html#conditional-probability"><i class="fa fa-check"></i><b>6.4</b> Probabilidad condicional</a></li>
+<li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#calcular-probabilidades-condicionales-a-partir-de-los-datos"><i class="fa fa-check"></i><b>6.5</b> Calcular probabilidades condicionales a partir de los datos</a></li>
+<li class="chapter" data-level="6.6" data-path="probability.html"><a href="probability.html#independencia"><i class="fa fa-check"></i><b>6.6</b> Independencia</a></li>
+<li class="chapter" data-level="6.7" data-path="probability.html"><a href="probability.html#bayestheorem"><i class="fa fa-check"></i><b>6.7</b> Invertir una probabilidad condicional: regla de Bayes</a></li>
+<li class="chapter" data-level="6.8" data-path="probability.html"><a href="probability.html#aprender-de-los-datos"><i class="fa fa-check"></i><b>6.8</b> Aprender de los datos</a></li>
+<li class="chapter" data-level="6.9" data-path="probability.html"><a href="probability.html#posibilidades-odds-y-razón-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>6.9</b> Posibilidades (odds) y razón de posibilidades (odds ratios)</a></li>
+<li class="chapter" data-level="6.10" data-path="probability.html"><a href="probability.html#qué-significan-las-probabilidades"><i class="fa fa-check"></i><b>6.10</b> ¿Qué significan las probabilidades?</a></li>
+<li class="chapter" data-level="6.11" data-path="probability.html"><a href="probability.html#objetivos-de-aprendizaje-5"><i class="fa fa-check"></i><b>6.11</b> Objetivos de Aprendizaje</a></li>
+<li class="chapter" data-level="6.12" data-path="probability.html"><a href="probability.html#lecturas-sugeridas-3"><i class="fa fa-check"></i><b>6.12</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="6.13" data-path="probability.html"><a href="probability.html#apéndice-2"><i class="fa fa-check"></i><b>6.13</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="6.13.1" data-path="probability.html"><a href="probability.html#derivación-de-la-regla-de-bayes"><i class="fa fa-check"></i><b>6.13.1</b> Derivación de la regla de Bayes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>7</b> Muestreo</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="sampling.html"><a href="sampling.html#how-do-we-sample"><i class="fa fa-check"></i><b>7.1</b> ¿Cómo hacemos una muestra?</a></li>
+<li class="chapter" data-level="7.2" data-path="sampling.html"><a href="sampling.html#samplingerror"><i class="fa fa-check"></i><b>7.2</b> Error de muestreo</a></li>
+<li class="chapter" data-level="7.3" data-path="sampling.html"><a href="sampling.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>7.3</b> Error estándar de la media</a></li>
+<li class="chapter" data-level="7.4" data-path="sampling.html"><a href="sampling.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>7.4</b> El teorema del límite central</a></li>
+<li class="chapter" data-level="7.5" data-path="sampling.html"><a href="sampling.html#confidence-intervals"><i class="fa fa-check"></i><b>7.5</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="7.6" data-path="sampling.html"><a href="sampling.html#objetivos-de-aprendizaje-6"><i class="fa fa-check"></i><b>7.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="7.7" data-path="sampling.html"><a href="sampling.html#lecturas-sugeridas-4"><i class="fa fa-check"></i><b>7.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html"><i class="fa fa-check"></i><b>8</b> Remuestreo y Simulación</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#simulación-monte-carlo"><i class="fa fa-check"></i><b>8.1</b> Simulación Monte Carlo</a></li>
+<li class="chapter" data-level="8.2" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#aleatoriedad-en-estadística"><i class="fa fa-check"></i><b>8.2</b> Aleatoriedad en Estadística</a></li>
+<li class="chapter" data-level="8.3" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#generando-números-aleatorios"><i class="fa fa-check"></i><b>8.3</b> Generando números aleatorios</a></li>
+<li class="chapter" data-level="8.4" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#utilizando-una-simulación-con-el-método-de-montecarlo"><i class="fa fa-check"></i><b>8.4</b> Utilizando una simulación con el Método de Montecarlo</a></li>
+<li class="chapter" data-level="8.5" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#usando-simulaciones-para-estadística-the-bootstrap"><i class="fa fa-check"></i><b>8.5</b> Usando simulaciones para estadística: The bootstrap</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#calculando-el-bootstrap"><i class="fa fa-check"></i><b>8.5.1</b> Calculando el bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#objetivos-de-aprendizaje-7"><i class="fa fa-check"></i><b>8.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="8.7" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#lecturas-sugeridas-5"><i class="fa fa-check"></i><b>8.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>9</b> Prueba de hipótesis</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#prueba-estadística-de-hipótesis-nula-null-hypothesis-statistical-testing-nhst"><i class="fa fa-check"></i><b>9.1</b> Prueba Estadística de Hipótesis Nula (Null Hypothesis Statistical Testing, NHST)</a></li>
+<li class="chapter" data-level="9.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#prueba-estadística-de-hipótesis-nula-un-ejemplo"><i class="fa fa-check"></i><b>9.2</b> Prueba estadística de hipótesis nula: Un ejemplo</a></li>
+<li class="chapter" data-level="9.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#el-proceso-de-la-prueba-de-hipótesis-nula"><i class="fa fa-check"></i><b>9.3</b> El proceso de la prueba de hipótesis nula</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-1-formular-una-hipótesis-de-interés"><i class="fa fa-check"></i><b>9.3.1</b> Paso 1: Formular una hipótesis de interés</a></li>
+<li class="chapter" data-level="9.3.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-2-especifica-las-hipótesis-nula-y-alternativa"><i class="fa fa-check"></i><b>9.3.2</b> Paso 2: Especifica las hipótesis nula y alternativa</a></li>
+<li class="chapter" data-level="9.3.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-3-recolectar-datos"><i class="fa fa-check"></i><b>9.3.3</b> Paso 3: Recolectar datos</a></li>
+<li class="chapter" data-level="9.3.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-4-ajusta-un-modelo-a-los-datos-y-calcula-el-estadístico-de-prueba"><i class="fa fa-check"></i><b>9.3.4</b> Paso 4: Ajusta un modelo a los datos y calcula el estadístico de prueba</a></li>
+<li class="chapter" data-level="9.3.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-5-determinar-la-probabilidad-de-los-datos-bajo-la-hipótesis-nula"><i class="fa fa-check"></i><b>9.3.5</b> Paso 5: Determinar la probabilidad de los datos bajo la hipótesis nula</a></li>
+<li class="chapter" data-level="9.3.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-6-evalúa-la-significatividad-estadística-del-resultado"><i class="fa fa-check"></i><b>9.3.6</b> Paso 6: Evalúa la “significatividad estadística” del resultado</a></li>
+<li class="chapter" data-level="9.3.7" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#qué-significa-un-resultado-significativo"><i class="fa fa-check"></i><b>9.3.7</b> ¿Qué significa un resultado significativo?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#nhst-en-un-contexto-moderno-pruebas-múltiples"><i class="fa fa-check"></i><b>9.4</b> NHST en un contexto moderno: Pruebas múltiples</a></li>
+<li class="chapter" data-level="9.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#objetivos-de-aprendizaje-8"><i class="fa fa-check"></i><b>9.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="9.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lecturas-sugeridas-6"><i class="fa fa-check"></i><b>9.6</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html"><i class="fa fa-check"></i><b>10</b> Cuantificar efectos y diseñar estudios</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.1</b> Intervalos de confianza</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-usando-la-distribución-normal"><i class="fa fa-check"></i><b>10.1.1</b> Intervalos de confianza usando la distribución normal</a></li>
+<li class="chapter" data-level="10.1.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-utilizando-la-distribución-t"><i class="fa fa-check"></i><b>10.1.2</b> Intervalos de confianza utilizando la distribución t</a></li>
+<li class="chapter" data-level="10.1.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-y-tamaño-de-muestra"><i class="fa fa-check"></i><b>10.1.3</b> Intervalos de confianza y tamaño de muestra</a></li>
+<li class="chapter" data-level="10.1.4" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#calcular-el-intervalo-de-confianza-utilizando-bootstrap"><i class="fa fa-check"></i><b>10.1.4</b> Calcular el intervalo de confianza utilizando “bootstrap”</a></li>
+<li class="chapter" data-level="10.1.5" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#relación-de-los-intervalos-de-confianza-con-la-prueba-de-hipótesis"><i class="fa fa-check"></i><b>10.1.5</b> Relación de los intervalos de confianza con la prueba de hipótesis</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#tamaño-de-efecto-effect-sizes"><i class="fa fa-check"></i><b>10.2</b> Tamaño de efecto (effect sizes)</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#d-de-cohen"><i class="fa fa-check"></i><b>10.2.1</b> D de Cohen</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#r-de-pearson"><i class="fa fa-check"></i><b>10.2.2</b> r de Pearson</a></li>
+<li class="chapter" data-level="10.2.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#razón-de-probabilidades-odds-ratio"><i class="fa fa-check"></i><b>10.2.3</b> Razón de probabilidades (odds ratio)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#statistical-power"><i class="fa fa-check"></i><b>10.3</b> Poder estadístico</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#análisis-de-poder"><i class="fa fa-check"></i><b>10.3.1</b> Análisis de poder</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#objetivos-de-aprendizaje-9"><i class="fa fa-check"></i><b>10.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="10.5" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#lecturas-sugeridas-7"><i class="fa fa-check"></i><b>10.5</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html"><i class="fa fa-check"></i><b>11</b> Estadística Bayesiana</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#modelos-generativos"><i class="fa fa-check"></i><b>11.1</b> Modelos Generativos</a></li>
+<li class="chapter" data-level="11.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#el-teorema-de-bayes-y-la-inferencia-inversa"><i class="fa fa-check"></i><b>11.2</b> El Teorema de Bayes y la Inferencia Inversa</a></li>
+<li class="chapter" data-level="11.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#doing-bayesian-estimation"><i class="fa fa-check"></i><b>11.3</b> Haciendo estimaciones Bayesianas</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#especificar-la-probabilidad-previa"><i class="fa fa-check"></i><b>11.3.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.3.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#recolectar-los-datos"><i class="fa fa-check"></i><b>11.3.2</b> Recolectar los datos</a></li>
+<li class="chapter" data-level="11.3.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad"><i class="fa fa-check"></i><b>11.3.3</b> Calcular la probabilidad</a></li>
+<li class="chapter" data-level="11.3.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-marginal"><i class="fa fa-check"></i><b>11.3.4</b> Calcular la probabilidad marginal</a></li>
+<li class="chapter" data-level="11.3.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.3.5</b> Calcular la probabilidad posterior</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#estimating-posterior-distributions"><i class="fa fa-check"></i><b>11.4</b> Estimar distribuciones posteriores</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#especificar-la-probabilidad-previa-1"><i class="fa fa-check"></i><b>11.4.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.4.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#recolectar-algunos-datos"><i class="fa fa-check"></i><b>11.4.2</b> Recolectar algunos datos</a></li>
+<li class="chapter" data-level="11.4.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-1"><i class="fa fa-check"></i><b>11.4.3</b> Calcular la probabilidad</a></li>
+<li class="chapter" data-level="11.4.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-marginal-1"><i class="fa fa-check"></i><b>11.4.4</b> Calcular la probabilidad marginal</a></li>
+<li class="chapter" data-level="11.4.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calculando-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.4.5</b> Calculando la probabilidad posterior</a></li>
+<li class="chapter" data-level="11.4.6" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#estimación-máxima-a-posteriori-map-por-sus-siglas-en-inglés"><i class="fa fa-check"></i><b>11.4.6</b> Estimación máxima a posteriori (MAP, por sus siglas en inglés)</a></li>
+<li class="chapter" data-level="11.4.7" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#intervalos-de-credibilidad"><i class="fa fa-check"></i><b>11.4.7</b> Intervalos de credibilidad</a></li>
+<li class="chapter" data-level="11.4.8" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#efectos-de-diferentes-probabilidades-previas"><i class="fa fa-check"></i><b>11.4.8</b> Efectos de diferentes probabilidades previas</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#elegir-una-probabilidad-previa"><i class="fa fa-check"></i><b>11.5</b> Elegir una probabilidad previa</a></li>
+<li class="chapter" data-level="11.6" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#prueba-de-hipótesis-bayesiana"><i class="fa fa-check"></i><b>11.6</b> Prueba de hipótesis Bayesiana</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#Bayes-factors"><i class="fa fa-check"></i><b>11.6.1</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="11.6.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#factores-de-bayes-para-hipótesis-estadísticas"><i class="fa fa-check"></i><b>11.6.2</b> Factores de Bayes para hipótesis estadísticas</a></li>
+<li class="chapter" data-level="11.6.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#evaluar-evidencia-a-favor-de-la-hipótesis-nula"><i class="fa fa-check"></i><b>11.6.3</b> Evaluar evidencia a favor de la hipótesis nula</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#objetivos-de-aprendizaje-10"><i class="fa fa-check"></i><b>11.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="11.8" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#suggested-readings"><i class="fa fa-check"></i><b>11.8</b> Suggested readings</a></li>
+<li class="chapter" data-level="11.9" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#apéndice-3"><i class="fa fa-check"></i><b>11.9</b> Apéndice:</a>
+<ul>
+<li class="chapter" data-level="11.9.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#muestreo-de-rechazo"><i class="fa fa-check"></i><b>11.9.1</b> Muestreo de rechazo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html"><i class="fa fa-check"></i><b>12</b> Modelar relaciones categóricas</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#ejemplo-colores-de-dulces"><i class="fa fa-check"></i><b>12.1</b> Ejemplo: Colores de dulces</a></li>
+<li class="chapter" data-level="12.2" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#chi-squared-test"><i class="fa fa-check"></i><b>12.2</b> Prueba Ji-cuadrada de Pearson</a></li>
+<li class="chapter" data-level="12.3" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#two-way-test"><i class="fa fa-check"></i><b>12.3</b> Tablas de contingencia y la prueba de dos vías</a></li>
+<li class="chapter" data-level="12.4" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#residuales-estandarizados"><i class="fa fa-check"></i><b>12.4</b> Residuales estandarizados</a></li>
+<li class="chapter" data-level="12.5" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#razones-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>12.5</b> Razones de posibilidades (odds ratios)</a></li>
+<li class="chapter" data-level="12.6" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#factores-de-bayes"><i class="fa fa-check"></i><b>12.6</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="12.7" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#análisis-categórico-más-allá-de-la-tabla-2-x-2"><i class="fa fa-check"></i><b>12.7</b> Análisis categórico más allá de la tabla 2 X 2</a></li>
+<li class="chapter" data-level="12.8" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#cuídate-de-la-paradoja-de-simpson"><i class="fa fa-check"></i><b>12.8</b> Cuídate de la paradoja de Simpson</a></li>
+<li class="chapter" data-level="12.9" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#objetivos-de-aprendizaje-11"><i class="fa fa-check"></i><b>12.9</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="12.10" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#lecturas-adicionales"><i class="fa fa-check"></i><b>12.10</b> Lecturas adicionales</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html"><i class="fa fa-check"></i><b>13</b> Modelar relaciones continuas</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#un-ejemplo-crímenes-de-odio-y-la-inequidad-de-ingreso"><i class="fa fa-check"></i><b>13.1</b> Un ejemplo: Crímenes de odio y la inequidad de ingreso</a></li>
+<li class="chapter" data-level="13.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#la-inequidad-de-ingreso-está-relacionada-a-los-crímenes-de-odio"><i class="fa fa-check"></i><b>13.2</b> ¿La inequidad de ingreso está relacionada a los crímenes de odio?</a></li>
+<li class="chapter" data-level="13.3" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#covariance-and-correlation"><i class="fa fa-check"></i><b>13.3</b> Covarianza y la correlación</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#prueba-de-hipótesis-para-correlaciones"><i class="fa fa-check"></i><b>13.3.1</b> Prueba de hipótesis para correlaciones</a></li>
+<li class="chapter" data-level="13.3.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#robust-correlations"><i class="fa fa-check"></i><b>13.3.2</b> Correlaciones Robustas</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#correlación-y-causalidad"><i class="fa fa-check"></i><b>13.4</b> Correlación y causalidad</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#gráficas-causales"><i class="fa fa-check"></i><b>13.4.1</b> Gráficas causales</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#objetivos-de-aprendizaje-12"><i class="fa fa-check"></i><b>13.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="13.6" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#lecturas-sugeridas-8"><i class="fa fa-check"></i><b>13.6</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="13.7" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#apéndice-4"><i class="fa fa-check"></i><b>13.7</b> Apéndice:</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#cuantificando-la-inequidad-el-índice-gini"><i class="fa fa-check"></i><b>13.7.1</b> Cuantificando la inequidad: El índice Gini</a></li>
+<li class="chapter" data-level="13.7.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#análisis-de-correlación-bayesiana"><i class="fa fa-check"></i><b>13.7.2</b> Análisis de correlación bayesiana</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html"><i class="fa fa-check"></i><b>14</b> El Modelo Lineal General</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#linear-regression"><i class="fa fa-check"></i><b>14.1</b> Regresión lineal</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#regression-to-the-mean"><i class="fa fa-check"></i><b>14.1.1</b> Regresión a la media</a></li>
+<li class="chapter" data-level="14.1.2" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#la-relación-entre-correlación-y-regresión"><i class="fa fa-check"></i><b>14.1.2</b> La relación entre correlación y regresión</a></li>
+<li class="chapter" data-level="14.1.3" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#errores-estándar-de-los-modelos-de-regresión"><i class="fa fa-check"></i><b>14.1.3</b> Errores estándar de los modelos de regresión</a></li>
+<li class="chapter" data-level="14.1.4" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#pruebas-estadísticas-para-los-parámetros-de-la-regresión"><i class="fa fa-check"></i><b>14.1.4</b> Pruebas estadísticas para los parámetros de la regresión</a></li>
+<li class="chapter" data-level="14.1.5" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#cuantificar-la-bondad-de-adjuste-del-modelo"><i class="fa fa-check"></i><b>14.1.5</b> Cuantificar la bondad de adjuste del modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#ajustar-modelos-más-complejos"><i class="fa fa-check"></i><b>14.2</b> Ajustar modelos más complejos</a></li>
+<li class="chapter" data-level="14.3" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#interacciones-entre-variables"><i class="fa fa-check"></i><b>14.3</b> Interacciones entre variables</a></li>
+<li class="chapter" data-level="14.4" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#más-allá-de-predictores-y-resultados-lineales"><i class="fa fa-check"></i><b>14.4</b> Más allá de predictores y resultados lineales</a></li>
+<li class="chapter" data-level="14.5" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#model-criticism"><i class="fa fa-check"></i><b>14.5</b> Criticar nuestro modelo y revisar suposiciones</a></li>
+<li class="chapter" data-level="14.6" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#qué-significa-realmente-predecir"><i class="fa fa-check"></i><b>14.6</b> ¿Qué significa realmente “predecir”?</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#cross-validation"><i class="fa fa-check"></i><b>14.6.1</b> Validación cruzada (Cross-validation)</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#objetivos-de-aprendizaje-13"><i class="fa fa-check"></i><b>14.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="14.8" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#lecturas-sugeridas-9"><i class="fa fa-check"></i><b>14.8</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="14.9" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#apéndice-5"><i class="fa fa-check"></i><b>14.9</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="14.9.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#estimar-parámetros-de-una-regresión-lineal"><i class="fa fa-check"></i><b>14.9.1</b> Estimar parámetros de una regresión lineal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="comparar-medias.html"><a href="comparar-medias.html"><i class="fa fa-check"></i><b>15</b> Comparar medias</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="comparar-medias.html"><a href="comparar-medias.html#single-mean"><i class="fa fa-check"></i><b>15.1</b> Probar el valor de una media simple</a></li>
+<li class="chapter" data-level="15.2" data-path="comparar-medias.html"><a href="comparar-medias.html#comparing-two-means"><i class="fa fa-check"></i><b>15.2</b> Comparar dos medias</a></li>
+<li class="chapter" data-level="15.3" data-path="comparar-medias.html"><a href="comparar-medias.html#ttest-linear-model"><i class="fa fa-check"></i><b>15.3</b> La prueba t como un modelo lineal</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="comparar-medias.html"><a href="comparar-medias.html#tamaños-de-efecto-para-comparar-dos-medias"><i class="fa fa-check"></i><b>15.3.1</b> Tamaños de efecto para comparar dos medias</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="comparar-medias.html"><a href="comparar-medias.html#factores-de-bayes-para-diferencias-entre-medias"><i class="fa fa-check"></i><b>15.4</b> Factores de Bayes para diferencias entre medias</a></li>
+<li class="chapter" data-level="15.5" data-path="comparar-medias.html"><a href="comparar-medias.html#paired-ttests"><i class="fa fa-check"></i><b>15.5</b> Comparar observaciones pareadas/relacionadas</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="comparar-medias.html"><a href="comparar-medias.html#prueba-de-los-signos"><i class="fa fa-check"></i><b>15.5.1</b> Prueba de los signos</a></li>
+<li class="chapter" data-level="15.5.2" data-path="comparar-medias.html"><a href="comparar-medias.html#prueba-t-para-muestras-relacionadas-paired-t-test"><i class="fa fa-check"></i><b>15.5.2</b> Prueba t para muestras relacionadas (paired t-test)</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="comparar-medias.html"><a href="comparar-medias.html#comparar-más-de-dos-medias"><i class="fa fa-check"></i><b>15.6</b> Comparar más de dos medias</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="comparar-medias.html"><a href="comparar-medias.html#ANOVA"><i class="fa fa-check"></i><b>15.6.1</b> Análisis de varianza</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="comparar-medias.html"><a href="comparar-medias.html#objetivos-de-aprendizaje-14"><i class="fa fa-check"></i><b>15.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="15.8" data-path="comparar-medias.html"><a href="comparar-medias.html#apéndice-6"><i class="fa fa-check"></i><b>15.8</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="15.8.1" data-path="comparar-medias.html"><a href="comparar-medias.html#la-prueba-t-de-muestras-relacionadas-como-un-modelo-lineal"><i class="fa fa-check"></i><b>15.8.1</b> La prueba t de muestras relacionadas como un modelo lineal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="practical-example.html"><a href="practical-example.html"><i class="fa fa-check"></i><b>16</b> Modelación estadística práctica</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="practical-example.html"><a href="practical-example.html#el-proceso-de-modelación-estadística"><i class="fa fa-check"></i><b>16.1</b> El proceso de modelación estadística</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="practical-example.html"><a href="practical-example.html#especificar-nuestra-pregunta-de-interés."><i class="fa fa-check"></i><b>16.1.1</b> 1: Especificar nuestra pregunta de interés.</a></li>
+<li class="chapter" data-level="16.1.2" data-path="practical-example.html"><a href="practical-example.html#identificar-o-recolectar-los-datos-apropiados."><i class="fa fa-check"></i><b>16.1.2</b> 2: Identificar o recolectar los datos apropiados.</a></li>
+<li class="chapter" data-level="16.1.3" data-path="practical-example.html"><a href="practical-example.html#preparar-los-datos-para-el-análisis."><i class="fa fa-check"></i><b>16.1.3</b> 3: Preparar los datos para el análisis.</a></li>
+<li class="chapter" data-level="16.1.4" data-path="practical-example.html"><a href="practical-example.html#determinar-el-modelo-apropiado."><i class="fa fa-check"></i><b>16.1.4</b> 4: Determinar el modelo apropiado.</a></li>
+<li class="chapter" data-level="16.1.5" data-path="practical-example.html"><a href="practical-example.html#ajustar-el-modelo-a-los-datos."><i class="fa fa-check"></i><b>16.1.5</b> 5: Ajustar el modelo a los datos.</a></li>
+<li class="chapter" data-level="16.1.6" data-path="practical-example.html"><a href="practical-example.html#criticar-el-modelo-para-asegurarnos-que-se-ajusta-apropiadamente."><i class="fa fa-check"></i><b>16.1.6</b> 6: Criticar el modelo para asegurarnos que se ajusta apropiadamente.</a></li>
+<li class="chapter" data-level="16.1.7" data-path="practical-example.html"><a href="practical-example.html#probar-hipótesis-y-cuantificar-el-tamaño-del-efecto."><i class="fa fa-check"></i><b>16.1.7</b> 7: Probar hipótesis y cuantificar el tamaño del efecto.</a></li>
+<li class="chapter" data-level="16.1.8" data-path="practical-example.html"><a href="practical-example.html#qué-pasa-con-los-posibles-factores-de-confusión-confounds"><i class="fa fa-check"></i><b>16.1.8</b> ¿Qué pasa con los posibles factores de confusión (confounds)?</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="practical-example.html"><a href="practical-example.html#obtener-ayuda"><i class="fa fa-check"></i><b>16.2</b> Obtener ayuda</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html"><i class="fa fa-check"></i><b>17</b> Hacer investigación reproducible</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-pensamos-que-funciona-la-ciencia"><i class="fa fa-check"></i><b>17.1</b> Cómo pensamos que funciona la ciencia</a></li>
+<li class="chapter" data-level="17.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-realmente-funciona-la-ciencia-a-veces"><i class="fa fa-check"></i><b>17.2</b> Cómo realmente funciona la ciencia (a veces)</a></li>
+<li class="chapter" data-level="17.3" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#la-crisis-de-reproducibilidad-en-la-ciencia"><i class="fa fa-check"></i><b>17.3</b> La crisis de reproducibilidad en la ciencia</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#valor-predictivo-positivo-y-significatividad-estadística"><i class="fa fa-check"></i><b>17.3.1</b> Valor predictivo positivo y significatividad estadística</a></li>
+<li class="chapter" data-level="17.3.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#la-maldición-del-ganador"><i class="fa fa-check"></i><b>17.3.2</b> La maldición del ganador</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#prácticas-cuestionables-de-investigación"><i class="fa fa-check"></i><b>17.4</b> Prácticas cuestionables de investigación</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#esp-o-qrp"><i class="fa fa-check"></i><b>17.4.1</b> ¿ESP o QRP?</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#hacer-investigación-reproducible"><i class="fa fa-check"></i><b>17.5</b> Hacer investigación reproducible</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#pre-registro"><i class="fa fa-check"></i><b>17.5.1</b> Pre-registro</a></li>
+<li class="chapter" data-level="17.5.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#prácticas-reproducibles"><i class="fa fa-check"></i><b>17.5.2</b> Prácticas reproducibles</a></li>
+<li class="chapter" data-level="17.5.3" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#replicación"><i class="fa fa-check"></i><b>17.5.3</b> Replicación</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#hacer-análisis-de-datos-reproducibles"><i class="fa fa-check"></i><b>17.6</b> Hacer análisis de datos reproducibles</a></li>
+<li class="chapter" data-level="17.7" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#conclusión-hacer-mejor-ciencia"><i class="fa fa-check"></i><b>17.7</b> Conclusión: Hacer mejor ciencia</a></li>
+<li class="chapter" data-level="17.8" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#objetivos-de-aprendizaje-15"><i class="fa fa-check"></i><b>17.8</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="17.9" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#lecturas-sugeridas-10"><i class="fa fa-check"></i><b>17.9</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Thinking for the 21st Century</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="el-modelo-lineal-general" class="section level1" number="14">
+<h1><span class="header-section-number">Capitulo 14</span> El Modelo Lineal General</h1>
+<!-- Remember that early in the book we described the basic model of statistics: -->
+<p>Recuerda que previamente en este libro describimos el modelo básico en estadística:</p>
+<p><span class="math display">\[
+outcome = model + error
+\]</span>
+<!-- where our general goal is to find the model that minimizes the error, subject to some other constraints (such as keeping the model relatively simple so that we can generalize beyond our specific dataset). In this chapter we will focus on a particular implementation of this approach, which is known as the *general linear model* (or GLM).   You have already seen the general linear model in the earlier chapter on Fitting Models to Data, where we modeled height in the NHANES dataset as a function of age; here we will provide a more general introduction to the concept of the GLM and its many uses.  Nearly every model used in statistics can be framed in terms of the general linear model or an extension of it. -->
+donde nuestro objetivo principal es encontrar el modelo que minimice el error, sujeto a otras restricciones (como el mantener el modelo relativamente simple para que podamos generalizar más allá de nuestros datos específicos). En este capítulo nos enfocaremos en una implementación particular de esta aproximación, que es conocido como el <em>modelo lineal general</em> (<em>general linear model</em>, o GLM). Ya has visto el modelo lineal general en el capítulo de Ajustar Modelos a los Datos, donde modelamos la altura de los datos de la base NHANES como una función de la edad; aquí proveeremos una introducción más general al concepto del GLM y de sus múltiples usos. Casi todos los modelos usados en estadística pueden ser planteados en términos del modelo lineal general o como una extensión de éste.</p>
+<!-- Before we discuss the general linear model, let's first define two terms that will be important for our discussion: -->
+<p>Antes de que discutamos el modelo lineal general, primero definamos dos conceptos que serán importantes para nuestra discusión:</p>
+<!-- - *dependent variable*: This is the outcome variable that our model aims to explain (usually referred to as *Y*) -->
+<!-- - *independent variable*: This is a variable that we wish to use in order to explain the dependent variable (usually referred to as *X*).   -->
+<ul>
+<li><em>variable dependiente</em>: Es la variable de los resultados que nuestro modelo busca explicar (usualmente referida como <em>Y</em>)</li>
+<li><em>variable independiente</em>: Es la variable que queremos usar para poder explicar la variable dependiente (usualmente referida como <em>X</em>)</li>
+</ul>
+<!-- There may be multiple independent variables, but for this course we will focus primarily on situations where there is only one dependent variable in our analysis. -->
+<p>Puede haber múltiples variables dependientes, pero para este curso nos enfocaremos principalmente en situaciones donde sólo hay una variable dependiente en nuestro análisis.</p>
+<!-- A general linear model is one in which the model for the dependent variable is composed of a *linear combination* of independent variables that are each multiplied by a weight (which is often referred to as the Greek letter beta - $\beta$), which determines the relative contribution of that independent variable to the model prediction. -->
+<p>Un modelo lineal general es uno en donde nuestro modelo para la variable dependiente está compuesto por una <em>combinación lineal</em> de variables independientes que cada una es multiplicada por un peso (el cual es frecuentemente referido con la letra griega beta - <span class="math inline">\(\beta\)</span>), que determina la contribución relativa de esa variable independiente a la predicción del modelo.</p>
+<div class="figure"><span id="fig:StudytimeGrades"></span>
+<img src="StatsThinking21_files/figure-html/StudytimeGrades-1.png" alt="Relation between study time and grades" width="288" height="50%" />
+<p class="caption">
+Figura 14.1: Relation between study time and grades
+</p>
+</div>
+<!-- As an example, let's generate some simulated data for the relationship between study time and exam grades (see Figure \@ref(fig:StudytimeGrades)). Given these data, we might want to engage in each of the three fundamental activities of statistics: -->
+<p>Como ejemplo, generemos unos datos simulados de la relación entre tiempo de estudio y calificación en exámenes (ve la Figura <a href="el-modelo-lineal-general.html#fig:StudytimeGrades">14.1</a>). Dados estos datos, quisiéramos hacer el ejercicio de desarrollar cada una de las tres actividades fundamentales de la Estadística:</p>
+<!-- - *Describe*: How strong is the relationship between grade and study time? -->
+<!-- - *Decide*: Is there a statistically significant relationship between grade and study time? -->
+<!-- - *Predict*: Given a particular amount of study time, what grade do we expect? -->
+<ul>
+<li><em>Describir</em>: ¿Qué tan fuerte es la relación entre calificación y tiempo de estudio?</li>
+<li><em>Decidir</em>: ¿Hay una relación estadísticamente significativa entre calificación y tiempo de estudio?</li>
+<li><em>Predecir</em>: Dado un tiempo particular de estudio, ¿qué calificación esperaríamos?</li>
+</ul>
+<!-- In the previous chapter we learned how to describe the relationship between two variables using the correlation coefficient.  Let's use our statistical software to compute that relationship for these data and test whether the correlation is statistically significant: -->
+<p>En el capítulo anterior aprendimos cómo describir la relación entre dos variables usando el coeficiente de correlación. Usemos nuestro software estadístico para calcular esa relación para estos datos y hacer la prueba de si esa correlación es estadísticamente significativa:</p>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  df$grade and df$studyTime
+## t = 2, df = 6, p-value = 0.05
+## alternative hypothesis: true correlation is greater than 0
+## 95 percent confidence interval:
+##  0.014 1.000
+## sample estimates:
+##  cor 
+## 0.63</code></pre>
+<!-- The correlation is quite high, but just barely reaches statistical significance because the sample size is so small and thus our statistical power is very low.   -->
+<p>Esta correlación es bastante alta, pero apenas alcanza significatividad estadística porque el tamaño de la muestra es tan pequeño, por lo tanto, nuestro poder estadístico es muy bajo.</p>
+<!-- ## Linear regression {#linear-regression} -->
+<div id="linear-regression" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> Regresión lineal</h2>
+<!-- We can use the general linear model to describe the relation between two variables and to decide whether that relationship is statistically significant; in addition, the model allows us to predict the value of the dependent variable given some new value(s) of the independent variable(s).  Most importantly, the general linear model will allow us to build models that incorporate multiple independent variables, whereas correlation can only tell us about the relationship between two individual variables. -->
+<p>Podemos usar el modelo lineal general para describir la relación entre dos variables y para decidir si la relación es estadísticamente significativa; además, el modelo nos permite predecir el valor de la variable dependiente dado algún o algunos valores nuevos de la(s) variable(s) independiente(s). Aún más importante, el modelo lineal general nos permite construir modelos que incorporen múltiples variables independientes, mientras que la correlación sólo nos permite decir algo acerca de la relación entre dos variables individuales.</p>
+<!-- The specific version of the GLM that we use for this is referred to as as *linear regression*.  The term *regression* was coined by Francis Galton, who had noted that when he compared parents and their children on some feature (such as height), the children of extreme parents (i.e. the very tall or very short parents) generally fell closer to the mean than did their parents.  This is an extremely important point that we return to below. -->
+<p>La versión específica del GLM que usamos para esto es conocida como <em>regresión lineal</em> (<em>linear regression</em>). El término <em>regresión</em> fue acuñado por Francis Galton, quien notó que cuando él comparó padres y madres con sus hijxs en algunas características (como altura), lxs hijxs de padres y madres con valores extremos (i.e. lxs padres y madres muy altxs, o muy bajxs de estatura) generalmente caían más cerca de la media que de los valores de sus padres y madres. Este es un punto extremadamente importante al que regresaremos más abajo.</p>
+<!-- The simplest version of the linear regression model (with a single independent variable) can be expressed as follows: -->
+<p>La versión más simple del modelo de regresión lineal (con una sola variable independiente) puede ser expresada de la siguiente manera:</p>
+<p><span class="math display">\[
+y = x * \beta_x + \beta_0 + \epsilon
+\]</span>
+<!-- The $\beta_x$ value tells us how much we would expect y to change given a one-unit change in x.  The intercept $\beta_0$ is an overall offset, which tells us what value we would expect y to have when $x=0$; you may remember from our early modeling discussion that this is important to model the overall magnitude of the data, even if $x$ never actually attains a value of zero. The error term $\epsilon$ refers to whatever is left over once the model has been fit; we often refer to these as the *residuals* from the model. If we want to know how to predict y (which we call $\hat{y}$), then we can drop the error term: -->
+El valor <span class="math inline">\(\beta_x\)</span> nos dice cuánto esperaríamos que <span class="math inline">\(y\)</span> cambiara dado un cambio de una sola unidad en <span class="math inline">\(x\)</span>. El intercepto <span class="math inline">\(\beta_0\)</span> es un offset general (una compensación general), que nos dice cuál valor esperaríamos de <span class="math inline">\(y\)</span> cuando <span class="math inline">\(x=0\)</span>; recordarás de nuestra discusión previa sobre modelos que esto es importante para poder modelar la magnitud general de los datos, aún cuando <span class="math inline">\(x\)</span> nunca tenga realmente un valor de cero. El término del error <span class="math inline">\(\epsilon\)</span> se refiere al error que queda después de que el modelo ha sido ajustado a los datos; frecuentemente nos referimos a este error como los <em>residuales</em> del modelo. Si queremos saber cómo predecir <span class="math inline">\(y\)</span> (que llamamos <span class="math inline">\(\hat{y}\)</span>), entonces podemos ignorar el término del error por el momento:</p>
+<p><span class="math display">\[
+\hat{y} = x * \beta_x + \beta_0 
+\]</span>
+<!-- Note that this is simply the equation for a line, where $\beta_x$ is the slope and $\beta_0$ is the intercept. Figure  \@ref(fig:LinearRegression) shows an example of this model applied to the study time data. -->
+Nota que esto es simplemente la ecuación de una línea, donde <span class="math inline">\(\beta_x\)</span> es la pendiente y <span class="math inline">\(\beta_0\)</span> es el intercepto. La Figura <a href="el-modelo-lineal-general.html#fig:LinearRegression">14.2</a> muestra un ejemplo de este modelo aplicado a los datos de tiempo de estudio.</p>
+<div class="figure"><span id="fig:LinearRegression"></span>
+<img src="StatsThinking21_files/figure-html/LinearRegression-1.png" alt="The linear regression solution for the study time data is shown in the solid line The value of the intercept is equivalent to the predicted value of the y variable when the x variable is equal to zero; this is shown with a dotted line.  The value of beta is equal to the slope of the line -- that is, how much y changes for a unit change in x.  This is shown schematically in the dashed lines, which show the degree of increase in grade for a single unit increase in study time." width="384" height="50%" />
+<p class="caption">
+Figura 14.2: The linear regression solution for the study time data is shown in the solid line The value of the intercept is equivalent to the predicted value of the y variable when the x variable is equal to zero; this is shown with a dotted line. The value of beta is equal to the slope of the line – that is, how much y changes for a unit change in x. This is shown schematically in the dashed lines, which show the degree of increase in grade for a single unit increase in study time.
+</p>
+</div>
+<!-- We will not go into the details of how the best fitting slope and intercept are actually estimated from the data; if you are interested, details are available in the Appendix. -->
+<p>No entraremos en detalles sobre cómo se calcula la pendiente y el intercepto que mejor ajustan a los datos; si estás interesadx, los detalles están disponibles en el Apéndice.</p>
+<!-- ### Regression to the mean {#regression-to-the-mean} -->
+<div id="regression-to-the-mean" class="section level3" number="14.1.1">
+<h3><span class="header-section-number">14.1.1</span> Regresión a la media</h3>
+<!-- The concept of *regression to the mean* was one of Galton's essential contributions to science, and it remains a critical point to understand when we interpret the results of experimental data analyses.  Let's say that we want to study the effects of a reading intervention on the performance of poor readers.  To test our hypothesis, we might go into a school and recruit those individuals in the bottom 25% of the distribution on some reading test, administer the intervention, and then examine their performance on the test after the intervention.  Let's say that the intervention actually has no effect, such that reading scores for each individual are simply independent samples from a normal distribution.  We can simulate this: -->
+<p>El concepto de <em>regresión a la media</em> fue una de las contribuciones esenciales de Galton a la ciencia, y aún se mantiene como un punto crítico a entender cuando interpretamos los resultados de análisis de datos experimentales. Digamos que queremos estudiar los efectos de una intervención de lectura para el rendimiento de lectores de baja habilidad de lectura (“lectores pobres”). Para probar nuestra hipótesis, podríamos ir a una escuela y reclutar a aquellas personas en el 25% más bajo de la distribución en una prueba de lectura, administrar la intervención, y luego examinar su rendimiento en la prueba después de la intervención. Digamos que la intervención realmente no tiene efecto, de manera que los puntajes de lectura de cada persona son simplemente muestras independientes de una distribución normal. Podemos hacer una simulación de esto:</p>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-98">Tabla 14.1: </span>Reading scores for Test 1 (which is lower, because it was the basis for selecting the students) and Test 2 (which is higher because it was not related to Test 1).
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Score
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Test 1
+</td>
+<td style="text-align:right;">
+88
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Test 2
+</td>
+<td style="text-align:right;">
+101
+</td>
+</tr>
+</tbody>
+</table>
+<!-- If we look at the difference between the mean test performance at the first and second test, it appears that the intervention has helped these students substantially, as their scores have gone up by more than ten points on the test!  However, we know that in fact the students didn't improve at all, since in both cases the scores were simply selected from a random normal distribution. What has happened is that some students scored badly on the first test simply due to random chance. If we select just those subjects on the basis of their first test scores, they are guaranteed to move back towards the mean of the entire group on the second test, even if there is no effect of training. This is the reason that we always need an untreated *control group* in order to interpret any changes in performance due to an intervention; otherwise we are likely to be tricked by regression to the mean. -->
+<p>Si observamos la diferencia entre el rendimiento promedio en el primer y en el segundo test, pareciera que la intervención ha ayudado a estos estudiantes sustancialmente, ¡pues sus puntajes han incrementado en más de diez puntos en la prueba! Sin embargo, sabemos de cierto que estos estudiantes no mejoraron para nada, pues en ambos casos los puntajes simplemente fueron seleccionados de una distribución normal aleatoria. Lo que ha sucedido es que algunos estudiantes obtuvieron puntajes bajos en el primer test simplemente debido al azar. Si seleccionamos justo esos estudiantes con base en su puntaje del primer test, está garantizado que sus puntajes promedio se moverán hacia la media del grupo completo en su segundo test, aún cuando no hay ningún efecto del entrenamiento. Esta es una de las razones por las que siempre necesitamos un <em>grupo control</em> al que no se haya aplicado la intervención, para poder estar en posición de interpretar cualquier cambio en rendimiento como un cambio debido a la intervención; de otra manera probablemente seremos engañados por este truco de regresión a la media.</p>
+<!-- ### The relation between correlation and regression -->
+</div>
+<div id="la-relación-entre-correlación-y-regresión" class="section level3" number="14.1.2">
+<h3><span class="header-section-number">14.1.2</span> La relación entre correlación y regresión</h3>
+<!-- There is a close relationship between correlation coefficients and regression coefficients.  Remember that Pearson's correlation coefficient is computed as the ratio of the covariance and the product of the standard deviations of x and y: -->
+<p>Hay una relación cercana entre los coeficientes de correlación y los coeficientes de regresión. Recuerda que el coeficiente de correlación de Pearson es calculado como la división de la covarianza entre la multiplicación de las desviaciones estándar de <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span>:</p>
+<p><span class="math display">\[
+\hat{r} = \frac{covariance_{xy}}{s_x * s_y}
+\]</span>
+<!-- whereas the regression beta for x is computed as: -->
+mientras que el coeficiente de regresión beta para x es calculado como:</p>
+<p><span class="math display">\[
+\hat{\beta_x} = \frac{covariance_{xy}}{s_x*s_x}
+\]</span></p>
+<!-- Based on these two equations, we can derive the relationship between $\hat{r}$ and $\hat{beta}$: -->
+<p>Basándonos en estas dos ecuaciones, podemos derivar la relación entre <span class="math inline">\(\hat{r}\)</span> y <span class="math inline">\(\hat{beta}\)</span>:</p>
+<p><span class="math display">\[
+covariance_{xy} = \hat{r} * s_x * s_y
+\]</span></p>
+<p><span class="math display">\[
+\hat{\beta_x} =  \frac{\hat{r} * s_x * s_y}{s_x * s_x} = r * \frac{s_y}{s_x}
+\]</span>
+<!-- That is, the regression slope is equal to the correlation value multiplied by the ratio of standard deviations of y and x.  One thing this tells us is that when the standard deviations of x and y are the same (e.g. when the data have been converted to Z scores), then the correlation estimate is equal to the regression slope estimate. -->
+Esto es, la pendiente de la regresión es igual al valor de la correlación multiplicado por la división/proporción entre las desviaciones estándar de <span class="math inline">\(y\)</span> y <span class="math inline">\(x\)</span>. Una cosa que nos dice esto es que cuando las desviaciones estándar de <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span> son iguales (e.g. cuando los datos han sido convertidos a puntajes Z), entonces la correlación estimada es igual a la pendiente estimada de la regresión.</p>
+<!-- ### Standard errors for regression models -->
+</div>
+<div id="errores-estándar-de-los-modelos-de-regresión" class="section level3" number="14.1.3">
+<h3><span class="header-section-number">14.1.3</span> Errores estándar de los modelos de regresión</h3>
+<!-- If we want to make inferences about the regression parameter estimates, then we also need an estimate of their variability.  To compute this, we first need to compute the *residual variance* or *error variance* for the model -- that is, how much variability in the dependent variable is not explained by the model.  We can compute the model residuals as follows: -->
+<p>Si queremos realizar inferencias acerca de los parámetros estimados de regresión, entonces también necesitamos un estimado de su variabilidad. Para calcular esto, primero necesitamos calcular la <em>varianza residual</em> o <em>varianza de error</em> para el modelo – esto es, cuánta variabilidad en la variable dependiente no es explicada por el modelo. Podemos calcular los residuales del modelo de la manera siguiente:</p>
+<p><span class="math display">\[
+residual = y - \hat{y} = y - (x*\hat{\beta_x} + \hat{\beta_0})
+\]</span>
+<!-- We then compute the *sum of squared errors (SSE)*: -->
+Después calculamos la <em>suma de errores cuadráticos</em> (<em>sum of squared errors</em>, <em>SSE</em>):</p>
+<p><span class="math display">\[
+SS_{error} = \sum_{i=1}^n{(y_i - \hat{y_i})^2} = \sum_{i=1}^n{residuals^2}
+\]</span>
+<!-- and from this we compute the *mean squared error*: -->
+y de aquí podemos calcular la <em>media del error cuadrático</em> (<em>mean squared error</em>, <em>MSE</em>):</p>
+<p><span class="math display">\[
+MS_{error} = \frac{SS_{error}}{df} = \frac{\sum_{i=1}^n{(y_i - \hat{y_i})^2} }{N - p}
+\]</span>
+<!-- where the degrees of freedom ($df$) are determined by subtracting the number of estimated parameters (2 in this case: $\hat{\beta_x}$ and $\hat{\beta_0}$) from the number of observations ($N$).  Once we have the mean squared error, we can compute the standard error for the model as: -->
+donde los grados de libertad (<span class="math inline">\(gl\)</span>, <em>degrees of freedom</em>, <span class="math inline">\(df\)</span>) se determinan al restar el número de parámetros estimados (2 en este caso: <span class="math inline">\(\hat{\beta_x}\)</span> y <span class="math inline">\(\hat{\beta_0}\)</span>) del número de observaciones (<span class="math inline">\(N\)</span>). Una vez que tenemos la media del error cuadrático (MSE), podemos calcular el error estándar para el modelo de la siguiente manera:</p>
+<p><span class="math display">\[
+SE_{model} = \sqrt{MS_{error}}
+\]</span></p>
+<!-- In order to get the standard error for a specific regression parameter estimate, $SE_{\beta_x}$, we need to rescale the standard error of the model by the square root of the sum of squares of the X variable: -->
+<p>Para poder obtener el error estándar para un parámetro estimado específico de la regresión, <span class="math inline">\(SE_{\beta_x}\)</span>, necesitamos reescalar el error estándar para el modelo mediante la raíz cuadrada de la suma de los cuadrados de la variable X:</p>
+<p><span class="math display">\[
+SE_{\hat{\beta}_x} = \frac{SE_{model}}{\sqrt{{\sum{(x_i - \bar{x})^2}}}}
+\]</span></p>
+<!-- ### Statistical tests for regression parameters -->
+</div>
+<div id="pruebas-estadísticas-para-los-parámetros-de-la-regresión" class="section level3" number="14.1.4">
+<h3><span class="header-section-number">14.1.4</span> Pruebas estadísticas para los parámetros de la regresión</h3>
+<!-- Once we have the parameter estimates and their standard errors, we can compute a *t* statistic to tell us the likelihood of the observed parameter estimates compared to some expected value under the null hypothesis. In this case we will test against the null hypothesis of no effect (i.e. $\beta=0$): -->
+<p>Una vez que obtenemos los parámetros estimados y sus errores estándar, podemos calcular un estadístico <em>t</em> que nos diga la probabilidad (<em>likelihood</em>) del parámetro estimado observado comparado con algún valor esperado bajo la hipótesis nula. En este caso realizaremos la prueba contra la hipótesis nula de que no haya ningún efecto (i.e. <span class="math inline">\(\beta=0\)</span>):</p>
+<p><span class="math display">\[
+\begin{array}{c}
+t_{N - p} = \frac{\hat{\beta} - \beta_{expected}}{SE_{\hat{\beta}}}\\
+t_{N - p} = \frac{\hat{\beta} - 0}{SE_{\hat{\beta}}}\\
+t_{N - p} = \frac{\hat{\beta} }{SE_{\hat{\beta}}}
+\end{array}
+\]</span></p>
+<!-- In general we would use statistical software to compute these rather than computing them by hand. Here are the results from the linear model function in R: -->
+<p>En general usaríamos un software estadístico para calcular estos valores en lugar de calcularlos a mano. Aquí están los resultados de la función del modelo lineal en R:</p>
+<pre><code>## 
+## Call:
+## lm(formula = grade ~ studyTime, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -10.656  -2.719   0.125   4.703   7.469 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    76.16       5.16   14.76  6.1e-06 ***
+## studyTime       4.31       2.14    2.01    0.091 .  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 6.4 on 6 degrees of freedom
+## Multiple R-squared:  0.403,  Adjusted R-squared:  0.304 
+## F-statistic: 4.05 on 1 and 6 DF,  p-value: 0.0907</code></pre>
+<!-- In this case we see that the intercept is significantly different from zero (which is not very interesting) and that the effect of studyTime on grades is marginally significant (p = .09). -->
+<p>En este caso podemos ver que el intercepto es significativamente diferente de cero (lo cual no es muy interesante) y que el efecto de studyTime sobre las calificaciones es marginalmente significativo (p = .09).</p>
+<!-- ### Quantifying goodness of fit of the model -->
+</div>
+<div id="cuantificar-la-bondad-de-adjuste-del-modelo" class="section level3" number="14.1.5">
+<h3><span class="header-section-number">14.1.5</span> Cuantificar la bondad de adjuste del modelo</h3>
+<!-- Sometimes it's useful to quantify how well the model fits the data overall, and one way to do this is to ask how much of the variability in the data is accounted for by the model.  This is quantified using a value called $R^2$ (also known as the *coefficient of determination*).  If there is only one x variable, then this is easy to compute by simply squaring the correlation coefficient: -->
+<p>Algunas veces es útil cuantificar qué tan bien ajusta el modelo a los datos en general, y una manera de hacer esto es preguntar cuánta de la variabilidad en los datos es explicada por el modelo. Esto es cuantificado usando un valor llamado <span class="math inline">\(R^2\)</span> (también conocido como <em>coeficiente de determinación</em>, o <em>coefficiente of determination</em> en inglés). Si sólo hay una variable x, entonces este valor es fácil de calcular al simplemente elevar al cuadrado el coeficiente de correlación:</p>
+<p><span class="math display">\[
+R^2 = r^2
+\]</span>
+<!-- In the case of our study time example, $R^2$ = 0.4, which means that we have accounted for about 40% of the variance in grades. -->
+En el caso de nuestro ejemplo del tiempo de estudio, <span class="math inline">\(R^2\)</span> = 0.4, que significa que hemos explicado cerca del 40% de la varianza en las calificaciones.</p>
+<!-- More generally we can think of $R^2$ as a measure of the fraction of variance in the data that is accounted for by the model, which can be computed by breaking the variance into multiple components: -->
+<p>De manera más general, podemos pensar en <span class="math inline">\(R^2\)</span> como una medida de la fracción de la varianza en nuestros datos que es explicada por el modelo, lo que puede ser calculado fraccionando la varianza en múltiples componentes:</p>
+<p><span class="math display">\[
+SS_{total} = SS_{model} + SS_{error}
+\]</span>
+<!-- where $SS_{total}$ is the variance of the data ($y$) and $SS_{model}$ and $SS_{error}$ are computed as shown earlier in this chapter.  Using this, we can then compute the coefficient of determination as: -->
+donde <span class="math inline">\(SS_{total}\)</span> es la varianza de los datos (<span class="math inline">\(y\)</span>) y <span class="math inline">\(SS_{model}\)</span> y <span class="math inline">\(SS_{error}\)</span> son calculadas como se vio previamente en este capítulo. Usando esto, podemos calcular el coeficiente de determinación como:</p>
+<p><span class="math display">\[
+R^2 = \frac{SS_{model}}{SS_{total}} = 1 - \frac{SS_{error}}{SS_{total}}
+\]</span></p>
+<!-- A small value of $R^2$ tells us that even if the model fit is statistically significant, it may only explain a small amount of information in the data. -->
+<p>Un valor pequeño de <span class="math inline">\(R^2\)</span> nos dice que aún cuando el ajuste del modelo sea estadísticamente significativo, estaría explicando sólo una pequeña cantidad de información en los datos.</p>
+<!-- ## Fitting more complex models -->
+</div>
+</div>
+<div id="ajustar-modelos-más-complejos" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> Ajustar modelos más complejos</h2>
+<!-- Often we would like to understand the effects of multiple variables on some particular outcome, and how they relate to one another.  In the context of our study time example, let's say that we discovered that some of the students had previously taken a course on the topic.  If we plot their grades (see Figure  \@ref(fig:LinearRegressionByPriorClass)), we can see that those who had a prior course perform much better than those who had not, given the same amount of study time. We would like to build a statistical model that takes this into account, which we can do by extending the model that we built above: -->
+<p>Frecuentemente nos gustaría entender los efectos de múltiples variables sobre un resultado en particular, y cómo se relacionan unas con otras. En el contexto de nuestro ejemplo del tiempo de estudio, digamos que descubrimos que algunos de los estudiantes habían tomado un curso previo sobre el tema. Si graficamos sus calificaciones (ve la Figura <a href="el-modelo-lineal-general.html#fig:LinearRegressionByPriorClass">14.3</a>), podemos ver que aquellos que han tomado un curso previo obtuvieron un rendimiento más alto que aquellos que no, dado un mismo tiempo de estudio. Nos gustaría armar un modelo estadístico que tome eso en cuenta, lo cual podemos hacer expandiendo el modelo que construimos arriba:</p>
+<p><span class="math display">\[
+\hat{y} = \hat{\beta_1}*studyTime + \hat{\beta_2}*priorClass + \hat{\beta_0}
+\]</span>
+<!-- To model whether each individual has had a previous class or not, we use what we call *dummy coding* in which we create a new variable that has a value of one to represent having had a class before, and zero otherwise.  This means that for people who have had the class before, we will simply add the value of $\hat{\beta_2}$ to our predicted value for them -- that is, using dummy coding $\hat{\beta_2}$ simply reflects the difference in means between the two groups. Our estimate of $\hat{\beta_1}$ reflects the regression slope over all of the data points --  we are assuming that regression slope is the same regardless of whether someone has had a class before (see Figure  \@ref(fig:LinearRegressionByPriorClass)). -->
+Para modelar si cada persona había tomado un curso previo o no, usamos lo que se conoce como <em>dummy coding</em> (o <em>codificación ficticia</em>) en donde creamos una nueva variable que tiene el valor de uno para representar que se ha tomado una clase previa, y cero si no. Esto significa que para las personas que han tomado una clase previa, simplemente añadiremos el valor <span class="math inline">\(\hat{\beta_2}\)</span> a nuestro valor predicho para ellos – esto es, el usar <em>dummy coding</em> <span class="math inline">\(\hat{\beta_2}\)</span> simplemente refleja la diferencia en medias entre los dos grupos. Nuestra estimación de <span class="math inline">\(\hat{\beta_1}\)</span> refleja la pendiente de regresión a lo largo de todos los datos – estamos asumiendo que la pendiente de regresión es la misma sin importar si las personas han tomado una clase previa o no (ve la Figura <a href="el-modelo-lineal-general.html#fig:LinearRegressionByPriorClass">14.3</a>).</p>
+<pre><code>## 
+## Call:
+## lm(formula = grade ~ studyTime + priorClass, data = df)
+## 
+## Residuals:
+##       1       2       3       4       5       6       7       8 
+##  3.5833  0.7500 -3.5833 -0.0833  0.7500 -6.4167  2.0833  2.9167 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    70.08       3.77   18.60  8.3e-06 ***
+## studyTime       5.00       1.37    3.66    0.015 *  
+## priorClass1     9.17       2.88    3.18    0.024 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4 on 5 degrees of freedom
+## Multiple R-squared:  0.803,  Adjusted R-squared:  0.724 
+## F-statistic: 10.2 on 2 and 5 DF,  p-value: 0.0173</code></pre>
+<div class="figure"><span id="fig:LinearRegressionByPriorClass"></span>
+<img src="StatsThinking21_files/figure-html/LinearRegressionByPriorClass-1.png" alt="The relation between study time and grade including prior experience as an additional component in the model.  The solid line relates study time to grades for students who have not had prior experience, and the dashed line relates grades to study time for students with prior experience. The dotted line corresponds to the difference in means between the two groups." width="576" height="50%" />
+<p class="caption">
+Figura 14.3: The relation between study time and grade including prior experience as an additional component in the model. The solid line relates study time to grades for students who have not had prior experience, and the dashed line relates grades to study time for students with prior experience. The dotted line corresponds to the difference in means between the two groups.
+</p>
+</div>
+<!-- ## Interactions between variables -->
+</div>
+<div id="interacciones-entre-variables" class="section level2" number="14.3">
+<h2><span class="header-section-number">14.3</span> Interacciones entre variables</h2>
+<!-- In the previous model, we assumed that the effect of study time on grade (i.e., the regression slope) was the same for both groups. However, in some cases we might imagine that the effect of one variable might differ depending on the value of another variable, which we refer to as an *interaction* between variables. -->
+<p>En el modelo anterior, asumimos que el efecto del tiempo de estudio sobre las calificaciones (i.e. la pendiente de la regresión) era el mismo para ambos grupos. Sin embargo, en algunos casos podríamos imaginar que el efecto de una variable podría diferir dependiendo del valor de alguna otra variable, a lo que llamamos una <em>interacción</em> (<em>interaction</em>) entre variables.</p>
+<!-- Let's use a new example that asks the question: What is the effect of caffeine on public speaking?  First let's generate some data and plot them. -->
+<p>Usemos un nuevo ejemplo que haga la pregunta: ¿cuál es el efecto de la cafeína sobre el hablar en público? Primero generemos algunos datos y grafiquémoslos.
+<!-- Looking at panel A of Figure \@ref(fig:CaffeineAnxietyInteraction), there doesn't seem to be a relationship, and we can confirm that by performing linear regression on the data: -->
+Observando el panel A de la Figura <a href="el-modelo-lineal-general.html#fig:CaffeineAnxietyInteraction">14.4</a>, no parece haber una relación, y podemos confirmarlo realizando una regresión lineal sobre los datos:</p>
+<pre><code>## 
+## Call:
+## lm(formula = speaking ~ caffeine, data = df)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -33.10 -16.02   5.01  16.45  26.98 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)   -7.413      9.165   -0.81     0.43
+## caffeine       0.168      0.151    1.11     0.28
+## 
+## Residual standard error: 19 on 18 degrees of freedom
+## Multiple R-squared:  0.0642, Adjusted R-squared:  0.0122 
+## F-statistic: 1.23 on 1 and 18 DF,  p-value: 0.281</code></pre>
+<!-- But now let's say that we find research suggesting that anxious and non-anxious people react differently to caffeine.  First let's plot the data separately for anxious and non-anxious people. -->
+<p>Pero digamos que luego encontramos una investigación que sugiere que las personas ansiosas y las no ansiosas reaccionan diferente a la cafeína. Primero grafiquemos los datos separando a las personas ansiosas de las no ansiosas.</p>
+<!-- As we see from panel B in Figure \@ref(fig:CaffeineAnxietyInteraction), it appears that the relationship between speaking and caffeine is different for the two groups, with caffeine improving performance for people without anxiety and degrading performance for those with anxiety.  We'd like to create a statistical model that addresses this question.  First let's see what happens if we just include anxiety in the model. -->
+<p>Como podemos ver en el panel B de la Figura <a href="el-modelo-lineal-general.html#fig:CaffeineAnxietyInteraction">14.4</a>, parece ser que la relación entre el hablar en público y la cafeína es diferente en los dos grupos, donde la cafeína mejora el rendimiento de las personas sin ansiedad y empeora el rendimiento de aquellas que tienen ansiedad. Queremos crear un modelo estadístico que resuelva esta pregunta. Primero veamos qué pasa si incluimos sólo ansiedad en el modelo.</p>
+<pre><code>## 
+## Call:
+## lm(formula = speaking ~ caffeine + anxiety, data = df)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -32.97  -9.74   1.35  10.53  25.36 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)        -12.581      9.197   -1.37     0.19
+## caffeine             0.131      0.145    0.91     0.38
+## anxietynotAnxious   14.233      8.232    1.73     0.10
+## 
+## Residual standard error: 18 on 17 degrees of freedom
+## Multiple R-squared:  0.204,  Adjusted R-squared:  0.11 
+## F-statistic: 2.18 on 2 and 17 DF,  p-value: 0.144</code></pre>
+<!-- Here we see there are no significant effects of either caffeine or anxiety, which might seem a bit confusing.  The problem is that this model is trying to fit the same line relating speaking to caffeine for both groups. If we want to fit them using separate lines, we need to include an *interaction* in the model, which is equivalent to fitting different lines for each of the two groups; this is often denoted by using the $*$ symbol in the model. -->
+<p>Aquí vemos que no hay efectos significativos de la cafeína ni de la ansiedad, lo que podría parecer un poco confuso. El problema es que este modelo está tratando de ajustar la misma línea relacionando el hablar en público con la cafeína para ambos grupos. Si queremos ajustar los datos usando líneas separadas, necesitamos incluir una <em>interacción</em> en el modelo, lo que es equivalente a ajustar diferentes líneas para cada uno de los dos grupos; esto es frecuentemente denotado usando el símbolo <span class="math inline">\(*\)</span> en el modelo.</p>
+<pre><code>## 
+## Call:
+## lm(formula = speaking ~ caffeine + anxiety + caffeine * anxiety, 
+##     data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -11.385  -7.103  -0.444   6.171  13.458 
+## 
+## Coefficients:
+##                            Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)                 17.4308     5.4301    3.21  0.00546 ** 
+## caffeine                    -0.4742     0.0966   -4.91  0.00016 ***
+## anxietynotAnxious          -43.4487     7.7914   -5.58  4.2e-05 ***
+## caffeine:anxietynotAnxious   1.0839     0.1293    8.38  3.0e-07 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 8.1 on 16 degrees of freedom
+## Multiple R-squared:  0.852,  Adjusted R-squared:  0.825 
+## F-statistic: 30.8 on 3 and 16 DF,  p-value: 7.01e-07</code></pre>
+<!-- From these results we see that there are significant effects of both caffeine and anxiety (which we call *main effects*) and an interaction between caffeine and anxiety. Panel C in Figure \@ref(fig:CaffeineAnxietyInteraction) shows the separate regression lines for each group. -->
+<p>De estos resultados podemos ver que hay efectos significativos tanto de la cafeína como de la ansiedad (lo que llamamos <em>efectos principales</em>, o <em>main effects</em>) y también una interacción entre cafeína y ansiedad. El Panel C de la Figura <a href="el-modelo-lineal-general.html#fig:CaffeineAnxietyInteraction">14.4</a> muestra las líneas de regresión separadas para cada grupo.</p>
+<div class="figure"><span id="fig:CaffeineAnxietyInteraction"></span>
+<img src="StatsThinking21_files/figure-html/CaffeineAnxietyInteraction-1.png" alt="A: The relationship between caffeine and public speaking. B: The relationship between caffeine and public speaking, with anxiety represented by the shape of the data points. C: The relationship between public speaking and caffeine, including an interaction with anxiety.  This results in two lines that separately model the slope for each group (dashed for anxious, dotted for non-anxious)." width="80%" />
+<p class="caption">
+Figura 14.4: A: The relationship between caffeine and public speaking. B: The relationship between caffeine and public speaking, with anxiety represented by the shape of the data points. C: The relationship between public speaking and caffeine, including an interaction with anxiety. This results in two lines that separately model the slope for each group (dashed for anxious, dotted for non-anxious).
+</p>
+</div>
+<!-- Sometimes we want to compare the relative fit of two different models, in order to determine which is a better model; we refer to this as *model comparison*.  For the models above, we can compare the goodness of fit of the model with and without the interaction, using what is called an *analysis of variance*: -->
+<p>Algunas veces queremos comparar el ajuste relativo de dos modelos diferentes, para poder determinar cuál modelo es mejor; llamamos a esto <em>comparación de modelos</em> (o <em>model comparison</em>). Para los modelos anteriores, podemos comparar la bondad de ajuste (<em>goodness of fit</em>) del modelo sin y con interacción, usando lo que se conoce como <em>análisis de varianza</em> (<em>analysis of variance</em>):</p>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: speaking ~ caffeine + anxiety
+## Model 2: speaking ~ caffeine + anxiety + caffeine * anxiety
+##   Res.Df  RSS Df Sum of Sq    F Pr(&gt;F)    
+## 1     17 5639                             
+## 2     16 1046  1      4593 70.3  3e-07 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<!-- This tells us that there is good evidence to prefer the model with the interaction over the one without an interaction.  Model comparison is relatively simple in this case because the two models are *nested* -- one of the models is a simplified version of the other model.  Model comparison with non-nested models can get much more complicated. -->
+<p>Esto nos indica que hay buena evidencia para preferir el modelo que incluye la interacción sobre el modelo que no la incluye. La comparación de modelos es relativamente simple en este caso porque los dos modelos están <em>anidados</em> (del inglés: <em>nested</em>) – uno de los modelos es una versión simplificada del otro modelo. La comparación de modelos no-anidados puede volver mucho más complicada.</p>
+<!-- ## Beyond linear predictors and outcomes -->
+</div>
+<div id="más-allá-de-predictores-y-resultados-lineales" class="section level2" number="14.4">
+<h2><span class="header-section-number">14.4</span> Más allá de predictores y resultados lineales</h2>
+<!-- It is important to note that despite the fact that it is called the general *linear* model, we can actually use the same machinery to model effects that don't follow a straight line (such as curves).  The "linear" in the general linear model doesn't refer to the shape of the response, but instead refers to the fact that model is linear in its parameters --- that is, the predictors in the model only get multiplied the parameters, rather than a nonlinear relationship like being raised to a power of the parameter.  It's also common to analyze data where the outcomes are binary rather than continuous, as we saw in the chapter on categorical outcomes. There are ways to adapt the general linear model (known as *generalized linear models*) that allow this kind of analysis. We will explore these models later in the book. -->
+<p>Es importante hacer notar que a pesar del hecho de que se llame modelo <em>lineal</em> general, realmente podemos usar la misma maquinaria para modelar efectos que no siguen una línea recta (como las curvas). La palabra “lineal” en el modelo lineal general no se refiere a la forma de la respuesta, sino al hecho de que el modelo es lineal en sus parámetros – esto es, que los predictores en el modelo sólo pueden ser multiplicados por los parámetros, contrario a relaciones no lineales como el que fueran elevados a la potencia del parámetro. También es común analizar datos donde los resultados son binarios en lugar de continuos, como vimos en el capítulo sobre resultados categóricos. Existen formas de adaptar el modelo lineal general (conocidos como <em>modelos lineales generalizados</em>) que permiten este tipo de análisis. Exploraremos estos modelos después en este libro.</p>
+<!-- ## Criticizing our model and checking assumptions {#model-criticism} -->
+</div>
+<div id="model-criticism" class="section level2" number="14.5">
+<h2><span class="header-section-number">14.5</span> Criticar nuestro modelo y revisar suposiciones</h2>
+<!-- The saying "garbage in, garbage out" is as true of statistics as anywhere else.  In the case of statistical models, we have to make sure that our model is properly specified and that our data are appropriate for the model. -->
+<p>El dicho “si metes basura, sacas basura” (“garbage in, garbage out”) es cierto para la estadística como en cualquier lugar. En el caso de modelos estadísticos, debemos asegurarnos de que nuestro modelo está especificado apropiadamente y que nuestros datos son apropiados para el modelo.</p>
+<!-- When we say that the model is "properly specified", we mean that we have included the appropriate set of independent variables in the model.  We have already seen examples of misspecified models, in Figure \@ref(fig:childHeightLine).  Remember that we saw several cases where the model failed to properly account for the data, such as failing to include an intercept. When building a model, we need to ensure that it includes all of the appropriate variables. -->
+<p>Cuando decimos que el modelo está “especificado apropiadamente”, queremos decir que hemos incluido el conjunto apropiado de variables independientes en el modelo. Ya hemos visto ejemplos de modelos mal especificados, en la Figura <a href="fitting-models.html#fig:childHeightLine">5.3</a>. Recuerda que vimos varios casos donde el modelo falló en explicar apropiadamente los datos, como cuando no se incluyó el intercepto. Cuando construimos un modelo, debemos asegurarnos que incluye todas las variables apropiadas.</p>
+<!-- We also need to worry about whether our model satisfies the assumptions of our statistical methods.  One of the most important assumptions that we make when using the general linear model is that the residuals (that is, the difference between the model's predictions and the actual data) are normally distributed. This can fail for many reasons, either because the model was not properly specified or because the data that we are modeling are inappropriate.  -->
+<p>También debemos preocuparnos si nuestro modelo satisface las suposiciones de nuestros métodos estadísticos. Una de las suposiciones más importantes que hacemos cuando usamos el modelo lineal general es que los residuales (esto es, la diferencia entre las predicciones de nuestro modelo y los datos verdaderos) están normalmente distribuidas. Esto puede fallar en cumplirse por varias razones, puede ser porque el modelo no estaba apropiadamente especificado, o porque los datos que estamos modelando son inapropiados.</p>
+<!-- We can use something called a *Q-Q* (quantile-quantile) plot to see whether our residuals are normally distributed.  You have already encountered *quantiles* --- they are the value that cuts off a particular proportion of a cumulative distribution. The Q-Q plot presents the quantiles of two distributions against one another; in this case, we will present the quantiles of the actual data against the quantiles of a normal distribution fit to the same data. Figure \@ref(fig:qqplots) shows examples of two such Q-Q plots.  The left panel shows a Q-Q plot for data from a normal distribution, while the right panel shows a Q-Q plot from non-normal data.  The data points in the right panel diverge substantially from the line, reflecting the fact that they are not normally distributed. -->
+<p>Podemos usar algo conocido como una gráfica <em>Q-Q</em> (quantile-quantile, Q-Q plot) para ver si nuestros residuales están normalmente distribuidos. Ya te has encontrado con los <em>cuantiles</em> (<em>quantiles</em>) — son los valores que establecen un punto de corte para una proporción particular de una distribución acumulada. La gráfica Q-Q presenta los cuantiles de dos distribuciones una contra la otra; en este caso, presentaremos los cuantiles de los datos reales contra los cuantiles de una distribución normal ajustada a los mismos datos. La Figura <a href="el-modelo-lineal-general.html#fig:qqplots">14.5</a> muestra ejemplos de dos gráficas Q-Q. El panel izquierdo muestra una gráfica Q-Q para datos de una distribución normal, mientras que el panel derecho muestra una gráfica Q-Q de una distribución no normal. Los datos en el panel derecho se desvían sustancialmente de la línea diagonal, reflejando el hecho de que no están normalmente distribuidos.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="el-modelo-lineal-general.html#cb24-1" aria-hidden="true" tabindex="-1"></a>qq_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">norm=</span><span class="fu">rnorm</span>(<span class="dv">100</span>),</span>
+<span id="cb24-2"><a href="el-modelo-lineal-general.html#cb24-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">unif=</span><span class="fu">runif</span>(<span class="dv">100</span>))</span>
+<span id="cb24-3"><a href="el-modelo-lineal-general.html#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="el-modelo-lineal-general.html#cb24-4" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(qq_df,<span class="fu">aes</span>(<span class="at">sample=</span>norm)) <span class="sc">+</span> </span>
+<span id="cb24-5"><a href="el-modelo-lineal-general.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span> </span>
+<span id="cb24-6"><a href="el-modelo-lineal-general.html#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>() <span class="sc">+</span> </span>
+<span id="cb24-7"><a href="el-modelo-lineal-general.html#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Normal data&#39;</span>)</span>
+<span id="cb24-8"><a href="el-modelo-lineal-general.html#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="el-modelo-lineal-general.html#cb24-9" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(qq_df,<span class="fu">aes</span>(<span class="at">sample=</span>unif)) <span class="sc">+</span> </span>
+<span id="cb24-10"><a href="el-modelo-lineal-general.html#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span> </span>
+<span id="cb24-11"><a href="el-modelo-lineal-general.html#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()<span class="sc">+</span> </span>
+<span id="cb24-12"><a href="el-modelo-lineal-general.html#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Non-normal data&#39;</span>)</span>
+<span id="cb24-13"><a href="el-modelo-lineal-general.html#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="el-modelo-lineal-general.html#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(p1,p2)</span></code></pre></div>
+<div class="figure"><span id="fig:qqplots"></span>
+<img src="StatsThinking21_files/figure-html/qqplots-1.png" alt="Q-Q plotsof normal (left) and non-normal (right) data.  The line shows the point at which the x and y axes are equal." width="80%" />
+<p class="caption">
+Figura 14.5: Q-Q plotsof normal (left) and non-normal (right) data. The line shows the point at which the x and y axes are equal.
+</p>
+</div>
+<!-- Model diagnostics will be explored in more detail in a later chapter. -->
+<p>Herramientas para el diagnóstico de modelos serán exploradas en mayor detalle en el capítulo siguiente.</p>
+<!-- ## What does "predict" really mean? -->
+</div>
+<div id="qué-significa-realmente-predecir" class="section level2" number="14.6">
+<h2><span class="header-section-number">14.6</span> ¿Qué significa realmente “predecir”?</h2>
+<!-- When we talk about "prediction" in daily life, we are generally referring to the ability to estimate the value of some variable in advance of seeing the data.  However, the term is often used in the context of linear regression to refer to the fitting of a model to the data; the estimated values ($\hat{y}$) are sometimes referred to as "predictions" and the independent variables are referred to as "predictors".  This has an unfortunate connotation, as it implies that our model should also be able to predict the values of new data points in the future. In reality, the fit of a model to the dataset used to obtain the parameters will nearly always be better than the fit of the model to a new dataset [@copa:1983]. -->
+<p>Cuando hablamos de “predicción” en la vida diaria, generalmente nos referimos a la habilidad para estimar el valor de alguna variable antes de ver los datos. Sin embargo, el término frecuentemente es usado en el contexto de regresión lineal para referirse al ajuste de un modelo a los datos; los valores estimados (<span class="math inline">\(\hat{y}\)</span>) en ocasiones son conocidos como “predicciones” y las variables independientes son conocidas como “preditores”. Esto tiene una connotación desafortunada, porque parece implicar que nuestro modelo debería ser capaz de predecir los valores de nuevos datos en el futuro. En realidad, el ajuste de un modelo al conjunto de datos usado para obtener sus parámetros casi siempre será mejor que el ajuste del mismo modelo a un nuevo conjunto de datos <span class="citation">(<a href="references.html#ref-copa:1983" role="doc-biblioref">Copas 1983</a>)</span>.</p>
+<!-- As an example, let's take a sample of 48 children from NHANES and fit a regression model for weight that includes several regressors (age, height, hours spent watching TV and using the computer, and household income) along with their interactions.   -->
+<p>Como ejemplo, tomemos una muestra de 48 niñxs de la base de datos NHANES y ajustemos un modelo de regresión para los datos de peso que incluya varios regresores (edad, altura, horas que pasan viendo TV y usando la computadora, e ingreso económico del hogar) junto con sus interacciones.</p>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-105">Tabla 14.2: </span>Root mean squared error for model applied to original data and new data, and after shuffling the order of the y variable (in essence making the null hypothesis true)
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Data type
+</th>
+<th style="text-align:right;">
+RMSE (original data)
+</th>
+<th style="text-align:right;">
+RMSE (new data)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+True data
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Shuffled data
+</td>
+<td style="text-align:right;">
+7.8
+</td>
+<td style="text-align:right;">
+59
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Here we see that whereas the model fit on the original data showed a very good fit (only off by a few kg per individual), the same model does a much worse job of predicting the weight values for new children sampled from the same population (off by more than 25 kg per individual).  This happens because the model that we specified is quite complex, since it includes not just each of the individual variables, but also all possible combinations of them (i.e. their *interactions*), resulting in a model with 32 parameters.  Since this is almost as many coefficients as there are data points (i.e., the heights of 48 children), the model *overfits* the data, just like the complex polynomial curve in our initial example of overfitting in Section \@ref(overfitting). -->
+<p>Aquí podemos ver que mientras que el modelo mostró un ajuste muy bueno en los datos originales (sólo con error de algunos kg por persona), el mismo modelo hace un peor trabajo prediciendo los datos del peso de nuevos niñxs muestreados de la misma población (con error de más de 25 kg por persona). Esto sucede porque nuestro modelo especificado es bastante complejo, ya que incluye no sólo las variables individuales, sino también todas las posibles combinaciones entre ellas (i.e. sus <em>interacciones</em>), resultando en un modelo con 32 parámetros. Como esto significa tener casi tantos coeficientes como datos en la muestra (i.e., las alturas de 48 niñxs), el modelo se <em>sobreajusta</em> (<em>overfits</em>) a los datos, justo como sucedió con nuestra curva polinomial compleja en nuestro ejemplo inicial sobre el sobreajuste en la Sección <a href="fitting-models.html#overfitting">5.4</a>.</p>
+<!-- Another way to see the effects of overfitting is to look at what happens if we randomly shuffle the values of the weight variable (shown in the second row of the table). Randomly shuffling the value should make it impossible to predict weight from the other variables, because they should have no systematic relationship.  The results in the table show that even when there is no true relationship to be modeled (because shuffling should have obliterated the relationship), the complex model still shows a very low error in its predictions on the fitted data, because it fits the noise in the specific dataset.  However, when that model is applied to a new dataset, we see that the error is much larger, as it should be. -->
+<p>Otra manera de ver los efectos del sobreajuste es el observar qué sucede si reordenamos aleatoriamente los valores de nuestra variable de peso (mostrada en la segunda fila de la tabla). El reordenar aleatoriamente los valores debería hacer imposible el predecir el peso a partir de otras variables, porque no tendrían ningún relación sistemática. Los resultados en la tabla muestran que incluso cuando no hay una verdadera relación a ser modelada (porque el reordenar aleatoriamente debería haber destruido cualquier relación), el modelo complejo aún muestra un error muy bajo en sus predicciones de los datos ajustados, porque termina ajustándose al error en nuestros datos específicos. Sin embargo, cuando el modelo es aplicado a nuevos datos, vemos que el error es mucho mayor, como debería suceder.</p>
+<!-- ### Cross-validation {#cross-validation} -->
+<div id="cross-validation" class="section level3" number="14.6.1">
+<h3><span class="header-section-number">14.6.1</span> Validación cruzada (Cross-validation)</h3>
+<!-- One method that has been developed to help address the problem of overfitting is known as *cross-validation*.  This technique is commonly used within the field of machine learning, which is focused on building models that will generalize well to new data, even when we don't have a new dataset to test the model. The idea behind cross-validation is that we fit our model repeatedly, each time leaving out a subset of the data, and then test the ability of the model to predict the values in each held-out subset. -->
+<p>Un método que ha sido desarrollado para ayudar a resolver el problema del sobreajuste es conocido como <em>validación cruzada</em> (<em>cross-validation</em>). Esta técnica es comúnmente usada en el campo del aprendizaje máquina (<em>machine learning</em>), que está enfocado en construir modelos que puedan generalizarse bien a nuevos datos, incluso cuando no tenemos un nuevo conjunto de datos con el cual probar el modelo. La idea detrás de la validación cruzada es que ajustemos nuestro modelo repetidamente, cada vez dejando fuera un subconjunto de los datos, y luego probar la habilidad de nuestro modelo de predecir los valores en cada subconjunto de datos que se dejó fuera.</p>
+<div class="figure"><span id="fig:crossvalidation"></span>
+<img src="images/crossvalidation.png" alt="A schematic of the  cross-validation procedure." height="30%" />
+<p class="caption">
+Figura 14.6: A schematic of the cross-validation procedure.
+</p>
+</div>
+<!-- Let's see how that would work for our weight prediction example.  In this case we will perform 12-fold cross-validation, which means that we will break the data into 12 subsets, and then fit the model 12 times, in each case leaving out one of the subsets and then testing the model's ability to accurately predict the value of the dependent variable for those held-out data points.  Most statistical software provides tools to apply cross-validation to one's data. Using this function we can run cross-validation on 100 samples from the NHANES dataset, and compute the RMSE for cross-validation, along with the RMSE for the original data and a new dataset, as we computed above. -->
+<p>Veamos cómo funcionaría en nuestro ejemplo de predicción de pesos. En este caso realizaremos una validación cruzada con 12 subconjuntos (en inglés: <em>12-fold cross-validation</em>), lo que significa que dividiremos nuestros datos en 12 subconjuntos, y luego ajustaremos el modelo 12 veces, en cada caso dejando fuera uno de los subconjuntos y luego probando la habilidad del modelo de poder predecir el valor de la variable dependiente para cada uno de los datos que se dejaron fuera. La mayoría de los softwares estadísticos provee herramientas para aplicar validación cruzada. Usando esta función podemos realizar una validación cruzada en 100 muestras de nuestros datos de NHANES, y calcular el RMSE para la validación cruzada, junto con el RMSE para los datos originales y para un nuevo conjunto de datos, como lo hicimos arriba.</p>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-106">Tabla 14.3: </span>R-squared from cross-validation and new data, showing that cross-validation provides a reasonable estimate of the model’s performance on new data.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+R-squared
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Original data
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+New data
+</td>
+<td style="text-align:right;">
+0.34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cross-validation
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Here we see that cross-validation gives us an estimate of predictive accuracy that is much closer to what we see with a completely new dataset than it is to the inflated accuracy that we see with the original dataset -- in fact, it's even slightly more pessimistic than the average for a new dataset, probably because only part of the data are being used to train each of the models.   -->
+<p>Aquí vemos que la validación cruzada nos da una estimación de la precisión predictiva que está mucho más cercana a lo que vemos con un conjunto de datos completamente nuevo, en lugar de la precisión inflada que vemos con los datos originales – de hecho, incluso es un poco más pesimista que el promedio para un nuevo conjunto de datos, probablemente porque sólo parte de los datos están siendo usados para entrenar cada uno de los modelos.</p>
+<!-- Note that using cross-validation properly is tricky, and it is recommended that you consult with an expert before using it in practice.  However, this section has hopefully shown you three things: -->
+<p>Nota que el usar la validación cruzada apropiadamente es complicado, y es recomendable que consultes con un experto antes de usarlo en la práctica. Sin embargo, esperemos que esta sección te haya mostrado tres cosas:</p>
+<!-- - "Prediction" doesn't always mean what you think it means -->
+<!-- - Complex models can overfit data very badly, such that one can observe seemingly good prediction even when there is no true signal to predict -->
+<!-- - You should view claims about prediction accuracy very skeptically unless they have been done using the appropriate methods. -->
+<ul>
+<li>“Predicción” no siempre significa lo que crees que significa.</li>
+<li>Modelos complejos pueden sobreajustarse a los datos pésimamente, a tal grado que unx podría aparentemente observar una buena predicción incluso cuando no hay una verdadera señal que predecir.</li>
+<li>Deberías de ver de manera muy escéptica afirmaciones acerca de la precisión de predicciones, a menos que hayan sido realizadas usando los métodos apropiados.</li>
+</ul>
+<!-- ## Learning objectives -->
+</div>
+</div>
+<div id="objetivos-de-aprendizaje-13" class="section level2" number="14.7">
+<h2><span class="header-section-number">14.7</span> Objetivos de aprendizaje</h2>
+<!-- Having read this chapter, you should be able to: -->
+<p>Habiendo leído este capítulo, deberías ser capaz de:</p>
+<!-- * Describe the concept of linear regression and apply it to a dataset -->
+<!-- * Describe the concept of the general linear model and provide examples of its application -->
+<!-- * Describe how cross-validation can allow us to estimate the predictive performance of a model on new data -->
+<ul>
+<li>Describir el concepto de regresión lineal y aplicarlo a un conjunto de datos.</li>
+<li>Describir el concepto del modelo lineal general y proveer ejemplos de su aplicación.</li>
+<li>Describir cómo se utiliza la validación cruzada (<em>cross-validation</em>) para estimar el rendimiento predictivo de un modelo sobre nuevos datos.</li>
+</ul>
+<!-- ## Suggested readings -->
+</div>
+<div id="lecturas-sugeridas-9" class="section level2" number="14.8">
+<h2><span class="header-section-number">14.8</span> Lecturas sugeridas</h2>
+<ul>
+<li><a href="https://web.stanford.edu/~hastie/Papers/ESLII.pdf">The Elements of Statistical Learning: Data Mining, Inference, and Prediction (2nd Edition)</a> - The “bible” of machine learning methods, available freely online.</li>
+</ul>
+<!-- ## Appendix -->
+</div>
+<div id="apéndice-5" class="section level2" number="14.9">
+<h2><span class="header-section-number">14.9</span> Apéndice</h2>
+<!-- ### Estimating linear regression parameters -->
+<div id="estimar-parámetros-de-una-regresión-lineal" class="section level3" number="14.9.1">
+<h3><span class="header-section-number">14.9.1</span> Estimar parámetros de una regresión lineal</h3>
+<!-- We generally estimate the parameters of a linear model from data using *linear algebra*, which is the form of algebra that is applied to vectors and matrices.  If you aren't familiar with linear algebra, don't worry -- you won't actually need to use it here, as R will do all the work for us.  However, a brief excursion in linear algebra can provide some insight into how the model parameters are estimated in practice. -->
+<p>Generalmente estimamos los parámetros de un modelo lineal a partir de los datos usando <em>álgebra lineal</em>, que es el tipo de álgebra que se aplica a vectores y matrices. Si no estás familiarizadx con el álgebra lineal, no te preocupes – pues realmente no la necesitaremos usar aquí, porque R (o el programa estadístico que uses) hará el trabajo por nosotrxs. Sin embargo, una breve excursión dentro del álgebra lineal nos puede proveer algún insight a cómo son estimados los parámetros de los modelos en la práctica.</p>
+<!-- First, let's introduce the idea of vectors and matrices; you've already encountered them in the context of R, but we will review them here.  A matrix is a set of numbers that are arranged in a square or rectangle, such that there are one or more *dimensions* across which the matrix varies.  It is customary to place different observation units (such as people) in the rows, and different variables in the columns. Let's take our study time data from above. We could arrange these numbers in a matrix, which would have eight rows (one for each student) and two columns (one for study time, and one for grade).  If you are thinking "that sounds like a data frame in R" you are exactly right!  In fact, a data frame is a specialized version of a matrix, and we can convert a data frame to a matrix using the `as.matrix()` function. -->
+<p>Primero, presentemos la idea de vectores y matrices; ya los has encontrando en el contexto de R, pero los revisaremos aquí. Una matriz es un conjunto de números que están organizados en un cuadro o rectángulo, de manera que haya una o más <em>dimensiones</em> a lo largo de las cuales la matriz varía. La costumbre es colocar las diferentes unidades de observación (como las personas que observamos) en las filas, y diferentes variables en las columnas. Tomemos nuestro ejemplo de tiempo de estudio anterior. Podríamos organizar nuestros números en una matriz, que tendría ocho renglones o filas (una por cada estudiante) y dos columnas (una para tiempo de estudio, y otra para calificación). Si estás pensando “eso suena como un <em>dataframe</em> de R” (o de JASP) ¡estás totalmente en lo correcto! De hecho, un <em>dataframe</em> es una versión especializada de una matriz, y podemos convertir un dataframe a una matriz usando la función <code>as.matrix()</code>.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="el-modelo-lineal-general.html#cb25-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span></span>
+<span id="cb25-2"><a href="el-modelo-lineal-general.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb25-3"><a href="el-modelo-lineal-general.html#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">studyTime =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">12</span>) <span class="sc">/</span> <span class="dv">3</span>,</span>
+<span id="cb25-4"><a href="el-modelo-lineal-general.html#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">priorClass =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb25-5"><a href="el-modelo-lineal-general.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="el-modelo-lineal-general.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb25-7"><a href="el-modelo-lineal-general.html#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">grade =</span> </span>
+<span id="cb25-8"><a href="el-modelo-lineal-general.html#cb25-8" aria-hidden="true" tabindex="-1"></a>      studyTime <span class="sc">*</span> betas[<span class="dv">1</span>] <span class="sc">+</span> </span>
+<span id="cb25-9"><a href="el-modelo-lineal-general.html#cb25-9" aria-hidden="true" tabindex="-1"></a>      priorClass <span class="sc">*</span> betas[<span class="dv">2</span>] <span class="sc">+</span> </span>
+<span id="cb25-10"><a href="el-modelo-lineal-general.html#cb25-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">8</span>, <span class="at">mean =</span> <span class="dv">70</span>, <span class="at">sd =</span> <span class="dv">5</span>))</span>
+<span id="cb25-11"><a href="el-modelo-lineal-general.html#cb25-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb25-12"><a href="el-modelo-lineal-general.html#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="el-modelo-lineal-general.html#cb25-13" aria-hidden="true" tabindex="-1"></a>df_matrix <span class="ot">&lt;-</span> </span>
+<span id="cb25-14"><a href="el-modelo-lineal-general.html#cb25-14" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span></span>
+<span id="cb25-15"><a href="el-modelo-lineal-general.html#cb25-15" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(studyTime, grade) <span class="sc">%&gt;%</span></span>
+<span id="cb25-16"><a href="el-modelo-lineal-general.html#cb25-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span></code></pre></div>
+<!-- We can write the general linear model in linear algebra as follows: -->
+<p>Podemos escribir el modelo lineal general en álgebra lineal de la siguiente manera:</p>
+<p><span class="math display">\[
+Y = X*\beta + E
+\]</span>
+<!-- This looks very much like the earlier equation that we used, except that the letters are all capitalized, which is meant to express the fact that they are vectors.   -->
+Esto se parece mucho a la ecuación que usamos anteriormente, a excepción de que las letras están todas en mayúsculas, lo que quiere expresar el hecho de que son vectores.</p>
+<!-- We know that the grade data go into the Y matrix, but what goes into the $X$ matrix?  Remember from our initial discussion of linear regression that we need to add a constant in addition to our independent variable of interest, so our $X$ matrix (which we call the *design matrix*) needs to include two columns:  one representing the study time variable, and one column with the same value for each individual (which we generally fill with all ones). We can view the resulting design matrix graphically (see Figure \@ref(fig:GLMmatrix)). -->
+<p>Sabemos que los datos de las calificaciones van en la matriz <span class="math inline">\(Y\)</span>, pero ¿qué va en la matriz <span class="math inline">\(X\)</span>? Recuerda de nuestra discusión inicial sobre la regresión lineal que necesitamos añadir una constante además de nuestra variable independiente de interés, por lo que nuestra matriz <span class="math inline">\(X\)</span> (que llamamos <em>matriz de diseño</em>, o <em>design matrix</em>) necesita incluir dos columnas: una representando la variable tiempo de estudio, y una columna con el mismo valor para cada persona (que generalmente llenamos con números uno). Podemos ver la matriz de diseño resultante de manera gráfica (ve la Figura <a href="el-modelo-lineal-general.html#fig:GLMmatrix">14.7</a>).</p>
+<div class="figure"><span id="fig:GLMmatrix"></span>
+<img src="images/glm_matrix.png" alt="A depiction of the linear model for the study time data in terms of matrix algebra."  />
+<p class="caption">
+Figura 14.7: A depiction of the linear model for the study time data in terms of matrix algebra.
+</p>
+</div>
+<!-- The rules of matrix multiplication tell us that the dimensions of the matrices have to match with one another; in this case, the design matrix has dimensions of 8 (rows) X 2 (columns) and the Y variable has dimensions of 8 X 1. Therefore, the $\beta$ matrix needs to have dimensions 2 X 1, since an 8 X 2 matrix multiplied by a 2 X 1 matrix results in an 8 X 1 matrix (as the matching middle dimensions drop out).  The interpretation of the two values in the $\beta$ matrix is that they are the values to be multipled by study time and 1 respectively to obtain the estimated grade for each individual. We can also view the linear model as a set of individual equations for each individual: -->
+<p>Las reglas de multiplicación de matrices nos dicen que las dimensiones de las matrices deben coincidir unas con otras; en este caso, la matriz de diseño tiene dimensiones de 8 (filas) X 2 (columnas) y la variable <span class="math inline">\(Y\)</span> tiene dimensiones de 8 X 1. Entonces, la matriz <span class="math inline">\(\beta\)</span> necesita tener dimensiones 2 X 1, porque una matriz 8 X 2 multiplicada por una matriz 2 X 1 resulta en una matriz 8 X 1 (pues las dimensiones de en medio que coinciden terminan desapareciendo). La interpretación de los dos valores en la matriz <span class="math inline">\(\beta\)</span> es que son los valores por los cuales multiplicar el tiempo de estudio y el valor de 1 respectivamente para obtener la estimación de calificación para cada persona en la muestra. También podemos ver el modelo lineal como un conjunto de ecuaciones individuales para cada persona:</p>
+<p><span class="math inline">\(\hat{y}_1 = studyTime_1*\beta_1 + 1*\beta_2\)</span></p>
+<p><span class="math inline">\(\hat{y}_2 = studyTime_2*\beta_1 + 1*\beta_2\)</span></p>
+<p>…</p>
+<p><span class="math inline">\(\hat{y}_8 = studyTime_8*\beta_1 + 1*\beta_2\)</span></p>
+<!-- Remember that our goal is to determine the best fitting values of $\beta$ given the known values of $X$ and $Y$.  A naive way to do this would be to solve for $\beta$ using simple algebra -- here we drop the error term $E$ because it's out of our control: -->
+<p>Recuerda que nuestra meta es el determinar los valores <span class="math inline">\(\beta\)</span> con mejor ajuste dado que conocemos los valores <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>. Una manera ingenua de hacer esto sería el resolver para <span class="math inline">\(\beta\)</span> usando álgebra simple – aquí quitamos el término para el error <span class="math inline">\(E\)</span> porque está fuera de nuestro control:</p>
+<p><span class="math display">\[
+\hat{\beta} = \frac{Y}{X}
+\]</span></p>
+<!-- The challenge here is that $X$ and $\beta$ are now matrices, not single numbers -- but the rules of linear algebra tell us how to divide by a matrix, which is the same as multiplying by the *inverse* of the matrix (referred to as $X^{-1}$).  We can do this in R: -->
+<p>El reto aquí está en que <span class="math inline">\(X\)</span> y <span class="math inline">\(\beta\)</span> son ahora matrices, no números sencillos – pero las reglas del álgebra lineal nos dicen cómo dividir entre una matriz, que es lo mismo que multiplicarla por el <em>inverso</em> de la matriz (referida como <span class="math inline">\(X^{-1}\)</span>). Podemos hacer esto en R:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="el-modelo-lineal-general.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute beta estimates using linear algebra</span></span>
+<span id="cb26-2"><a href="el-modelo-lineal-general.html#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="el-modelo-lineal-general.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#create Y variable 8 x 1 matrix</span></span>
+<span id="cb26-4"><a href="el-modelo-lineal-general.html#cb26-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(df<span class="sc">$</span>grade) </span>
+<span id="cb26-5"><a href="el-modelo-lineal-general.html#cb26-5" aria-hidden="true" tabindex="-1"></a> <span class="co">#create X variable 8 x 2 matrix</span></span>
+<span id="cb26-6"><a href="el-modelo-lineal-general.html#cb26-6" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">8</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb26-7"><a href="el-modelo-lineal-general.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#assign studyTime values to first column in X matrix</span></span>
+<span id="cb26-8"><a href="el-modelo-lineal-general.html#cb26-8" aria-hidden="true" tabindex="-1"></a>X[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(df<span class="sc">$</span>studyTime) </span>
+<span id="cb26-9"><a href="el-modelo-lineal-general.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#assign constant of 1 to second column in X matrix</span></span>
+<span id="cb26-10"><a href="el-modelo-lineal-general.html#cb26-10" aria-hidden="true" tabindex="-1"></a>X[, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
+<span id="cb26-11"><a href="el-modelo-lineal-general.html#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="el-modelo-lineal-general.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co"># compute inverse of X using ginv()</span></span>
+<span id="cb26-13"><a href="el-modelo-lineal-general.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co"># %*% is the R matrix multiplication operator</span></span>
+<span id="cb26-14"><a href="el-modelo-lineal-general.html#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-15"><a href="el-modelo-lineal-general.html#cb26-15" aria-hidden="true" tabindex="-1"></a>beta_hat <span class="ot">&lt;-</span> <span class="fu">ginv</span>(X) <span class="sc">%*%</span> Y <span class="co">#multiple the inverse of X by Y</span></span>
+<span id="cb26-16"><a href="el-modelo-lineal-general.html#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(beta_hat)</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]  8.2
+## [2,] 68.0</code></pre>
+<!-- Anyone who is interested in serious use of statistical methods is highly encouraged to invest some time in learning linear algebra, as it provides the basis for nearly all of the tools that are used in standard statistics. -->
+<p>Cualquier persona que esté interesada en un uso serio de métodos estadísticos se le recomienda fuertemente que invierta algún tiempo en aprender álgebra lineal, puesto que provee las bases para casi todas las herramientas que son usadas en estadística estándar.</p>
+
+<!-- # Comparing means -->
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="modeling-continuous-relationships.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="comparar-medias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/statsthinking21/statsthinking21-core/edit/master/14-GeneralLinearModel.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["StatsThinking21.pdf", "StatsThinking21.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 13 Modelar relaciones continuas | Statistical Thinking for the 21st Century</title>
+  <meta name="description" content="A book about statistics." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 13 Modelar relaciones continuas | Statistical Thinking for the 21st Century" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A book about statistics." />
+  <meta name="github-repo" content="poldrack/psych10-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 13 Modelar relaciones continuas | Statistical Thinking for the 21st Century" />
+  
+  <meta name="twitter:description" content="A book about statistics." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="modelar-relaciones-categóricas.html"/>
+<link rel="next" href="el-modelo-lineal-general.html"/>
+<script src="book_assets/header-attrs-2.7/header-attrs.js"></script>
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129414074-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129414074-1');
+</script>
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#por-qué-existe-este-libro"><i class="fa fa-check"></i><b>0.1</b> ¿Por qué existe este libro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#la-era-dorada-de-la-información"><i class="fa fa-check"></i><b>0.2</b> La era dorada de la información</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#la-importancia-de-hacer-estadísticas"><i class="fa fa-check"></i><b>0.3</b> La importancia de hacer estadísticas</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#un-libro-de-código-abierto-open-source"><i class="fa fa-check"></i><b>0.4</b> Un libro de código abierto (open source)</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>0.5</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducción.html"><a href="introducción.html#qué-es-el-pensamiento-estadístico"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es el pensamiento estadístico?</a></li>
+<li class="chapter" data-level="1.2" data-path="introducción.html"><a href="introducción.html#lidiar-con-la-ansiedad-estadística"><i class="fa fa-check"></i><b>1.2</b> Lidiar con la ansiedad estadística</a></li>
+<li class="chapter" data-level="1.3" data-path="introducción.html"><a href="introducción.html#qué-puede-hacer-la-estadística-por-nosotres"><i class="fa fa-check"></i><b>1.3</b> ¿Qué puede hacer la estadística por nosotres?</a></li>
+<li class="chapter" data-level="1.4" data-path="introducción.html"><a href="introducción.html#las-grandes-ideas-de-la-estadística"><i class="fa fa-check"></i><b>1.4</b> Las grandes ideas de la estadística</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introducción.html"><a href="introducción.html#aprendiendo-de-los-datos"><i class="fa fa-check"></i><b>1.4.1</b> Aprendiendo de los datos</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introducción.html"><a href="introducción.html#agregación-aggregation"><i class="fa fa-check"></i><b>1.4.2</b> Agregación (<em>aggregation</em>)</a></li>
+<li class="chapter" data-level="1.4.3" data-path="introducción.html"><a href="introducción.html#incertidumbre"><i class="fa fa-check"></i><b>1.4.3</b> Incertidumbre</a></li>
+<li class="chapter" data-level="1.4.4" data-path="introducción.html"><a href="introducción.html#muestreo-de-una-población"><i class="fa fa-check"></i><b>1.4.4</b> Muestreo de una población</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introducción.html"><a href="introducción.html#causalidad-y-estadística"><i class="fa fa-check"></i><b>1.5</b> Causalidad y estadística</a></li>
+<li class="chapter" data-level="1.6" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>1.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="1.7" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>1.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html"><i class="fa fa-check"></i><b>2</b> Trabajar con Datos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#qué-son-los-datos"><i class="fa fa-check"></i><b>2.1</b> ¿Qué son los datos?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#datos-cualitativos"><i class="fa fa-check"></i><b>2.1.1</b> Datos Cualitativos</a></li>
+<li class="chapter" data-level="2.1.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#datos-cuantitativos"><i class="fa fa-check"></i><b>2.1.2</b> Datos cuantitativos</a></li>
+<li class="chapter" data-level="2.1.3" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#tipos-de-números"><i class="fa fa-check"></i><b>2.1.3</b> Tipos de números</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#mediciones-discretas-versus-continuas"><i class="fa fa-check"></i><b>2.2</b> Mediciones Discretas versus Continuas</a></li>
+<li class="chapter" data-level="2.3" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#qué-constituye-a-una-buena-medición"><i class="fa fa-check"></i><b>2.3</b> ¿Qué constituye a una buena medición?</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#confiabilidad"><i class="fa fa-check"></i><b>2.3.1</b> Confiabilidad</a></li>
+<li class="chapter" data-level="2.3.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#validez"><i class="fa fa-check"></i><b>2.3.2</b> Validez</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#objetivos-de-aprendizaje-1"><i class="fa fa-check"></i><b>2.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="2.5" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#lecturas-sugeridas-1"><i class="fa fa-check"></i><b>2.5</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="2.6" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>2.6</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#escalas-de-medición"><i class="fa fa-check"></i><b>2.6.1</b> Escalas de medición</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="resumir-datos.html"><a href="resumir-datos.html"><i class="fa fa-check"></i><b>3</b> Resumir datos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="resumir-datos.html"><a href="resumir-datos.html#por-qué-resumir-datos"><i class="fa fa-check"></i><b>3.1</b> ¿Por qué resumir datos?</a></li>
+<li class="chapter" data-level="3.2" data-path="resumir-datos.html"><a href="resumir-datos.html#resumiendo-datos-usando-tablas"><i class="fa fa-check"></i><b>3.2</b> Resumiendo datos usando tablas</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="resumir-datos.html"><a href="resumir-datos.html#frequency-distributions"><i class="fa fa-check"></i><b>3.2.1</b> Distribuciones de frecuencias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="resumir-datos.html"><a href="resumir-datos.html#cumulative-distributions"><i class="fa fa-check"></i><b>3.2.2</b> Distribuciones acumuladas</a></li>
+<li class="chapter" data-level="3.2.3" data-path="resumir-datos.html"><a href="resumir-datos.html#plotting-histograms"><i class="fa fa-check"></i><b>3.2.3</b> Graficar histogramas</a></li>
+<li class="chapter" data-level="3.2.4" data-path="resumir-datos.html"><a href="resumir-datos.html#bins-de-un-histograma"><i class="fa fa-check"></i><b>3.2.4</b> Bins de un histograma</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="resumir-datos.html"><a href="resumir-datos.html#representaciones-idealizadas-de-distribuciones"><i class="fa fa-check"></i><b>3.3</b> Representaciones idealizadas de distribuciones</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="resumir-datos.html"><a href="resumir-datos.html#asimetría-sesgo"><i class="fa fa-check"></i><b>3.3.1</b> Asimetría (sesgo)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="resumir-datos.html"><a href="resumir-datos.html#distribuciones-con-colas-largas"><i class="fa fa-check"></i><b>3.3.2</b> Distribuciones con colas largas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="resumir-datos.html"><a href="resumir-datos.html#objetivos-de-aprendizaje-2"><i class="fa fa-check"></i><b>3.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="3.5" data-path="resumir-datos.html"><a href="resumir-datos.html#lecturas-sugeridas-2"><i class="fa fa-check"></i><b>3.5</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>4</b> Visualización de Datos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-visualization.html"><a href="data-visualization.html#anatomía-de-una-gráfica"><i class="fa fa-check"></i><b>4.1</b> Anatomía de una gráfica</a></li>
+<li class="chapter" data-level="4.2" data-path="data-visualization.html"><a href="data-visualization.html#principios-de-una-buena-visibilización"><i class="fa fa-check"></i><b>4.2</b> Principios de una buena visibilización</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="data-visualization.html"><a href="data-visualization.html#muestra-los-datos-y-haz-que-destaquen"><i class="fa fa-check"></i><b>4.2.1</b> Muestra los datos y haz que destaquen</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-visualization.html"><a href="data-visualization.html#maximizar-la-porporción-datostinta-dataink-ratio"><i class="fa fa-check"></i><b>4.2.2</b> Maximizar la porporción datos/tinta (data/ink ratio)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data-visualization.html"><a href="data-visualization.html#evita-gráficas-basura"><i class="fa fa-check"></i><b>4.2.3</b> Evita gráficas basura</a></li>
+<li class="chapter" data-level="4.2.4" data-path="data-visualization.html"><a href="data-visualization.html#evita-distorsionar-los-datos"><i class="fa fa-check"></i><b>4.2.4</b> Evita distorsionar los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-visualization.html"><a href="data-visualization.html#acomodando-las-limitaciones-humanas"><i class="fa fa-check"></i><b>4.3</b> Acomodando las limitaciones humanas</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-visualization.html"><a href="data-visualization.html#limitaciones-perceptuales"><i class="fa fa-check"></i><b>4.3.1</b> Limitaciones perceptuales</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-visualization.html"><a href="data-visualization.html#corrigiendo-otros-factores"><i class="fa fa-check"></i><b>4.4</b> Corrigiendo otros factores</a></li>
+<li class="chapter" data-level="4.5" data-path="data-visualization.html"><a href="data-visualization.html#objetivos-de-aprendizaje-3"><i class="fa fa-check"></i><b>4.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="4.6" data-path="data-visualization.html"><a href="data-visualization.html#lecturas-y-videos-sugeridos"><i class="fa fa-check"></i><b>4.6</b> Lecturas y videos sugeridos</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fitting-models.html"><a href="fitting-models.html"><i class="fa fa-check"></i><b>5</b> Ajustar modelos a datos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="fitting-models.html"><a href="fitting-models.html#qué-es-un-modelo"><i class="fa fa-check"></i><b>5.1</b> ¿Qué es un modelo?</a></li>
+<li class="chapter" data-level="5.2" data-path="fitting-models.html"><a href="fitting-models.html#modelado-estadístico-un-ejemplo"><i class="fa fa-check"></i><b>5.2</b> Modelado estadístico: Un ejemplo</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="fitting-models.html"><a href="fitting-models.html#mejorando-nuestro-modelo"><i class="fa fa-check"></i><b>5.2.1</b> Mejorando nuestro modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="fitting-models.html"><a href="fitting-models.html#qué-hace-que-un-modelo-sea-bueno"><i class="fa fa-check"></i><b>5.3</b> ¿Qué hace que un modelo sea “bueno”?</a></li>
+<li class="chapter" data-level="5.4" data-path="fitting-models.html"><a href="fitting-models.html#overfitting"><i class="fa fa-check"></i><b>5.4</b> ¿Un modelo puede ser demasiado bueno?</a></li>
+<li class="chapter" data-level="5.5" data-path="fitting-models.html"><a href="fitting-models.html#el-modelo-más-simple-la-media"><i class="fa fa-check"></i><b>5.5</b> El modelo más simple: La media</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="fitting-models.html"><a href="fitting-models.html#la-mediana"><i class="fa fa-check"></i><b>5.5.1</b> La mediana</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="fitting-models.html"><a href="fitting-models.html#la-moda"><i class="fa fa-check"></i><b>5.6</b> La moda</a></li>
+<li class="chapter" data-level="5.7" data-path="fitting-models.html"><a href="fitting-models.html#variabilidad-qué-tan-bien-se-ajusta-la-media-a-los-datos"><i class="fa fa-check"></i><b>5.7</b> Variabilidad: ¿Qué tan bien se ajusta la media a los datos?</a></li>
+<li class="chapter" data-level="5.8" data-path="fitting-models.html"><a href="fitting-models.html#usar-simulaciones-para-entender-la-estadística"><i class="fa fa-check"></i><b>5.8</b> Usar simulaciones para entender la estadística</a></li>
+<li class="chapter" data-level="5.9" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-z"><i class="fa fa-check"></i><b>5.9</b> Puntajes Z</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="fitting-models.html"><a href="fitting-models.html#interpretando-puntajes-z"><i class="fa fa-check"></i><b>5.9.1</b> Interpretando Puntajes Z</a></li>
+<li class="chapter" data-level="5.9.2" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-estandarizados"><i class="fa fa-check"></i><b>5.9.2</b> Puntajes Estandarizados</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="fitting-models.html"><a href="fitting-models.html#objetivos-de-aprendizaje-4"><i class="fa fa-check"></i><b>5.10</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="5.11" data-path="fitting-models.html"><a href="fitting-models.html#apéndice-1"><i class="fa fa-check"></i><b>5.11</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="fitting-models.html"><a href="fitting-models.html#proof-that-the-sum-of-errors-from-the-mean-is-zero"><i class="fa fa-check"></i><b>5.11.1</b> Proof that the sum of errors from the Mean is zero”</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>6</b> Probabilidad</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="probability.html"><a href="probability.html#qué-es-la-probabilidad"><i class="fa fa-check"></i><b>6.1</b> ¿Qué es la probabilidad?</a></li>
+<li class="chapter" data-level="6.2" data-path="probability.html"><a href="probability.html#cómo-determinamos-probabilidades"><i class="fa fa-check"></i><b>6.2</b> ¿Cómo determinamos probabilidades?</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="probability.html"><a href="probability.html#creencia-personal"><i class="fa fa-check"></i><b>6.2.1</b> Creencia personal</a></li>
+<li class="chapter" data-level="6.2.2" data-path="probability.html"><a href="probability.html#empirical-frequency"><i class="fa fa-check"></i><b>6.2.2</b> Frecuencia empírica</a></li>
+<li class="chapter" data-level="6.2.3" data-path="probability.html"><a href="probability.html#probabilidad-clásica"><i class="fa fa-check"></i><b>6.2.3</b> Probabilidad clásica</a></li>
+<li class="chapter" data-level="6.2.4" data-path="probability.html"><a href="probability.html#resolviendo-el-problema-de-de-méré"><i class="fa fa-check"></i><b>6.2.4</b> Resolviendo el problema de de Méré</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="probability.html"><a href="probability.html#distribuciones-de-probabilidad"><i class="fa fa-check"></i><b>6.3</b> Distribuciones de probabilidad</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="probability.html"><a href="probability.html#distribuciones-de-probabilidad-acumuladas"><i class="fa fa-check"></i><b>6.3.1</b> Distribuciones de probabilidad acumuladas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="probability.html"><a href="probability.html#conditional-probability"><i class="fa fa-check"></i><b>6.4</b> Probabilidad condicional</a></li>
+<li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#calcular-probabilidades-condicionales-a-partir-de-los-datos"><i class="fa fa-check"></i><b>6.5</b> Calcular probabilidades condicionales a partir de los datos</a></li>
+<li class="chapter" data-level="6.6" data-path="probability.html"><a href="probability.html#independencia"><i class="fa fa-check"></i><b>6.6</b> Independencia</a></li>
+<li class="chapter" data-level="6.7" data-path="probability.html"><a href="probability.html#bayestheorem"><i class="fa fa-check"></i><b>6.7</b> Invertir una probabilidad condicional: regla de Bayes</a></li>
+<li class="chapter" data-level="6.8" data-path="probability.html"><a href="probability.html#aprender-de-los-datos"><i class="fa fa-check"></i><b>6.8</b> Aprender de los datos</a></li>
+<li class="chapter" data-level="6.9" data-path="probability.html"><a href="probability.html#posibilidades-odds-y-razón-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>6.9</b> Posibilidades (odds) y razón de posibilidades (odds ratios)</a></li>
+<li class="chapter" data-level="6.10" data-path="probability.html"><a href="probability.html#qué-significan-las-probabilidades"><i class="fa fa-check"></i><b>6.10</b> ¿Qué significan las probabilidades?</a></li>
+<li class="chapter" data-level="6.11" data-path="probability.html"><a href="probability.html#objetivos-de-aprendizaje-5"><i class="fa fa-check"></i><b>6.11</b> Objetivos de Aprendizaje</a></li>
+<li class="chapter" data-level="6.12" data-path="probability.html"><a href="probability.html#lecturas-sugeridas-3"><i class="fa fa-check"></i><b>6.12</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="6.13" data-path="probability.html"><a href="probability.html#apéndice-2"><i class="fa fa-check"></i><b>6.13</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="6.13.1" data-path="probability.html"><a href="probability.html#derivación-de-la-regla-de-bayes"><i class="fa fa-check"></i><b>6.13.1</b> Derivación de la regla de Bayes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>7</b> Muestreo</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="sampling.html"><a href="sampling.html#how-do-we-sample"><i class="fa fa-check"></i><b>7.1</b> ¿Cómo hacemos una muestra?</a></li>
+<li class="chapter" data-level="7.2" data-path="sampling.html"><a href="sampling.html#samplingerror"><i class="fa fa-check"></i><b>7.2</b> Error de muestreo</a></li>
+<li class="chapter" data-level="7.3" data-path="sampling.html"><a href="sampling.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>7.3</b> Error estándar de la media</a></li>
+<li class="chapter" data-level="7.4" data-path="sampling.html"><a href="sampling.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>7.4</b> El teorema del límite central</a></li>
+<li class="chapter" data-level="7.5" data-path="sampling.html"><a href="sampling.html#confidence-intervals"><i class="fa fa-check"></i><b>7.5</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="7.6" data-path="sampling.html"><a href="sampling.html#objetivos-de-aprendizaje-6"><i class="fa fa-check"></i><b>7.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="7.7" data-path="sampling.html"><a href="sampling.html#lecturas-sugeridas-4"><i class="fa fa-check"></i><b>7.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html"><i class="fa fa-check"></i><b>8</b> Remuestreo y Simulación</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#simulación-monte-carlo"><i class="fa fa-check"></i><b>8.1</b> Simulación Monte Carlo</a></li>
+<li class="chapter" data-level="8.2" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#aleatoriedad-en-estadística"><i class="fa fa-check"></i><b>8.2</b> Aleatoriedad en Estadística</a></li>
+<li class="chapter" data-level="8.3" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#generando-números-aleatorios"><i class="fa fa-check"></i><b>8.3</b> Generando números aleatorios</a></li>
+<li class="chapter" data-level="8.4" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#utilizando-una-simulación-con-el-método-de-montecarlo"><i class="fa fa-check"></i><b>8.4</b> Utilizando una simulación con el Método de Montecarlo</a></li>
+<li class="chapter" data-level="8.5" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#usando-simulaciones-para-estadística-the-bootstrap"><i class="fa fa-check"></i><b>8.5</b> Usando simulaciones para estadística: The bootstrap</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#calculando-el-bootstrap"><i class="fa fa-check"></i><b>8.5.1</b> Calculando el bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#objetivos-de-aprendizaje-7"><i class="fa fa-check"></i><b>8.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="8.7" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#lecturas-sugeridas-5"><i class="fa fa-check"></i><b>8.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>9</b> Prueba de hipótesis</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#prueba-estadística-de-hipótesis-nula-null-hypothesis-statistical-testing-nhst"><i class="fa fa-check"></i><b>9.1</b> Prueba Estadística de Hipótesis Nula (Null Hypothesis Statistical Testing, NHST)</a></li>
+<li class="chapter" data-level="9.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#prueba-estadística-de-hipótesis-nula-un-ejemplo"><i class="fa fa-check"></i><b>9.2</b> Prueba estadística de hipótesis nula: Un ejemplo</a></li>
+<li class="chapter" data-level="9.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#el-proceso-de-la-prueba-de-hipótesis-nula"><i class="fa fa-check"></i><b>9.3</b> El proceso de la prueba de hipótesis nula</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-1-formular-una-hipótesis-de-interés"><i class="fa fa-check"></i><b>9.3.1</b> Paso 1: Formular una hipótesis de interés</a></li>
+<li class="chapter" data-level="9.3.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-2-especifica-las-hipótesis-nula-y-alternativa"><i class="fa fa-check"></i><b>9.3.2</b> Paso 2: Especifica las hipótesis nula y alternativa</a></li>
+<li class="chapter" data-level="9.3.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-3-recolectar-datos"><i class="fa fa-check"></i><b>9.3.3</b> Paso 3: Recolectar datos</a></li>
+<li class="chapter" data-level="9.3.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-4-ajusta-un-modelo-a-los-datos-y-calcula-el-estadístico-de-prueba"><i class="fa fa-check"></i><b>9.3.4</b> Paso 4: Ajusta un modelo a los datos y calcula el estadístico de prueba</a></li>
+<li class="chapter" data-level="9.3.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-5-determinar-la-probabilidad-de-los-datos-bajo-la-hipótesis-nula"><i class="fa fa-check"></i><b>9.3.5</b> Paso 5: Determinar la probabilidad de los datos bajo la hipótesis nula</a></li>
+<li class="chapter" data-level="9.3.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-6-evalúa-la-significatividad-estadística-del-resultado"><i class="fa fa-check"></i><b>9.3.6</b> Paso 6: Evalúa la “significatividad estadística” del resultado</a></li>
+<li class="chapter" data-level="9.3.7" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#qué-significa-un-resultado-significativo"><i class="fa fa-check"></i><b>9.3.7</b> ¿Qué significa un resultado significativo?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#nhst-en-un-contexto-moderno-pruebas-múltiples"><i class="fa fa-check"></i><b>9.4</b> NHST en un contexto moderno: Pruebas múltiples</a></li>
+<li class="chapter" data-level="9.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#objetivos-de-aprendizaje-8"><i class="fa fa-check"></i><b>9.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="9.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lecturas-sugeridas-6"><i class="fa fa-check"></i><b>9.6</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html"><i class="fa fa-check"></i><b>10</b> Cuantificar efectos y diseñar estudios</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.1</b> Intervalos de confianza</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-usando-la-distribución-normal"><i class="fa fa-check"></i><b>10.1.1</b> Intervalos de confianza usando la distribución normal</a></li>
+<li class="chapter" data-level="10.1.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-utilizando-la-distribución-t"><i class="fa fa-check"></i><b>10.1.2</b> Intervalos de confianza utilizando la distribución t</a></li>
+<li class="chapter" data-level="10.1.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-y-tamaño-de-muestra"><i class="fa fa-check"></i><b>10.1.3</b> Intervalos de confianza y tamaño de muestra</a></li>
+<li class="chapter" data-level="10.1.4" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#calcular-el-intervalo-de-confianza-utilizando-bootstrap"><i class="fa fa-check"></i><b>10.1.4</b> Calcular el intervalo de confianza utilizando “bootstrap”</a></li>
+<li class="chapter" data-level="10.1.5" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#relación-de-los-intervalos-de-confianza-con-la-prueba-de-hipótesis"><i class="fa fa-check"></i><b>10.1.5</b> Relación de los intervalos de confianza con la prueba de hipótesis</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#tamaño-de-efecto-effect-sizes"><i class="fa fa-check"></i><b>10.2</b> Tamaño de efecto (effect sizes)</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#d-de-cohen"><i class="fa fa-check"></i><b>10.2.1</b> D de Cohen</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#r-de-pearson"><i class="fa fa-check"></i><b>10.2.2</b> r de Pearson</a></li>
+<li class="chapter" data-level="10.2.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#razón-de-probabilidades-odds-ratio"><i class="fa fa-check"></i><b>10.2.3</b> Razón de probabilidades (odds ratio)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#statistical-power"><i class="fa fa-check"></i><b>10.3</b> Poder estadístico</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#análisis-de-poder"><i class="fa fa-check"></i><b>10.3.1</b> Análisis de poder</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#objetivos-de-aprendizaje-9"><i class="fa fa-check"></i><b>10.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="10.5" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#lecturas-sugeridas-7"><i class="fa fa-check"></i><b>10.5</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html"><i class="fa fa-check"></i><b>11</b> Estadística Bayesiana</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#modelos-generativos"><i class="fa fa-check"></i><b>11.1</b> Modelos Generativos</a></li>
+<li class="chapter" data-level="11.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#el-teorema-de-bayes-y-la-inferencia-inversa"><i class="fa fa-check"></i><b>11.2</b> El Teorema de Bayes y la Inferencia Inversa</a></li>
+<li class="chapter" data-level="11.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#doing-bayesian-estimation"><i class="fa fa-check"></i><b>11.3</b> Haciendo estimaciones Bayesianas</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#especificar-la-probabilidad-previa"><i class="fa fa-check"></i><b>11.3.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.3.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#recolectar-los-datos"><i class="fa fa-check"></i><b>11.3.2</b> Recolectar los datos</a></li>
+<li class="chapter" data-level="11.3.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad"><i class="fa fa-check"></i><b>11.3.3</b> Calcular la probabilidad</a></li>
+<li class="chapter" data-level="11.3.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-marginal"><i class="fa fa-check"></i><b>11.3.4</b> Calcular la probabilidad marginal</a></li>
+<li class="chapter" data-level="11.3.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.3.5</b> Calcular la probabilidad posterior</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#estimating-posterior-distributions"><i class="fa fa-check"></i><b>11.4</b> Estimar distribuciones posteriores</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#especificar-la-probabilidad-previa-1"><i class="fa fa-check"></i><b>11.4.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.4.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#recolectar-algunos-datos"><i class="fa fa-check"></i><b>11.4.2</b> Recolectar algunos datos</a></li>
+<li class="chapter" data-level="11.4.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-1"><i class="fa fa-check"></i><b>11.4.3</b> Calcular la probabilidad</a></li>
+<li class="chapter" data-level="11.4.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-marginal-1"><i class="fa fa-check"></i><b>11.4.4</b> Calcular la probabilidad marginal</a></li>
+<li class="chapter" data-level="11.4.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calculando-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.4.5</b> Calculando la probabilidad posterior</a></li>
+<li class="chapter" data-level="11.4.6" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#estimación-máxima-a-posteriori-map-por-sus-siglas-en-inglés"><i class="fa fa-check"></i><b>11.4.6</b> Estimación máxima a posteriori (MAP, por sus siglas en inglés)</a></li>
+<li class="chapter" data-level="11.4.7" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#intervalos-de-credibilidad"><i class="fa fa-check"></i><b>11.4.7</b> Intervalos de credibilidad</a></li>
+<li class="chapter" data-level="11.4.8" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#efectos-de-diferentes-probabilidades-previas"><i class="fa fa-check"></i><b>11.4.8</b> Efectos de diferentes probabilidades previas</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#elegir-una-probabilidad-previa"><i class="fa fa-check"></i><b>11.5</b> Elegir una probabilidad previa</a></li>
+<li class="chapter" data-level="11.6" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#prueba-de-hipótesis-bayesiana"><i class="fa fa-check"></i><b>11.6</b> Prueba de hipótesis Bayesiana</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#Bayes-factors"><i class="fa fa-check"></i><b>11.6.1</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="11.6.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#factores-de-bayes-para-hipótesis-estadísticas"><i class="fa fa-check"></i><b>11.6.2</b> Factores de Bayes para hipótesis estadísticas</a></li>
+<li class="chapter" data-level="11.6.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#evaluar-evidencia-a-favor-de-la-hipótesis-nula"><i class="fa fa-check"></i><b>11.6.3</b> Evaluar evidencia a favor de la hipótesis nula</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#objetivos-de-aprendizaje-10"><i class="fa fa-check"></i><b>11.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="11.8" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#suggested-readings"><i class="fa fa-check"></i><b>11.8</b> Suggested readings</a></li>
+<li class="chapter" data-level="11.9" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#apéndice-3"><i class="fa fa-check"></i><b>11.9</b> Apéndice:</a>
+<ul>
+<li class="chapter" data-level="11.9.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#muestreo-de-rechazo"><i class="fa fa-check"></i><b>11.9.1</b> Muestreo de rechazo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html"><i class="fa fa-check"></i><b>12</b> Modelar relaciones categóricas</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#ejemplo-colores-de-dulces"><i class="fa fa-check"></i><b>12.1</b> Ejemplo: Colores de dulces</a></li>
+<li class="chapter" data-level="12.2" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#chi-squared-test"><i class="fa fa-check"></i><b>12.2</b> Prueba Ji-cuadrada de Pearson</a></li>
+<li class="chapter" data-level="12.3" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#two-way-test"><i class="fa fa-check"></i><b>12.3</b> Tablas de contingencia y la prueba de dos vías</a></li>
+<li class="chapter" data-level="12.4" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#residuales-estandarizados"><i class="fa fa-check"></i><b>12.4</b> Residuales estandarizados</a></li>
+<li class="chapter" data-level="12.5" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#razones-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>12.5</b> Razones de posibilidades (odds ratios)</a></li>
+<li class="chapter" data-level="12.6" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#factores-de-bayes"><i class="fa fa-check"></i><b>12.6</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="12.7" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#análisis-categórico-más-allá-de-la-tabla-2-x-2"><i class="fa fa-check"></i><b>12.7</b> Análisis categórico más allá de la tabla 2 X 2</a></li>
+<li class="chapter" data-level="12.8" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#cuídate-de-la-paradoja-de-simpson"><i class="fa fa-check"></i><b>12.8</b> Cuídate de la paradoja de Simpson</a></li>
+<li class="chapter" data-level="12.9" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#objetivos-de-aprendizaje-11"><i class="fa fa-check"></i><b>12.9</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="12.10" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#lecturas-adicionales"><i class="fa fa-check"></i><b>12.10</b> Lecturas adicionales</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html"><i class="fa fa-check"></i><b>13</b> Modelar relaciones continuas</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#un-ejemplo-crímenes-de-odio-y-la-inequidad-de-ingreso"><i class="fa fa-check"></i><b>13.1</b> Un ejemplo: Crímenes de odio y la inequidad de ingreso</a></li>
+<li class="chapter" data-level="13.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#la-inequidad-de-ingreso-está-relacionada-a-los-crímenes-de-odio"><i class="fa fa-check"></i><b>13.2</b> ¿La inequidad de ingreso está relacionada a los crímenes de odio?</a></li>
+<li class="chapter" data-level="13.3" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#covariance-and-correlation"><i class="fa fa-check"></i><b>13.3</b> Covarianza y la correlación</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#prueba-de-hipótesis-para-correlaciones"><i class="fa fa-check"></i><b>13.3.1</b> Prueba de hipótesis para correlaciones</a></li>
+<li class="chapter" data-level="13.3.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#robust-correlations"><i class="fa fa-check"></i><b>13.3.2</b> Correlaciones Robustas</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#correlación-y-causalidad"><i class="fa fa-check"></i><b>13.4</b> Correlación y causalidad</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#gráficas-causales"><i class="fa fa-check"></i><b>13.4.1</b> Gráficas causales</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#objetivos-de-aprendizaje-12"><i class="fa fa-check"></i><b>13.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="13.6" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#lecturas-sugeridas-8"><i class="fa fa-check"></i><b>13.6</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="13.7" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#apéndice-4"><i class="fa fa-check"></i><b>13.7</b> Apéndice:</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#cuantificando-la-inequidad-el-índice-gini"><i class="fa fa-check"></i><b>13.7.1</b> Cuantificando la inequidad: El índice Gini</a></li>
+<li class="chapter" data-level="13.7.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#análisis-de-correlación-bayesiana"><i class="fa fa-check"></i><b>13.7.2</b> Análisis de correlación bayesiana</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html"><i class="fa fa-check"></i><b>14</b> El Modelo Lineal General</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#linear-regression"><i class="fa fa-check"></i><b>14.1</b> Regresión lineal</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#regression-to-the-mean"><i class="fa fa-check"></i><b>14.1.1</b> Regresión a la media</a></li>
+<li class="chapter" data-level="14.1.2" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#la-relación-entre-correlación-y-regresión"><i class="fa fa-check"></i><b>14.1.2</b> La relación entre correlación y regresión</a></li>
+<li class="chapter" data-level="14.1.3" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#errores-estándar-de-los-modelos-de-regresión"><i class="fa fa-check"></i><b>14.1.3</b> Errores estándar de los modelos de regresión</a></li>
+<li class="chapter" data-level="14.1.4" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#pruebas-estadísticas-para-los-parámetros-de-la-regresión"><i class="fa fa-check"></i><b>14.1.4</b> Pruebas estadísticas para los parámetros de la regresión</a></li>
+<li class="chapter" data-level="14.1.5" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#cuantificar-la-bondad-de-adjuste-del-modelo"><i class="fa fa-check"></i><b>14.1.5</b> Cuantificar la bondad de adjuste del modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#ajustar-modelos-más-complejos"><i class="fa fa-check"></i><b>14.2</b> Ajustar modelos más complejos</a></li>
+<li class="chapter" data-level="14.3" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#interacciones-entre-variables"><i class="fa fa-check"></i><b>14.3</b> Interacciones entre variables</a></li>
+<li class="chapter" data-level="14.4" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#más-allá-de-predictores-y-resultados-lineales"><i class="fa fa-check"></i><b>14.4</b> Más allá de predictores y resultados lineales</a></li>
+<li class="chapter" data-level="14.5" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#model-criticism"><i class="fa fa-check"></i><b>14.5</b> Criticar nuestro modelo y revisar suposiciones</a></li>
+<li class="chapter" data-level="14.6" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#qué-significa-realmente-predecir"><i class="fa fa-check"></i><b>14.6</b> ¿Qué significa realmente “predecir”?</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#cross-validation"><i class="fa fa-check"></i><b>14.6.1</b> Validación cruzada (Cross-validation)</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#objetivos-de-aprendizaje-13"><i class="fa fa-check"></i><b>14.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="14.8" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#lecturas-sugeridas-9"><i class="fa fa-check"></i><b>14.8</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="14.9" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#apéndice-5"><i class="fa fa-check"></i><b>14.9</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="14.9.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#estimar-parámetros-de-una-regresión-lineal"><i class="fa fa-check"></i><b>14.9.1</b> Estimar parámetros de una regresión lineal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="comparar-medias.html"><a href="comparar-medias.html"><i class="fa fa-check"></i><b>15</b> Comparar medias</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="comparar-medias.html"><a href="comparar-medias.html#single-mean"><i class="fa fa-check"></i><b>15.1</b> Probar el valor de una media simple</a></li>
+<li class="chapter" data-level="15.2" data-path="comparar-medias.html"><a href="comparar-medias.html#comparing-two-means"><i class="fa fa-check"></i><b>15.2</b> Comparar dos medias</a></li>
+<li class="chapter" data-level="15.3" data-path="comparar-medias.html"><a href="comparar-medias.html#ttest-linear-model"><i class="fa fa-check"></i><b>15.3</b> La prueba t como un modelo lineal</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="comparar-medias.html"><a href="comparar-medias.html#tamaños-de-efecto-para-comparar-dos-medias"><i class="fa fa-check"></i><b>15.3.1</b> Tamaños de efecto para comparar dos medias</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="comparar-medias.html"><a href="comparar-medias.html#factores-de-bayes-para-diferencias-entre-medias"><i class="fa fa-check"></i><b>15.4</b> Factores de Bayes para diferencias entre medias</a></li>
+<li class="chapter" data-level="15.5" data-path="comparar-medias.html"><a href="comparar-medias.html#paired-ttests"><i class="fa fa-check"></i><b>15.5</b> Comparar observaciones pareadas/relacionadas</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="comparar-medias.html"><a href="comparar-medias.html#prueba-de-los-signos"><i class="fa fa-check"></i><b>15.5.1</b> Prueba de los signos</a></li>
+<li class="chapter" data-level="15.5.2" data-path="comparar-medias.html"><a href="comparar-medias.html#prueba-t-para-muestras-relacionadas-paired-t-test"><i class="fa fa-check"></i><b>15.5.2</b> Prueba t para muestras relacionadas (paired t-test)</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="comparar-medias.html"><a href="comparar-medias.html#comparar-más-de-dos-medias"><i class="fa fa-check"></i><b>15.6</b> Comparar más de dos medias</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="comparar-medias.html"><a href="comparar-medias.html#ANOVA"><i class="fa fa-check"></i><b>15.6.1</b> Análisis de varianza</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="comparar-medias.html"><a href="comparar-medias.html#objetivos-de-aprendizaje-14"><i class="fa fa-check"></i><b>15.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="15.8" data-path="comparar-medias.html"><a href="comparar-medias.html#apéndice-6"><i class="fa fa-check"></i><b>15.8</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="15.8.1" data-path="comparar-medias.html"><a href="comparar-medias.html#la-prueba-t-de-muestras-relacionadas-como-un-modelo-lineal"><i class="fa fa-check"></i><b>15.8.1</b> La prueba t de muestras relacionadas como un modelo lineal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="practical-example.html"><a href="practical-example.html"><i class="fa fa-check"></i><b>16</b> Modelación estadística práctica</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="practical-example.html"><a href="practical-example.html#el-proceso-de-modelación-estadística"><i class="fa fa-check"></i><b>16.1</b> El proceso de modelación estadística</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="practical-example.html"><a href="practical-example.html#especificar-nuestra-pregunta-de-interés."><i class="fa fa-check"></i><b>16.1.1</b> 1: Especificar nuestra pregunta de interés.</a></li>
+<li class="chapter" data-level="16.1.2" data-path="practical-example.html"><a href="practical-example.html#identificar-o-recolectar-los-datos-apropiados."><i class="fa fa-check"></i><b>16.1.2</b> 2: Identificar o recolectar los datos apropiados.</a></li>
+<li class="chapter" data-level="16.1.3" data-path="practical-example.html"><a href="practical-example.html#preparar-los-datos-para-el-análisis."><i class="fa fa-check"></i><b>16.1.3</b> 3: Preparar los datos para el análisis.</a></li>
+<li class="chapter" data-level="16.1.4" data-path="practical-example.html"><a href="practical-example.html#determinar-el-modelo-apropiado."><i class="fa fa-check"></i><b>16.1.4</b> 4: Determinar el modelo apropiado.</a></li>
+<li class="chapter" data-level="16.1.5" data-path="practical-example.html"><a href="practical-example.html#ajustar-el-modelo-a-los-datos."><i class="fa fa-check"></i><b>16.1.5</b> 5: Ajustar el modelo a los datos.</a></li>
+<li class="chapter" data-level="16.1.6" data-path="practical-example.html"><a href="practical-example.html#criticar-el-modelo-para-asegurarnos-que-se-ajusta-apropiadamente."><i class="fa fa-check"></i><b>16.1.6</b> 6: Criticar el modelo para asegurarnos que se ajusta apropiadamente.</a></li>
+<li class="chapter" data-level="16.1.7" data-path="practical-example.html"><a href="practical-example.html#probar-hipótesis-y-cuantificar-el-tamaño-del-efecto."><i class="fa fa-check"></i><b>16.1.7</b> 7: Probar hipótesis y cuantificar el tamaño del efecto.</a></li>
+<li class="chapter" data-level="16.1.8" data-path="practical-example.html"><a href="practical-example.html#qué-pasa-con-los-posibles-factores-de-confusión-confounds"><i class="fa fa-check"></i><b>16.1.8</b> ¿Qué pasa con los posibles factores de confusión (confounds)?</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="practical-example.html"><a href="practical-example.html#obtener-ayuda"><i class="fa fa-check"></i><b>16.2</b> Obtener ayuda</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html"><i class="fa fa-check"></i><b>17</b> Hacer investigación reproducible</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-pensamos-que-funciona-la-ciencia"><i class="fa fa-check"></i><b>17.1</b> Cómo pensamos que funciona la ciencia</a></li>
+<li class="chapter" data-level="17.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-realmente-funciona-la-ciencia-a-veces"><i class="fa fa-check"></i><b>17.2</b> Cómo realmente funciona la ciencia (a veces)</a></li>
+<li class="chapter" data-level="17.3" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#la-crisis-de-reproducibilidad-en-la-ciencia"><i class="fa fa-check"></i><b>17.3</b> La crisis de reproducibilidad en la ciencia</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#valor-predictivo-positivo-y-significatividad-estadística"><i class="fa fa-check"></i><b>17.3.1</b> Valor predictivo positivo y significatividad estadística</a></li>
+<li class="chapter" data-level="17.3.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#la-maldición-del-ganador"><i class="fa fa-check"></i><b>17.3.2</b> La maldición del ganador</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#prácticas-cuestionables-de-investigación"><i class="fa fa-check"></i><b>17.4</b> Prácticas cuestionables de investigación</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#esp-o-qrp"><i class="fa fa-check"></i><b>17.4.1</b> ¿ESP o QRP?</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#hacer-investigación-reproducible"><i class="fa fa-check"></i><b>17.5</b> Hacer investigación reproducible</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#pre-registro"><i class="fa fa-check"></i><b>17.5.1</b> Pre-registro</a></li>
+<li class="chapter" data-level="17.5.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#prácticas-reproducibles"><i class="fa fa-check"></i><b>17.5.2</b> Prácticas reproducibles</a></li>
+<li class="chapter" data-level="17.5.3" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#replicación"><i class="fa fa-check"></i><b>17.5.3</b> Replicación</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#hacer-análisis-de-datos-reproducibles"><i class="fa fa-check"></i><b>17.6</b> Hacer análisis de datos reproducibles</a></li>
+<li class="chapter" data-level="17.7" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#conclusión-hacer-mejor-ciencia"><i class="fa fa-check"></i><b>17.7</b> Conclusión: Hacer mejor ciencia</a></li>
+<li class="chapter" data-level="17.8" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#objetivos-de-aprendizaje-15"><i class="fa fa-check"></i><b>17.8</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="17.9" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#lecturas-sugeridas-10"><i class="fa fa-check"></i><b>17.9</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Thinking for the 21st Century</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="modeling-continuous-relationships" class="section level1" number="13">
+<h1><span class="header-section-number">Capitulo 13</span> Modelar relaciones continuas</h1>
+<!--Most people are familiar with the concept of *correlation*, and in this chapter we will provide a more formal understanding for this commonly used and misunderstood concept.-->
+<p>La mayoría de las personas están familiarizadas con el concepto de <em>correlación</em>, no obstante en este capíttulo proveeremos un entendimiento más formal para este concepto comúnmente usado y malentendido.</p>
+<!--## An example: Hate crimes and income inequality-->
+<div id="un-ejemplo-crímenes-de-odio-y-la-inequidad-de-ingreso" class="section level2" number="13.1">
+<h2><span class="header-section-number">13.1</span> Un ejemplo: Crímenes de odio y la inequidad de ingreso</h2>
+<!--In 2017, the web site Fivethirtyeight.com published a story titled [*Higher Rates Of Hate Crimes Are Tied To Income Inequality*](https://fivethirtyeight.com/features/higher-rates-of-hate-crimes-are-tied-to-income-inequality/) which discussed the relationship between the prevalence of hate crimes and income inequality in the wake of the 2016 Presidential election. The story reported an analysis of hate crime data from the FBI and the Southern Poverty Law Center, on the basis of which they report:-->
+<p>En 2017, el sitio web Fivethirtyeight.com publicó una historia titulada <a href="https://fivethirtyeight.com/features/higher-rates-of-hate-crimes-are-tied-to-income-inequality/"><em>Higher Rates Of Hate Crimes Are Tied To Income Inequality</em></a> en la cual se discute la relación entre la prevalencia de los crímenes de odio y la inequidad de ingreso en el despertar de la elección presidencial de 2016. La historia reportó un análisis de datos del FBI acerca de crímenes de odio y de y del Centro de leyes Southern Poverty, sobre la base de lo que informan:</p>
+<!-- > "we found that income inequality was the most significant determinant of population-adjusted hate crimes and hate incidents across the United States".   -->
+<blockquote>
+<p>“Descubrimos que la desigualdad de ingresos era el determinante más significativo de los delitos de odio e incidentes de odio ajustados a la población en los Estados Unidos”.</p>
+</blockquote>
+<!--The data for this analysis are available as part the ``fivethirtyeight`` package for the R statistical software, which makes it easy for us to access them.  The analysis reported in the story focused on the relationship between income inequality (defined by a quantity called the *Gini index* --- see Appendix for more details) and the prevalence of hate crimes in each state.-->
+<p>Los datos de este análisis están disponibles como parte del <code>fivethirtyeight</code>, un paquete para el software estadístico de R, el cual facilita nuestro acceso a él. El análisis reportado en la historia se focaliza en la relación entre la inequidad de ingreso (definida por una medida llamada <em>índice Gini</em> — véase Apéndice para más detalles) y la prevalencia de crímenes de odio de cada estado.</p>
+<!--## Is income inequality related to hate crimes?-->
+</div>
+<div id="la-inequidad-de-ingreso-está-relacionada-a-los-crímenes-de-odio" class="section level2" number="13.2">
+<h2><span class="header-section-number">13.2</span> ¿La inequidad de ingreso está relacionada a los crímenes de odio?</h2>
+<div class="figure"><span id="fig:hateCrimeGini"></span>
+<img src="StatsThinking21_files/figure-html/hateCrimeGini-1.png" alt="Plot of rates of hate crimes vs. Gini index." width="75%" />
+<p class="caption">
+Figura 13.1: Plot of rates of hate crimes vs. Gini index.
+</p>
+</div>
+<!--The relationship between income inequality and rates of hate crimes is shown in Figure \@ref(fig:hateCrimeGini).
+Looking at the data, it seems that there may be a positive relationship between the two variables.  How can we quantify that relationship?-->
+<p>La relación entre la inequidad de ingreso y los índices de crímenes de odio es mostrada en la Figura <a href="modeling-continuous-relationships.html#fig:hateCrimeGini">13.1</a>.
+Observando los datos, parece que puede haber una relación positiva entre ambas variables. ¿Cómo podemos cuantificar esa relación?</p>
+<!--## Covariance and correlation {#covariance-and-correlation}-->
+</div>
+<div id="covariance-and-correlation" class="section level2" number="13.3">
+<h2><span class="header-section-number">13.3</span> Covarianza y la correlación</h2>
+<!--One way to quantify the relationship between two variables is the *covariance*.  Remember that variance for a single variable is computed as the average squared difference between each data point and the mean:-->
+<p>Una manera de cuantificar la relación entre dos variables es la <em>covarianza</em>. Recuerda que la varianza se calcula para una variable única como la diferencia cuadrática promedio entre cada punto de los datos y la media:</p>
+<p><span class="math display">\[
+s^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{N - 1}
+\]</span></p>
+<!--This tells us how far each observation is from the mean, on average, in squared units.  Covariance tells us whether there is a relation between the deviations of two different variables across observations.  It is defined as:-->
+<p>Esto nos indica qué tan lejana está cada observación de la media, en promedio, en unidades cuadradas. La covarianza nos indica si hay una relación entre las desviaciones de dos variables diferentes a lo largo de las observaciones. Esto es definido como:</p>
+<p><span class="math display">\[
+covariance = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{N - 1}
+\]</span></p>
+<!--This value will be far from zero when individual data points deviate by similar amounts from their respective means; if they are deviant in the same direction then the covariance is positive, whereas if they are deviant in opposite directions the covariance is negative.  Let's look at a toy example first.  The data are shown in the table, along with their individual deviations from the mean and their crossproducts.-->
+<p>Este valor estará lejos de cero cuando los puntos individuales de los datos se desvíen en cantidades similares de sus respectivos medias; si se desvían en la misma dirección, la covarianza es positiva, mientras que si se desvían en direcciones opuestas, la covarianza es negativa. Veamos primero un ejemplo de juguete. Los datos se muestran en la tabla, junto con sus desviaciones individuales de la media y sus productos cruzados.</p>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-88">Tabla 13.1: </span>Data for toy example of covariance
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+x
+</th>
+<th style="text-align:right;">
+y
+</th>
+<th style="text-align:right;">
+y_dev
+</th>
+<th style="text-align:right;">
+x_dev
+</th>
+<th style="text-align:right;">
+crossproduct
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+-3.6
+</td>
+<td style="text-align:right;">
+-4.6
+</td>
+<td style="text-align:right;">
+16.56
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+-4.6
+</td>
+<td style="text-align:right;">
+-2.6
+</td>
+<td style="text-align:right;">
+11.96
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+-1.6
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+-0.64
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1.4
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+3.36
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+8.4
+</td>
+<td style="text-align:right;">
+4.4
+</td>
+<td style="text-align:right;">
+36.96
+</td>
+</tr>
+</tbody>
+</table>
+<!--The covariance is simply the mean of the crossproducts, which in this case is 17.05. We don't usually use the covariance to describe relationships between variables, because it varies with the overall level of variance in the data.  Instead, we would usually use the *correlation coefficient* (often referred to as *Pearson's correlation* after the statistician Karl Pearson). The correlation is computed by scaling the covariance by the standard deviations of the two variables:-->
+<p>La covarianza es simplemente la media de los productos cruzados, los cuales en este caso son 17.05. Por lo general, no usamos la covarianza para describir relaciones entre variables, porque varía con el nivel general de varianza en los datos. En su lugar, usualmente usamos el <em>coeficiente de correlación</em> (a menudo referido como <em>correlación de Pearson</em> en honor al estadístico Karl Pearson). La correlación se calcula escalando la covarianza sobre las desviaciones estándar de las dos variables:</p>
+<p><span class="math display">\[
+r = \frac{covariance}{s_xs_y} = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{(N - 1)s_x s_y}
+\]</span>
+<!--In this case, the value is 0.89.  The correlation coefficient is useful because it varies between -1 and 1 regardless of the nature of the data - in fact, we already discussed the correlation coefficient earlier in our discussion of effect sizes.  As we saw in that previous chapter, a correlation of 1 indicates a perfect linear relationship, a correlation of -1 indicates a perfect negative relationship, and a correlation of zero indicates no linear relationship.-->
+En este caso , el valor es 0.89. El coeficiente de correlación es útil porque varía entre -1 y 1 independientemente de la naturaleza de los datos; de hecho, ya discutimos el coeficiente de correlación anteriormente en nuestra discusión de los tamaños del efecto. Como vimos en ese capítulo anterior, una correlación de 1 indica una relación lineal perfecta, una correlación de -1 indica una relación negativa perfecta y una correlación de cero indica que no hay relación lineal.</p>
+<!--### Hypothesis testing for correlations-->
+<div id="prueba-de-hipótesis-para-correlaciones" class="section level3" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> Prueba de hipótesis para correlaciones</h3>
+<!--The correlation value of 0.42 between hate crimes and income inequality seems to indicate a reasonably strong relationship between the two, but we can also imagine that this could occur by chance even if there is no relationship.  We can test the null hypothesis that the correlation is zero, using a simple equation that lets us convert a correlation value into a *t* statistic:-->
+<p>El valor de correlación de 0.42 entre crímenes de odio y la desigualdad de ingreso parece indicar una relación razonablemente fuerte entre los dos, pero también podemos imaginar que esto puede suceder al azar incluso si no hay relación. Podemos probar la hipótesis nula de que la correlación es cero, utilizando una simple ecuación que nos permita convertir el valor de correlación en un estadístico <em>t</em>:
+<span class="math display">\[
+\textit{t}_r =  \frac{r\sqrt{N-2}}{\sqrt{1-r^2}}
+\]</span></p>
+<!--Under the null hypothesis $H_0:r=0$, this statistic is distributed as a t distribution with $N - 2$ degrees of freedom.  We can compute this using our statistical software:-->
+<p>Bajo la hipótesis nula <span class="math inline">\(H_0:r=0\)</span>, este estadístico se distribuye como una distribución t con <span class="math inline">\(N - 2\)</span> grados de libertad. Podemos calcular esto utilizando nuestro software estadístico:</p>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  hateCrimes$avg_hatecrimes_per_100k_fbi and hateCrimes$gini_index
+## t = 3, df = 48, p-value = 0.002
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.16 0.63
+## sample estimates:
+##  cor 
+## 0.42</code></pre>
+<!--This test shows that the likelihood of an r value this extreme or more is quite low, so we would reject the null hypothesis of $r=0$.  Note that this test assumes that both variables are normally distributed.-->
+<p>Este test nos muestra que la probabilidad de un valor r así o más extremo es realmente baja, así que rechazaríamos la hipótesis nula de <span class="math inline">\(r=0\)</span>. Nota que este test asume que ambas variables están normalmente distribuidas.</p>
+<!--We could also test this by randomization, in which we repeatedly shuffle the values of one of the variables and compute the correlation, and then compare our observed correlation value to this null distribution to determine how likely our observed value would be under the null hypothesis. The results are shown in Figure \@ref(fig:shuffleCorr).  The p-value computed using randomization is reasonably similar to the answer give by the t-test.-->
+<p>También podríamos probar esto por aleatorización, en la que mezclamos (reordenamos) los valores de una de las variables y calculamos la correlación, repetidamente, luego comparamos el valor observado de nuestra correlación con esta distribución nula para determinar qué tan probable sería nuestro valor observado bajo la hipótesis nula. Los resultados se muestran en la Figura <a href="modeling-continuous-relationships.html#fig:shuffleCorr">13.2</a>. El valor p calculado usando la aleatorización es razonablemente similar a la respuesta dada por la prueba t.</p>
+<div class="figure"><span id="fig:shuffleCorr"></span>
+<img src="StatsThinking21_files/figure-html/shuffleCorr-1.png" alt="Histogram of correlation values under the null hypothesis, obtained by shuffling values. Observed value is denoted by blue line." width="384" height="50%" />
+<p class="caption">
+Figura 13.2: Histogram of correlation values under the null hypothesis, obtained by shuffling values. Observed value is denoted by blue line.
+</p>
+</div>
+<!--We could also use Bayesian inference to estimate the correlation; see the Appendix for more on this.-->
+<p>También podríamos usar inferencia Bayesiana para estimar la correlación; véase Apéndice para más sobre esto.</p>
+<!--### Robust correlations {#robust-correlations}-->
+</div>
+<div id="robust-correlations" class="section level3" number="13.3.2">
+<h3><span class="header-section-number">13.3.2</span> Correlaciones Robustas</h3>
+<!--You may have noticed something a bit odd in Figure \@ref(fig:hateCrimeGini) -- one of the datapoints (the one for the District of Columbia) seemed to be quite separate from the others.  We refer to this as an *outlier*, and the standard correlation coefficient is very sensitive to outliers.  For example, in Figure \@ref(fig:outlierCorr) we can see how a single outlying data point can cause a very high positive correlation value, even when the actual relationship between the other data points is perfectly negative.-->
+<p>Podrás haber notado algo un poco extraño en la Figura <a href="modeling-continuous-relationships.html#fig:hateCrimeGini">13.1</a> – uno de los puntos de datos (el del Distrito de Columbia) parece estar un tanto separado de los otros. Nos referimos a esto como un <em>valor atípico</em> o outlier, y el coeficiente de correlación estándar es muy sensible a valores atípicos. Por ejemplo, en la figura <a href="modeling-continuous-relationships.html#fig:outlierCorr">13.3</a> podemos ver cómo un solo punto de datos periférico puede causar un valor de correlación positivo muy alto, incluso cuando la relación real entre los otros puntos de datos es perfectamente negativa.</p>
+<div class="figure"><span id="fig:outlierCorr"></span>
+<img src="StatsThinking21_files/figure-html/outlierCorr-1.png" alt="A simulated example of the effects of outliers on correlation.  Without the outlier the remainder of the datapoints have a perfect negative correlation, but the single outlier changes the correlation value to highly positive." width="384" height="50%" />
+<p class="caption">
+Figura 13.3: A simulated example of the effects of outliers on correlation. Without the outlier the remainder of the datapoints have a perfect negative correlation, but the single outlier changes the correlation value to highly positive.
+</p>
+</div>
+<!--One way to address outliers is to compute the correlation on the ranks of the data after ordering them, rather than on the data themselves; this is known as the *Spearman correlation*.  Whereas the Pearson correlation for the example in Figure \@ref(fig:outlierCorr) was 0.83, the Spearman correlation is -0.45, showing that the rank correlation reduces the effect of the outlier and reflects the negative relationship between the majority of the data points.-->
+<p>Una manera de abordar valores atípicos es calcular la correlación sobre los rangos de los datos después de ordenarlos, en lugar de sobre los datos mismos; esto es conocido como la <em>correlación de Spearman</em>. Mientras que la correlación de Pearson en el ejemplo de la Figura <a href="modeling-continuous-relationships.html#fig:outlierCorr">13.3</a> era 0.83, la correlación de Spearman es -0.45 mostrando que la correlación de rangos reduce el efecto del valor atípico y refleja la relación negativa entre la mayoría de los puntos de datos.</p>
+<!--We can compute the rank correlation on the hate crime data as well:-->
+<p>Podemos calcular la correlación de rangos de los datos de crímenes de odio también:</p>
+<pre><code>## 
+##  Spearman&#39;s rank correlation rho
+## 
+## data:  hateCrimes$avg_hatecrimes_per_100k_fbi and hateCrimes$gini_index
+## S = 20146, p-value = 0.8
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##   rho 
+## 0.033</code></pre>
+<!--Now we see that the correlation is no longer significant (and in fact is very near zero), suggesting that the claims of the FiveThirtyEight blog post may have been incorrect due to the effect of the outlier.-->
+<p>Ahora podemos ver que la correlación ya no es significativa (y en efecto es muy cercana a cero), sugiriendo que las afirmaciones del blog FiveThirtyEight pueden haber sido incorrectas debido al efecto del valor atípico.</p>
+<!--## Correlation and causation-->
+</div>
+</div>
+<div id="correlación-y-causalidad" class="section level2" number="13.4">
+<h2><span class="header-section-number">13.4</span> Correlación y causalidad</h2>
+<!--When we say that one thing *causes* another, what do we mean?  There is a long history in philosophy of discussion about the meaning of causality, but in statistics one way that we commonly think of causation is in terms of experimental control.  That is, if we think that factor X causes factor Y, then manipulating the value of X should also change the value of Y.-->
+<p>Cuando decimos que una cosa <em>causa</em> otra, ¿a qué nos referimos? Hay una larga historia en filosofía de la discusión acerca del significado de la causalidad, pero en estadística una manera más común de pensar en la causalidad es en términos de control experimental. Eso es, si pensamos que el factor X causa el factor Y, entonces si manipulamos el valor de X afectará el valor de Y.</p>
+<!--In medicine, there is a set of ideas known as [*Koch's postulates*](https://en.wikipedia.org/wiki/Koch%27s_postulates) which have historically been used to determine whether a particular organism causes a disease.   The basic idea is that the organism should be present in people with the disease, and not present in those without it -- thus, a treatment that eliminates the organism should also eliminate the disease.  Further, infecting someone with the organism should cause them to contract the disease.  An example of this was seen in the work of Dr. Barry Marshall, who had a hypothesis that stomach ulcers were caused by a bacterium (*Helicobacter pylori*).  To demonstrate this, he infected himself with the bacterium, and soon thereafter developed severe inflammation in his stomach.  He then treated himself with an antibiotic, and his stomach soon recovered.  He later won the Nobel Prize in Medicine for this work.-->
+<p>En medicina, hay un conjunto de ideas conocidas como <a href="https://en.wikipedia.org/wiki/Koch%27s_postulates"><em>Koch’s postulates</em></a> que históricamente se han utilizado para determinar si un organismo en particular causa una enfermedad. La idea básica es que el organismo debe estar presente en las personas con la enfermedad y no en las que no la padecen; por lo tanto, un tratamiento que elimine el organismo también debe eliminar la enfermedad. Además, infectar a alguien con el organismo debería hacer que contraiga la enfermedad. Un ejemplo de esto se vio en el trabajo del Dr. Barry Marshall, quien tenía la hipótesis de que las úlceras de estómago eran causadas por una bacteria (<em>Helicobacter pylori</em>). Para demostrar esto, se infectó con la bacteria y poco después desarrolló una inflamación severa en su estómago. Luego se trató a sí mismo con un antibiótico y su estómago pronto se recuperó. Más tarde ganó el Premio Nobel de Medicina por este trabajo.</p>
+<!--Often we would like to test causal hypotheses but we can't actually do an experiment, either because it's impossible ("What is the relationship between human carbon emissions and the earth's climate?") or unethical ("What are the effects of severe abuse on child brain development?"). However, we can still collect data that might be relevant to those questions.  For example, we can potentially collect data from children who have been abused as well as those who have not, and we can then ask whether their brain development differs.-->
+<p>A menudo nos gustaría probar hipótesis causales, pero en realidad no podemos hacer un experimento, ya sea porque es imposible (“¿Cuál es la relación entre las emisiones de carbono humano y el clima de la Tierra?”) o porque no es ético (“¿Cuáles son los efectos del abuso severo sobre el desarrollo del cerebro infantil?”). Sin embargo, aún podemos recopilar datos que podrían ser relevantes para esas preguntas. Por ejemplo, potencialmente podemos recopilar datos de niños que han sido abusados y de aquellos que no, y luego podemos preguntarnos si su desarrollo cerebral es diferente.</p>
+<!--Let's say that we did such an analysis, and we found that abused children had poorer brain development than non-abused children. Would this demonstrate that abuse *causes* poorer brain development?  No.  Whenever we observe a statistical association between two variables, it is certainly possible that one of those two variables causes the other.  However, it is also possible that both of the variables are being influenced by a third variable; in this example, it could be that child abuse is associated with family stress, which could also cause poorer brain development through less intellectual engagement, food stress, or many other possible avenues.  The point is that a correlation between two variables generally tells us that something is *probably* causing somethign else, but it doesn't tell us what is causing what.-->
+<p>Digamos que hicimos tal análisis y encontramos que los niños abusados tenían un desarrollo cerebral más pobre que los niños no abusados. ¿Demostraría esto que el abuso <em>causa</em> un peor desarrollo cerebral? No. Siempre que observemos una asociación estadística entre dos variables, es ciertamente posible que una de esas dos variables cause la otra. Sin embargo, también es posible que ambas variables estén influenciadas por una tercera variable; en este ejemplo, podría ser que el abuso infantil esté asociado con el estrés familiar, que también podría causar un desarrollo cerebral más deficiente debido a una menor participación intelectual, estrés alimentario o muchas otras posibles vías. El punto es que una correlación entre dos variables generalmente nos dice que algo <em>probablemente</em> está causando otra cosa, pero no nos dice qué está causando qué.</p>
+<!--### Causal graphs-->
+<div id="gráficas-causales" class="section level3" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> Gráficas causales</h3>
+<!--One useful way to describe causal relations between variables is through a *causal graph*, which shows variables as circles and causal relations between them as arrows.  For example, Figure \@ref(fig:simpleCausalGraph) shows the causal relationships between study time and two variables that we think should be affected by it: exam grades and exam finishing times.-->
+<p>Una forma útil de describir las relaciones causales entre variables es mediante un <em>gráfico causal</em>, que muestra las variables como círculos y las relaciones causales entre ellas como flechas. Por ejemplo, la Figura <a href="modeling-continuous-relationships.html#fig:simpleCausalGraph">13.4</a> muestra las relaciones causales entre el tiempo de estudio y dos variables que creemos que deberían verse afectadas por él: las calificaciones del examen y los tiempos de finalización del examen.</p>
+<!--However, in reality the effects on finishing time and grades are not due directly to the amount of time spent studying, but rather to the amount of knowledge that the student gains by studying.  We would usually say that knowledge is a *latent* variable -- that is, we can't measure it directly but we can see it reflected in variables that we can measure (like grades and finishing times).  Figure \@ref(fig:latentCausalGraph) shows this.-->
+<p>Sin embargo, en realidad, los efectos sobre el tiempo de finalización y las calificaciones no se deben directamente a la cantidad de tiempo dedicado al estudio, sino más bien a la cantidad de conocimientos que adquiere el alumno al estudiar. Por lo general, diríamos que el conocimiento es una variable <em>latente</em>, es decir, no podemos medirlo directamente, pero podemos verlo reflejado en variables que podemos medir (como calificaciones y tiempos de finalización). La Figura <a href="modeling-continuous-relationships.html#fig:latentCausalGraph">13.5</a> muestra esto.</p>
+<div class="figure"><span id="fig:simpleCausalGraph"></span>
+<img src="images/dag_example.png" alt="A graph showing causal relationships between three variables: study time, exam grades, and exam finishing time.  A green arrow represents a positive relationship (i.e. more study time causes exam grades to increase), and a red arrow represents a negative relationship (i.e. more study time causes faster completion of the exam)." height="50%" />
+<p class="caption">
+Figura 13.4: A graph showing causal relationships between three variables: study time, exam grades, and exam finishing time. A green arrow represents a positive relationship (i.e. more study time causes exam grades to increase), and a red arrow represents a negative relationship (i.e. more study time causes faster completion of the exam).
+</p>
+</div>
+<div class="figure"><span id="fig:latentCausalGraph"></span>
+<img src="images/dag_latent_example.png" alt="A graph showing the same causal relationships as above, but now also showing the latent variable (knowledge) using a square box." height="50%" />
+<p class="caption">
+Figura 13.5: A graph showing the same causal relationships as above, but now also showing the latent variable (knowledge) using a square box.
+</p>
+</div>
+<!--Here we would say that knowledge *mediates* the relationship between study time and grades/finishing times.  That means that if we were able to hold knowledge constant (for example, by administering a drug that causes immediate forgetting), then the amount of study time should no longer have an effect on grades and finishing times.-->
+<p>Aquí diríamos que el conocimiento <em>media</em> la relación entre el tiempo de estudio y las calificaciones/tiempos de finalización. Eso significa que si pudiéramos mantener el conocimiento constante (por ejemplo, administrando un medicamento que causa el olvido inmediato), entonces la cantidad de tiempo de estudio ya no debería tener un efecto sobre las calificaciones y los tiempos de finalización.</p>
+<!--Note that if we simply measured exam grades and finishing times we would generally see negative relationship between them, because people who finish exams the fastest in general get the highest grades.  However, if we were to interpret this correlation as a causal relation, this would tell us that in order to get better grades, we should actually finish the exam more quickly! This example shows how tricky the inference of causality from non-experimental data can be.-->
+<p>Nota que si simplemente midiéramos las calificaciones de los exámenes y los tiempos de finalización, generalmente veríamos una relación negativa entre ellos, porque las personas que terminan los exámenes más rápido obtienen las calificaciones más altas. Sin embargo, si interpretáramos esta correlación como una relación causal, esto nos diría que para obtener mejores calificaciones, ¡deberíamos terminar el examen más rápido! Este ejemplo muestra lo engañosa que puede ser la inferencia de causalidad a partir de datos no experimentales.</p>
+<!--Within statistics and machine learning, there is a very active research community that is currently studying the question of when and how we can infer causal relationships from non-experimental data.  However, these methods often require strong assumptions, and must generally be used with great caution.-->
+<p>En las áreas de la estadística y del aprendizaje automático (<em>machine learning</em>), existe una comunidad de investigación muy activa que actualmente está estudiando la cuestión de cuándo y cómo podemos inferir relaciones causales a partir de datos no experimentales. Sin embargo, estos métodos a menudo requieren suposiciones sólidas y, en general, deben usarse con gran precaución.</p>
+<!--## Learning objectives-->
+</div>
+</div>
+<div id="objetivos-de-aprendizaje-12" class="section level2" number="13.5">
+<h2><span class="header-section-number">13.5</span> Objetivos de aprendizaje</h2>
+<!--After reading this chapter, you should be able to:-->
+<!--* Describe the concept of the correlation coefficient and its interpretation
+* Compute the correlation between two continuous variables
+* Describe the effect of outlier data points and how to address them.
+* Describe the potential causal influences that can give rise to an observed correlation.-->
+<p>Después de leer este capítulo tú deberás ser capaz de:</p>
+<ul>
+<li>Describir el concepto del coeficiente de correlación y su interpretación.</li>
+<li>Calcular la correlación entre dos variables continuas.</li>
+<li>Describir las posibles influencias causales que pueden dar lugar a una correlación observada.</li>
+</ul>
+<!--## Suggested readings-->
+</div>
+<div id="lecturas-sugeridas-8" class="section level2" number="13.6">
+<h2><span class="header-section-number">13.6</span> Lecturas sugeridas</h2>
+<!--- [The Book of Why](http://bayes.cs.ucla.edu/WHY/) by Judea Pearl - an excellent introduction to the ideas behind causal inference.-->
+<ul>
+<li><a href="http://bayes.cs.ucla.edu/WHY/">The Book of Why</a> por Judea Pearl - una excelente introducción a las ideas detrás de la inferencia causal.</li>
+</ul>
+<!--## Appendix:-->
+</div>
+<div id="apéndice-4" class="section level2" number="13.7">
+<h2><span class="header-section-number">13.7</span> Apéndice:</h2>
+<!--### Quantifying inequality: The Gini index-->
+<div id="cuantificando-la-inequidad-el-índice-gini" class="section level3" number="13.7.1">
+<h3><span class="header-section-number">13.7.1</span> Cuantificando la inequidad: El índice Gini</h3>
+<!--Before we look at the analysis reported in the story, it's first useful to understand how the Gini index is used  to quantify inequality. The Gini index is usually defined in terms of a curve that describes the relation between income and the proportion of the population that has income at or less than that level, known as a *Lorenz curve*.  However, another way to think of it is more intuitive: It is the relative mean absolute difference between incomes, divided by two (from https://en.wikipedia.org/wiki/Gini_coefficient):-->
+<p>Antes de mirar el análisis reportado en la historia, primero es útil entender cómo se usa el índice de Gini para cuantificar la desigualdad. El índice de Gini generalmente se define en términos de una curva que describe la relación entre los ingresos y la proporción de la población que tiene ingresos en ese nivel o menos, conocida como <em>curva de Lorenz</em>. Sin embargo, otra forma de pensar es más intuitiva: es la diferencia absoluta media relativa (<em>relative mean absolute difference</em>) entre ingresos, dividida entre dos (de <a href="https://en.wikipedia.org/wiki/Gini_coefficient" class="uri">https://en.wikipedia.org/wiki/Gini_coefficient</a>):</p>
+<p><span class="math display">\[
+G = \frac{\displaystyle{\sum_{i=1}^n \sum_{j=1}^n \left| x_i - x_j \right|}}{\displaystyle{2n\sum_{i=1}^n x_i}} 
+\]</span></p>
+<div class="figure"><span id="fig:gini0"></span>
+<img src="StatsThinking21_files/figure-html/gini0-1.png" alt="Lorenz curves for A) perfect equality, B) normally distributed income, and C) high inequality (equal income except for one very wealthy individual)." width="80%" />
+<p class="caption">
+Figura 13.6: Lorenz curves for A) perfect equality, B) normally distributed income, and C) high inequality (equal income except for one very wealthy individual).
+</p>
+</div>
+<!--Figure \@ref(fig:gini0) shows the Lorenz curves for several different income distributions.  The top left panel (A) shows an example with 10 people where everyone has exactly the same income. The length of the intervals between points are equal, indicating each person earns an identical share of the total income in the population.  The top right panel (B) shows an example where income is normally distributed. The bottom left panel shows an example with high inequality; everyone has equal income (\$40,000) except for one person, who has income of \$40,000,000. According to the US Census, the United States had a Gini index of 0.469 in 2010, falling roughly half way between our normally distributed and maximally inequal examples.-->
+<p>La Figura <a href="modeling-continuous-relationships.html#fig:gini0">13.6</a> muestra las curvas de Lorenz para varias distribuciones de ingresos diferentes. El panel superior izquierdo (A) muestra un ejemplo con 10 personas donde todos tienen exactamente los mismos ingresos. La longitud de los intervalos entre puntos es igual, lo que indica que cada persona gana una parte idéntica del ingreso total de la población. El panel superior derecho (B) muestra un ejemplo donde los ingresos se distribuyen normalmente. El panel inferior izquierdo muestra un ejemplo con alta desigualdad; todos tienen los mismos ingresos ($40,000) excepto una persona, que tiene ingresos de $40,000,000. Según el censo de EE.UU., Estados Unidos tenía un índice de Gini de 0,469 en 2010, aproximadamente a la mitad entre nuestros ejemplos de distribución normal y máxima desigualdad.</p>
+<!--### Bayesian correlation analysis-->
+</div>
+<div id="análisis-de-correlación-bayesiana" class="section level3" number="13.7.2">
+<h3><span class="header-section-number">13.7.2</span> Análisis de correlación bayesiana</h3>
+<!--We can also analyze the FiveThirtyEight data using Bayesian analysis, which has two advantages.  First, it provides us with a posterior probability -- in this case, the probability that the correlation value exceeds zero.  Second, the Bayesian estimate combines the observed evidence with a *prior*, which has the effect of *regularizing* the correlation estimate, effectively pulling it towards zero.  Here we can compute it using the `jzs_cor` function from the BayesMed package.-->
+<p>También podemos analizar los datos de <em>FiveThirtyEight</em> utilizando el análisis bayesiano, que tiene dos ventajas. Primero, nos proporciona una probabilidad posterior, en este caso, la probabilidad de que el valor de correlación sea superior a cero. En segundo lugar, la estimación bayesiana combina la evidencia observada con una <em>probabilidad previa</em>, que tiene el efecto de <em>regularizar</em> la correlación estimada, efectivamente llevándola hacia cero. Aquí podemos calcularlo usando la función <code>jzs_cor</code> del paquete BayesMed.</p>
+<!--Notice that the correlation estimated using the Bayesian method is slightly smaller than the one estimated using the standard correlation coefficient, which is due to the fact that the estimate is based on a combination of the evidence and the prior, which effectively shrinks the estimate toward zero. However, notice that the Bayesian analysis is not robust to the outlier, and it still says that there is fairly strong evidence that the correlation is greater than zero.-->
+<p>Nótese que la correlación estimada usando el método bayesiano es ligeramente menor que la estimada usando el coeficiente de correlación estándar, lo cual se debe al hecho de que la estimación se basa en una combinación de la evidencia y la probabilidad previa, lo que efectivamente reduce la estimación hacia cero. Sin embargo, observe que el análisis bayesiano no es robusto para el valor atípico, y todavía dice que hay evidencia bastante fuerte de que la correlación es mayor que cero.</p>
+
+<!-- # The General Linear Model -->
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="modelar-relaciones-categóricas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="el-modelo-lineal-general.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/statsthinking21/statsthinking21-core/edit/master/13-ContinuousRelationships.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["StatsThinking21.pdf", "StatsThinking21.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

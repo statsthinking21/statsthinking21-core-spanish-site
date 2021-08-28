@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 9 Prueba de hipótesis | Statistical Thinking for the 21st Century</title>
+  <meta name="description" content="A book about statistics." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 9 Prueba de hipótesis | Statistical Thinking for the 21st Century" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A book about statistics." />
+  <meta name="github-repo" content="poldrack/psych10-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 9 Prueba de hipótesis | Statistical Thinking for the 21st Century" />
+  
+  <meta name="twitter:description" content="A book about statistics." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="resampling-and-simulation.html"/>
+<link rel="next" href="ci-effect-size-power.html"/>
+<script src="book_assets/header-attrs-2.7/header-attrs.js"></script>
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129414074-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129414074-1');
+</script>
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#por-qué-existe-este-libro"><i class="fa fa-check"></i><b>0.1</b> ¿Por qué existe este libro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#la-era-dorada-de-la-información"><i class="fa fa-check"></i><b>0.2</b> La era dorada de la información</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#la-importancia-de-hacer-estadísticas"><i class="fa fa-check"></i><b>0.3</b> La importancia de hacer estadísticas</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#un-libro-de-código-abierto-open-source"><i class="fa fa-check"></i><b>0.4</b> Un libro de código abierto (open source)</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>0.5</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducción.html"><a href="introducción.html#qué-es-el-pensamiento-estadístico"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es el pensamiento estadístico?</a></li>
+<li class="chapter" data-level="1.2" data-path="introducción.html"><a href="introducción.html#lidiar-con-la-ansiedad-estadística"><i class="fa fa-check"></i><b>1.2</b> Lidiar con la ansiedad estadística</a></li>
+<li class="chapter" data-level="1.3" data-path="introducción.html"><a href="introducción.html#qué-puede-hacer-la-estadística-por-nosotres"><i class="fa fa-check"></i><b>1.3</b> ¿Qué puede hacer la estadística por nosotres?</a></li>
+<li class="chapter" data-level="1.4" data-path="introducción.html"><a href="introducción.html#las-grandes-ideas-de-la-estadística"><i class="fa fa-check"></i><b>1.4</b> Las grandes ideas de la estadística</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introducción.html"><a href="introducción.html#aprendiendo-de-los-datos"><i class="fa fa-check"></i><b>1.4.1</b> Aprendiendo de los datos</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introducción.html"><a href="introducción.html#agregación-aggregation"><i class="fa fa-check"></i><b>1.4.2</b> Agregación (<em>aggregation</em>)</a></li>
+<li class="chapter" data-level="1.4.3" data-path="introducción.html"><a href="introducción.html#incertidumbre"><i class="fa fa-check"></i><b>1.4.3</b> Incertidumbre</a></li>
+<li class="chapter" data-level="1.4.4" data-path="introducción.html"><a href="introducción.html#muestreo-de-una-población"><i class="fa fa-check"></i><b>1.4.4</b> Muestreo de una población</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introducción.html"><a href="introducción.html#causalidad-y-estadística"><i class="fa fa-check"></i><b>1.5</b> Causalidad y estadística</a></li>
+<li class="chapter" data-level="1.6" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>1.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="1.7" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>1.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html"><i class="fa fa-check"></i><b>2</b> Trabajar con Datos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#qué-son-los-datos"><i class="fa fa-check"></i><b>2.1</b> ¿Qué son los datos?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#datos-cualitativos"><i class="fa fa-check"></i><b>2.1.1</b> Datos Cualitativos</a></li>
+<li class="chapter" data-level="2.1.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#datos-cuantitativos"><i class="fa fa-check"></i><b>2.1.2</b> Datos cuantitativos</a></li>
+<li class="chapter" data-level="2.1.3" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#tipos-de-números"><i class="fa fa-check"></i><b>2.1.3</b> Tipos de números</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#mediciones-discretas-versus-continuas"><i class="fa fa-check"></i><b>2.2</b> Mediciones Discretas versus Continuas</a></li>
+<li class="chapter" data-level="2.3" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#qué-constituye-a-una-buena-medición"><i class="fa fa-check"></i><b>2.3</b> ¿Qué constituye a una buena medición?</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#confiabilidad"><i class="fa fa-check"></i><b>2.3.1</b> Confiabilidad</a></li>
+<li class="chapter" data-level="2.3.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#validez"><i class="fa fa-check"></i><b>2.3.2</b> Validez</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#objetivos-de-aprendizaje-1"><i class="fa fa-check"></i><b>2.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="2.5" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#lecturas-sugeridas-1"><i class="fa fa-check"></i><b>2.5</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="2.6" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>2.6</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#escalas-de-medición"><i class="fa fa-check"></i><b>2.6.1</b> Escalas de medición</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="resumir-datos.html"><a href="resumir-datos.html"><i class="fa fa-check"></i><b>3</b> Resumir datos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="resumir-datos.html"><a href="resumir-datos.html#por-qué-resumir-datos"><i class="fa fa-check"></i><b>3.1</b> ¿Por qué resumir datos?</a></li>
+<li class="chapter" data-level="3.2" data-path="resumir-datos.html"><a href="resumir-datos.html#resumiendo-datos-usando-tablas"><i class="fa fa-check"></i><b>3.2</b> Resumiendo datos usando tablas</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="resumir-datos.html"><a href="resumir-datos.html#frequency-distributions"><i class="fa fa-check"></i><b>3.2.1</b> Distribuciones de frecuencias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="resumir-datos.html"><a href="resumir-datos.html#cumulative-distributions"><i class="fa fa-check"></i><b>3.2.2</b> Distribuciones acumuladas</a></li>
+<li class="chapter" data-level="3.2.3" data-path="resumir-datos.html"><a href="resumir-datos.html#plotting-histograms"><i class="fa fa-check"></i><b>3.2.3</b> Graficar histogramas</a></li>
+<li class="chapter" data-level="3.2.4" data-path="resumir-datos.html"><a href="resumir-datos.html#bins-de-un-histograma"><i class="fa fa-check"></i><b>3.2.4</b> Bins de un histograma</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="resumir-datos.html"><a href="resumir-datos.html#representaciones-idealizadas-de-distribuciones"><i class="fa fa-check"></i><b>3.3</b> Representaciones idealizadas de distribuciones</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="resumir-datos.html"><a href="resumir-datos.html#asimetría-sesgo"><i class="fa fa-check"></i><b>3.3.1</b> Asimetría (sesgo)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="resumir-datos.html"><a href="resumir-datos.html#distribuciones-con-colas-largas"><i class="fa fa-check"></i><b>3.3.2</b> Distribuciones con colas largas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="resumir-datos.html"><a href="resumir-datos.html#objetivos-de-aprendizaje-2"><i class="fa fa-check"></i><b>3.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="3.5" data-path="resumir-datos.html"><a href="resumir-datos.html#lecturas-sugeridas-2"><i class="fa fa-check"></i><b>3.5</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>4</b> Visualización de Datos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-visualization.html"><a href="data-visualization.html#anatomía-de-una-gráfica"><i class="fa fa-check"></i><b>4.1</b> Anatomía de una gráfica</a></li>
+<li class="chapter" data-level="4.2" data-path="data-visualization.html"><a href="data-visualization.html#principios-de-una-buena-visibilización"><i class="fa fa-check"></i><b>4.2</b> Principios de una buena visibilización</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="data-visualization.html"><a href="data-visualization.html#muestra-los-datos-y-haz-que-destaquen"><i class="fa fa-check"></i><b>4.2.1</b> Muestra los datos y haz que destaquen</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-visualization.html"><a href="data-visualization.html#maximizar-la-porporción-datostinta-dataink-ratio"><i class="fa fa-check"></i><b>4.2.2</b> Maximizar la porporción datos/tinta (data/ink ratio)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data-visualization.html"><a href="data-visualization.html#evita-gráficas-basura"><i class="fa fa-check"></i><b>4.2.3</b> Evita gráficas basura</a></li>
+<li class="chapter" data-level="4.2.4" data-path="data-visualization.html"><a href="data-visualization.html#evita-distorsionar-los-datos"><i class="fa fa-check"></i><b>4.2.4</b> Evita distorsionar los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-visualization.html"><a href="data-visualization.html#acomodando-las-limitaciones-humanas"><i class="fa fa-check"></i><b>4.3</b> Acomodando las limitaciones humanas</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-visualization.html"><a href="data-visualization.html#limitaciones-perceptuales"><i class="fa fa-check"></i><b>4.3.1</b> Limitaciones perceptuales</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-visualization.html"><a href="data-visualization.html#corrigiendo-otros-factores"><i class="fa fa-check"></i><b>4.4</b> Corrigiendo otros factores</a></li>
+<li class="chapter" data-level="4.5" data-path="data-visualization.html"><a href="data-visualization.html#objetivos-de-aprendizaje-3"><i class="fa fa-check"></i><b>4.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="4.6" data-path="data-visualization.html"><a href="data-visualization.html#lecturas-y-videos-sugeridos"><i class="fa fa-check"></i><b>4.6</b> Lecturas y videos sugeridos</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fitting-models.html"><a href="fitting-models.html"><i class="fa fa-check"></i><b>5</b> Ajustar modelos a datos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="fitting-models.html"><a href="fitting-models.html#qué-es-un-modelo"><i class="fa fa-check"></i><b>5.1</b> ¿Qué es un modelo?</a></li>
+<li class="chapter" data-level="5.2" data-path="fitting-models.html"><a href="fitting-models.html#modelado-estadístico-un-ejemplo"><i class="fa fa-check"></i><b>5.2</b> Modelado estadístico: Un ejemplo</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="fitting-models.html"><a href="fitting-models.html#mejorando-nuestro-modelo"><i class="fa fa-check"></i><b>5.2.1</b> Mejorando nuestro modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="fitting-models.html"><a href="fitting-models.html#qué-hace-que-un-modelo-sea-bueno"><i class="fa fa-check"></i><b>5.3</b> ¿Qué hace que un modelo sea “bueno”?</a></li>
+<li class="chapter" data-level="5.4" data-path="fitting-models.html"><a href="fitting-models.html#overfitting"><i class="fa fa-check"></i><b>5.4</b> ¿Un modelo puede ser demasiado bueno?</a></li>
+<li class="chapter" data-level="5.5" data-path="fitting-models.html"><a href="fitting-models.html#el-modelo-más-simple-la-media"><i class="fa fa-check"></i><b>5.5</b> El modelo más simple: La media</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="fitting-models.html"><a href="fitting-models.html#la-mediana"><i class="fa fa-check"></i><b>5.5.1</b> La mediana</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="fitting-models.html"><a href="fitting-models.html#la-moda"><i class="fa fa-check"></i><b>5.6</b> La moda</a></li>
+<li class="chapter" data-level="5.7" data-path="fitting-models.html"><a href="fitting-models.html#variabilidad-qué-tan-bien-se-ajusta-la-media-a-los-datos"><i class="fa fa-check"></i><b>5.7</b> Variabilidad: ¿Qué tan bien se ajusta la media a los datos?</a></li>
+<li class="chapter" data-level="5.8" data-path="fitting-models.html"><a href="fitting-models.html#usar-simulaciones-para-entender-la-estadística"><i class="fa fa-check"></i><b>5.8</b> Usar simulaciones para entender la estadística</a></li>
+<li class="chapter" data-level="5.9" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-z"><i class="fa fa-check"></i><b>5.9</b> Puntajes Z</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="fitting-models.html"><a href="fitting-models.html#interpretando-puntajes-z"><i class="fa fa-check"></i><b>5.9.1</b> Interpretando Puntajes Z</a></li>
+<li class="chapter" data-level="5.9.2" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-estandarizados"><i class="fa fa-check"></i><b>5.9.2</b> Puntajes Estandarizados</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="fitting-models.html"><a href="fitting-models.html#objetivos-de-aprendizaje-4"><i class="fa fa-check"></i><b>5.10</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="5.11" data-path="fitting-models.html"><a href="fitting-models.html#apéndice-1"><i class="fa fa-check"></i><b>5.11</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="fitting-models.html"><a href="fitting-models.html#proof-that-the-sum-of-errors-from-the-mean-is-zero"><i class="fa fa-check"></i><b>5.11.1</b> Proof that the sum of errors from the Mean is zero”</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>6</b> Probabilidad</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="probability.html"><a href="probability.html#qué-es-la-probabilidad"><i class="fa fa-check"></i><b>6.1</b> ¿Qué es la probabilidad?</a></li>
+<li class="chapter" data-level="6.2" data-path="probability.html"><a href="probability.html#cómo-determinamos-probabilidades"><i class="fa fa-check"></i><b>6.2</b> ¿Cómo determinamos probabilidades?</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="probability.html"><a href="probability.html#creencia-personal"><i class="fa fa-check"></i><b>6.2.1</b> Creencia personal</a></li>
+<li class="chapter" data-level="6.2.2" data-path="probability.html"><a href="probability.html#empirical-frequency"><i class="fa fa-check"></i><b>6.2.2</b> Frecuencia empírica</a></li>
+<li class="chapter" data-level="6.2.3" data-path="probability.html"><a href="probability.html#probabilidad-clásica"><i class="fa fa-check"></i><b>6.2.3</b> Probabilidad clásica</a></li>
+<li class="chapter" data-level="6.2.4" data-path="probability.html"><a href="probability.html#resolviendo-el-problema-de-de-méré"><i class="fa fa-check"></i><b>6.2.4</b> Resolviendo el problema de de Méré</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="probability.html"><a href="probability.html#distribuciones-de-probabilidad"><i class="fa fa-check"></i><b>6.3</b> Distribuciones de probabilidad</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="probability.html"><a href="probability.html#distribuciones-de-probabilidad-acumuladas"><i class="fa fa-check"></i><b>6.3.1</b> Distribuciones de probabilidad acumuladas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="probability.html"><a href="probability.html#conditional-probability"><i class="fa fa-check"></i><b>6.4</b> Probabilidad condicional</a></li>
+<li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#calcular-probabilidades-condicionales-a-partir-de-los-datos"><i class="fa fa-check"></i><b>6.5</b> Calcular probabilidades condicionales a partir de los datos</a></li>
+<li class="chapter" data-level="6.6" data-path="probability.html"><a href="probability.html#independencia"><i class="fa fa-check"></i><b>6.6</b> Independencia</a></li>
+<li class="chapter" data-level="6.7" data-path="probability.html"><a href="probability.html#bayestheorem"><i class="fa fa-check"></i><b>6.7</b> Invertir una probabilidad condicional: regla de Bayes</a></li>
+<li class="chapter" data-level="6.8" data-path="probability.html"><a href="probability.html#aprender-de-los-datos"><i class="fa fa-check"></i><b>6.8</b> Aprender de los datos</a></li>
+<li class="chapter" data-level="6.9" data-path="probability.html"><a href="probability.html#posibilidades-odds-y-razón-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>6.9</b> Posibilidades (odds) y razón de posibilidades (odds ratios)</a></li>
+<li class="chapter" data-level="6.10" data-path="probability.html"><a href="probability.html#qué-significan-las-probabilidades"><i class="fa fa-check"></i><b>6.10</b> ¿Qué significan las probabilidades?</a></li>
+<li class="chapter" data-level="6.11" data-path="probability.html"><a href="probability.html#objetivos-de-aprendizaje-5"><i class="fa fa-check"></i><b>6.11</b> Objetivos de Aprendizaje</a></li>
+<li class="chapter" data-level="6.12" data-path="probability.html"><a href="probability.html#lecturas-sugeridas-3"><i class="fa fa-check"></i><b>6.12</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="6.13" data-path="probability.html"><a href="probability.html#apéndice-2"><i class="fa fa-check"></i><b>6.13</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="6.13.1" data-path="probability.html"><a href="probability.html#derivación-de-la-regla-de-bayes"><i class="fa fa-check"></i><b>6.13.1</b> Derivación de la regla de Bayes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>7</b> Muestreo</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="sampling.html"><a href="sampling.html#how-do-we-sample"><i class="fa fa-check"></i><b>7.1</b> ¿Cómo hacemos una muestra?</a></li>
+<li class="chapter" data-level="7.2" data-path="sampling.html"><a href="sampling.html#samplingerror"><i class="fa fa-check"></i><b>7.2</b> Error de muestreo</a></li>
+<li class="chapter" data-level="7.3" data-path="sampling.html"><a href="sampling.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>7.3</b> Error estándar de la media</a></li>
+<li class="chapter" data-level="7.4" data-path="sampling.html"><a href="sampling.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>7.4</b> El teorema del límite central</a></li>
+<li class="chapter" data-level="7.5" data-path="sampling.html"><a href="sampling.html#confidence-intervals"><i class="fa fa-check"></i><b>7.5</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="7.6" data-path="sampling.html"><a href="sampling.html#objetivos-de-aprendizaje-6"><i class="fa fa-check"></i><b>7.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="7.7" data-path="sampling.html"><a href="sampling.html#lecturas-sugeridas-4"><i class="fa fa-check"></i><b>7.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html"><i class="fa fa-check"></i><b>8</b> Remuestreo y Simulación</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#simulación-monte-carlo"><i class="fa fa-check"></i><b>8.1</b> Simulación Monte Carlo</a></li>
+<li class="chapter" data-level="8.2" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#aleatoriedad-en-estadística"><i class="fa fa-check"></i><b>8.2</b> Aleatoriedad en Estadística</a></li>
+<li class="chapter" data-level="8.3" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#generando-números-aleatorios"><i class="fa fa-check"></i><b>8.3</b> Generando números aleatorios</a></li>
+<li class="chapter" data-level="8.4" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#utilizando-una-simulación-con-el-método-de-montecarlo"><i class="fa fa-check"></i><b>8.4</b> Utilizando una simulación con el Método de Montecarlo</a></li>
+<li class="chapter" data-level="8.5" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#usando-simulaciones-para-estadística-the-bootstrap"><i class="fa fa-check"></i><b>8.5</b> Usando simulaciones para estadística: The bootstrap</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#calculando-el-bootstrap"><i class="fa fa-check"></i><b>8.5.1</b> Calculando el bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#objetivos-de-aprendizaje-7"><i class="fa fa-check"></i><b>8.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="8.7" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#lecturas-sugeridas-5"><i class="fa fa-check"></i><b>8.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>9</b> Prueba de hipótesis</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#prueba-estadística-de-hipótesis-nula-null-hypothesis-statistical-testing-nhst"><i class="fa fa-check"></i><b>9.1</b> Prueba Estadística de Hipótesis Nula (Null Hypothesis Statistical Testing, NHST)</a></li>
+<li class="chapter" data-level="9.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#prueba-estadística-de-hipótesis-nula-un-ejemplo"><i class="fa fa-check"></i><b>9.2</b> Prueba estadística de hipótesis nula: Un ejemplo</a></li>
+<li class="chapter" data-level="9.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#el-proceso-de-la-prueba-de-hipótesis-nula"><i class="fa fa-check"></i><b>9.3</b> El proceso de la prueba de hipótesis nula</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-1-formular-una-hipótesis-de-interés"><i class="fa fa-check"></i><b>9.3.1</b> Paso 1: Formular una hipótesis de interés</a></li>
+<li class="chapter" data-level="9.3.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-2-especifica-las-hipótesis-nula-y-alternativa"><i class="fa fa-check"></i><b>9.3.2</b> Paso 2: Especifica las hipótesis nula y alternativa</a></li>
+<li class="chapter" data-level="9.3.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-3-recolectar-datos"><i class="fa fa-check"></i><b>9.3.3</b> Paso 3: Recolectar datos</a></li>
+<li class="chapter" data-level="9.3.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-4-ajusta-un-modelo-a-los-datos-y-calcula-el-estadístico-de-prueba"><i class="fa fa-check"></i><b>9.3.4</b> Paso 4: Ajusta un modelo a los datos y calcula el estadístico de prueba</a></li>
+<li class="chapter" data-level="9.3.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-5-determinar-la-probabilidad-de-los-datos-bajo-la-hipótesis-nula"><i class="fa fa-check"></i><b>9.3.5</b> Paso 5: Determinar la probabilidad de los datos bajo la hipótesis nula</a></li>
+<li class="chapter" data-level="9.3.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-6-evalúa-la-significatividad-estadística-del-resultado"><i class="fa fa-check"></i><b>9.3.6</b> Paso 6: Evalúa la “significatividad estadística” del resultado</a></li>
+<li class="chapter" data-level="9.3.7" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#qué-significa-un-resultado-significativo"><i class="fa fa-check"></i><b>9.3.7</b> ¿Qué significa un resultado significativo?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#nhst-en-un-contexto-moderno-pruebas-múltiples"><i class="fa fa-check"></i><b>9.4</b> NHST en un contexto moderno: Pruebas múltiples</a></li>
+<li class="chapter" data-level="9.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#objetivos-de-aprendizaje-8"><i class="fa fa-check"></i><b>9.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="9.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lecturas-sugeridas-6"><i class="fa fa-check"></i><b>9.6</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html"><i class="fa fa-check"></i><b>10</b> Cuantificar efectos y diseñar estudios</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.1</b> Intervalos de confianza</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-usando-la-distribución-normal"><i class="fa fa-check"></i><b>10.1.1</b> Intervalos de confianza usando la distribución normal</a></li>
+<li class="chapter" data-level="10.1.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-utilizando-la-distribución-t"><i class="fa fa-check"></i><b>10.1.2</b> Intervalos de confianza utilizando la distribución t</a></li>
+<li class="chapter" data-level="10.1.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-y-tamaño-de-muestra"><i class="fa fa-check"></i><b>10.1.3</b> Intervalos de confianza y tamaño de muestra</a></li>
+<li class="chapter" data-level="10.1.4" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#calcular-el-intervalo-de-confianza-utilizando-bootstrap"><i class="fa fa-check"></i><b>10.1.4</b> Calcular el intervalo de confianza utilizando “bootstrap”</a></li>
+<li class="chapter" data-level="10.1.5" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#relación-de-los-intervalos-de-confianza-con-la-prueba-de-hipótesis"><i class="fa fa-check"></i><b>10.1.5</b> Relación de los intervalos de confianza con la prueba de hipótesis</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#tamaño-de-efecto-effect-sizes"><i class="fa fa-check"></i><b>10.2</b> Tamaño de efecto (effect sizes)</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#d-de-cohen"><i class="fa fa-check"></i><b>10.2.1</b> D de Cohen</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#r-de-pearson"><i class="fa fa-check"></i><b>10.2.2</b> r de Pearson</a></li>
+<li class="chapter" data-level="10.2.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#razón-de-probabilidades-odds-ratio"><i class="fa fa-check"></i><b>10.2.3</b> Razón de probabilidades (odds ratio)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#statistical-power"><i class="fa fa-check"></i><b>10.3</b> Poder estadístico</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#análisis-de-poder"><i class="fa fa-check"></i><b>10.3.1</b> Análisis de poder</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#objetivos-de-aprendizaje-9"><i class="fa fa-check"></i><b>10.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="10.5" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#lecturas-sugeridas-7"><i class="fa fa-check"></i><b>10.5</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html"><i class="fa fa-check"></i><b>11</b> Estadística Bayesiana</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#modelos-generativos"><i class="fa fa-check"></i><b>11.1</b> Modelos Generativos</a></li>
+<li class="chapter" data-level="11.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#el-teorema-de-bayes-y-la-inferencia-inversa"><i class="fa fa-check"></i><b>11.2</b> El Teorema de Bayes y la Inferencia Inversa</a></li>
+<li class="chapter" data-level="11.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#doing-bayesian-estimation"><i class="fa fa-check"></i><b>11.3</b> Haciendo estimaciones Bayesianas</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#especificar-la-probabilidad-previa"><i class="fa fa-check"></i><b>11.3.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.3.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#recolectar-los-datos"><i class="fa fa-check"></i><b>11.3.2</b> Recolectar los datos</a></li>
+<li class="chapter" data-level="11.3.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad"><i class="fa fa-check"></i><b>11.3.3</b> Calcular la probabilidad</a></li>
+<li class="chapter" data-level="11.3.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-marginal"><i class="fa fa-check"></i><b>11.3.4</b> Calcular la probabilidad marginal</a></li>
+<li class="chapter" data-level="11.3.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.3.5</b> Calcular la probabilidad posterior</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#estimating-posterior-distributions"><i class="fa fa-check"></i><b>11.4</b> Estimar distribuciones posteriores</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#especificar-la-probabilidad-previa-1"><i class="fa fa-check"></i><b>11.4.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.4.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#recolectar-algunos-datos"><i class="fa fa-check"></i><b>11.4.2</b> Recolectar algunos datos</a></li>
+<li class="chapter" data-level="11.4.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-1"><i class="fa fa-check"></i><b>11.4.3</b> Calcular la probabilidad</a></li>
+<li class="chapter" data-level="11.4.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-marginal-1"><i class="fa fa-check"></i><b>11.4.4</b> Calcular la probabilidad marginal</a></li>
+<li class="chapter" data-level="11.4.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calculando-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.4.5</b> Calculando la probabilidad posterior</a></li>
+<li class="chapter" data-level="11.4.6" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#estimación-máxima-a-posteriori-map-por-sus-siglas-en-inglés"><i class="fa fa-check"></i><b>11.4.6</b> Estimación máxima a posteriori (MAP, por sus siglas en inglés)</a></li>
+<li class="chapter" data-level="11.4.7" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#intervalos-de-credibilidad"><i class="fa fa-check"></i><b>11.4.7</b> Intervalos de credibilidad</a></li>
+<li class="chapter" data-level="11.4.8" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#efectos-de-diferentes-probabilidades-previas"><i class="fa fa-check"></i><b>11.4.8</b> Efectos de diferentes probabilidades previas</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#elegir-una-probabilidad-previa"><i class="fa fa-check"></i><b>11.5</b> Elegir una probabilidad previa</a></li>
+<li class="chapter" data-level="11.6" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#prueba-de-hipótesis-bayesiana"><i class="fa fa-check"></i><b>11.6</b> Prueba de hipótesis Bayesiana</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#Bayes-factors"><i class="fa fa-check"></i><b>11.6.1</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="11.6.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#factores-de-bayes-para-hipótesis-estadísticas"><i class="fa fa-check"></i><b>11.6.2</b> Factores de Bayes para hipótesis estadísticas</a></li>
+<li class="chapter" data-level="11.6.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#evaluar-evidencia-a-favor-de-la-hipótesis-nula"><i class="fa fa-check"></i><b>11.6.3</b> Evaluar evidencia a favor de la hipótesis nula</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#objetivos-de-aprendizaje-10"><i class="fa fa-check"></i><b>11.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="11.8" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#suggested-readings"><i class="fa fa-check"></i><b>11.8</b> Suggested readings</a></li>
+<li class="chapter" data-level="11.9" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#apéndice-3"><i class="fa fa-check"></i><b>11.9</b> Apéndice:</a>
+<ul>
+<li class="chapter" data-level="11.9.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#muestreo-de-rechazo"><i class="fa fa-check"></i><b>11.9.1</b> Muestreo de rechazo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html"><i class="fa fa-check"></i><b>12</b> Modelar relaciones categóricas</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#ejemplo-colores-de-dulces"><i class="fa fa-check"></i><b>12.1</b> Ejemplo: Colores de dulces</a></li>
+<li class="chapter" data-level="12.2" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#chi-squared-test"><i class="fa fa-check"></i><b>12.2</b> Prueba Ji-cuadrada de Pearson</a></li>
+<li class="chapter" data-level="12.3" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#two-way-test"><i class="fa fa-check"></i><b>12.3</b> Tablas de contingencia y la prueba de dos vías</a></li>
+<li class="chapter" data-level="12.4" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#residuales-estandarizados"><i class="fa fa-check"></i><b>12.4</b> Residuales estandarizados</a></li>
+<li class="chapter" data-level="12.5" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#razones-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>12.5</b> Razones de posibilidades (odds ratios)</a></li>
+<li class="chapter" data-level="12.6" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#factores-de-bayes"><i class="fa fa-check"></i><b>12.6</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="12.7" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#análisis-categórico-más-allá-de-la-tabla-2-x-2"><i class="fa fa-check"></i><b>12.7</b> Análisis categórico más allá de la tabla 2 X 2</a></li>
+<li class="chapter" data-level="12.8" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#cuídate-de-la-paradoja-de-simpson"><i class="fa fa-check"></i><b>12.8</b> Cuídate de la paradoja de Simpson</a></li>
+<li class="chapter" data-level="12.9" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#objetivos-de-aprendizaje-11"><i class="fa fa-check"></i><b>12.9</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="12.10" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#lecturas-adicionales"><i class="fa fa-check"></i><b>12.10</b> Lecturas adicionales</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html"><i class="fa fa-check"></i><b>13</b> Modelar relaciones continuas</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#un-ejemplo-crímenes-de-odio-y-la-inequidad-de-ingreso"><i class="fa fa-check"></i><b>13.1</b> Un ejemplo: Crímenes de odio y la inequidad de ingreso</a></li>
+<li class="chapter" data-level="13.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#la-inequidad-de-ingreso-está-relacionada-a-los-crímenes-de-odio"><i class="fa fa-check"></i><b>13.2</b> ¿La inequidad de ingreso está relacionada a los crímenes de odio?</a></li>
+<li class="chapter" data-level="13.3" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#covariance-and-correlation"><i class="fa fa-check"></i><b>13.3</b> Covarianza y la correlación</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#prueba-de-hipótesis-para-correlaciones"><i class="fa fa-check"></i><b>13.3.1</b> Prueba de hipótesis para correlaciones</a></li>
+<li class="chapter" data-level="13.3.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#robust-correlations"><i class="fa fa-check"></i><b>13.3.2</b> Correlaciones Robustas</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#correlación-y-causalidad"><i class="fa fa-check"></i><b>13.4</b> Correlación y causalidad</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#gráficas-causales"><i class="fa fa-check"></i><b>13.4.1</b> Gráficas causales</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#objetivos-de-aprendizaje-12"><i class="fa fa-check"></i><b>13.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="13.6" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#lecturas-sugeridas-8"><i class="fa fa-check"></i><b>13.6</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="13.7" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#apéndice-4"><i class="fa fa-check"></i><b>13.7</b> Apéndice:</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#cuantificando-la-inequidad-el-índice-gini"><i class="fa fa-check"></i><b>13.7.1</b> Cuantificando la inequidad: El índice Gini</a></li>
+<li class="chapter" data-level="13.7.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#análisis-de-correlación-bayesiana"><i class="fa fa-check"></i><b>13.7.2</b> Análisis de correlación bayesiana</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html"><i class="fa fa-check"></i><b>14</b> El Modelo Lineal General</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#linear-regression"><i class="fa fa-check"></i><b>14.1</b> Regresión lineal</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#regression-to-the-mean"><i class="fa fa-check"></i><b>14.1.1</b> Regresión a la media</a></li>
+<li class="chapter" data-level="14.1.2" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#la-relación-entre-correlación-y-regresión"><i class="fa fa-check"></i><b>14.1.2</b> La relación entre correlación y regresión</a></li>
+<li class="chapter" data-level="14.1.3" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#errores-estándar-de-los-modelos-de-regresión"><i class="fa fa-check"></i><b>14.1.3</b> Errores estándar de los modelos de regresión</a></li>
+<li class="chapter" data-level="14.1.4" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#pruebas-estadísticas-para-los-parámetros-de-la-regresión"><i class="fa fa-check"></i><b>14.1.4</b> Pruebas estadísticas para los parámetros de la regresión</a></li>
+<li class="chapter" data-level="14.1.5" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#cuantificar-la-bondad-de-adjuste-del-modelo"><i class="fa fa-check"></i><b>14.1.5</b> Cuantificar la bondad de adjuste del modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#ajustar-modelos-más-complejos"><i class="fa fa-check"></i><b>14.2</b> Ajustar modelos más complejos</a></li>
+<li class="chapter" data-level="14.3" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#interacciones-entre-variables"><i class="fa fa-check"></i><b>14.3</b> Interacciones entre variables</a></li>
+<li class="chapter" data-level="14.4" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#más-allá-de-predictores-y-resultados-lineales"><i class="fa fa-check"></i><b>14.4</b> Más allá de predictores y resultados lineales</a></li>
+<li class="chapter" data-level="14.5" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#model-criticism"><i class="fa fa-check"></i><b>14.5</b> Criticar nuestro modelo y revisar suposiciones</a></li>
+<li class="chapter" data-level="14.6" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#qué-significa-realmente-predecir"><i class="fa fa-check"></i><b>14.6</b> ¿Qué significa realmente “predecir”?</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#cross-validation"><i class="fa fa-check"></i><b>14.6.1</b> Validación cruzada (Cross-validation)</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#objetivos-de-aprendizaje-13"><i class="fa fa-check"></i><b>14.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="14.8" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#lecturas-sugeridas-9"><i class="fa fa-check"></i><b>14.8</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="14.9" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#apéndice-5"><i class="fa fa-check"></i><b>14.9</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="14.9.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#estimar-parámetros-de-una-regresión-lineal"><i class="fa fa-check"></i><b>14.9.1</b> Estimar parámetros de una regresión lineal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="comparar-medias.html"><a href="comparar-medias.html"><i class="fa fa-check"></i><b>15</b> Comparar medias</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="comparar-medias.html"><a href="comparar-medias.html#single-mean"><i class="fa fa-check"></i><b>15.1</b> Probar el valor de una media simple</a></li>
+<li class="chapter" data-level="15.2" data-path="comparar-medias.html"><a href="comparar-medias.html#comparing-two-means"><i class="fa fa-check"></i><b>15.2</b> Comparar dos medias</a></li>
+<li class="chapter" data-level="15.3" data-path="comparar-medias.html"><a href="comparar-medias.html#ttest-linear-model"><i class="fa fa-check"></i><b>15.3</b> La prueba t como un modelo lineal</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="comparar-medias.html"><a href="comparar-medias.html#tamaños-de-efecto-para-comparar-dos-medias"><i class="fa fa-check"></i><b>15.3.1</b> Tamaños de efecto para comparar dos medias</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="comparar-medias.html"><a href="comparar-medias.html#factores-de-bayes-para-diferencias-entre-medias"><i class="fa fa-check"></i><b>15.4</b> Factores de Bayes para diferencias entre medias</a></li>
+<li class="chapter" data-level="15.5" data-path="comparar-medias.html"><a href="comparar-medias.html#paired-ttests"><i class="fa fa-check"></i><b>15.5</b> Comparar observaciones pareadas/relacionadas</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="comparar-medias.html"><a href="comparar-medias.html#prueba-de-los-signos"><i class="fa fa-check"></i><b>15.5.1</b> Prueba de los signos</a></li>
+<li class="chapter" data-level="15.5.2" data-path="comparar-medias.html"><a href="comparar-medias.html#prueba-t-para-muestras-relacionadas-paired-t-test"><i class="fa fa-check"></i><b>15.5.2</b> Prueba t para muestras relacionadas (paired t-test)</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="comparar-medias.html"><a href="comparar-medias.html#comparar-más-de-dos-medias"><i class="fa fa-check"></i><b>15.6</b> Comparar más de dos medias</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="comparar-medias.html"><a href="comparar-medias.html#ANOVA"><i class="fa fa-check"></i><b>15.6.1</b> Análisis de varianza</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="comparar-medias.html"><a href="comparar-medias.html#objetivos-de-aprendizaje-14"><i class="fa fa-check"></i><b>15.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="15.8" data-path="comparar-medias.html"><a href="comparar-medias.html#apéndice-6"><i class="fa fa-check"></i><b>15.8</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="15.8.1" data-path="comparar-medias.html"><a href="comparar-medias.html#la-prueba-t-de-muestras-relacionadas-como-un-modelo-lineal"><i class="fa fa-check"></i><b>15.8.1</b> La prueba t de muestras relacionadas como un modelo lineal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="practical-example.html"><a href="practical-example.html"><i class="fa fa-check"></i><b>16</b> Modelación estadística práctica</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="practical-example.html"><a href="practical-example.html#el-proceso-de-modelación-estadística"><i class="fa fa-check"></i><b>16.1</b> El proceso de modelación estadística</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="practical-example.html"><a href="practical-example.html#especificar-nuestra-pregunta-de-interés."><i class="fa fa-check"></i><b>16.1.1</b> 1: Especificar nuestra pregunta de interés.</a></li>
+<li class="chapter" data-level="16.1.2" data-path="practical-example.html"><a href="practical-example.html#identificar-o-recolectar-los-datos-apropiados."><i class="fa fa-check"></i><b>16.1.2</b> 2: Identificar o recolectar los datos apropiados.</a></li>
+<li class="chapter" data-level="16.1.3" data-path="practical-example.html"><a href="practical-example.html#preparar-los-datos-para-el-análisis."><i class="fa fa-check"></i><b>16.1.3</b> 3: Preparar los datos para el análisis.</a></li>
+<li class="chapter" data-level="16.1.4" data-path="practical-example.html"><a href="practical-example.html#determinar-el-modelo-apropiado."><i class="fa fa-check"></i><b>16.1.4</b> 4: Determinar el modelo apropiado.</a></li>
+<li class="chapter" data-level="16.1.5" data-path="practical-example.html"><a href="practical-example.html#ajustar-el-modelo-a-los-datos."><i class="fa fa-check"></i><b>16.1.5</b> 5: Ajustar el modelo a los datos.</a></li>
+<li class="chapter" data-level="16.1.6" data-path="practical-example.html"><a href="practical-example.html#criticar-el-modelo-para-asegurarnos-que-se-ajusta-apropiadamente."><i class="fa fa-check"></i><b>16.1.6</b> 6: Criticar el modelo para asegurarnos que se ajusta apropiadamente.</a></li>
+<li class="chapter" data-level="16.1.7" data-path="practical-example.html"><a href="practical-example.html#probar-hipótesis-y-cuantificar-el-tamaño-del-efecto."><i class="fa fa-check"></i><b>16.1.7</b> 7: Probar hipótesis y cuantificar el tamaño del efecto.</a></li>
+<li class="chapter" data-level="16.1.8" data-path="practical-example.html"><a href="practical-example.html#qué-pasa-con-los-posibles-factores-de-confusión-confounds"><i class="fa fa-check"></i><b>16.1.8</b> ¿Qué pasa con los posibles factores de confusión (confounds)?</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="practical-example.html"><a href="practical-example.html#obtener-ayuda"><i class="fa fa-check"></i><b>16.2</b> Obtener ayuda</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html"><i class="fa fa-check"></i><b>17</b> Hacer investigación reproducible</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-pensamos-que-funciona-la-ciencia"><i class="fa fa-check"></i><b>17.1</b> Cómo pensamos que funciona la ciencia</a></li>
+<li class="chapter" data-level="17.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-realmente-funciona-la-ciencia-a-veces"><i class="fa fa-check"></i><b>17.2</b> Cómo realmente funciona la ciencia (a veces)</a></li>
+<li class="chapter" data-level="17.3" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#la-crisis-de-reproducibilidad-en-la-ciencia"><i class="fa fa-check"></i><b>17.3</b> La crisis de reproducibilidad en la ciencia</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#valor-predictivo-positivo-y-significatividad-estadística"><i class="fa fa-check"></i><b>17.3.1</b> Valor predictivo positivo y significatividad estadística</a></li>
+<li class="chapter" data-level="17.3.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#la-maldición-del-ganador"><i class="fa fa-check"></i><b>17.3.2</b> La maldición del ganador</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#prácticas-cuestionables-de-investigación"><i class="fa fa-check"></i><b>17.4</b> Prácticas cuestionables de investigación</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#esp-o-qrp"><i class="fa fa-check"></i><b>17.4.1</b> ¿ESP o QRP?</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#hacer-investigación-reproducible"><i class="fa fa-check"></i><b>17.5</b> Hacer investigación reproducible</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#pre-registro"><i class="fa fa-check"></i><b>17.5.1</b> Pre-registro</a></li>
+<li class="chapter" data-level="17.5.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#prácticas-reproducibles"><i class="fa fa-check"></i><b>17.5.2</b> Prácticas reproducibles</a></li>
+<li class="chapter" data-level="17.5.3" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#replicación"><i class="fa fa-check"></i><b>17.5.3</b> Replicación</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#hacer-análisis-de-datos-reproducibles"><i class="fa fa-check"></i><b>17.6</b> Hacer análisis de datos reproducibles</a></li>
+<li class="chapter" data-level="17.7" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#conclusión-hacer-mejor-ciencia"><i class="fa fa-check"></i><b>17.7</b> Conclusión: Hacer mejor ciencia</a></li>
+<li class="chapter" data-level="17.8" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#objetivos-de-aprendizaje-15"><i class="fa fa-check"></i><b>17.8</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="17.9" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#lecturas-sugeridas-10"><i class="fa fa-check"></i><b>17.9</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Thinking for the 21st Century</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hypothesis-testing" class="section level1" number="9">
+<h1><span class="header-section-number">Capitulo 9</span> Prueba de hipótesis</h1>
+<!-- In the first chapter we discussed the three major goals of statistics: -->
+<p>En el primer capítulo discutimos los tres grandes objetivos de la estadística:</p>
+<!-- - Describe -->
+<!-- - Decide -->
+<!-- - Predict -->
+<ul>
+<li>Describir</li>
+<li>Decidir</li>
+<li>Predecir</li>
+</ul>
+<!-- In this chapter we will introduce the ideas behind the use of statistics to make decisions -- in particular, decisions about whether a particular hypothesis is supported by the data.  -->
+<p>En este capítulo presentaremos las ideas detrás del uso de la estadística para tomar decisiones – en particular, decisiones acerca de si una hipótesis en particular es apoyada por los datos.</p>
+<!-- ## Null Hypothesis Statistical Testing (NHST) -->
+<div id="prueba-estadística-de-hipótesis-nula-null-hypothesis-statistical-testing-nhst" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Prueba Estadística de Hipótesis Nula (Null Hypothesis Statistical Testing, NHST)</h2>
+<!-- The specific type of hypothesis testing that we will discuss is known (for reasons that will become clear) as *null hypothesis statistical testing* (NHST).  If you pick up almost any scientific or biomedical research publication, you will see NHST being used to test hypotheses, and in their introductory psychology textbook, Gerrig & Zimbardo (2002) referred to NHST as the “backbone of psychological research”.  Thus, learning how to use and interpret the results from hypothesis testing is essential to understand the results from many fields of research. -->
+<p>El tipo específico de prueba de hipótesis que discutiremos es conocido como (por razones que serán claras más adelante) <em>prueba estadística de hipótesis nula</em> (<em>null hypothesis statistical testing</em>, NHST). Si tomaras casi cualquier publicación científica o biomédica, verías la NHST siendo usada para probar hipótesis, y en su libro de texto de introducción a la psicología, Gerrig &amp; Zimbardo (2002) se refirieron a la NHST como el “pilar de la investigación psicológica”. Por lo tanto, aprender cómo usar e interpretar los resultados de la prueba de hipótesis es esencial para entender los resultados de muchos campos de investigación.</p>
+<!-- It is also important for you to know, however, that NHST is deeply flawed, and that many statisticians and researchers (including myself) think that it has been the cause of serious problems in science, which we will discuss in Chapter \@ref(doing-reproducible-research).  For more than 50 years, there have been calls to abandon NHST in favor of other approaches (like those that we will discuss in the following chapters): -->
+<p>También es importante que sepas, sin embargo, que la NHST tiene serias fallas, y muchos estadísticos e investigadores (incluyéndome) piensan que esto ha sido la causa de problemas serios en la ciencia, que discutiremos en el Capítulo <a href="doing-reproducible-research.html#doing-reproducible-research">17</a>. Por más de 50 años, ha habido llamados para abandonar la NHST en favor de otras aproximaciones (como aquellas que discutiremos en los siguientes capítulos):</p>
+<ul>
+<li>“The test of statistical significance in psychological research may be taken as an instance of a kind of essential mindlessness in the conduct of research” (Bakan, 1966)</li>
+<li>Hypothesis testing is “a wrongheaded view about what constitutes scientific progress” (Luce, 1988)</li>
+</ul>
+<!-- NHST is also widely misunderstood, largely because it violates our intuitions about how statistical hypothesis testing should work.  Let's look at an example to see this. -->
+<p>NHST también es ampliamente malentendida, en gran medida porque va contra nuestras intuiciones acerca de cómo debería funcionar una prueba estadística de hipótesis. Veamos un ejemplo para observar esto.</p>
+<!-- ## Null hypothesis statistical testing: An example -->
+</div>
+<div id="prueba-estadística-de-hipótesis-nula-un-ejemplo" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Prueba estadística de hipótesis nula: Un ejemplo</h2>
+<!-- There is great interest in the use of body-worn cameras by police officers, which are thought to reduce the use of force and improve officer behavior.  However, in order to establish this we need experimental evidence, and it has become increasingly common for governments to use randomized controlled trials to test such ideas.  A randomized controlled trial of the effectiveness of body-worn cameras was performed by the Washington, DC government and DC Metropolitan Police Department in 2015/2016 in order to test the hypothesis that body-worn cameras are effective.  Officers were randomly assigned to wear a body-worn camera or not, and their behavior was then tracked over time to determine whether the cameras resulted in less use of force and fewer civilian complaints about officer behavior.   -->
+<p>Hay un gran interés en el uso de cámaras llevadas en el cuerpo por oficiales de policía, que se piensa que reducen el uso de la fuerza y mejoran el comportamiento del oficial. Sin embargo, para poder establecer esto necesitamos evidencia experimental, y se ha vuelto cada vez más común que los gobiernos usen ensayos controlados aleatorizados (randomized control trials) para probar este tipo de ideas. Un ensayo controlado aleatorizado de la efectividad del uso de cámaras en el cuerpo fue realizado por el gobierno de Washington, DC, y el DC Metropolitan Police Department en 2015/2016 para probar la hipótesis de si las cámaras llevadas en el cuerpo son efectivas. Los oficiales fueron asignados de manera aleatoria a usar cámaras en el cuerpo o no, y su comportamiento fue seguido por un tiempo para determinar si las cámaras resultaron en menor uso de la fuerza y menos quejas de civiles acerca del comportamiento del oficial.</p>
+<!-- Before we get to the results, let's ask how you would think the statistical analysis might work. Let's say we want to specifically test the hypothesis of whether the use of force is decreased by the wearing of cameras. The randomized controlled trial provides us with the data to test the hypothesis -- namely, the rates of use of force by officers assigned to either the camera or control groups.  The next obvious step is to look at the data and determine whether they provide convincing evidence for or against this hypothesis.  That is: What is the likelihood that body-worn cameras reduce the use of force, given the data and everything else we know? -->
+<p>Antes de que lleguemos a los resultados, preguntémonos cómo piensas que el análisis estadístico debería funcionar. Digamos que queremos específicamente probar la hipótesis de si el uso de la fuerza disminuye por el uso de las cámaras. El ensayo controlado aleatorizado nos provee con los datos para probar la hipótesis – concretamente, la frecuencia de uso de la fuerza por oficiales asignados ya sea al grupo de cámara o al grupo control. El siguiente paso obvio es mirar los datos y determinar si proveen evidencia convincente a favor o en contra de esta hipótesis. Esto es: ¿Cuál es la probabilidad de que las cámaras usadas en el cuerpo reduzcan el uso de la fuerza, dados los datos y todo lo demás que sabemos?</p>
+<!-- It turns out that this is *not* how null hypothesis testing works.  Instead, we first take our hypothesis of interest (i.e. that body-worn cameras reduce use of force), and flip it on its head, creating a *null hypothesis* -- in this case, the null hypothesis would be that cameras do not reduce use of force.  Importantly, we then assume that the null hypothesis is true. We then look at the data, and determine how likely the data would be if the null hypothesis were true. If the the data are sufficiently unlikely under the null hypothesis that we can reject the null in favor of the *alternative hypothesis* which is our hypothesis of interest.  If there is not sufficient evidence to reject the null, then we say that we "failed to reject" the null, and we stick with our initial assumption that the null is true. -->
+<p>Resulta que esta <em>no</em> es la manera en que funciona la prueba de hipótesis nula. En su lugar, primero tomamos nuestra hipótesis de interés (i.e. que las cámaras usadas en el cuerpo reducen el uso de la fuerza), y la volteamos de cabeza, creando una <em>hipótesis nula</em> – en este caso, la hipótesis nula sería que las cámaras no reducen el uso de la fuerza. De manera importante, luego de esto asumimos que la hipótesis nula es verdadera. Después miramos los datos, y determinamos qué tan probable serían estos datos si la hipótesis nula fuera cierta. Si los datos son los suficientemente improbables bajo la hipótesis nula, entonces podemos rechazar la nula en favor de la <em>hipótesis alternativa</em> que es nuestra hipótesis de interés. Si no hay suficiente evidencia para rechazar la nula, entonces decimos que “fallamos en rechazar” la nula, y nos quedamos con nuestra suposición inicial de que la nula es cierta.</p>
+<!-- Understanding some of the concepts of NHST, particularly the notorious "p-value", is invariably challenging the first time one encounters them, because they are so counter-intuitive. As we will see later, there are other approaches that provide a much more intuitive way to address hypothesis testing (but have their own complexities). However, before we get to those, it's important for you to have a deep understanding of how hypothesis testing works, because it's clearly not going to go away any time soon. -->
+<p>El entender algunos de los conceptos de NHST, particularmente el notable “valor p”, es invariablemente desafiante la primera vez que uno se encuentra con ellos, porque son tan contra-intuitivos. Como veremos después, existen otras aproximaciones que proveen maneras más intuitivas para abordar la prueba de hipótesis (pero tienen sus propias complejidades). Sin embargo, antes de que lleguemos a esas, es importante que tengas una comprensión profunda de cómo funciona la prueba de hipótesis, porque claramente no se irá a ningún lado pronto.</p>
+<!-- ## The process of null hypothesis testing -->
+</div>
+<div id="el-proceso-de-la-prueba-de-hipótesis-nula" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> El proceso de la prueba de hipótesis nula</h2>
+<!-- We can break the process of null hypothesis testing down into a number of steps: -->
+<p>Podemos descomponer el proceso de la prueba de hipótesis nula en un número de pasos:</p>
+<!-- 1. Formulate a hypothesis that embodies our prediction (*before seeing the data*) -->
+<ol style="list-style-type: decimal">
+<li>Formula una hipótesis que represente nuestra predicción (<em>antes de ver los datos</em>).
+<!-- 2. Specify null and alternative hypotheses --></li>
+<li>Especifica las hipótesis nula y alternativa.
+<!-- 3. Collect some data relevant to the hypothesis --></li>
+<li>Recolecta datos relevantes para la hipótesis.
+<!-- 4. Fit a model to the data that represents the alternative hypothesis and compute a test statistic --></li>
+<li>Ajusta el modelo a los datos que representen la hipótesis laternativa y calcula un estadístico de prueba.
+<!-- 5. Compute the probability of the observed value of that statistic assuming that the null hypothesis is true --></li>
+<li>Calcula la probabilidad del valor observado de ese estadístico asumiendo que la hipótesis nula es verdadera.
+<!-- 5. Assess the “statistical significance” of the result --></li>
+<li>Evalúa la “significatividad estadística” del resultado.</li>
+</ol>
+<!-- For a hands-on example, let's use the NHANES data to ask the following question: Is physical activity related to body mass index?  In the NHANES dataset, participants were asked whether they engage regularly in moderate or vigorous-intensity sports, fitness or recreational activities (stored in the variable $PhysActive$). The researchers also measured height and weight and used them to compute the *Body Mass Index* (BMI): -->
+<p>Para un ejemplo práctico, usemos la base de datos NHANES para hacernos la siguiente pregunta: ¿La actividad física está relacionada con el índice de masa corporal? En NHANES, los participantes respondieron si se involucran regularmente en deportes moderados o de intensidad vigorosa, fitness, o actividades recreativas (guardado en la variable <span class="math inline">\(PhysActive\)</span>). Los investigadores también midieron la altura y el peso y los usaron para calcular el <em>Índice de Masa Corporal</em> (IMC, o BMI por el término en inglés <em>Body Mass Index</em>):</p>
+<p><span class="math display">\[
+BMI = \frac{weight(kg)}{height(m)^2}
+\]</span></p>
+<!-- ### Step 1: Formulate a hypothesis of interest -->
+<div id="paso-1-formular-una-hipótesis-de-interés" class="section level3" number="9.3.1">
+<h3><span class="header-section-number">9.3.1</span> Paso 1: Formular una hipótesis de interés</h3>
+<!-- We hypothesize that BMI is greater for people who do not engage in physical activity, compared to those who do.  -->
+<p>Hipotetizamos que el IMC es mayor en las personas que no se involucran en actividades físicas, comparado con aquellas que sí lo hacen.</p>
+<!-- ### Step 2: Specify the null and alternative hypotheses -->
+</div>
+<div id="paso-2-especifica-las-hipótesis-nula-y-alternativa" class="section level3" number="9.3.2">
+<h3><span class="header-section-number">9.3.2</span> Paso 2: Especifica las hipótesis nula y alternativa</h3>
+<!-- For step 2, we need to specify our null hypothesis (which we call $H_0$) and our alternative hypothesis (which we call $H_A$).  $H_0$ is the baseline against which we test our hypothesis of interest: that is, what would we expect the data to look like if there was no effect?  The null hypothesis always involves some kind of equality (=, $\le$, or $\ge$).  $H_A$ describes what we expect if there actually is an effect.  The alternative hypothesis always involves some kind of inequality ($\ne$, >, or <).  Importantly, null hypothesis testing operates under the assumption that the null hypothesis is true unless the evidence shows otherwise. -->
+<p>Para el paso 2, necesitamos especificar nuestra hipótesis nula (que llamaremos <span class="math inline">\(H_0\)</span>) y nuestra hipótesis alternativa (que llamaremos <span class="math inline">\(H_A\)</span>). <span class="math inline">\(H_0\)</span> es la línea base contra la que probamos nuestra hipótesis de interés: esto es, ¿cómo esperaríamos que se vieran los datos si no hubiera un efecto? La hipótesis nula siempre involucra algún tipo de igualdad (=, <span class="math inline">\(\le\)</span>, o <span class="math inline">\(\ge\)</span>). <span class="math inline">\(H_A\)</span> describe lo que esperaríamos si realmente hubiera un efecto. La hipótesis alternativa siempre involucra algún tipo de diferencia/desigualdad (<span class="math inline">\(\ne\)</span>, &gt;, o &lt;). De manera importante, la prueba de hipótesis nula opera bajo la suposición de que la hipótesis nula es verdadera a menos que la evidencia demuestre lo contrario.</p>
+<!-- We also have to decide whether we want to test a *directional* or *non-directional* hypotheses.  A non-directional hypothesis simply predicts that there will be a difference, without predicting which direction it will go.  For the BMI/activity example, a non-directional null hypothesis would be: -->
+<p>También tenemos que decidir si queremos probar una hipótesis <em>direccional</em> o <em>no direccional</em>. Una hipótesis no direccional simplemente predice que habrá una diferencia, sin predecir en qué dirección irá. Para el ejemplo de IMC/actividad, una hipótesis nula no direccional sería:</p>
+<p><span class="math inline">\(H0: BMI_{active} = BMI_{inactive}\)</span></p>
+<!-- and the corresponding non-directional alternative hypothesis would be: -->
+<p>y la correspondiente hipótesis alternativa no direccional sería:</p>
+<p><span class="math inline">\(HA: BMI_{active} \neq BMI_{inactive}\)</span></p>
+<!-- A directional hypothesis, on the other hand, predicts which direction the difference would go.  For example, we have strong prior knowledge to predict that people who engage in physical activity should weigh less than those who do not, so we would propose the following directional null hypothesis: -->
+<p>Una hipótesis direccional, por otro lado, predice en qué dirección irá la diferencia. Por ejemplo, tenemos conocimiento previo fuerte para predecir que la gente que se involucre en actividad física debería pesar menos que aquellos que no lo hacen, por lo tanto podríamos proponer la siguiente hipótesis nula direccional:</p>
+<p><span class="math inline">\(H0: BMI_{active} \ge BMI_{inactive}\)</span></p>
+<!-- and directional alternative: -->
+<p>y la alternativa direccional:</p>
+<p><span class="math inline">\(HA: BMI_{active} &lt; BMI_{inactive}\)</span></p>
+<!-- As we will see later, testing a non-directional hypothesis is more conservative, so this is generally to be preferred unless there is a strong *a priori* reason to hypothesize an effect in a particular direction.  Hypotheses, including whether they are directional or not, should always be specified prior to looking at the data! -->
+<p>Como veremos más tarde, probar una hipótesis no direccional es más conservador, por lo que esto es lo que generalmente se prefiere a menos que haya alguna razón fuerte <em>a priori</em> para hipotetizar un efecto en una dirección en particular. ¡Las hipótesis, incluyen si son direccionales o no, siempre deberán ser especificadas antes de ver los datos!</p>
+<!-- ### Step 3: Collect some data -->
+</div>
+<div id="paso-3-recolectar-datos" class="section level3" number="9.3.3">
+<h3><span class="header-section-number">9.3.3</span> Paso 3: Recolectar datos</h3>
+<!-- In this case, we will sample 250 individuals from the NHANES dataset.  Figure \@ref(fig:bmiSample) shows an example of such a sample, with BMI shown separately for active and inactive individuals. -->
+<p>En este caso, seleccionaremos una muestra de 250 individuos de la base de datos NHANES. La Figura <a href="hypothesis-testing.html#fig:bmiSample">9.1</a> muestra un ejemplo de esa muestra, con el IMC mostrado separando los individuos activos e inactivos.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-39">Tabla 9.1: </span>Resumen de datos de IMC para individuos activos vs inactivos</caption>
+<thead>
+<tr class="header">
+<th align="left">PhysActive</th>
+<th align="right">N</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">No</td>
+<td align="right">131</td>
+<td align="right">30</td>
+<td align="right">9.0</td>
+</tr>
+<tr class="even">
+<td align="left">Yes</td>
+<td align="right">119</td>
+<td align="right">27</td>
+<td align="right">5.2</td>
+</tr>
+</tbody>
+</table>
+<!-- Box plot of BMI data from a sample of adults from the NHANES dataset, split by whether they reported engaging in regular physical activity. -->
+<div class="figure"><span id="fig:bmiSample"></span>
+<img src="StatsThinking21_files/figure-html/bmiSample-1.png" alt="Gráfica de caja (boxplot) de los datos de IMC de una muestra de adultos de NHANES, divididos según reportaron involucrarse en actividad física regular." width="384" height="50%" />
+<p class="caption">
+Figura 9.1: Gráfica de caja (boxplot) de los datos de IMC de una muestra de adultos de NHANES, divididos según reportaron involucrarse en actividad física regular.
+</p>
+</div>
+<!-- ### Step 4: Fit a model to the data and compute a test statistic -->
+</div>
+<div id="paso-4-ajusta-un-modelo-a-los-datos-y-calcula-el-estadístico-de-prueba" class="section level3" number="9.3.4">
+<h3><span class="header-section-number">9.3.4</span> Paso 4: Ajusta un modelo a los datos y calcula el estadístico de prueba</h3>
+<!-- We next want to use the data to compute a statistic that will ultimately let us decide whether the null hypothesis is rejected or not.  To do this, the model needs to quantify the amount of evidence in favor of the alternative hypothesis, relative to the variability in the data. Thus we can think of the test statistic as providing a measure of the size of the effect compared to the variability in the data.  In general, this test statistic will have a probability distribution associated with it, because that allows us to determine how likely our observed value of the statistic is under the null hypothesis.   -->
+<p>Después queremos usar los datos para calcular un estadístico que ultimadamente nos permitirá decidir si la hipótesis nula es rechazada o no. Para hacer esot, el modelo necesita cuantificar la cantidad de evidencia en favor de la hipótesis alternativa, relativa a la variabilidad en los datos. Por lo que podemos pensar en el estadístico de prueba como el que provee una medida del tamaño del efecto comparado con la variabilidad en los datos. En general, este estadístico de prueba tendrá una distribución de probabilidad asociada con él, porque eso nos permitirá determinar qué tan probable es nuestro valor estadístico observado bajo la hipótesis nula.</p>
+<!-- For the BMI example, we need a test statistic that allows us to test for a difference between two means, since the hypotheses are stated in terms of mean BMI for each group.  One statistic that is often used to compare two means is the *t* statistic, first developed by the statistician William Sealy Gossett, who worked for the Guiness Brewery in Dublin and wrote under the pen name "Student" - hence, it is often called "Student's*t* statistic".  The *t* statistic is appropriate for comparing the means of two groups when the sample sizes are relatively small and the population standard deviation is unknown.  The *t* statistic for comparison of two independent groups is computed as: -->
+<p>Para el ejemplo de IMC, necesitamos un estadístico de prueba que nos permita probar si hay una diferencia entre dos medias, puesto que las hipótesis están elaboradas en términos de la media de IMC en cada grupo. Un estadístico que es frecuentemente usado para comparar dos medias es el estadístico <em>t</em>, desarrollado primero por el estadístico William Sealy Gossett, quien trabajó para la Guiness Brewery en Dublín y escribió bajo el pseudónimo “Student” - por eso, es frecuentemente llamada “estadístico <em>t</em> de Student”. El estadístico <em>t</em> es apropiado para comparar las medias de dos grupos cuando los tamaños de muestra son relativamente pequeños y la desviación estándar de la población es desconocida. El estadístico <em>t</em> para comparar dos grupos independientes es calculado de la siguiente manera:</p>
+<p><span class="math display">\[
+t = \frac{\bar{X_1} - \bar{X_2}}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}}}
+\]</span></p>
+<!-- where $\bar{X}_1$ and $\bar{X}_2$ are the means of the two groups, $S^2_1$ and $S^2_2$ are the estimated variances of the groups, and $n_1$ and $n_2$ are the sizes of the two groups.  Note that the denominator is basically an average of the standard error of the mean for the two samples.  Thus, one can view the the *t* statistic as a way of quantifying how large the difference between groups is in relation to the sampling variability of the means that are being compared. -->
+<p>donde <span class="math inline">\(\bar{X}_1\)</span> y <span class="math inline">\(\bar{X}_2\)</span> son las medias de los dos grupos, <span class="math inline">\(S^2_1\)</span> y <span class="math inline">\(S^2_2\)</span> son las varianzas estimadas de los grupos, y <span class="math inline">\(n_1\)</span> y <span class="math inline">\(n_2\)</span> son los tamaños de cada grupo. Nota que el denominador es básicamente un promedio del error estándar de la media de las dos muestras. Por lo tanto, uno puede ver al estadístico <em>t</em> como una manera de cuantificar qué tan grande es la diferencia entre grupos en relación con la variabilidad muestral de las medias que están siendo comparadas.</p>
+<!-- The *t* statistic is distributed according to a probability distribution known as a *t* distribution.  The *t* distribution looks quite similar to a normal distribution, but it differs depending on the number of degrees of freedom, which for this example is the number of observations minus 2, since we have computed two means and thus given up two degrees of freedom.  When the degrees of freedom are large (say 1000), then the *t* distribution looks essentially like the normal distribution, but when they are small then the *t* distribution has longer tails than the normal (see Figure \@ref(fig:tVersusNormal)). -->
+<p>El estadístico <em>t</em> se distribuye de acuerdo a una distribución de probabilidad conocida como distribución <em>t</em>. La distribución <em>t</em> se mira muy similar a una distribución normal, pero difiere dependiendo del número de grados de libertad (degrees of freedom), que para nuestro ejemplo es el número de observaciones menos 2, porque hemos calculado dos medias y por lo tanto hemos renunciado a dos grados de libertad. Cuando la cantidad de grados de libertad es grande (digamos 1,000), entonces la distribución <em>t</em> se mira esencialmente como una distribución normal, pero cuando es pequeña entonces la distribución <em>t</em> tiene colas más largas que la normal (ve la Figura <a href="hypothesis-testing.html#fig:tVersusNormal">9.2</a>).</p>
+<!-- Each panel shows the t distribution (in blue dashed line) overlaid on the normal distribution (in solid red line).  The left panel shows a t distribution with 4 degrees of freedom, in which case the distribution is similar but has slightly wider tails.  The right panel shows a t distribution with 1000 degrees of freedom, in which case it is virtually identical to the normal. -->
+<div class="figure"><span id="fig:tVersusNormal"></span>
+<img src="StatsThinking21_files/figure-html/tVersusNormal-1.png" alt="Cada panel muestra la distribución t (la línea azul punteada) sobrepuesta a la distribución normal (la línea roja continua). El panel izquierdo muestra una distribución t con 4 grados de libertad, en cuyo caso la distribución es similar pero tiene colas ligeramente más anchas. El panel derecho muestra una distribución t con 1000 grados de libertad, en cuyo caso es virtualmente idéntica a la normal." width="768" height="50%" />
+<p class="caption">
+Figura 9.2: Cada panel muestra la distribución t (la línea azul punteada) sobrepuesta a la distribución normal (la línea roja continua). El panel izquierdo muestra una distribución t con 4 grados de libertad, en cuyo caso la distribución es similar pero tiene colas ligeramente más anchas. El panel derecho muestra una distribución t con 1000 grados de libertad, en cuyo caso es virtualmente idéntica a la normal.
+</p>
+</div>
+<!-- ### Step 5: Determine the probability of the data under the null hypothesis -->
+</div>
+<div id="paso-5-determinar-la-probabilidad-de-los-datos-bajo-la-hipótesis-nula" class="section level3" number="9.3.5">
+<h3><span class="header-section-number">9.3.5</span> Paso 5: Determinar la probabilidad de los datos bajo la hipótesis nula</h3>
+<!-- This is the step where NHST starts to violate our intuition -- rather than determining the likelihood that the null hypothesis is true given the data, we instead determine the likelihood of the data under the null hypothesis - because we started out by assuming that the null hypothesis is true!  To do this, we need to know the probability distribution for the statistic under the null hypothesis, so that we can ask how likely the data are under that distribution. We can obtain this "null distribution" either using a theoretical distribution (like the *t* distribution), or using randomization. Before we move to our BMI example, let's start with some simpler examples.  -->
+<p>Este es el paso donde la NHST comienza a ir contra nuestra intuición – en lugar de determinar la probabilidad de que la hipótesis nula sea cierta dados los datos obtenidos, en su lugar determinamos la probabilidad de los datos bajo la hipótesis nula - ¡porque comenzamos los pasos asumiendo que la hipótesis nula es verdadera! Para hacer esto, necesitamos conocer la distribución de probabilidad del estadístico bajo la hipótesis nula, de tal manera que podamos preguntar qué tan probables son los datos bajo esa distribución. Podemos obtener esta “distribución nula” ya sea usando una distribución teórica (como la distribución <em>t</em>), o usando aleatorización. Antes de movernos al ejemplo de IMC, comencemos con unos ejemplos más sencillos.</p>
+<!-- #### Randomization: A very simple example {#randomization-very-simple} -->
+<div id="randomization-very-simple" class="section level4" number="9.3.5.1">
+<h4><span class="header-section-number">9.3.5.1</span> Aleatorización: Un ejemplo muy sencillo</h4>
+<!-- Let's say that we wish to determine whether a coin is fair.  To collect data, we flip the coin 100 times, and let's say we count 70 heads.  In this example, $H_0: P(heads)=0.5$ and $H_A: P(heads) \neq 0.5$, and our test statistic is simply the number of heads that we counted.  The question that we then want to ask is: How likely is it that we would observe 70 heads in 100 coin flips if the true probability of heads is 0.5?  We can imagine that this might happen very occasionally just by chance, but doesn't seem very likely. To quantify this probability, we can use the *binomial distribution*: -->
+<p>Digamos que queremos determinar si una moneda está balanceada (que no esté trucada). Para recolectar datos, lanzamos la moneda 100 veces, y digamos que contamos 70 caras. En este ejemplo, <span class="math inline">\(H_0: P(cara)=0.5\)</span> y <span class="math inline">\(H_A: P(cara) \neq 0.5\)</span>, y nuestro estadístico de prueba es simplemente el número de caras que contamos. La pregunta que entonces queremos hacernos es: ¿Qué tan probable es que hubiéramos observado 70 caras en 100 lanzamientos de moneda si la probabilidad verdadera de obtener cara es 0.5? Podríamos imaginar que esto podría suceder muy ocasionalmente sólo por azar, pero no parece muy probable. Para cuantificar esta probabilidad, podemos usar la <em>distribución binomial</em>:</p>
+<p><span class="math display">\[
+P(X \le k) = \sum_{i=0}^k \binom{N}{k} p^i (1-p)^{(n-i)}
+\]</span>
+<!-- This equation will tell us the probability of a certain number of heads or fewer, given a particular probability of heads and number of events  However, what we really want to know is the probability of a certain number or more, which we can obtain by subtracting from one, based on the rules of probability: -->
+Esta ecuación nos dirá la probabilidad de tener un cierto número de caras o menos, dada una probabilidad en particular de obtener cara y un número de eventos. Sin embargo, lo que realmente queremos saber es la probabilidad de un cierto número o más, que podemos obtener restando el resultado de uno, basados en las reglas de probabilidad:</p>
+<p><span class="math display">\[
+P(X \ge k) = 1 - P(X &lt; k)
+\]</span></p>
+<!-- Distribution of numbers of heads (out of 100 flips) across 100,000 simulated runs with the observed value of 70 flips represented by the vertical line. -->
+<div class="figure"><span id="fig:coinFlips"></span>
+<img src="StatsThinking21_files/figure-html/coinFlips-1.png" alt="Distribución de cantidad de caras (de un total de 100 lanzamientos) a lo largo de 100,000 simulaciones  con el valor de 70 representado por la línea vertical." width="384" height="50%" />
+<p class="caption">
+Figura 9.3: Distribución de cantidad de caras (de un total de 100 lanzamientos) a lo largo de 100,000 simulaciones con el valor de 70 representado por la línea vertical.
+</p>
+</div>
+<!-- Using the binomial distribution, the probability of 69 or fewer heads given P(heads)=0.5 is 0.999961, so the probability of 70 or more heads is simply one minus that value (0.000039). -->
+<p>Usando la distribución binomial, la probabilidad de 69 o menos caras dado P(cara)=0.5 es 0.999961, por lo tanto la probabilidad de 70 o más caras es simplemente uno menos ese valor (0.000039).
+<!-- This computation shows us that the likelihood of getting 70 heads if the coin is indeed fair is very small.   -->
+Este cálculo nos muestra que la probabilidad de obtener 70 caras si la moneda efectivamente estuviera balanceada (no trucada) es muy pequeña.</p>
+<!-- Now, what if we didn't have a standard function to tell us the probability of that number of heads?  We could instead determine it by simulation -- we repeatedly flip a coin 100 times using a true probability of 0.5, and then compute the distribution of the number of heads across those simulation runs.  Figure \@ref(fig:coinFlips) shows the result from this simulation. Here we can see that the probability computed via simulation (0.000030) is very close to the theoretical probability (.00004).  -->
+<p>Ahora, ¿qué pasaría si no tuviéramos una función estándar que nos dijera la probabilidad de ese número de caras? Entonces podríamos determinarla por medio de una simulación – repetidamente lanzar la moneda 100 veces usando una probabilidad verdadera de 0.5, y luego calcular la distribución del número de caras a lo largo de estas simulaciones. La Figura <a href="hypothesis-testing.html#fig:coinFlips">9.3</a> muestra el resultado de esta simulación. Aquí podemos ver que la probabilidad calculada a través de simulación (0.000030) es muy cercana a la probabilidad teórica (.00004).</p>
+<!-- Let's do the analogous computation for our BMI example. First we compute the *t* statistic using the values from our sample that we calculated above, where we find that t = 3.86. The question that we then want to ask is: What is the likelihood that we would find a *t* statistic of this size, if the true difference between groups is zero or less (i.e. the directional null hypothesis)?  -->
+<p>Hagamos el cálculo análogo para nuestro ejemplo de IMC/actividad. Primero, calculamos el estadístico <em>t</em> usando los valores de nuestra muestra que calculamos arriba, donde encontramos que t = 3.86. La pregunta que entonces queremos hacernos es: ¿Cuál es la probabilidad de que encontráramos un estadístico <em>t</em> de este tamaño, si la diferencia verdadera entre grupos fuera cero o menor (i.e. la dirección de la hipótesis nula)?</p>
+<!-- We can use the *t* distribution to determine this probability. Our sample size is 250, so the appropriate *t* distribution has 248 degrees of freedom because we lose one for each of the two means that we computed.  We can use a function from our statistical software to determine the probability of finding a value of the *t* statistic greater than or equal to our observed value. We find that p(t > 3.86, df = 248) = 0.000072, which tells us that our observed *t* statistic value of 3.86 is relatively unlikely if the null hypothesis really is true. -->
+<p>Podemos usar la distribución <em>t</em> para determinar esta probabilidad. Nuestro tamaño de muestra es 250, por lo que la distribución <em>t</em> apropiada tiene 248 grados de libertad porque perdemos un grado de libertad por cada una de las dos medias que calculamos. Podemos usar una función de nuestro software estadístico para determinar la probabilidad de encontrar un valor del estadístico <em>t</em> mayor o igual al observado en nuestra muestra. Encontramos que p(t &gt; 3.86, df = 248) = 0.000072, que nos dice que el valor estadístico <em>t</em> observado de 3.86 es relativamente improbable si la hipótesis nula realmente fuera cierta.</p>
+<!-- In this case, we used a directional hypothesis, so we only had to look at one end of the null distribution. If we wanted to test a non-directional hypothesis, then we would need to be able to identify how unexpected the size of the effect is, regardless of its direction.  In the context of the t-test, this means that we need to know how likely it is that the statistic would be as extreme in either the positive or negative direction.  To do this, we multiply the observed *t* value by -1, since the *t* distribution is centered around zero, and then add together the two tail probabilities to get a *two-tailed* p-value: p(t > 3.86 or t< -3.86, df = 248) = 0.000144. Here we see that the p value for the two-tailed test is twice as large as that for the one-tailed test, which reflects the fact that an extreme value is less surprising since it could have occurred in either direction. -->
+<p>En este caso, usamos una hipótesis direccional, por eso sólo tuvimos que observar un lado de la distribución nula. Si hubiéramos querido probar una hipótesis no direccional, entonces tendríamos que haber identificado qué tan inesperado es el tamaño del efecto, sin importar la dirección. En el contexto de la prueba t, eso significa que debemos saber qué tan probable es que el estadístico fuera tan extremo tanto en la dirección positiva como en la negativa. Para hacer esto, multiplicamos el valor <em>t</em> observado por -1, porque la distribución <em>t</em> está centrada alrededor de cero, y luego sumamos juntas las probabilidades de ambas colas para obtener un valor p de <em>dos colas</em> (<em>two-tailed</em>): p(t &gt; 3.86 or t&lt; -3.86, df = 248) = 0.000144. Aquí vemos que el valor p para la prueba de dos colas es el doble que para la prueba de una cola, esto refleja el hecho de que un valor extremo es menos sorpresivo porque podría haber ocurrido en cualquier dirección.</p>
+<!-- How do you choose whether to use a one-tailed versus a two-tailed test?  The two-tailed test is always going to be more conservative, so it's always a good bet to use that one, unless you had a very strong prior reason for using a one-tailed test. In that case, you should have written down the hypothesis before you ever looked at the data. In Chapter \@ref(doing-reproducible-research) we will discuss the idea of pre-registration of hypotheses, which formalizes the idea of writing down your hypotheses before you ever see the actual data.  You should *never* make a decision about how to perform a hypothesis test once you have looked at the data, as this can introduce serious bias into the results. -->
+<p>¿Cómo eliges si usar una prueba de una cola o de dos colas? La prueba de dos colas siempre será más conservadora, por lo que es una buena apuesta usar esa, a menos que ya tuvieras de antemano una razón fuerte previa para usar una prueba de una cola. En ese caso, tendrías que haber escrito la hipótesis antes de haber visto los datos. En el Capítulo <a href="doing-reproducible-research.html#doing-reproducible-research">17</a> discutiremos la idea del pre-registro de hipótesis, que formaliza la idea de escribir tus hipótesis antes de siquiera haber visto los datos reales. <em>Nunca</em> deberías tomar una decisión acerca de cómo elaborar la hipótesis después de haber visto los datos, porque esto puede introducir sesgos serios en tus resultados.</p>
+<!-- #### Computing p-values using randomization -->
+</div>
+<div id="calcular-valores-p-usando-aleatorización" class="section level4" number="9.3.5.2">
+<h4><span class="header-section-number">9.3.5.2</span> Calcular valores p usando aleatorización</h4>
+<!-- So far we have seen how we can use the t-distribution to compute the probability of the data under the null hypothesis, but we can also do this using simulation. The basic idea is that we generate simulated data like those that we would expect under the null hypothesis, and then ask how extreme the observed data are in comparison to those simulated data.  The key question is: How can we generate data for which the null hypothesis is true?  The general answer is that we can randomly rearrange the data in a particular way that makes the data look like they would if the null was really true.  This is similar to the idea of bootstrapping, in the sense that it uses our own data to come up with an answer, but it does it in a different way. -->
+<p>Hasta ahora, hemos visto cómo podemos usar la distribución t para calcular la probabilidad de los datos bajo la hipótesis nula, pero también podemos hacer esto usando simulaciones. La idea básica es que generemos datos simulados similares a los que esperaríamos bajo la hipótesis nula, y luego preguntarnos qué tan extremo es el dato observado en comparación con esos datos simulados. La pregunta clave es: ¿Cómo podemos generar datos para los cuales la hipótesis nula es verdadera? La respuesta general es que podemos reordenar nuestros datos de manera aleatoria en una manera particular que haga que los datos se vean como se deberían ver si la nula fuera realmente verdadera. Esto es similar a la idea de <em>bootstrapping</em>, en el sentido de que usa nuestros propios datos para obtener una respuesta, pero lo hace de una manera diferente.</p>
+<!-- #### Randomization: a simple example -->
+</div>
+<div id="aleatorización-un-ejemplo-simple" class="section level4" number="9.3.5.3">
+<h4><span class="header-section-number">9.3.5.3</span> Aleatorización: un ejemplo simple</h4>
+<!-- Let's start with a simple example. Let's say that we want to compare the mean squatting ability of football players with cross-country runners, with $H_0: \mu_{FB} \le \mu_{XC}$ and $H_A: \mu_{FB} > \mu_{XC}$.  We measure the maximum squatting ability of 5 football players and 5 cross-country runners (which we will generate randomly, assuming that $\mu_{FB} = 300$,  $\mu_{XC} = 140$, and $\sigma = 30$). -->
+<p>Comencemos con un ejemplo simple. Digamos que queremos comparar la habilidad promedio de hacer sentadillas de jugadores de football contra corredores de campo (<em>cross-country runners</em>), con <span class="math inline">\(H_0: \mu_{FB} \le \mu_{XC}\)</span> y <span class="math inline">\(H_A: \mu_{FB} &gt; \mu_{XC}\)</span>. Medimos la habilidad máxima de hacer sentadillas de 5 jugadores de football y de 5 corredores de campo (que generaremos aleatoriamente, asumiendo que <span class="math inline">\(\mu_{FB} = 300\)</span>, <span class="math inline">\(\mu_{XC} = 140\)</span>, and <span class="math inline">\(\sigma = 30\)</span>).</p>
+<!-- Left: Box plots of simulated squatting ability for football players and cross-country runners.Right: Box plots for subjects assigned to each group after scrambling group labels. -->
+<table>
+<caption><span id="tab:squatPlot">Tabla 9.2: </span>Squatting data for the two groups</caption>
+<thead>
+<tr class="header">
+<th align="left">group</th>
+<th align="right">squat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">FB</td>
+<td align="right">265</td>
+</tr>
+<tr class="even">
+<td align="left">FB</td>
+<td align="right">310</td>
+</tr>
+<tr class="odd">
+<td align="left">FB</td>
+<td align="right">335</td>
+</tr>
+<tr class="even">
+<td align="left">FB</td>
+<td align="right">230</td>
+</tr>
+<tr class="odd">
+<td align="left">FB</td>
+<td align="right">315</td>
+</tr>
+<tr class="even">
+<td align="left">XC</td>
+<td align="right">155</td>
+</tr>
+<tr class="odd">
+<td align="left">XC</td>
+<td align="right">125</td>
+</tr>
+<tr class="even">
+<td align="left">XC</td>
+<td align="right">125</td>
+</tr>
+<tr class="odd">
+<td align="left">XC</td>
+<td align="right">125</td>
+</tr>
+<tr class="even">
+<td align="left">XC</td>
+<td align="right">115</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:squatPlot">Tabla 9.2: </span>Squatting data after randomly scrambling group labels</caption>
+<thead>
+<tr class="header">
+<th align="right">squat</th>
+<th align="left">scrambledGroup</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">265</td>
+<td align="left">XC</td>
+</tr>
+<tr class="even">
+<td align="right">310</td>
+<td align="left">FB</td>
+</tr>
+<tr class="odd">
+<td align="right">335</td>
+<td align="left">XC</td>
+</tr>
+<tr class="even">
+<td align="right">230</td>
+<td align="left">FB</td>
+</tr>
+<tr class="odd">
+<td align="right">315</td>
+<td align="left">XC</td>
+</tr>
+<tr class="even">
+<td align="right">155</td>
+<td align="left">FB</td>
+</tr>
+<tr class="odd">
+<td align="right">125</td>
+<td align="left">XC</td>
+</tr>
+<tr class="even">
+<td align="right">125</td>
+<td align="left">XC</td>
+</tr>
+<tr class="odd">
+<td align="right">125</td>
+<td align="left">FB</td>
+</tr>
+<tr class="even">
+<td align="right">115</td>
+<td align="left">FB</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:squatPlot"></span>
+<img src="StatsThinking21_files/figure-html/squatPlot-1.png" alt="Izquierda: Boxplot de la simulación de habilidad de hacer sentadillas de jugadores de football y de corredores de campo. Derecha: Boxplots para sujetos asignados a cada grupo después de revolver las etiquetas de grupo." width="768" height="50%" />
+<p class="caption">
+Figura 9.4: Izquierda: Boxplot de la simulación de habilidad de hacer sentadillas de jugadores de football y de corredores de campo. Derecha: Boxplots para sujetos asignados a cada grupo después de revolver las etiquetas de grupo.
+</p>
+</div>
+<!-- From the plot in Figure \@ref(fig:squatPlot) it's clear that there is a large difference between the two groups.  We can do a standard t-test to test our hypothesis; for this example we will use the `t.test()` command in R, which gives the following result: -->
+<p>De la gráfica en la Figura <a href="hypothesis-testing.html#fig:squatPlot">9.4</a> es claro que hay una gran diferencia entre los dos grupos. Podemos aplicar una prueba t estándar para probar nuestra hipótesis; para este ejemplo usaremos el comando <code>t.test()</code> en R, que nos da el siguiente resultado:</p>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  squat by group
+## t = 8, df = 8, p-value = 2e-05
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  124 Inf
+## sample estimates:
+## mean in group FB mean in group XC 
+##              291              129</code></pre>
+<!-- If we look at the p-value reported here, we see that the likelihood of such a difference under the null hypothesis is very small, using the *t* distribution to define the null.    -->
+<p>Si miramos el valor p reportado aquí, vemos que la probabilidad de tal diferencia bajo la hipótesis nula es muy pequeña, usando la distribución <em>t</em> para definir la nula.</p>
+<!-- Now let's see how we could answer the same question using randomization.  The basic idea is that if the null hypothesis of no difference between groups is true, then it shouldn't matter which group one comes from (football players versus cross-country runners) -- thus, to create data that are like our actual data but also conform to the null hypothesis, we can randomly reorder the group labels for the individuals in the dataset, and then recompute the difference between the groups. The results of such a shuffle are shown in Table 9.2, and the boxplots of the resulting data are Figure \@ref(fig:squatPlot). -->
+<p>Ahora veamos cómo podemos responder la misma pregunta usando aleatorización. La idea básica es que si la hipótesis nula de no diferencia entre grupos es verdadera, entonces no debería importar de qué grupo proviene cada participante (jugadores de football versus corredores de campo) – por eso, para crear datos que son como nuestros datos observados pero que se conforman a la hipótesis nula, podemos reordenar aleatoriamente las etiquetas de grupo para cada individuo en los datos, y luego recalcular la diferencia entre los grupos. Los resultados de tal barajado se muestran en la Tabla 9.2, y los boxplots de los datos resultantes están en la Figura <a href="hypothesis-testing.html#fig:squatPlot">9.4</a>.</p>
+<!-- Histogram of t-values for the difference in means between the football and cross-country groups after randomly shuffling group membership.  The vertical line denotes the actual difference observed between the two groups, and the dotted line shows the theoretical t distribution for this analysis. -->
+<div class="figure"><span id="fig:shuffleHist"></span>
+<img src="StatsThinking21_files/figure-html/shuffleHist-1.png" alt="Histograma de valores t para la diferencia de medias entre los grupos de jugadores de football y corredores de campo después de barajar la pertenencia al grupo. La línea vertical denota la diferencia real entre los dos grupos, y la línea punteada muestra la distribución t teórica para este análisis." width="384" height="50%" />
+<p class="caption">
+Figura 9.5: Histograma de valores t para la diferencia de medias entre los grupos de jugadores de football y corredores de campo después de barajar la pertenencia al grupo. La línea vertical denota la diferencia real entre los dos grupos, y la línea punteada muestra la distribución t teórica para este análisis.
+</p>
+</div>
+<!-- After scrambling the labels, we see that the two groups are now much more similar, and in fact the cross-country group now has a slightly higher mean. Now let's do that 10000 times and store the *t* statistic for each iteration; if you are doing this on your own computer, it will take a moment to complete. Figure \@ref(fig:shuffleHist) shows the histogram of the *t* values across all of the random shuffles. As expected under the null hypothesis, this distribution is centered at zero (the mean of the distribution is 0.012). From the figure we can also see that the distribution of *t* values after shuffling roughly follows the theoretical *t* distribution under the null hypothesis (with mean=0), showing that randomization worked to generate null data.  We can compute the p-value from the randomized data by measuring how many of the shuffled values are at least as extreme as the observed value: p(t > 8.01, df = 8) using randomization = 0.00410. This p-value is very similar to the p-value that we obtained using the *t* distribution, and both are quite extreme, suggesting that the observed data are very unlikely to have arisen if the null hypothesis is true - and in this case we *know* that it's not true, because we generated the data. -->
+<p>Después de revolver las etiquetas, vemos que los dos grupos son ahora mucho más similares, y de hecho el grupo de corredores de campo ahora tiene una media ligeramente mayor. Ahora hagamos eso 10,000 veces y guardemos el estadístico <em>t</em> para cada iteración; si estás haciendo esto en tu computadora, tomará un momento en completarse. La Figura <a href="hypothesis-testing.html#fig:shuffleHist">9.5</a> muestra el histograma de los valores <em>t</em> a lo largo de todas las barajadas aleatorias. Como se esperaba bajo la hipótesis nula, la distribución está centrada en cero (la media de la distribución es 0.012). De la figura podemos ver también que la distribución de los valores <em>t</em> después de barajar sigue aproximadamente la distribución <em>t</em> teórica bajo la hipótesis nula (con media = 0), mostrando que la aleatorización funcionó para generar datos nulos. Podemos calcular el valor p a partir de estos datos aleatorizados al medir cuántos de estos valores barajados son tan o más extremos que el valor observado: p(t &gt; 8.01, df = 8) usando aleatorización = 0.00410. Este valor p es muy similar al valor p que obtuvimos usando la distribución <em>t</em>, y ambos son bastante extremos, sugiriendo que los datos observados son muy improbables que hayan surgido si la hipótesis nula fuera cierta - y en este caso nosotros <em>sabemos</em> que no es cierta, porque nosotros generamos los datos.</p>
+<!-- ##### Randomization: BMI/activity example -->
+<div id="aleatorización-ejemplo-imcactividad" class="section level5" number="9.3.5.3.1">
+<h5><span class="header-section-number">9.3.5.3.1</span> Aleatorización: ejemplo IMC/actividad</h5>
+<!-- Now let's use randomization to compute the p-value for the BMI/activity example. In this case, we will randomly shuffle the `PhysActive` variable and compute the difference between groups after each shuffle, and then compare our observed *t* statistic to the distribution of *t* statistics from the shuffled datasets. Figure \@ref(fig:simDiff) shows the distribution of *t* values from the shuffled samples, and we can also compute the probability of finding a value as large or larger than the observed value.  The p-value obtained from randomization (0.000000) is very similar to the one obtained using the *t* distribution (0.000102).  The advantage of the randomization test is that it doesn't require that we assume that the data from each of the groups are normally distributed, though the t-test is generally quite robust to violations of that assumption.  In addition, the randomization test can allow us to compute p-values for statistics when we don't have a theoretical distribution like we do for the t-test. -->
+<p>Ahora usemos la aleatorización para calcular el valor p del ejemplo de IMC/actividad. En este caso, vamos a barajar aleatoriamente la variable <code>PhysActive</code> y a calcular la diferencia entre grupos después de cada barajada, y luego comparar nuestro estadístico <em>t</em> observado con la distribución de estadísticos <em>t</em> obtenido de los datos barajados. La Figura <a href="hypothesis-testing.html#fig:simDiff">9.6</a> muestra la distribución de valores <em>t</em> de las muestras barajadas, y podemos calcular la probabilidad de encontrar un valor tan grande o más grande que el valor observado. El valor p obtenido de la aleatorización (0.000000) es muy similar al obtenido usando la distribución <em>t</em> (0.000102). La ventaja de la prueba de aleatorización es que no requiere que asumamos que los datos de cada grupo tienen una distribución normal, aunque la prueba t es generalmente bastante robusta a violaciones de esta suposición. Además de eso, la prueba de aleatorización nos puede permitir calcular valores p para estadísticos cuando no tenemos una distribución teórica como la que tenemos para la prueba t.</p>
+<!-- Histogram of t statistics after shuffling of group labels, with the observed value of the t statistic shown in the vertical line, and values at least as extreme as the observed value shown in lighter gray -->
+<div class="figure"><span id="fig:simDiff"></span>
+<img src="StatsThinking21_files/figure-html/simDiff-1.png" alt="Histograma de estadísticos t después de barajar las etiquetas de grupos, con el valor observado del estadístico t mostrado en la línea vertical, y los valores tan extremos o más extremos que el valor observado mostrados en gris más claro." width="384" height="50%" />
+<p class="caption">
+Figura 9.6: Histograma de estadísticos t después de barajar las etiquetas de grupos, con el valor observado del estadístico t mostrado en la línea vertical, y los valores tan extremos o más extremos que el valor observado mostrados en gris más claro.
+</p>
+</div>
+<!-- We do have to make one main assumption when we use the randomization test, which we refer to as *exchangeability*.  This means that all of the observations are distributed in the same way, such that we can interchange them without changing the overall distribution.  The main place where this can break down is when there are related observations in the data; for example, if we had data from individuals in 4 different families, then we couldn't assume that individuals were exchangeable, because siblings would be closer to each other than they are to individuals from other families. In general, if the data were obtained by random sampling, then the assumption of exchangeability should hold. -->
+<p>Sí tenemos que hacer una suposición principal cuando usamos la prueba de aleatorización, a la que nos referimos como <em>intercambiabilidad</em>. Esto significa que todas las observaciones están distribuidas de la misma manera, de tal manera que podemos intercambiarlas sin cambiar la distribución en general. El principal lugar donde esto no se cumple es cuando tenemos observaciones relacionadas en los datos; por ejemplo, si tuviéramos datos de personas en 4 diferentes familias, entonces no podríamos asumir que los individuos son intercambiables, porque los hermanos serían más parecidos unos a otros de lo que serían a individuos de otras familias. En general, si los datos se obtuvieron de un muestreo aleatorio, entonces la suposición de intercambiabilidad se debería sostener.</p>
+<!-- ### Step 6: Assess the "statistical significance" of the result -->
+</div>
+</div>
+</div>
+<div id="paso-6-evalúa-la-significatividad-estadística-del-resultado" class="section level3" number="9.3.6">
+<h3><span class="header-section-number">9.3.6</span> Paso 6: Evalúa la “significatividad estadística” del resultado</h3>
+<!-- The next step is to determine whether the p-value that results from the previous step is small enough that we are willing to reject the null hypothesis and conclude instead that the alternative is true.  How much evidence do we require?  This is one of the most controversial questions in statistics, in part because it requires a subjective judgment -- there is no "correct" answer. -->
+<p>El siguiente paso es determinar si el valor p que resultó del paso previo es suficientemente pequeño para que estemos dispuestos a rechazar la hipótesis nula y concluir en su lugar que la alternativa es correcta. ¿Qué tanta evidencia necesitamos? Este es una de las preguntas más controversiales en estadística, en parte porque requiere un juicio subjetivo – no hay una respuesta “correcta”.</p>
+<!-- Historically, the most common answer to this question has been that we should reject the null hypothesis if the p-value is less than 0.05.  This comes from the writings of Ronald Fisher, who has been referred to as "the single most important figure in 20th century statistics"[@efron1998]: -->
+<p>Históricamente, la respuesta más común a esta pregunta ha sido que deberíamos rechazar la hipótesis nula si el valor p es menor a 0.05. Esto viene de los escritos de Ronald Fisher, quien ha sido referenciado como “la figura individual más importante en la estadística del siglo 20” <span class="citation">(<a href="references.html#ref-efron1998" role="doc-biblioref">Efron 1998</a>)</span>:</p>
+<!-- > “If P is between .1 and .9 there is certainly no reason to suspect the hypothesis tested. If it is below .02 it is strongly indicated that the hypothesis fails to account for the whole of the facts. We shall not often be astray if we draw a conventional line at .05 ... it is convenient to draw the line at about the level at which we can say: Either there is something in the treatment, or a coincidence has occurred such as does not occur more than once in twenty trials” [@fisher1925statistical] -->
+<blockquote>
+<p>“Si P está entre .1 y .9 ciertamente no hay razón para sospechar de la hipótesis probada. Si es menor a .02 indica fuertemente que la hipótesis falla en dar cuenta de todos los hechos. No fallaremos frecuentemente si dibujamos una línea convencional en .05 … es conveniente dibujar la línea en el nivel en el que podamos decir: O hay algo en el tratamiento, o una coincidencia ha sucedido de tal manera que no sucede más de una vez cada veinte ensayos” <span class="citation">(<a href="references.html#ref-fisher1925statistical" role="doc-biblioref">R. A. Fisher 1925</a>)</span></p>
+</blockquote>
+<!-- However, Fisher never intended $p < 0.05$ to be a fixed rule: -->
+<p>Sin embargo, Fisher nunca tuvo la intención de que <span class="math inline">\(p &lt; 0.05\)</span> fuera una regla fija:</p>
+<!-- > "no scientific worker has a fixed level of significance at which from year to year, and in all circumstances, he rejects hypotheses; he rather gives his mind to each particular case in the light of his evidence and his ideas" [@fish:1956] -->
+<blockquote>
+<p>“ningún trabajor científico tiene un nivel fijo de significatividad con el cual, año con año, y en todas las circunstancias, él rechace hipótesis; en su lugar él considera cada caso en particular a la luz de la evidencia y de sus ideas” <span class="citation">(<a href="references.html#ref-fish:1956" role="doc-biblioref">Ronald Aylmer Fisher 1956</a>)</span></p>
+</blockquote>
+<!-- Instead, it is likely that p < .05 became a ritual due to the reliance upon tables of p-values that were used before computing made it easy to compute p values for arbitrary values of a statistic.  All of the tables had an entry for 0.05, making it easy to determine whether one's statistic exceeded the value needed to reach that level of significance. -->
+<p>En cambio, es probable que p &lt; .05 se convirtió en un ritual debido a la dependencia en tablas de valores p que fueron usadas antes de que las computadoras hicieran fácil el calcular valores p para valores arbitrarios de un estadístico. Todas las tablas tenían una entrada para 0.05, haciendo fácil determinar si el estadístico en nuestros datos excedía el valor requerido para alcanzar ese nivel de significatividad.</p>
+<!-- The choice of statistical thresholds remains deeply controversial, and recently (Benjamin et al., 2018) it has been proposed that the standard threshold be changed from .05 to .005, making it substantially more stringent and thus more difficult to reject the null hypothesis. In large part this move is due to growing concerns that the evidence obtained from a significant result at $p < .05$ is relatively weak; we will return to this in our later discussion of reproducibility in Chapter \@ref(doing-reproducible-research). -->
+<p>La elección de umbrales estadísticos se mantiene profundamente controversial, y recientemente (Benjamin et al., 2018) se ha propuesto que el umbral estándar sea cambiado de .05 a .005, haciendo sustancialmente más estricto y por lo tanto más difícil el rechazar la hipótesis nula. En gran medida este movimiento ha surgido por preocupaciones crecientes de que la evidencia obtenida de un resultado significativo al nivel <span class="math inline">\(p &lt; .05\)</span> sea relativamente débil; regresaremos a esto en nuestra futura discusión sobre reproducibilidad en el Capítulo <a href="doing-reproducible-research.html#doing-reproducible-research">17</a>.</p>
+<!-- #### Hypothesis testing as decision-making: The Neyman-Pearson approach -->
+<div id="prueba-de-hipótesis-como-toma-de-decisiones-la-aproximación-neyman-pearson" class="section level4" number="9.3.6.1">
+<h4><span class="header-section-number">9.3.6.1</span> Prueba de hipótesis como toma de decisiones: la aproximación Neyman-Pearson</h4>
+<!-- Whereas Fisher thought that the p-value could provide evidence regarding a specific hypothesis, the statisticians Jerzy Neyman and Egon Pearson disagreed vehemently. Instead, they proposed that we think of hypothesis testing in terms of its error rate in the long run: -->
+<p>Mientras Fisher pensaba que el valor p podría proveer de evidencia sobre una hipótesis específica, los estadísticos Jerzy Neyman y Egon Pearson estaban en desacuerdo de manera vehemente. En su lugar, ellos propusieron que pensáramos en la prueba de hipótesis en términos de su tasa de error en el largo plazo:</p>
+<!-- > "no test based upon a theory of probability can by itself provide any valuable evidence of the truth or falsehood of a hypothesis. But we may look at the purpose of tests from another viewpoint. Without hoping to know whether each separate hypothesis is true or false, we may search for rules to govern our behaviour with regard to them, in following which we insure that, in the long run of experience, we shall not often be wrong" [@Neyman289] -->
+<blockquote>
+<p>“ninguna prueba basada en la teoría de probabilidad puede en sí misma proveer ninguna evidencia de valor sobre la verdad o falsedad de una hipótesis. Pero podríamos darle un vistazo al propósito de las pruebas desde otro punto de vista. Sin esperar conocer si cada hipótesis separada es verdadera o falsa, podríamos buscar reglas que gobiernen nuestro comportamiento respecto a ellas, que siguiéndolas podamos asegurar que, en el largo plazo de la experiencia, no estemos equivocados frecuentemente” <span class="citation">(<a href="references.html#ref-Neyman289" role="doc-biblioref">J. Neyman and Pearson 1933</a>)</span></p>
+</blockquote>
+<!-- That is: We can’t know which specific decisions are right or wrong, but if we follow the rules, we can at least know how often our decisions will be wrong in the long run. -->
+<p>Esto es: no podemos saber cuáles decisiones específicas son correctas o incorrectas, pero si seguimos las reglas, podemos por lo menos saber qué tan frecuentemente nuestras decisiones serán incorrectas en el largo plazo.</p>
+<!-- To understand the decision making framework that Neyman and Pearson developed, we first need to discuss statistical decision making in terms of the kinds of outcomes that can occur.  There are two possible states of reality ($H_0$ is true, or $H_0$ is false), and two possible decisions (reject $H_0$, or fail to reject $H_0$).  There are two ways in which we can make a correct decision: -->
+<p>Para entender el marco para toma de decisiones que Neyman y Pearson desarrollaron, primero necesitamos discutir la toma de decisiones estadísticas en términos de los tipos de resultados que pueden ocurrir. Existen dos posibles estados de la realidad (<span class="math inline">\(H_0\)</span> es verdadera, o <span class="math inline">\(H_0\)</span> es falsa), y dos posibles decisiones (rechazar <span class="math inline">\(H_0\)</span>, o fallar en rechazar <span class="math inline">\(H_0\)</span>). Existen dos maneras en que podemos tomar una decisión correcta:</p>
+<!-- - We can decide to reject $H_0$ when it is false (in the language of signal detection theory, we call this a *hit*) -->
+<ul>
+<li>Podemos decidir rechazar <span class="math inline">\(H_0\)</span> cuando es falsa (en el lenguaje de la teoría de detección de señales, llamamos a esto un <em>acierto</em>)
+<!-- - We can fail to reject $H_0$ when it is true (somewhat confusingly in this context, this is called a *correct rejection*) --></li>
+<li>Podemos fallar en rechazar <span class="math inline">\(H_0\)</span> cuando es verdadera (de manera algo confusa en este contexto, llamamos a esto un <em>rechazo correcto</em>)</li>
+</ul>
+<!-- There are also two kinds of errors we can make: -->
+<p>Existen también dos tipos de errores que podemos cometer:</p>
+<!-- - We can decide to reject $H_0$ when it is actually true (we call this a *false alarm*, or *Type I error*) -->
+<ul>
+<li>Podemos decidir rechazar <span class="math inline">\(H_0\)</span> cuando realmente es correcta (llamamos a esto una <em>falsa alarma</em>, o un <em>Error Tipo I</em>)
+<!-- - We can fail to reject $H_0$ when it is actually false (we call this a *miss*, or *Type II error*) --></li>
+<li>Podemos fallar en rechazar <span class="math inline">\(H_0\)</span> cuando realmente es falsa (llamamos a esto una <em>omisión</em>, o un <em>Error Tipo II</em>)</li>
+</ul>
+<!-- Neyman and Pearson coined two terms to describe the probability of these two types of errors in the long run: -->
+<p>Neyman y Pearson acuñaron estos dos términos para describir la probabilidad de estos dos tipos de errores en el largo plazo:</p>
+<ul>
+<li>P(Type I error) = <span class="math inline">\(\alpha\)</span></li>
+<li>P(Type II error) = <span class="math inline">\(\beta\)</span></li>
+</ul>
+<!-- That is, if we set $\alpha$ to .05, then in the long run we should make a Type I error 5% of the time.  Whereas it's common to set $\alpha$ as .05, the standard value for an acceptable level of $\beta$ is .2 - that is, we are willing to accept that 20% of the time we will fail to detect a true effect if it exists.  We will return to this later when we discuss statistical power in Section \@ref(statistical-power), which is the complement of Type II error. -->
+<p>Esto es, si definimos un <span class="math inline">\(\alpha\)</span> en .05, entonces en el largo plazo deberíamos cometer un Error Tipo I el 5% de las veces. Mientras que es común definir un <span class="math inline">\(\alpha\)</span> en .05, el valor estándar para un nivel aceptable de <span class="math inline">\(\beta\)</span> es .2 - esto es, estamos dispuestos a aceptar que un 20% del tiempo fallaremos en detectar un verdadero efecto si realmente existe. Regresaremos a esto después cuando discutamos poder estadístico en la Sección <a href="ci-effect-size-power.html#statistical-power">10.3</a>, que es el complemento del Error Tipo II.</p>
+<!-- ### What does a significant result mean? -->
+</div>
+</div>
+<div id="qué-significa-un-resultado-significativo" class="section level3" number="9.3.7">
+<h3><span class="header-section-number">9.3.7</span> ¿Qué significa un resultado significativo?</h3>
+<!-- There is a great deal of confusion about what p-values actually mean (Gigerenzer, 2004).  Let's say that we do an experiment comparing the means between conditions, and we find a difference with a p-value of .01.  There are a number of possible interpretations that one might entertain. -->
+<p>Existe mucha confusión sobre lo que realmente significan los valores p (Gigerenzer, 2004). Digamos que hacemos un experimento comparando las medias entre condiciones, y encontramos una diferencia con un valor p de .01. Hay un número de posibles interpretaciones que podrían plantearse.</p>
+<!-- #### Does it mean that the probability of the null hypothesis being true is .01? -->
+<div id="significa-que-la-probabilidad-de-que-la-hipótesis-nula-sea-verdadera-es-.01" class="section level4" number="9.3.7.1">
+<h4><span class="header-section-number">9.3.7.1</span> ¿Significa que la probabilidad de que la hipótesis nula sea verdadera es .01?</h4>
+<!-- No.  Remember that in null hypothesis testing, the p-value is the probability of the data given the null hypothesis ($P(data|H_0)$). It does not warrant conclusions about the probability of the null hypothesis given the data ($P(H_0|data)$).  We will return to this question when we discuss Bayesian inference in a later chapter, as Bayes theorem lets us invert the conditional probability in a way that allows us to determine the probability of the hypothesis given the data. -->
+<p>No. Recuerda que en la prueba de hipótesis nula, el valor p es la probabilidad de los datos dada la hipótesis nula (<span class="math inline">\(P(data|H_0)\)</span>). No garantiza conclusiones acerca de la probabilidad de la hipótesis nula dados los datos (<span class="math inline">\(P(H_0|data)\)</span>). Regresaremos a esta pregunta cuando discutamos inferencia Bayesiana en un capítulo posterior, porque el teorema de Bayes nos permite invertir la probabilidad condicional de una manera que nos permite determinar la probabilidad de la hipótesis dados los datos.</p>
+<!-- #### Does it mean that the probability that you are making the wrong decision is .01? -->
+</div>
+<div id="significa-que-la-probabilidad-de-que-estés-tomando-la-decisión-incorrecta-es-.01" class="section level4" number="9.3.7.2">
+<h4><span class="header-section-number">9.3.7.2</span> ¿Significa que la probabilidad de que estés tomando la decisión incorrecta es .01?</h4>
+<!-- No. This would be $P(H_0|data)$, but remember as above that p-values are probabilities of data under $H_0$, not probabilities of hypotheses. -->
+<p>No. Esto sería <span class="math inline">\(P(H_0|data)\)</span>, pero recuerda, como mencionamos arriba, que los valores p son probabilidades de los datos bajo <span class="math inline">\(H_0\)</span>, no probabilidades de las hipótesis.</p>
+<!-- #### Does it mean that if you ran the study again, you would obtain the same result 99% of the time? -->
+</div>
+<div id="significa-que-si-vuelves-a-hacer-el-estudio-obtendrías-el-mismo-resultado-99-de-las-veces" class="section level4" number="9.3.7.3">
+<h4><span class="header-section-number">9.3.7.3</span> ¿Significa que si vuelves a hacer el estudio, obtendrías el mismo resultado 99% de las veces?</h4>
+<!-- No. The p-value is a statement about the likelihood of a particular dataset under the null; it does not allow us to make inferences about the likelihood of future events such as replication.   -->
+<p>No. El valor es un enunciado sobre la probabilidad de un conjunto de datos en particular bajo la hipótesis nula; no nos permite hacer inferencias sobre la probabilidad de eventos futuros como las replicaciones.</p>
+<!-- #### Does it mean that you have found a practially important effect? -->
+</div>
+<div id="significa-que-encontraste-un-efecto-importante-de-manera-práctica" class="section level4" number="9.3.7.4">
+<h4><span class="header-section-number">9.3.7.4</span> ¿Significa que encontraste un efecto importante de manera práctica?</h4>
+<!-- No.  There is an essential distinction between *statistical significance* and *practical significance*.  As an example, let's say that we performed a randomized controlled trial to examine the effect of a particular diet on body weight, and we find a statistically significant effect at p<.05.  What this doesn't tell us is how much weight was actually lost, which we refer to as the *effect size* (to be discussed in more detail in Chapter \@ref(ci-effect-size-power)).  If we think about a study of weight loss, then we probably don't think that the loss of one ounces (i.e. the weight of a few potato chips) is practically significant.  Let's look at our ability to detect a significant difference of 1 ounce as the sample size increases. -->
+<p>No. Existe una distinción esencial entre <em>significatividad estadística</em> y <em>significatividad práctica</em>. Como ejemplo, digamos que realizamos un ensayo controlado aleatorizado para examinar el efecto de una dieta particular sobre el peso corporal, y encontramos un efecto estadísticamente significativo a nivel p&lt;.05. Lo que esto no nos dice es cuánto peso realmente se bajó, que es a lo que nos referimos como <em>tamaño del efecto</em> (<em>effect size</em>, que será discutido en mayor detalle en el Capítulo <a href="ci-effect-size-power.html#ci-effect-size-power">10</a>). Si pensamos en un estudio sobre pérdida de peso, probablemente no pensaremos que el perder una onza (28 gramos, i.e. el peso de una tortilla y media) sea significativo de manera práctica. Démosle un vistazo a nuestra habilidad para detectar una diferencia significativa de 28 gramos conforme el tamaño de la muestra incrementa.</p>
+<!-- Figure \@ref(fig:sigResults) shows how the proportion of significant results increases as the sample size increases, such that with a very large sample size (about 262,000 total subjects), we will find a significant result in more than 90% of studies when there is a 1 ounce difference in weight loss between the diets.  While these are statistically significant, most physicians would not consider a weight loss of one ounce to be practically or clinically significant. We will explore this relationship in more detail when we return to the concept of *statistical power* in Section \@ref(statistical-power), but it should already be clear from this example that statistical significance is not necessarily indicative of practical significance. -->
+<p>La Figura <a href="hypothesis-testing.html#fig:sigResults">9.7</a> muestra cómo la proporción de resultados significativos incrementa conforme el tamaño de muestra incrementa, con lo cual con una muestra muy grande (cercana a 262,000 sujetos en total), encontraremos un resultado significativo en más del 90% de los estudios donde haya 1 onza de diferencia en peso perdido entre las dietas siendo comparadas. Mientras que estos datos son estadísticamente significativos, la mayoría de los médicos no considerarían la pérdida de peso de una onza como algo significativo de manera práctica o clínica. Exploraremos esta relación en mayor detalle cuando regremos al concepto de <em>poder estadístico</em> en la Sección <a href="ci-effect-size-power.html#statistical-power">10.3</a>, pero debería ser claro en este momento de este ejemplo que la significatividad estadística no es necesariamente indicadora de significatividad práctica.</p>
+<!-- The proportion of signifcant results for a very small change (1 ounce, which is about .001 standard deviations) as a function of sample size. -->
+<div class="figure"><span id="fig:sigResults"></span>
+<img src="StatsThinking21_files/figure-html/sigResults-1.png" alt="La proporción de resultados significativos para un cambio muy pequeño (1 onza = 28 gramos, que es alrededor de .001 desviaciones estándar) como función del tamaño de la muestra." width="768" height="50%" />
+<p class="caption">
+Figura 9.7: La proporción de resultados significativos para un cambio muy pequeño (1 onza = 28 gramos, que es alrededor de .001 desviaciones estándar) como función del tamaño de la muestra.
+</p>
+</div>
+<!-- ## NHST in a modern context: Multiple testing -->
+</div>
+</div>
+</div>
+<div id="nhst-en-un-contexto-moderno-pruebas-múltiples" class="section level2" number="9.4">
+<h2><span class="header-section-number">9.4</span> NHST en un contexto moderno: Pruebas múltiples</h2>
+<!-- So far we have discussed examples where we are interested in testing a single statistical hypothesis, and this is consistent with traditional science which often measured only a few variables at a time.  However, in modern science we can often measure millions of variables per individual.  For example, in genetic studies that quantify the entire genome, there may be many millions of measures per individual, and in the brain imaging research that my group does, we often collect data from more than 100,000 locations in the brain at once.  When standard hypothesis testing is applied in these contexts, bad things can happen unless we take appropriate care. -->
+<p>Hasta ahora hemos discutido ejemplos donde estamos interesades en probar una sola hipótesis estadística, y esto es consistente con la ciencia tradicional que frecuentemente sólo medía unas pocas variables a la vez. Sin embargo, en la ciencia moderna frecuentemente medimos millones de variables por persona. Por ejemplo, en estudios genéticos que cuantifican el genoma completo, podría haber varios millones de medidas por persona, y en la investigación en neuroimagen que mi grupo realiza, frecuentemente recolectamos datos de más de 100,000 localizaciones en cada cerebro al mismo tiempo. Cuando la manera estándar de la prueba de hipótesis se aplica en estos contextos, malas cosas pueden suceder a menos que tomemos las medidas apropiadas.</p>
+<!-- Let's look at an example to see how this might work.  There is great interest in understanding the genetic factors that can predispose individuals to major mental illnesses such as schizophrenia, because we know that about 80% of the variation between individuals in the presence of schizophrenia is due to genetic differences. The Human Genome Project and the ensuing revolution in genome science has provided tools to examine the many ways in which humans differ from one another in their genomes.  One approach that has been used in recent years is known as a *genome-wide association study* (GWAS), in which the genome of each individual is characterized at one million or more places to determine which letters of the genetic code they have at each location.  After these have been determined, the researchers perform a statistical test at each location in the genome to determine whether people diagnosed with schizoprenia are more or less likely to have one specific version of the genetic sequence at that location. -->
+<p>Veamos un ejemplo de cómo podría funcionar esto. Hay un gran interés en entender los factores genéticos que pueden predisponer a las personas a enfermedades mentales como la esquizofrenia, porque sabemos que cerca del 80% de las variaciones entre personas en la presencia de esquizofrenia es debida a diferencias genéticas. El Proyecto de Genoma Humano y la revolución subsecuente en ciencia genómica ha provisto herramientas para examinar las múltiples maneras en que los humanos difieren unos de otros en sus genomas. Una aproximación que ha sido usada en años recientes es conocida como un <em>estudio de asociación del genoma completo</em> (<em>genome-wide association study</em>, GWAS), en el cual el genoma para cada persona es caracterizado en un millón o más de lugares para determinar cuáles letras del código genético tienen en cada lugar. Después de que éstas han sido determinadas, les investigadores realizan una prueba estadística en cada localización del genoma para determinar si las personas diagnosticadas con esquizofrenia tienen mayor o menor probabilidad de tener una versión específica de la secuencia genética en ese lugar del genoma.</p>
+<!-- Let's imagine what would happen if the researchers simply asked whether the test was significant at p<.05 at each location, when in fact there is no true effect at any of the locations.  To do this, we generate a large number of simulated *t* values from a null distribution, and ask how many of them are significant at p<.05.  Let's do this many times, and each time count up how many of the tests come out as significant (see Figure \@ref(fig:nullSim)). -->
+<p>Imaginemos qué pasaría si les investigadores simplemente preguntaran si la prueba fue significativa al nivel p&lt;.05 en cada localización, cuando en realidad no hay un efecto verdadera en ninguna de las localizaciones. Para hacer esto, generamos un gran número de valores <em>t</em> simulados de una distribución nula, y preguntamos cuántos de ellos son significativos al nivel p&lt;.05. Hagamos esto muchas veces, y cada vez contemos cuántas de estas pruebas salen significativas (ve la Figura <a href="hypothesis-testing.html#fig:nullSim">9.8</a>).</p>
+<!-- Left: A histogram of the number of significant results in each set of 1 million statistical tests, when there is in fact no true effect. Right: A histogram of the number of significant results across all simulation runs after applying the Bonferroni correction for multiple tests. -->
+<div class="figure"><span id="fig:nullSim"></span>
+<img src="StatsThinking21_files/figure-html/nullSim-1.png" alt="Izquierda: Histograma con el número de resultados significativos en cada conjunto de 1 millón de pruebas estadísticas, cuando en realidad no hay ningún efecto verdadero. Derecha: Histograma con el número de resultados significativos a lo largo de todas las simulaciones después de aplicar la corrección de Bonferroni para pruebas múltiples." width="768" height="50%" />
+<p class="caption">
+Figura 9.8: Izquierda: Histograma con el número de resultados significativos en cada conjunto de 1 millón de pruebas estadísticas, cuando en realidad no hay ningún efecto verdadero. Derecha: Histograma con el número de resultados significativos a lo largo de todas las simulaciones después de aplicar la corrección de Bonferroni para pruebas múltiples.
+</p>
+</div>
+<!-- This shows that about 5% of all of the tests were significant in each run, meaning that if we were to use p < .05 as our threshold for statistical significance, then even if there were no truly significant relationships present, we would still "find" about 500 genes that were seemingly significant in each study (the expected number of significant results is simply $n * \alpha$).  That is because while we controlled for the error per test, we didn't control the *familywise error*, or the error across all of the tests, which is what we really want to control if we are going to be looking at the results from a large number of tests. Using p<.05, our familywise error rate in the above example is one -- that is, we are pretty much guaranteed to make at least one error in any particular study.   -->
+<p>Esto muestra que cerca del 5% de todas las pruebas fueron significativas en cada simulación, significando que si usáramos p &lt; .05 como nuestro umbral para significatividad estadística, entonces a pesar de que no hay ninguna relación presente verdaderamente significativa, aún así “encontraríamos” cerca de 500 genes que parecerían significativos en cada estudio (el número esperado de resultados significativos es simplemente <span class="math inline">\(n * \alpha\)</span>). Esto es porque mientras controlamos por el error por cada prueba, no controlamos el <em>error de familia</em> (<em>familiy-wise error</em>), o el error a lo largo de todas las pruebas, que es lo que realmente queremos controlar si vamos a observar los resultados de un número grande de pruebas. Usando p&lt;.05, nuestra tasa de error de familia en el ejemplo de arriba es uno – esto es, prácticamente tenemos garantizado el que cometeremos un error en cada estudio en particular.</p>
+<!-- A simple way to control for the familywise error is to divide the alpha level by the number of tests; this is known as the *Bonferroni* correction, named after the Italian statistician Carlo Bonferroni.  Using the data from our example above, we see in Figure \@ref(fig:nullSim) that only about 5 percent of studies show any significant results using the corrected alpha level of 0.000005 instead of the nominal level of .05.  We have effectively controlled the familywise error, such that the probability of making *any* errors in our study is controlled at right around .05. -->
+<p>Una manera simple de controlar este error de familia es dividir el nivel alfa entre el número de pruebas; esto es conocido como la corrección <em>Bonferroni</em>, llamda en honor al estadístico italiano Carlo Bonferroni. Usando los datos del ejemplo anterior, vemos en la Figura <a href="hypothesis-testing.html#fig:nullSim">9.8</a>que sólo cerca del 5 por ciento de los estudios muestra algún resultado significativo usando el nivel de alfa corregido de 0.000005 en lugar del valor nominal de .05. Hemos controlado efectivamente el error de familia, de tal manera que la probabilidad de cometer <em>cualquier</em> error en nuestro estudio está controlado justo alrededor de .05.</p>
+<!-- ## Learning objectives -->
+</div>
+<div id="objetivos-de-aprendizaje-8" class="section level2" number="9.5">
+<h2><span class="header-section-number">9.5</span> Objetivos de aprendizaje</h2>
+<!-- * Identify the components of a hypothesis test, including the parameter of interest, the null and alternative hypotheses, and the test statistic. -->
+<!-- * Describe the proper interpretations of a p-value as well as common misinterpretations -->
+<!-- * Distinguish between the two types of error in hypothesis testing, and the factors that determine them. -->
+<!-- * Describe how resampling can be used to compute a p-value. -->
+<!-- * Describe the problem of multiple testing, and how it can be addressed -->
+<!-- * Describe the main criticisms of null hypothesis statistical testing -->
+<ul>
+<li>Identificar los componentes de una prueba de hipótesis, incluyendo el parámetro de interés, las hipótesis nula y alternativa, y el estadístico de prueba.</li>
+<li>Describir las interpretaciones apropiadas de un valor p así como de las interpretaciones equivocadas comunes.</li>
+<li>Distinguir entre los dos tipos de errores en la prueba de hipótesis, y los factores que los determinan.</li>
+<li>Describir cómo el remuestreo puede ser usado para calcular un valor p.</li>
+<li>Describir el problema de múltiples pruebas, y cómo se puede resolver.</li>
+<li>Describir las principales críticas a la prueba estadística de hipótesis nula.</li>
+</ul>
+<!-- ## Suggested readings -->
+</div>
+<div id="lecturas-sugeridas-6" class="section level2" number="9.6">
+<h2><span class="header-section-number">9.6</span> Lecturas sugeridas</h2>
+<ul>
+<li><a href="https://library.mpib-berlin.mpg.de/ft/gg/GG_Mindless_2004.pdf">Mindless Statistics, by Gerd Gigerenzer</a></li>
+</ul>
+
+<!-- # Quantifying effects and designing studies {#ci-effect-size-power} -->
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="resampling-and-simulation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ci-effect-size-power.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/statsthinking21/statsthinking21-core/edit/master/09-HypothesisTesting.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["StatsThinking21.pdf", "StatsThinking21.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
