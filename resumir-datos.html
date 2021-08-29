@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 3 Resumir datos | Statistical Thinking for the 21st Century</title>
+  <meta name="description" content="A book about statistics." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 3 Resumir datos | Statistical Thinking for the 21st Century" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A book about statistics." />
+  <meta name="github-repo" content="poldrack/psych10-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 3 Resumir datos | Statistical Thinking for the 21st Century" />
+  
+  <meta name="twitter:description" content="A book about statistics." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="trabajar-con-datos.html"/>
+<link rel="next" href="data-visualization.html"/>
+<script src="book_assets/header-attrs-2.7/header-attrs.js"></script>
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129414074-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129414074-1');
+</script>
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#por-qué-existe-este-libro"><i class="fa fa-check"></i><b>0.1</b> ¿Por qué existe este libro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#la-era-dorada-de-la-información"><i class="fa fa-check"></i><b>0.2</b> La era dorada de la información</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#la-importancia-de-hacer-estadísticas"><i class="fa fa-check"></i><b>0.3</b> La importancia de hacer estadísticas</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#un-libro-de-código-abierto-open-source"><i class="fa fa-check"></i><b>0.4</b> Un libro de código abierto (open source)</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>0.5</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducción.html"><a href="introducción.html#qué-es-el-pensamiento-estadístico"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es el pensamiento estadístico?</a></li>
+<li class="chapter" data-level="1.2" data-path="introducción.html"><a href="introducción.html#lidiar-con-la-ansiedad-estadística"><i class="fa fa-check"></i><b>1.2</b> Lidiar con la ansiedad estadística</a></li>
+<li class="chapter" data-level="1.3" data-path="introducción.html"><a href="introducción.html#qué-puede-hacer-la-estadística-por-nosotres"><i class="fa fa-check"></i><b>1.3</b> ¿Qué puede hacer la estadística por nosotres?</a></li>
+<li class="chapter" data-level="1.4" data-path="introducción.html"><a href="introducción.html#las-grandes-ideas-de-la-estadística"><i class="fa fa-check"></i><b>1.4</b> Las grandes ideas de la estadística</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introducción.html"><a href="introducción.html#aprendiendo-de-los-datos"><i class="fa fa-check"></i><b>1.4.1</b> Aprendiendo de los datos</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introducción.html"><a href="introducción.html#agregación-aggregation"><i class="fa fa-check"></i><b>1.4.2</b> Agregación (<em>aggregation</em>)</a></li>
+<li class="chapter" data-level="1.4.3" data-path="introducción.html"><a href="introducción.html#incertidumbre"><i class="fa fa-check"></i><b>1.4.3</b> Incertidumbre</a></li>
+<li class="chapter" data-level="1.4.4" data-path="introducción.html"><a href="introducción.html#muestreo-de-una-población"><i class="fa fa-check"></i><b>1.4.4</b> Muestreo de una población</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introducción.html"><a href="introducción.html#causalidad-y-estadística"><i class="fa fa-check"></i><b>1.5</b> Causalidad y estadística</a></li>
+<li class="chapter" data-level="1.6" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>1.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="1.7" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>1.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html"><i class="fa fa-check"></i><b>2</b> Trabajar con Datos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#qué-son-los-datos"><i class="fa fa-check"></i><b>2.1</b> ¿Qué son los datos?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#datos-cualitativos"><i class="fa fa-check"></i><b>2.1.1</b> Datos Cualitativos</a></li>
+<li class="chapter" data-level="2.1.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#datos-cuantitativos"><i class="fa fa-check"></i><b>2.1.2</b> Datos cuantitativos</a></li>
+<li class="chapter" data-level="2.1.3" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#tipos-de-números"><i class="fa fa-check"></i><b>2.1.3</b> Tipos de números</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#mediciones-discretas-versus-continuas"><i class="fa fa-check"></i><b>2.2</b> Mediciones Discretas versus Continuas</a></li>
+<li class="chapter" data-level="2.3" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#qué-constituye-a-una-buena-medición"><i class="fa fa-check"></i><b>2.3</b> ¿Qué constituye a una buena medición?</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#confiabilidad"><i class="fa fa-check"></i><b>2.3.1</b> Confiabilidad</a></li>
+<li class="chapter" data-level="2.3.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#validez"><i class="fa fa-check"></i><b>2.3.2</b> Validez</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#objetivos-de-aprendizaje-1"><i class="fa fa-check"></i><b>2.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="2.5" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#lecturas-sugeridas-1"><i class="fa fa-check"></i><b>2.5</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="2.6" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>2.6</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#escalas-de-medición"><i class="fa fa-check"></i><b>2.6.1</b> Escalas de medición</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="resumir-datos.html"><a href="resumir-datos.html"><i class="fa fa-check"></i><b>3</b> Resumir datos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="resumir-datos.html"><a href="resumir-datos.html#por-qué-resumir-datos"><i class="fa fa-check"></i><b>3.1</b> ¿Por qué resumir datos?</a></li>
+<li class="chapter" data-level="3.2" data-path="resumir-datos.html"><a href="resumir-datos.html#resumiendo-datos-usando-tablas"><i class="fa fa-check"></i><b>3.2</b> Resumiendo datos usando tablas</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="resumir-datos.html"><a href="resumir-datos.html#frequency-distributions"><i class="fa fa-check"></i><b>3.2.1</b> Distribuciones de frecuencias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="resumir-datos.html"><a href="resumir-datos.html#cumulative-distributions"><i class="fa fa-check"></i><b>3.2.2</b> Distribuciones acumuladas</a></li>
+<li class="chapter" data-level="3.2.3" data-path="resumir-datos.html"><a href="resumir-datos.html#plotting-histograms"><i class="fa fa-check"></i><b>3.2.3</b> Graficar histogramas</a></li>
+<li class="chapter" data-level="3.2.4" data-path="resumir-datos.html"><a href="resumir-datos.html#bins-de-un-histograma"><i class="fa fa-check"></i><b>3.2.4</b> Bins de un histograma</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="resumir-datos.html"><a href="resumir-datos.html#representaciones-idealizadas-de-distribuciones"><i class="fa fa-check"></i><b>3.3</b> Representaciones idealizadas de distribuciones</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="resumir-datos.html"><a href="resumir-datos.html#asimetría-sesgo"><i class="fa fa-check"></i><b>3.3.1</b> Asimetría (sesgo)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="resumir-datos.html"><a href="resumir-datos.html#distribuciones-con-colas-largas"><i class="fa fa-check"></i><b>3.3.2</b> Distribuciones con colas largas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="resumir-datos.html"><a href="resumir-datos.html#objetivos-de-aprendizaje-2"><i class="fa fa-check"></i><b>3.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="3.5" data-path="resumir-datos.html"><a href="resumir-datos.html#lecturas-sugeridas-2"><i class="fa fa-check"></i><b>3.5</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>4</b> Visualización de Datos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-visualization.html"><a href="data-visualization.html#anatomía-de-una-gráfica"><i class="fa fa-check"></i><b>4.1</b> Anatomía de una gráfica</a></li>
+<li class="chapter" data-level="4.2" data-path="data-visualization.html"><a href="data-visualization.html#principios-de-una-buena-visibilización"><i class="fa fa-check"></i><b>4.2</b> Principios de una buena visibilización</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="data-visualization.html"><a href="data-visualization.html#muestra-los-datos-y-haz-que-destaquen"><i class="fa fa-check"></i><b>4.2.1</b> Muestra los datos y haz que destaquen</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-visualization.html"><a href="data-visualization.html#maximizar-la-porporción-datostinta-dataink-ratio"><i class="fa fa-check"></i><b>4.2.2</b> Maximizar la porporción datos/tinta (data/ink ratio)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data-visualization.html"><a href="data-visualization.html#evita-gráficas-basura"><i class="fa fa-check"></i><b>4.2.3</b> Evita gráficas basura</a></li>
+<li class="chapter" data-level="4.2.4" data-path="data-visualization.html"><a href="data-visualization.html#evita-distorsionar-los-datos"><i class="fa fa-check"></i><b>4.2.4</b> Evita distorsionar los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-visualization.html"><a href="data-visualization.html#acomodando-las-limitaciones-humanas"><i class="fa fa-check"></i><b>4.3</b> Acomodando las limitaciones humanas</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-visualization.html"><a href="data-visualization.html#limitaciones-perceptuales"><i class="fa fa-check"></i><b>4.3.1</b> Limitaciones perceptuales</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-visualization.html"><a href="data-visualization.html#corrigiendo-otros-factores"><i class="fa fa-check"></i><b>4.4</b> Corrigiendo otros factores</a></li>
+<li class="chapter" data-level="4.5" data-path="data-visualization.html"><a href="data-visualization.html#objetivos-de-aprendizaje-3"><i class="fa fa-check"></i><b>4.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="4.6" data-path="data-visualization.html"><a href="data-visualization.html#lecturas-y-videos-sugeridos"><i class="fa fa-check"></i><b>4.6</b> Lecturas y videos sugeridos</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fitting-models.html"><a href="fitting-models.html"><i class="fa fa-check"></i><b>5</b> Ajustar modelos a datos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="fitting-models.html"><a href="fitting-models.html#qué-es-un-modelo"><i class="fa fa-check"></i><b>5.1</b> ¿Qué es un modelo?</a></li>
+<li class="chapter" data-level="5.2" data-path="fitting-models.html"><a href="fitting-models.html#modelado-estadístico-un-ejemplo"><i class="fa fa-check"></i><b>5.2</b> Modelado estadístico: Un ejemplo</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="fitting-models.html"><a href="fitting-models.html#mejorando-nuestro-modelo"><i class="fa fa-check"></i><b>5.2.1</b> Mejorando nuestro modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="fitting-models.html"><a href="fitting-models.html#qué-hace-que-un-modelo-sea-bueno"><i class="fa fa-check"></i><b>5.3</b> ¿Qué hace que un modelo sea “bueno”?</a></li>
+<li class="chapter" data-level="5.4" data-path="fitting-models.html"><a href="fitting-models.html#overfitting"><i class="fa fa-check"></i><b>5.4</b> ¿Un modelo puede ser demasiado bueno?</a></li>
+<li class="chapter" data-level="5.5" data-path="fitting-models.html"><a href="fitting-models.html#el-modelo-más-simple-la-media"><i class="fa fa-check"></i><b>5.5</b> El modelo más simple: La media</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="fitting-models.html"><a href="fitting-models.html#la-mediana"><i class="fa fa-check"></i><b>5.5.1</b> La mediana</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="fitting-models.html"><a href="fitting-models.html#la-moda"><i class="fa fa-check"></i><b>5.6</b> La moda</a></li>
+<li class="chapter" data-level="5.7" data-path="fitting-models.html"><a href="fitting-models.html#variabilidad-qué-tan-bien-se-ajusta-la-media-a-los-datos"><i class="fa fa-check"></i><b>5.7</b> Variabilidad: ¿Qué tan bien se ajusta la media a los datos?</a></li>
+<li class="chapter" data-level="5.8" data-path="fitting-models.html"><a href="fitting-models.html#usar-simulaciones-para-entender-la-estadística"><i class="fa fa-check"></i><b>5.8</b> Usar simulaciones para entender la estadística</a></li>
+<li class="chapter" data-level="5.9" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-z"><i class="fa fa-check"></i><b>5.9</b> Puntajes Z</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="fitting-models.html"><a href="fitting-models.html#interpretando-puntajes-z"><i class="fa fa-check"></i><b>5.9.1</b> Interpretando Puntajes Z</a></li>
+<li class="chapter" data-level="5.9.2" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-estandarizados"><i class="fa fa-check"></i><b>5.9.2</b> Puntajes Estandarizados</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="fitting-models.html"><a href="fitting-models.html#objetivos-de-aprendizaje-4"><i class="fa fa-check"></i><b>5.10</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="5.11" data-path="fitting-models.html"><a href="fitting-models.html#apéndice-1"><i class="fa fa-check"></i><b>5.11</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="fitting-models.html"><a href="fitting-models.html#proof-that-the-sum-of-errors-from-the-mean-is-zero"><i class="fa fa-check"></i><b>5.11.1</b> Proof that the sum of errors from the Mean is zero”</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>6</b> Probabilidad</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="probability.html"><a href="probability.html#qué-es-la-probabilidad"><i class="fa fa-check"></i><b>6.1</b> ¿Qué es la probabilidad?</a></li>
+<li class="chapter" data-level="6.2" data-path="probability.html"><a href="probability.html#cómo-determinamos-probabilidades"><i class="fa fa-check"></i><b>6.2</b> ¿Cómo determinamos probabilidades?</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="probability.html"><a href="probability.html#creencia-personal"><i class="fa fa-check"></i><b>6.2.1</b> Creencia personal</a></li>
+<li class="chapter" data-level="6.2.2" data-path="probability.html"><a href="probability.html#empirical-frequency"><i class="fa fa-check"></i><b>6.2.2</b> Frecuencia empírica</a></li>
+<li class="chapter" data-level="6.2.3" data-path="probability.html"><a href="probability.html#probabilidad-clásica"><i class="fa fa-check"></i><b>6.2.3</b> Probabilidad clásica</a></li>
+<li class="chapter" data-level="6.2.4" data-path="probability.html"><a href="probability.html#resolviendo-el-problema-de-de-méré"><i class="fa fa-check"></i><b>6.2.4</b> Resolviendo el problema de de Méré</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="probability.html"><a href="probability.html#distribuciones-de-probabilidad"><i class="fa fa-check"></i><b>6.3</b> Distribuciones de probabilidad</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="probability.html"><a href="probability.html#distribuciones-de-probabilidad-acumuladas"><i class="fa fa-check"></i><b>6.3.1</b> Distribuciones de probabilidad acumuladas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="probability.html"><a href="probability.html#conditional-probability"><i class="fa fa-check"></i><b>6.4</b> Probabilidad condicional</a></li>
+<li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#calcular-probabilidades-condicionales-a-partir-de-los-datos"><i class="fa fa-check"></i><b>6.5</b> Calcular probabilidades condicionales a partir de los datos</a></li>
+<li class="chapter" data-level="6.6" data-path="probability.html"><a href="probability.html#independencia"><i class="fa fa-check"></i><b>6.6</b> Independencia</a></li>
+<li class="chapter" data-level="6.7" data-path="probability.html"><a href="probability.html#bayestheorem"><i class="fa fa-check"></i><b>6.7</b> Invertir una probabilidad condicional: regla de Bayes</a></li>
+<li class="chapter" data-level="6.8" data-path="probability.html"><a href="probability.html#aprender-de-los-datos"><i class="fa fa-check"></i><b>6.8</b> Aprender de los datos</a></li>
+<li class="chapter" data-level="6.9" data-path="probability.html"><a href="probability.html#posibilidades-odds-y-razón-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>6.9</b> Posibilidades (odds) y razón de posibilidades (odds ratios)</a></li>
+<li class="chapter" data-level="6.10" data-path="probability.html"><a href="probability.html#qué-significan-las-probabilidades"><i class="fa fa-check"></i><b>6.10</b> ¿Qué significan las probabilidades?</a></li>
+<li class="chapter" data-level="6.11" data-path="probability.html"><a href="probability.html#objetivos-de-aprendizaje-5"><i class="fa fa-check"></i><b>6.11</b> Objetivos de Aprendizaje</a></li>
+<li class="chapter" data-level="6.12" data-path="probability.html"><a href="probability.html#lecturas-sugeridas-3"><i class="fa fa-check"></i><b>6.12</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="6.13" data-path="probability.html"><a href="probability.html#apéndice-2"><i class="fa fa-check"></i><b>6.13</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="6.13.1" data-path="probability.html"><a href="probability.html#derivación-de-la-regla-de-bayes"><i class="fa fa-check"></i><b>6.13.1</b> Derivación de la regla de Bayes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>7</b> Muestreo</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="sampling.html"><a href="sampling.html#how-do-we-sample"><i class="fa fa-check"></i><b>7.1</b> ¿Cómo hacemos una muestra?</a></li>
+<li class="chapter" data-level="7.2" data-path="sampling.html"><a href="sampling.html#samplingerror"><i class="fa fa-check"></i><b>7.2</b> Error de muestreo</a></li>
+<li class="chapter" data-level="7.3" data-path="sampling.html"><a href="sampling.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>7.3</b> Error estándar de la media</a></li>
+<li class="chapter" data-level="7.4" data-path="sampling.html"><a href="sampling.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>7.4</b> El teorema del límite central</a></li>
+<li class="chapter" data-level="7.5" data-path="sampling.html"><a href="sampling.html#confidence-intervals"><i class="fa fa-check"></i><b>7.5</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="7.6" data-path="sampling.html"><a href="sampling.html#objetivos-de-aprendizaje-6"><i class="fa fa-check"></i><b>7.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="7.7" data-path="sampling.html"><a href="sampling.html#lecturas-sugeridas-4"><i class="fa fa-check"></i><b>7.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html"><i class="fa fa-check"></i><b>8</b> Remuestreo y Simulación</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#simulación-monte-carlo"><i class="fa fa-check"></i><b>8.1</b> Simulación Monte Carlo</a></li>
+<li class="chapter" data-level="8.2" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#aleatoriedad-en-estadística"><i class="fa fa-check"></i><b>8.2</b> Aleatoriedad en Estadística</a></li>
+<li class="chapter" data-level="8.3" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#generando-números-aleatorios"><i class="fa fa-check"></i><b>8.3</b> Generando números aleatorios</a></li>
+<li class="chapter" data-level="8.4" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#utilizando-una-simulación-con-el-método-de-montecarlo"><i class="fa fa-check"></i><b>8.4</b> Utilizando una simulación con el Método de Montecarlo</a></li>
+<li class="chapter" data-level="8.5" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#usando-simulaciones-para-estadística-the-bootstrap"><i class="fa fa-check"></i><b>8.5</b> Usando simulaciones para estadística: The bootstrap</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#calculando-el-bootstrap"><i class="fa fa-check"></i><b>8.5.1</b> Calculando el bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#objetivos-de-aprendizaje-7"><i class="fa fa-check"></i><b>8.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="8.7" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#lecturas-sugeridas-5"><i class="fa fa-check"></i><b>8.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>9</b> Prueba de hipótesis</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#prueba-estadística-de-hipótesis-nula-null-hypothesis-statistical-testing-nhst"><i class="fa fa-check"></i><b>9.1</b> Prueba Estadística de Hipótesis Nula (Null Hypothesis Statistical Testing, NHST)</a></li>
+<li class="chapter" data-level="9.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#prueba-estadística-de-hipótesis-nula-un-ejemplo"><i class="fa fa-check"></i><b>9.2</b> Prueba estadística de hipótesis nula: Un ejemplo</a></li>
+<li class="chapter" data-level="9.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#el-proceso-de-la-prueba-de-hipótesis-nula"><i class="fa fa-check"></i><b>9.3</b> El proceso de la prueba de hipótesis nula</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-1-formular-una-hipótesis-de-interés"><i class="fa fa-check"></i><b>9.3.1</b> Paso 1: Formular una hipótesis de interés</a></li>
+<li class="chapter" data-level="9.3.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-2-especifica-las-hipótesis-nula-y-alternativa"><i class="fa fa-check"></i><b>9.3.2</b> Paso 2: Especifica las hipótesis nula y alternativa</a></li>
+<li class="chapter" data-level="9.3.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-3-recolectar-datos"><i class="fa fa-check"></i><b>9.3.3</b> Paso 3: Recolectar datos</a></li>
+<li class="chapter" data-level="9.3.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-4-ajusta-un-modelo-a-los-datos-y-calcula-el-estadístico-de-prueba"><i class="fa fa-check"></i><b>9.3.4</b> Paso 4: Ajusta un modelo a los datos y calcula el estadístico de prueba</a></li>
+<li class="chapter" data-level="9.3.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-5-determinar-la-probabilidad-de-los-datos-bajo-la-hipótesis-nula"><i class="fa fa-check"></i><b>9.3.5</b> Paso 5: Determinar la probabilidad de los datos bajo la hipótesis nula</a></li>
+<li class="chapter" data-level="9.3.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-6-evalúa-la-significatividad-estadística-del-resultado"><i class="fa fa-check"></i><b>9.3.6</b> Paso 6: Evalúa la “significatividad estadística” del resultado</a></li>
+<li class="chapter" data-level="9.3.7" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#qué-significa-un-resultado-significativo"><i class="fa fa-check"></i><b>9.3.7</b> ¿Qué significa un resultado significativo?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#nhst-en-un-contexto-moderno-pruebas-múltiples"><i class="fa fa-check"></i><b>9.4</b> NHST en un contexto moderno: Pruebas múltiples</a></li>
+<li class="chapter" data-level="9.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#objetivos-de-aprendizaje-8"><i class="fa fa-check"></i><b>9.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="9.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lecturas-sugeridas-6"><i class="fa fa-check"></i><b>9.6</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html"><i class="fa fa-check"></i><b>10</b> Cuantificar efectos y diseñar estudios</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.1</b> Intervalos de confianza</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-usando-la-distribución-normal"><i class="fa fa-check"></i><b>10.1.1</b> Intervalos de confianza usando la distribución normal</a></li>
+<li class="chapter" data-level="10.1.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-utilizando-la-distribución-t"><i class="fa fa-check"></i><b>10.1.2</b> Intervalos de confianza utilizando la distribución t</a></li>
+<li class="chapter" data-level="10.1.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-y-tamaño-de-muestra"><i class="fa fa-check"></i><b>10.1.3</b> Intervalos de confianza y tamaño de muestra</a></li>
+<li class="chapter" data-level="10.1.4" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#calcular-el-intervalo-de-confianza-utilizando-bootstrap"><i class="fa fa-check"></i><b>10.1.4</b> Calcular el intervalo de confianza utilizando “bootstrap”</a></li>
+<li class="chapter" data-level="10.1.5" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#relación-de-los-intervalos-de-confianza-con-la-prueba-de-hipótesis"><i class="fa fa-check"></i><b>10.1.5</b> Relación de los intervalos de confianza con la prueba de hipótesis</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#tamaño-de-efecto-effect-sizes"><i class="fa fa-check"></i><b>10.2</b> Tamaño de efecto (effect sizes)</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#d-de-cohen"><i class="fa fa-check"></i><b>10.2.1</b> D de Cohen</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#r-de-pearson"><i class="fa fa-check"></i><b>10.2.2</b> r de Pearson</a></li>
+<li class="chapter" data-level="10.2.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#razón-de-probabilidades-odds-ratio"><i class="fa fa-check"></i><b>10.2.3</b> Razón de probabilidades (odds ratio)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#statistical-power"><i class="fa fa-check"></i><b>10.3</b> Poder estadístico</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#análisis-de-poder"><i class="fa fa-check"></i><b>10.3.1</b> Análisis de poder</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#objetivos-de-aprendizaje-9"><i class="fa fa-check"></i><b>10.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="10.5" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#lecturas-sugeridas-7"><i class="fa fa-check"></i><b>10.5</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html"><i class="fa fa-check"></i><b>11</b> Estadística Bayesiana</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#modelos-generativos"><i class="fa fa-check"></i><b>11.1</b> Modelos Generativos</a></li>
+<li class="chapter" data-level="11.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#el-teorema-de-bayes-y-la-inferencia-inversa"><i class="fa fa-check"></i><b>11.2</b> El Teorema de Bayes y la Inferencia Inversa</a></li>
+<li class="chapter" data-level="11.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#doing-bayesian-estimation"><i class="fa fa-check"></i><b>11.3</b> Haciendo estimaciones Bayesianas</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#especificar-la-probabilidad-previa"><i class="fa fa-check"></i><b>11.3.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.3.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#recolectar-los-datos"><i class="fa fa-check"></i><b>11.3.2</b> Recolectar los datos</a></li>
+<li class="chapter" data-level="11.3.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad"><i class="fa fa-check"></i><b>11.3.3</b> Calcular la probabilidad</a></li>
+<li class="chapter" data-level="11.3.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-marginal"><i class="fa fa-check"></i><b>11.3.4</b> Calcular la probabilidad marginal</a></li>
+<li class="chapter" data-level="11.3.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.3.5</b> Calcular la probabilidad posterior</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#estimating-posterior-distributions"><i class="fa fa-check"></i><b>11.4</b> Estimar distribuciones posteriores</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#especificar-la-probabilidad-previa-1"><i class="fa fa-check"></i><b>11.4.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.4.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#recolectar-algunos-datos"><i class="fa fa-check"></i><b>11.4.2</b> Recolectar algunos datos</a></li>
+<li class="chapter" data-level="11.4.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-1"><i class="fa fa-check"></i><b>11.4.3</b> Calcular la probabilidad</a></li>
+<li class="chapter" data-level="11.4.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-marginal-1"><i class="fa fa-check"></i><b>11.4.4</b> Calcular la probabilidad marginal</a></li>
+<li class="chapter" data-level="11.4.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calculando-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.4.5</b> Calculando la probabilidad posterior</a></li>
+<li class="chapter" data-level="11.4.6" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#estimación-máxima-a-posteriori-map-por-sus-siglas-en-inglés"><i class="fa fa-check"></i><b>11.4.6</b> Estimación máxima a posteriori (MAP, por sus siglas en inglés)</a></li>
+<li class="chapter" data-level="11.4.7" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#intervalos-de-credibilidad"><i class="fa fa-check"></i><b>11.4.7</b> Intervalos de credibilidad</a></li>
+<li class="chapter" data-level="11.4.8" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#efectos-de-diferentes-probabilidades-previas"><i class="fa fa-check"></i><b>11.4.8</b> Efectos de diferentes probabilidades previas</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#elegir-una-probabilidad-previa"><i class="fa fa-check"></i><b>11.5</b> Elegir una probabilidad previa</a></li>
+<li class="chapter" data-level="11.6" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#prueba-de-hipótesis-bayesiana"><i class="fa fa-check"></i><b>11.6</b> Prueba de hipótesis Bayesiana</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#Bayes-factors"><i class="fa fa-check"></i><b>11.6.1</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="11.6.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#factores-de-bayes-para-hipótesis-estadísticas"><i class="fa fa-check"></i><b>11.6.2</b> Factores de Bayes para hipótesis estadísticas</a></li>
+<li class="chapter" data-level="11.6.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#evaluar-evidencia-a-favor-de-la-hipótesis-nula"><i class="fa fa-check"></i><b>11.6.3</b> Evaluar evidencia a favor de la hipótesis nula</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#objetivos-de-aprendizaje-10"><i class="fa fa-check"></i><b>11.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="11.8" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#suggested-readings"><i class="fa fa-check"></i><b>11.8</b> Suggested readings</a></li>
+<li class="chapter" data-level="11.9" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#apéndice-3"><i class="fa fa-check"></i><b>11.9</b> Apéndice:</a>
+<ul>
+<li class="chapter" data-level="11.9.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#muestreo-de-rechazo"><i class="fa fa-check"></i><b>11.9.1</b> Muestreo de rechazo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html"><i class="fa fa-check"></i><b>12</b> Modelar relaciones categóricas</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#ejemplo-colores-de-dulces"><i class="fa fa-check"></i><b>12.1</b> Ejemplo: Colores de dulces</a></li>
+<li class="chapter" data-level="12.2" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#chi-squared-test"><i class="fa fa-check"></i><b>12.2</b> Prueba Ji-cuadrada de Pearson</a></li>
+<li class="chapter" data-level="12.3" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#two-way-test"><i class="fa fa-check"></i><b>12.3</b> Tablas de contingencia y la prueba de dos vías</a></li>
+<li class="chapter" data-level="12.4" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#residuales-estandarizados"><i class="fa fa-check"></i><b>12.4</b> Residuales estandarizados</a></li>
+<li class="chapter" data-level="12.5" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#razones-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>12.5</b> Razones de posibilidades (odds ratios)</a></li>
+<li class="chapter" data-level="12.6" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#factores-de-bayes"><i class="fa fa-check"></i><b>12.6</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="12.7" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#análisis-categórico-más-allá-de-la-tabla-2-x-2"><i class="fa fa-check"></i><b>12.7</b> Análisis categórico más allá de la tabla 2 X 2</a></li>
+<li class="chapter" data-level="12.8" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#cuídate-de-la-paradoja-de-simpson"><i class="fa fa-check"></i><b>12.8</b> Cuídate de la paradoja de Simpson</a></li>
+<li class="chapter" data-level="12.9" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#objetivos-de-aprendizaje-11"><i class="fa fa-check"></i><b>12.9</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="12.10" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#lecturas-adicionales"><i class="fa fa-check"></i><b>12.10</b> Lecturas adicionales</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html"><i class="fa fa-check"></i><b>13</b> Modelar relaciones continuas</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#un-ejemplo-crímenes-de-odio-y-la-inequidad-de-ingreso"><i class="fa fa-check"></i><b>13.1</b> Un ejemplo: Crímenes de odio y la inequidad de ingreso</a></li>
+<li class="chapter" data-level="13.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#la-inequidad-de-ingreso-está-relacionada-a-los-crímenes-de-odio"><i class="fa fa-check"></i><b>13.2</b> ¿La inequidad de ingreso está relacionada a los crímenes de odio?</a></li>
+<li class="chapter" data-level="13.3" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#covariance-and-correlation"><i class="fa fa-check"></i><b>13.3</b> Covarianza y la correlación</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#prueba-de-hipótesis-para-correlaciones"><i class="fa fa-check"></i><b>13.3.1</b> Prueba de hipótesis para correlaciones</a></li>
+<li class="chapter" data-level="13.3.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#robust-correlations"><i class="fa fa-check"></i><b>13.3.2</b> Correlaciones Robustas</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#correlación-y-causalidad"><i class="fa fa-check"></i><b>13.4</b> Correlación y causalidad</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#gráficas-causales"><i class="fa fa-check"></i><b>13.4.1</b> Gráficas causales</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#objetivos-de-aprendizaje-12"><i class="fa fa-check"></i><b>13.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="13.6" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#lecturas-sugeridas-8"><i class="fa fa-check"></i><b>13.6</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="13.7" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#apéndice-4"><i class="fa fa-check"></i><b>13.7</b> Apéndice:</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#cuantificando-la-inequidad-el-índice-gini"><i class="fa fa-check"></i><b>13.7.1</b> Cuantificando la inequidad: El índice Gini</a></li>
+<li class="chapter" data-level="13.7.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#análisis-de-correlación-bayesiana"><i class="fa fa-check"></i><b>13.7.2</b> Análisis de correlación bayesiana</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html"><i class="fa fa-check"></i><b>14</b> El Modelo Lineal General</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#linear-regression"><i class="fa fa-check"></i><b>14.1</b> Regresión lineal</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#regression-to-the-mean"><i class="fa fa-check"></i><b>14.1.1</b> Regresión a la media</a></li>
+<li class="chapter" data-level="14.1.2" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#la-relación-entre-correlación-y-regresión"><i class="fa fa-check"></i><b>14.1.2</b> La relación entre correlación y regresión</a></li>
+<li class="chapter" data-level="14.1.3" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#errores-estándar-de-los-modelos-de-regresión"><i class="fa fa-check"></i><b>14.1.3</b> Errores estándar de los modelos de regresión</a></li>
+<li class="chapter" data-level="14.1.4" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#pruebas-estadísticas-para-los-parámetros-de-la-regresión"><i class="fa fa-check"></i><b>14.1.4</b> Pruebas estadísticas para los parámetros de la regresión</a></li>
+<li class="chapter" data-level="14.1.5" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#cuantificar-la-bondad-de-adjuste-del-modelo"><i class="fa fa-check"></i><b>14.1.5</b> Cuantificar la bondad de adjuste del modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#ajustar-modelos-más-complejos"><i class="fa fa-check"></i><b>14.2</b> Ajustar modelos más complejos</a></li>
+<li class="chapter" data-level="14.3" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#interacciones-entre-variables"><i class="fa fa-check"></i><b>14.3</b> Interacciones entre variables</a></li>
+<li class="chapter" data-level="14.4" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#más-allá-de-predictores-y-resultados-lineales"><i class="fa fa-check"></i><b>14.4</b> Más allá de predictores y resultados lineales</a></li>
+<li class="chapter" data-level="14.5" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#model-criticism"><i class="fa fa-check"></i><b>14.5</b> Criticar nuestro modelo y revisar suposiciones</a></li>
+<li class="chapter" data-level="14.6" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#qué-significa-realmente-predecir"><i class="fa fa-check"></i><b>14.6</b> ¿Qué significa realmente “predecir”?</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#cross-validation"><i class="fa fa-check"></i><b>14.6.1</b> Validación cruzada (Cross-validation)</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#objetivos-de-aprendizaje-13"><i class="fa fa-check"></i><b>14.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="14.8" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#lecturas-sugeridas-9"><i class="fa fa-check"></i><b>14.8</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="14.9" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#apéndice-5"><i class="fa fa-check"></i><b>14.9</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="14.9.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#estimar-parámetros-de-una-regresión-lineal"><i class="fa fa-check"></i><b>14.9.1</b> Estimar parámetros de una regresión lineal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="comparar-medias.html"><a href="comparar-medias.html"><i class="fa fa-check"></i><b>15</b> Comparar medias</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="comparar-medias.html"><a href="comparar-medias.html#single-mean"><i class="fa fa-check"></i><b>15.1</b> Probar el valor de una media simple</a></li>
+<li class="chapter" data-level="15.2" data-path="comparar-medias.html"><a href="comparar-medias.html#comparing-two-means"><i class="fa fa-check"></i><b>15.2</b> Comparar dos medias</a></li>
+<li class="chapter" data-level="15.3" data-path="comparar-medias.html"><a href="comparar-medias.html#ttest-linear-model"><i class="fa fa-check"></i><b>15.3</b> La prueba t como un modelo lineal</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="comparar-medias.html"><a href="comparar-medias.html#tamaños-de-efecto-para-comparar-dos-medias"><i class="fa fa-check"></i><b>15.3.1</b> Tamaños de efecto para comparar dos medias</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="comparar-medias.html"><a href="comparar-medias.html#factores-de-bayes-para-diferencias-entre-medias"><i class="fa fa-check"></i><b>15.4</b> Factores de Bayes para diferencias entre medias</a></li>
+<li class="chapter" data-level="15.5" data-path="comparar-medias.html"><a href="comparar-medias.html#paired-ttests"><i class="fa fa-check"></i><b>15.5</b> Comparar observaciones pareadas/relacionadas</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="comparar-medias.html"><a href="comparar-medias.html#prueba-de-los-signos"><i class="fa fa-check"></i><b>15.5.1</b> Prueba de los signos</a></li>
+<li class="chapter" data-level="15.5.2" data-path="comparar-medias.html"><a href="comparar-medias.html#prueba-t-para-muestras-relacionadas-paired-t-test"><i class="fa fa-check"></i><b>15.5.2</b> Prueba t para muestras relacionadas (paired t-test)</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="comparar-medias.html"><a href="comparar-medias.html#comparar-más-de-dos-medias"><i class="fa fa-check"></i><b>15.6</b> Comparar más de dos medias</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="comparar-medias.html"><a href="comparar-medias.html#ANOVA"><i class="fa fa-check"></i><b>15.6.1</b> Análisis de varianza</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="comparar-medias.html"><a href="comparar-medias.html#objetivos-de-aprendizaje-14"><i class="fa fa-check"></i><b>15.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="15.8" data-path="comparar-medias.html"><a href="comparar-medias.html#apéndice-6"><i class="fa fa-check"></i><b>15.8</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="15.8.1" data-path="comparar-medias.html"><a href="comparar-medias.html#la-prueba-t-de-muestras-relacionadas-como-un-modelo-lineal"><i class="fa fa-check"></i><b>15.8.1</b> La prueba t de muestras relacionadas como un modelo lineal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="practical-example.html"><a href="practical-example.html"><i class="fa fa-check"></i><b>16</b> Modelación estadística práctica</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="practical-example.html"><a href="practical-example.html#el-proceso-de-modelación-estadística"><i class="fa fa-check"></i><b>16.1</b> El proceso de modelación estadística</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="practical-example.html"><a href="practical-example.html#especificar-nuestra-pregunta-de-interés."><i class="fa fa-check"></i><b>16.1.1</b> 1: Especificar nuestra pregunta de interés.</a></li>
+<li class="chapter" data-level="16.1.2" data-path="practical-example.html"><a href="practical-example.html#identificar-o-recolectar-los-datos-apropiados."><i class="fa fa-check"></i><b>16.1.2</b> 2: Identificar o recolectar los datos apropiados.</a></li>
+<li class="chapter" data-level="16.1.3" data-path="practical-example.html"><a href="practical-example.html#preparar-los-datos-para-el-análisis."><i class="fa fa-check"></i><b>16.1.3</b> 3: Preparar los datos para el análisis.</a></li>
+<li class="chapter" data-level="16.1.4" data-path="practical-example.html"><a href="practical-example.html#determinar-el-modelo-apropiado."><i class="fa fa-check"></i><b>16.1.4</b> 4: Determinar el modelo apropiado.</a></li>
+<li class="chapter" data-level="16.1.5" data-path="practical-example.html"><a href="practical-example.html#ajustar-el-modelo-a-los-datos."><i class="fa fa-check"></i><b>16.1.5</b> 5: Ajustar el modelo a los datos.</a></li>
+<li class="chapter" data-level="16.1.6" data-path="practical-example.html"><a href="practical-example.html#criticar-el-modelo-para-asegurarnos-que-se-ajusta-apropiadamente."><i class="fa fa-check"></i><b>16.1.6</b> 6: Criticar el modelo para asegurarnos que se ajusta apropiadamente.</a></li>
+<li class="chapter" data-level="16.1.7" data-path="practical-example.html"><a href="practical-example.html#probar-hipótesis-y-cuantificar-el-tamaño-del-efecto."><i class="fa fa-check"></i><b>16.1.7</b> 7: Probar hipótesis y cuantificar el tamaño del efecto.</a></li>
+<li class="chapter" data-level="16.1.8" data-path="practical-example.html"><a href="practical-example.html#qué-pasa-con-los-posibles-factores-de-confusión-confounds"><i class="fa fa-check"></i><b>16.1.8</b> ¿Qué pasa con los posibles factores de confusión (confounds)?</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="practical-example.html"><a href="practical-example.html#obtener-ayuda"><i class="fa fa-check"></i><b>16.2</b> Obtener ayuda</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html"><i class="fa fa-check"></i><b>17</b> Hacer investigación reproducible</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-pensamos-que-funciona-la-ciencia"><i class="fa fa-check"></i><b>17.1</b> Cómo pensamos que funciona la ciencia</a></li>
+<li class="chapter" data-level="17.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-realmente-funciona-la-ciencia-a-veces"><i class="fa fa-check"></i><b>17.2</b> Cómo realmente funciona la ciencia (a veces)</a></li>
+<li class="chapter" data-level="17.3" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#la-crisis-de-reproducibilidad-en-la-ciencia"><i class="fa fa-check"></i><b>17.3</b> La crisis de reproducibilidad en la ciencia</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#valor-predictivo-positivo-y-significatividad-estadística"><i class="fa fa-check"></i><b>17.3.1</b> Valor predictivo positivo y significatividad estadística</a></li>
+<li class="chapter" data-level="17.3.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#la-maldición-del-ganador"><i class="fa fa-check"></i><b>17.3.2</b> La maldición del ganador</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#prácticas-cuestionables-de-investigación"><i class="fa fa-check"></i><b>17.4</b> Prácticas cuestionables de investigación</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#esp-o-qrp"><i class="fa fa-check"></i><b>17.4.1</b> ¿ESP o QRP?</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#hacer-investigación-reproducible"><i class="fa fa-check"></i><b>17.5</b> Hacer investigación reproducible</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#pre-registro"><i class="fa fa-check"></i><b>17.5.1</b> Pre-registro</a></li>
+<li class="chapter" data-level="17.5.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#prácticas-reproducibles"><i class="fa fa-check"></i><b>17.5.2</b> Prácticas reproducibles</a></li>
+<li class="chapter" data-level="17.5.3" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#replicación"><i class="fa fa-check"></i><b>17.5.3</b> Replicación</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#hacer-análisis-de-datos-reproducibles"><i class="fa fa-check"></i><b>17.6</b> Hacer análisis de datos reproducibles</a></li>
+<li class="chapter" data-level="17.7" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#conclusión-hacer-mejor-ciencia"><i class="fa fa-check"></i><b>17.7</b> Conclusión: Hacer mejor ciencia</a></li>
+<li class="chapter" data-level="17.8" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#objetivos-de-aprendizaje-15"><i class="fa fa-check"></i><b>17.8</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="17.9" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#lecturas-sugeridas-10"><i class="fa fa-check"></i><b>17.9</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Thinking for the 21st Century</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="resumir-datos" class="section level1" number="3">
+<h1><span class="header-section-number">Capitulo 3</span> Resumir datos</h1>
+<!-- I mentioned in the Introduction that one of the big discoveries of statistics is the idea that we can better understand the world by throwing away information, and that's exactly what we are doing when we summarize a dataset. -->
+<p>Mencioné en la Introducción que uno de los grandes descubrimientos de la estadística es la idea de que podemos entender mejor el mundo si nos deshacemos de información, y eso es justo lo que hacemos cuando resumimos un cojunto de datos.
+<!-- In this Chapter we will discuss why and how to summarize data. -->
+En este Capítulo discutiremos por qué y cómo resumir datos.</p>
+<!-- ## Why summarize data? -->
+<div id="por-qué-resumir-datos" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> ¿Por qué resumir datos?</h2>
+<!-- When we summarize data, we are necessarily throwing away information, and one might plausibly object to this.  As an example, let's go back to the PURE study that we discussed in Chapter 1.  Are we not supposed to believe that all of the details about each individual matter, beyond those that are summarized in the dataset?  What about the specific details of how the data were collected, such as the time of day or the mood of the participant?  All of these details are lost when we summarize the data. -->
+<p>Cuando resumimos datos, estamos necesariamente tirando información, y uno podría objetar esto plausiblemente. Como un ejemplo, regresemos al estudio PURE que discutimos en el Capítulo 1. ¿No deberíamos pensar que todos los detalles de cada individuo importan, más allá de los que se resumieron en el conjunto de datos? ¿Qué decir de los detalles específicos sobre cómo fue recolectada la información, como el momento del día o el estado de ánimo del participante? Todos esos detalles se pierden cuando resumimos los datos.</p>
+<!--We summarize data in general because it provides us with a way to *generalize* - that is, to make general statements that extend beyond specific observations.  The importance of generalization was highlighted by the writer Jorge Luis Borges in his short story "Funes the Memorious", which describes an individual who loses the ability to forget.  Borges focuses in on the relation between generalization (i.e. throwing away data) and thinking: "To think is to forget a difference, to generalize, to abstract. In the overly replete world of Funes, there were nothing but details."  -->
+<p>Resumimos datos en general porque nos provee de una manera de <em>generalizar</em> - esto es, hacer enunciados generales que van más allá de observaciones específicas. La importancia de la generalización fue subrayada por el escritor Jorge Luis Borges en su cuento “Funes El Memorioso”, donde describe a un individuo que pierde la habilidad de olvidar. Borges se enfoca en la relación entre generalización (i.e. tirar datos) y el pensamiento: “Pensar es olvidar diferencias, es generalizar, abstraer. En el abarrotado mundo de Funes no había sino detalles, casi inmediatos”.</p>
+<!-- Psychologists have long studied all of the ways in which generalization is central to thinking.  One example is categorization: We are able to easily recognize different examples of the category of "birds" even though the individual examples may be very different in their surface features (such as an ostrich, a robin, and a chicken).  Importantly, generalization lets us make predictions about these individuals -- in the case of birds, we can predict that they can fly and eat seeds, and that they probably can't drive a car or speak English.  These predictions won't always be right, but they are often good enough to be useful in the world. -->
+<p>Les psicólogues han estudiado por largo tiempo todas las maneras en que la generalización es central al pensamiento. Un ejemplo es la categorización: somos capaces de reconocer fácilmente diferentes ejemplos de la categoría de “aves” a pesar de que los ejemplos individuales puedan ser muy diferentes en características superficiales (como un avestruz, un petirrojo, y una gallina). De manera importante, la generalización nos permite hacer predicciones acerca de estos individuos – en el caso de las aves, podemos predecir que vuelan y comen semillas, y que probablemente no puedan manejar un carro o hablar inglés. Estas predicciones no serán siempre correctas, pero frecuentemente serán suficientemente buenas para ser útiles en el mundo.</p>
+<!-- ## Summarizing data using tables -->
+</div>
+<div id="resumiendo-datos-usando-tablas" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Resumiendo datos usando tablas</h2>
+<!-- A simple way to summarize data is to generate a table representing counts of various types of observations.  This type of table has been used for thousands of years (see Figure \@ref(fig:salesContract)). -->
+<p>Una manera simple de resumir datos es el generar una tabla que represente el conteo de varios tipos de observaciones. Este tipo de tabla ha sido usado durante miles de años (ve la Figura <a href="resumir-datos.html#fig:salesContract">3.1</a>).</p>
+<!-- A Sumerian tablet from the Louvre, showing a sales contract for a house and field.  Public domain, via Wikimedia Commons. -->
+<div class="figure"><span id="fig:salesContract"></span>
+<img src="images/Sales_contract_Shuruppak_Louvre_AO3760.jpg" alt="Una tabla sumeria en el Louvre, que muestra un contrato de venta de una casa y un terreno. Dominio público, via Wikimedia Commons." height="30%" />
+<p class="caption">
+Figura 3.1: Una tabla sumeria en el Louvre, que muestra un contrato de venta de una casa y un terreno. Dominio público, via Wikimedia Commons.
+</p>
+</div>
+<!-- Let's look at some examples of the use of tables, using a more realistic dataset.  Throughout this book we will use the [National Health and Nutrition Examination Survey (NHANES)](https://www.cdc.gov/nchs/nhanes/index.htm) dataset.  This is an ongoing study that assesses the health and nutrition status of a sample of individuals from the United States on many different variables.  We will use a version of the dataset that is available with the R software library.   For this example, we will look at a simple variable, called "PhysActive" in the dataset.  This variable contains one of three different values: "Yes" or "No" (indicating whether or not the person reports doing "moderate or vigorous-intensity sports, fitness or recreational activities"), or "NA" if the data are missing for that individual. There are different reasons that the data might be missing; for example, this question was not asked of children younger than 12 years of age, while in other cases an adult may have declined to answer the question during the interview. -->
+<p>Veamos algunos ejemplos del uso de tablas, usando un conjunto de datos más realista. A lo largo de este libro usaremos la base de datos de la <a href="https://www.cdc.gov/nchs/nhanes/index.htm">Encuesta Nacional de Nutrición y Salud (National Health and Nutrition Examination Survey, NHANES)</a>. Este es un estudio en curso que evalúa el status de salud y nutrición de una muestra de individuos de los Estados Unidos en múltiples variables diferentes. Aquí usaremos una versión de la base de datos que está disponible con las librerías del software R. Para este ejemplo, miraremos una variable simple llamada “PhysActive” en la base de datos. Esta variable contiene uno de tres diferentes valores: “Sí” o “No” (indicando si la persona reportó o no el hacer “deportes moderados o de intensidad vigorosa, actividades de fitness o recreacionales”), o “NA” si el dato está perdido para ese individuo. Existen varias razones por las cuales el dato podría estar perdido; por ejemplo, esta pregunta no se le realizó a niños menores a 12 años, mientras que en otros casos un adulto podría haber declinado el contestar la pregunta durante la entrevista.</p>
+<!-- ### Frequency distributions  {#frequency-distributions} -->
+<div id="frequency-distributions" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Distribuciones de frecuencias</h3>
+<!-- Let's look at how many people fall into each of these categories: -->
+<p>Veamos cuántas personas caen en cada una de las categorías:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">PhysActive</th>
+<th align="right">AbsoluteFrequency</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">No</td>
+<td align="right">2473</td>
+</tr>
+<tr class="even">
+<td align="left">Yes</td>
+<td align="right">2972</td>
+</tr>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="right">1334</td>
+</tr>
+</tbody>
+</table>
+<!-- This table shows the frequencies of each of the different values; there were 2473 individuals who responded "No" to the question, 2972 who responded "Yes", and 1334 for whom no response was given.  We call this a *frequency distribution* because it tells us how frequent each of the possible values is within our sample. -->
+<p>Esta tabla muestra las frecuencias de cada uno de los diferentes valores; había 2473 individuos que respondieron “No” a la pregunta, 2972 que respondieron “Sí”, y 1334 de quienes no hubo una respuesta. Llamamos a esto una <em>distribución de frecuencias</em> porque nos dice qué tan frecuente sucede en nuestra muestra cada uno de los valores posibles.</p>
+<!-- This shows us the absolute frequency of the two responses, for everyone who actually gave a response. We can see from this that there are more people saying "Yes" than "No", but it can be hard to tell from absolute numbers how big the difference is.  For this reason, we often would rather present the data using *relative frequency*, which is obtained by dividing each frequency by the sum of all frequencies: -->
+<p>Esto nos muestra la frecuencia absoluta de las dos respuestas, para todas las personas que sí dieron una respuesta. De esta información, podemos ver que hubo más personas respondiendo “Sí” que “No”, pero puede ser difícil ver qué tan grande es la diferencia sólo viendo estos números absolutos. Por esta razón, frecuentemente preferimos presentar los datos usando <em>frecuencias relativas</em>, que se obtienen dividiendo cada frecuencia entre la suma de todas las frecuencias absolutas:</p>
+<!-- relative\ frequency_i = \frac{absolute\ frequency_i}{\sum_{j=1}^N absolute\ frequency_j} -->
+<p><span class="math display">\[
+frecuencia\ relativa_i = \frac{frecuencia\ absoluta_i}{\sum_{j=1}^N frecuencia\ absoluta_j}
+\]</span>
+<!-- The relative frequency provides a much easier way to see how big the imbalance is.  We can also interpret the relative frequencies as percentages by multiplying them by 100. In this example, we will drop the NA values as well, since we would like to be able to interpret the relative frequencies of active versus inactive people. -->
+La frecuencia relativa provee una manera mucho más fácil para observar qué tan grande es la diferencia. También podemos interpretar las frecuencias relativas como porcentajes si las multiplicamos por 100. En este ejemplo, quitaremos los valores NA, porque nos gustaría poder interpretar las frecuencias relativas de las personas físicamente activas versus las inactivas.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-5">Tabla 3.1: </span>Frecuencias absolutas y relativas, y porcentajes de la variable PhysActive</caption>
+<thead>
+<tr class="header">
+<th align="left">PhysActive</th>
+<th align="right">AbsoluteFrequency</th>
+<th align="right">RelativeFrequency</th>
+<th align="right">Percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">No</td>
+<td align="right">2473</td>
+<td align="right">0.45</td>
+<td align="right">45</td>
+</tr>
+<tr class="even">
+<td align="left">Yes</td>
+<td align="right">2972</td>
+<td align="right">0.55</td>
+<td align="right">55</td>
+</tr>
+</tbody>
+</table>
+<!-- This lets us see that 45.4 percent of the individuals in the NHANES sample said "No" and 54.6 percent said "Yes". -->
+<p>Esto nos deja ver que el 45.4 por ciento de los individuos en la muestra NHANES dijo “No” y el 54.6 por ciento dijo “Sí”.</p>
+<!-- ### Cumulative distributions {#cumulative-distributions} -->
+</div>
+<div id="cumulative-distributions" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Distribuciones acumuladas</h3>
+<!-- The PhysActive variable that we examined above only had two possible values, but often we wish to summarize data that can have many more possible values. When those values are quantitative, then one useful way to summarize them is via what we call a *cumulative* frequency representation: rather than asking how many observations take on a specific value, we ask how many have a value of *at most* some specific value. -->
+<p>La variable PhysActive que revisamos arriba sólo tenía dos valores posibles, pero frecuentemente queremos resumir datos que pueden tener más valores posibles. Cuando esos valores son cuantitativos, entonces una manera útil de resumirlos es a través de lo que llamamos una representación de frecuencias <em>acumuladas</em>: en lugar de preguntarnos cuántas observaciones toman un valor específico, nos preguntamos cuántas observaciones tienen <em>como máximo</em> un valor en específico.</p>
+<!-- Let's look at another variable in the NHANES dataset, called SleepHrsNight which records how many hours the participant reports sleeping on usual weekdays.  Let's create a frequency table as we did above, after removing anyone with missing data for this question. -->
+<p>Démosle un vistazo a otra variable en la base de datos NHANES, llamada SleepHrsNight que registra cuántas horas el participante reportó que duerme usualmente entre semana. Construyamos una tabla de frecuencias como la que hicimos arriba, después de quitar a las personas que tienen dato perdido en este pregunta.</p>
+<!-- Frequency distribution for number of hours of sleep per night in the NHANES dataset -->
+<table>
+<caption><span id="tab:unnamed-chunk-7">Tabla 3.2: </span>Distribución de frecuencias del número de horas de sueño por noche en la base de datos NHANES</caption>
+<thead>
+<tr class="header">
+<th align="right">SleepHrsNight</th>
+<th align="right">AbsoluteFrequency</th>
+<th align="right">RelativeFrequency</th>
+<th align="right">Percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">9</td>
+<td align="right">0.00</td>
+<td align="right">0.18</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="right">49</td>
+<td align="right">0.01</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">200</td>
+<td align="right">0.04</td>
+<td align="right">3.97</td>
+</tr>
+<tr class="even">
+<td align="right">5</td>
+<td align="right">406</td>
+<td align="right">0.08</td>
+<td align="right">8.06</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1172</td>
+<td align="right">0.23</td>
+<td align="right">23.28</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">1394</td>
+<td align="right">0.28</td>
+<td align="right">27.69</td>
+</tr>
+<tr class="odd">
+<td align="right">8</td>
+<td align="right">1405</td>
+<td align="right">0.28</td>
+<td align="right">27.90</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">271</td>
+<td align="right">0.05</td>
+<td align="right">5.38</td>
+</tr>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">97</td>
+<td align="right">0.02</td>
+<td align="right">1.93</td>
+</tr>
+<tr class="even">
+<td align="right">11</td>
+<td align="right">15</td>
+<td align="right">0.00</td>
+<td align="right">0.30</td>
+</tr>
+<tr class="odd">
+<td align="right">12</td>
+<td align="right">17</td>
+<td align="right">0.00</td>
+<td align="right">0.34</td>
+</tr>
+</tbody>
+</table>
+<!-- We can already begin to summarize the dataset just by looking at the table; for example, we can see that most people report sleeping between 6 and 8 hours.  Let's plot the data to see this more clearly.  To do this we can plot a *histogram* which shows the number of cases having each of the different values; see left panel of Figure \@ref(fig:sleepHist). We can also plot the relative frequencies, which we will often refer to as *densities* - see the right panel of Figure \@ref(fig:sleepHist). -->
+<p>Desde este momento podemos resumir los datos sólo al observar la tabla; por ejemplo, podemos ver que la mayoría de las personas reportaron dormir entre 6 y 8 horas. Grafiquemos los datos para ver esto de manera más clara. Para hacer esto podemos graficar un <em>histograma</em> que nos permite ver el número de casos que hay por cada uno de los valores; ve el panel izquierdo de la Figura <a href="resumir-datos.html#fig:sleepHist">3.2</a>. También podemos graficar las frecuencias relativas, a este tipo de gráfica nos referirimos frecuentemente como <em>densidades</em> - ve el panel derecho de la Figura <a href="resumir-datos.html#fig:sleepHist">3.2</a>.</p>
+<!-- Left: Histogram showing the number (left) and proportion (right) of people reporting each possible value of the SleepHrsNight variable. -->
+<div class="figure"><span id="fig:sleepHist"></span>
+<img src="StatsThinking21_files/figure-html/sleepHist-1.png" alt="Histogramas que muestran el número (izquierda) y la proporción (derecha) de las personas que reportaron cada valor posible en la variable SleepHrsNight." width="768" height="33%" />
+<p class="caption">
+Figura 3.2: Histogramas que muestran el número (izquierda) y la proporción (derecha) de las personas que reportaron cada valor posible en la variable SleepHrsNight.
+</p>
+</div>
+<!-- What if we want to know how many people report sleeping 5 hours or less?  To find this, we can compute a *cumulative distribution*.  To compute the cumulative frequency for some value j, we add up the frequencies for all of the values up to and including j: -->
+<p>¿Qué pasa si quisiéramos saber cuántas personas reportaron dormir 5 horas o menos? Para encontrar esto, podemos calcular una <em>distribución acumulada</em>. Para calcular la frecuencia acumulada para un valor j, sumamos las frecuencias de todos los valores hasta j, incluyendo también la frecuencia del valor j:</p>
+<!-- cumulative\ frequency_j = \sum_{i=1}^{j}{absolute\ frequency_i} -->
+<p><span class="math display">\[
+frecuencia\ acumulada_j = \sum_{i=1}^{j}{frecuencia\ absoluta_i}
+\]</span>
+<!-- Let's do this for our sleep variable, computing the absolute and cumulative frequency in R: -->
+Hagamos esto para nuestra variable de sueño, calculemos las frecuencias absolutas y acumuladas en R:</p>
+<div style="page-break-after: always;"></div>
+<!-- Absolute and cumulative frquency distributions for SleepHrsNight variable -->
+<table>
+<caption><span id="tab:unnamed-chunk-9">Tabla 3.3: </span>Distribuciones de frecuencias absolutas y acumuladas para la variable SleepHrsNight</caption>
+<thead>
+<tr class="header">
+<th align="right">SleepHrsNight</th>
+<th align="right">AbsoluteFrequency</th>
+<th align="right">CumulativeFrequency</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">9</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="right">49</td>
+<td align="right">58</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">200</td>
+<td align="right">258</td>
+</tr>
+<tr class="even">
+<td align="right">5</td>
+<td align="right">406</td>
+<td align="right">664</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1172</td>
+<td align="right">1836</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">1394</td>
+<td align="right">3230</td>
+</tr>
+<tr class="odd">
+<td align="right">8</td>
+<td align="right">1405</td>
+<td align="right">4635</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">271</td>
+<td align="right">4906</td>
+</tr>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">97</td>
+<td align="right">5003</td>
+</tr>
+<tr class="even">
+<td align="right">11</td>
+<td align="right">15</td>
+<td align="right">5018</td>
+</tr>
+<tr class="odd">
+<td align="right">12</td>
+<td align="right">17</td>
+<td align="right">5035</td>
+</tr>
+</tbody>
+</table>
+<!-- In the left panel of Figure \@ref(fig:sleepAbsCumulRelFreq) we plot the data to see what these representations look like; the absolute frequency values are plotted in solid lines, and the cumulative frequencies are plotted in dashed lines We see that the cumulative frequency is *monotonically increasing* -- that is, it can only go up or stay constant, but it can never decrease.  Again, we usually find the relative frequencies to be more useful than the absolute; those are plotted in the right panel of Figure \@ref(fig:sleepAbsCumulRelFreq). -->
+<p>En el panel izquierdo de la Figura <a href="resumir-datos.html#fig:sleepAbsCumulRelFreq">3.3</a> graficamos los datos para ver cómo se ven estas representaciones; los valores de frecuencias absolutas están graficados con líneas sólidas (continuas), y las frecuencias acumuladas están graficadas con líneas punteadas. Podemos ver que las frecuencias acumuladas van <em>incrementándose monotónicamente</em> – esto es, sólo pueden ir hacia arriba o mantenerse constantes, pero nunca pueden disminuir. De nuevo, usualmente encontramos las frecuencias relativas más útiles que las absolutas; esas están graficadas en el panel derecho de la Figura <a href="resumir-datos.html#fig:sleepAbsCumulRelFreq">3.3</a>.</p>
+<!-- A plot of the relative (solid) and cumulative relative (dashed) values for frequency (left) and proportion (right) for the possible values of SleepHrsNight. -->
+<div class="figure"><span id="fig:sleepAbsCumulRelFreq"></span>
+<img src="StatsThinking21_files/figure-html/sleepAbsCumulRelFreq-1.png" alt="Gráfica con los valores relativos (líneas sólidas/continuas) y relativos acumulados (líneas punteadas) de las frecuencias (izquierda) y proporciones (derecha) de los posibles valores de SleepHrsNight." width="768" height="33%" />
+<p class="caption">
+Figura 3.3: Gráfica con los valores relativos (líneas sólidas/continuas) y relativos acumulados (líneas punteadas) de las frecuencias (izquierda) y proporciones (derecha) de los posibles valores de SleepHrsNight.
+</p>
+</div>
+<!-- ### Plotting histograms {#plotting-histograms} -->
+</div>
+<div id="plotting-histograms" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Graficar histogramas</h3>
+<!-- A histogram of the Age (left) and Height (right) variables in NHANES. -->
+<div class="figure"><span id="fig:ageHist"></span>
+<img src="StatsThinking21_files/figure-html/ageHist-1.png" alt="Histograma de las variables de Edad (izquierda) y Altura (derecha) en NHANES." width="768" height="33%" />
+<p class="caption">
+Figura 3.4: Histograma de las variables de Edad (izquierda) y Altura (derecha) en NHANES.
+</p>
+</div>
+<!-- The variables that we examined above were fairly simple, having only a few possible values. Now let's look at a more complex variable: Age.  First let's plot the Age variable for all of the individuals in the NHANES dataset (see left panel of Figure \@ref(fig:ageHist)). What do you see there?  First, you should notice that the number of individuals in each age group is declining over time.  This makes sense because the population is being randomly sampled, and thus death over time leads to fewer people in the older age ranges.  Second, you probably notice a large spike in the graph at age 80.  What do you think that's about? -->
+<p>Las variables que hemos examinado arriba eran bastante simples, pudiendo tener sólo unos pocos valores posibles. Ahora veamos una variable más compleja: Edad. Primero, grafiquemos la variable Edad para todos los individuos en la base de datos de NHANES (ve el panel izquierdo de la Figura <a href="resumir-datos.html#fig:ageHist">3.4</a>). ¿Qué ves ahí? Primero, deberías notar que el número de individuos en cada grupo de edad va disminuyendo con el tiempo. Esto tiene sentido porque la población fue muestreada aleatoriamente, y pasa que los fallecimientos a lo largo del tiempo lleva a que haya menos personas en los rangos de edad más avanzada. Segundo, probablemente notes un pico grande en la gráfica en la edad de 80 años. ¿Qué piensas que sea eso?</p>
+<!-- If were were to look up the information about the NHANES dataset in R, we would see the following definition: "Age in years at screening of study participant. Note: Subjects 80 years or older were recorded as 80." The reason for this is that the relatively small number of individuals with very high ages would make it potentially easier to identify the specific person in the dataset if you knew their exact age;  researchers generally promise their participants to keep their identity confidential, and this is one of the things they can do to help protect their research subjects.  This also highlights the fact that it's always important to know where one's data have come from and how they have been processed; otherwise we might interpret them improperly, thinking that 80-year-olds had been somehow overrepresented in the sample. -->
+<p>Si buscáramos la información acerca de la base de datos NHANES en R, veríamos la siguiente definición: “Edad en años del participante al momento de su inclusión en la investigación. Nota: Participantes de 80 años o más fueron registrados como 80.” La razón para esto es que la muestra relativamente pequeña de individuos con edades muy altas podría hacer potencialmente más fácil el poder identificar a las personas específicas en la base de datos si uno conoce su edad exacta; los investigadores generalmente prometen a sus participantes el mantener su identidad de manera confidencial, y esta es una de las cosas que se pueden hacer para ayudar a proteger a los participantes. Esto subraya el hecho de que siempre es importante conocer de dónde proviene la información que tenemos y conocer cómo ha sido procesada; de otra manera podríamos interpretar los datos de manera inapropiada, pensando que las personas de 80 años de edad hayan sido sobrerrepresentadas en la muestra de alguna manera.</p>
+<!-- Let's look at another more complex variable in the NHANES dataset: Height. The histogram of height values is plotted in the right panel of Figure \@ref(fig:ageHist). The first thing you should notice about this distribution is that most of its density is centered around about 170 cm, but the distribution has a "tail" on the left; there are a small number of individuals with much smaller heights. What do you think is going on here? -->
+<p>Veamos otra variable más compleja en la base de datos NHANES: Altura. El histograma de los valores de altura está graficada en el panel derecho de la Figura <a href="resumir-datos.html#fig:ageHist">3.4</a>. La primera cosa que deberías notar acerca de esta distribución es que la mayoría de su densidad está centrada alrededor de 170 cm, pero su distribución tiene una “cola” a la izquierda; hay un número pequeño de individuos con alturas más pequeñas. ¿Qué piensas que está sucediendo ahí?</p>
+<!-- You may have intuited that the small heights are coming from the children in the dataset.  One way to examine this is to plot the histogram with separate colors for children and adults (left panel of Figure \@ref(fig:heightHistSep)). This shows that all of the very short heights were indeed coming from children in the sample. Let's create a new version of NHANES that only includes adults, and then plot the histogram just for them (right panel of Figure \@ref(fig:heightHistSep)).  In that plot the distribution looks much more symmetric.  As we will see later, this is a nice example of a *normal* (or *Gaussian*) distribution. -->
+<p>Habrás intuido que las alturas pequeñas vienen de niños y niñas en la base de datos. Una manera de examinar esto es graficando un histograma con los colores separados para niños y adultos (panel izquierdo de la Figura <a href="resumir-datos.html#fig:heightHistSep">3.5</a>). Esto muestra que todas las alturas más bajas en efecto son de niños y niñas en la muestra. Realicemos una nueva versión de NHANES que sólo incluya adultos, y después grafiquemos el histograma sólo para ellos (panel derecho de la Figura <a href="resumir-datos.html#fig:heightHistSep">3.5</a>). En esa gráfica la distribución se mira mucho más simétrica. Como veremos después, este es un buen ejemplo de una distribución <em>normal</em> (o <em>Gaussiana</em>).</p>
+<!-- Histogram of heights for NHANES. A: values plotted separately for children (gray) and adults (black).  B: values for adults only. C: Same as B, but with bin width = 0.1 -->
+<div class="figure"><span id="fig:heightHistSep"></span>
+<img src="StatsThinking21_files/figure-html/heightHistSep-1.png" alt="Histograma de las alturas en NHANES. A: Valores graficados separando niños y niñas (gris) y adultos (negro). B: Valores sólo para adultos. C: Igual que B, pero con ancho de bins = 0.1" width="768" height="50%" />
+<p class="caption">
+Figura 3.5: Histograma de las alturas en NHANES. A: Valores graficados separando niños y niñas (gris) y adultos (negro). B: Valores sólo para adultos. C: Igual que B, pero con ancho de bins = 0.1
+</p>
+</div>
+<!-- ### Histogram bins -->
+</div>
+<div id="bins-de-un-histograma" class="section level3" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Bins de un histograma</h3>
+<!-- In our earlier example with the sleep variable, the data were reported in whole numbers, and we simply counted the number of people who reported each possible value. However, if you look at a few values of the Height variable in NHANES, you will see that it was measured in centimeters down to the first decimal place: -->
+<p>En nuestro ejemplo anterior con la variable de sueño, los datos fueron reportados en números enteros, y nosotros simplemente contamos el número de personas que reportaron cada valor posible. Sin embargo, si observas algunos de los valores en la variable de Altura en NHANES, verás que fueron medidos en centímetros hasta la primera posición decimal:</p>
+<table>
+<caption><span id="tab:unnamed-chunk-10">Tabla 3.4: </span>Algunos valores de la base de datos NHANES.</caption>
+<thead>
+<tr class="header">
+<th align="left">Height</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">169.6</td>
+</tr>
+<tr class="even">
+<td align="left">169.8</td>
+</tr>
+<tr class="odd">
+<td align="left">167.5</td>
+</tr>
+<tr class="even">
+<td align="left">155.2</td>
+</tr>
+<tr class="odd">
+<td align="left">173.8</td>
+</tr>
+<tr class="even">
+<td align="left">174.5</td>
+</tr>
+</tbody>
+</table>
+<!-- Panel C of Figure \@ref(fig:heightHistSep) shows a histogram that counts the density of each possible value. That histogram looks really jagged, which is because of the variability in specific decimal place values.  For example, the value 173.2 occurs 32 times, while the value 173.3 only occurs 15 times. We probably don't think that there is really such a big difference between the prevalence of these two heights; more likely this is just due to random variability in our sample of people.  -->
+<p>El panel C de la Figura <a href="resumir-datos.html#fig:heightHistSep">3.5</a> muestra un histograma que cuenta la densidad de cada posible valor. El histograma se ve muy irregular, esto es por la variabilidad en los valores decimales específicos. Por ejemplo, el valor 173.2 ocurre 32 veces, mientras que el valor 173.3 ocurre sólo 15 veces. Probablemente no vamos a pensar que existe una diferencia tan grande entre la prevalencia de estas dos alturas; lo más probable es que esto se deba a variabilidad aleatoria en nuestra muestra de personas.</p>
+<!-- In general, when we create a histogram of data that are continuous or where there are many possible values, we will *bin* the values so that instead of counting and plotting the frequency of every specific value, we count and plot the frequency of values falling within a specific range.  That's why the plot looked less jagged above in Panel B of \@ref(fig:heightHistSep); in this panel we set the bin width to 1, which means that the histogram is computed by combining values within bins with a width of one; thus, the values 1.3, 1.5, and 1.6 would all count toward the frequency of the same bin, which would span from values equal to one up through values less than 2. -->
+<p>En general, cuando creamos un histograma de datos que son continuos o donde se tienen muchos valores posibles, crearemos <em>bins</em> con los valores para que en lugar de contar y graficar la frecuencia de cada valor específico, contaremos y graficaremos la frecuencia de valores que caen dentro de un rango específico. Esa es la razón por la cual se ve menos irregular la gráfica arriba en el Panel B de la Figura <a href="resumir-datos.html#fig:heightHistSep">3.5</a>; en este panel establecimos el ancho de los bins en 1, lo que significa que el histograma es calculado al combinar valores dentro de los bins con un ancho de uno; por lo que los valores 1.3, 1.5, 1.6 contarían en la frecuencia de un mismo bin, el cual se extendería desde valores iguales a uno hasta valores menores a 2.</p>
+<!-- Note that once the bin size has been selected, then the number of bins is determined by the data: -->
+<p>Puedes notar que una vez que el tamaño de bin ha sido seleccionado, entonces el número de bins es determinado por los datos:</p>
+<!-- number\, of\, bins  = \frac{range\, of\, scores}{bin\, width} -->
+<p><span class="math display">\[
+número\, de\, bins  = \frac{rango\, de\, valores}{ancho\, de\, bin}
+\]</span></p>
+<!-- There is no hard and fast rule for how to choose the optimal bin width.  Occasionally it will be obvious (as when there are only a few possible values), but in many cases it would require trial and error.  There are methods that try to find an optimal bin size automatically, such as the Freedman-Diaconis method that we will use in some later examples. -->
+<p>No existe una regla rígida u objetiva para escoger el ancho de bins óptimo. Ocasionalmente será obvio (como cuando sólo existen unos pocos valores posibles), pero en muchos casos requerirá ensayo y error. Existen métodos para tratar de encontrar un tamaño de bin óptimo de manera automática, como el método Freedman-Diaconis que usaremos en algunos ejemplos más adelante.</p>
+<!-- ## Idealized representations of distributions -->
+</div>
+</div>
+<div id="representaciones-idealizadas-de-distribuciones" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Representaciones idealizadas de distribuciones</h2>
+<!-- Datasets are like snowflakes, in that every one is different, but nonetheless there are patterns that one often sees in different types of data.  This allows us to use idealized representations of the data to further summarize them.  Let's take the adult height data plotted in \@ref(fig:heightHistSep), and plot them alongside a very different variable: pulse rate (heartbeats per minute), also measured in NHANES (see Figure \@ref(fig:NormalDistPlotsWithDist)). -->
+<p>Las bases de datos son como copos de nieve, en que cada una es diferente, a pesar de ello existen patrones que frecuentemente se observan en diferentes tipos de datos. Esto nos permite usar representaciones idealizadas de los datos para resumirlos aún más. Tomemos las alturas de los adultos graficadas en <a href="resumir-datos.html#fig:heightHistSep">3.5</a>, y grafiquémoslas al lado de una variable muy diferente: ritmo cardíaco (latidos por minuto), también medido en NHANES (véase la Figura <a href="resumir-datos.html#fig:NormalDistPlotsWithDist">3.6</a>).</p>
+<!-- Histograms for height (left) and pulse (right) in the NHANES dataset, with the normal distribution overlaid for each dataset. -->
+<div class="figure"><span id="fig:NormalDistPlotsWithDist"></span>
+<img src="StatsThinking21_files/figure-html/NormalDistPlotsWithDist-1.png" alt="Histogramas de la altura (izquierda) y pulso (derecha) en la base de datos NHANES, con la distribución normal sobrepuesta en cada conjunto de datos." width="768" height="50%" />
+<p class="caption">
+Figura 3.6: Histogramas de la altura (izquierda) y pulso (derecha) en la base de datos NHANES, con la distribución normal sobrepuesta en cada conjunto de datos.
+</p>
+</div>
+<!-- While these plots certainly don't look exactly the same, both have the general characteristic of being relatively symmetric around a rounded peak in the middle.  This shape is in fact one of the commonly observed shapes of distributions when we collect data, which we call the *normal* (or *Gaussian*) distribution.  This distribution is defined in terms of two values (which we call *parameters* of the distribution): the location of the center peak (which we call the *mean*) and the width of the distribution (which is described in terms of a parameter called the *standard deviation*). Figure \@ref(fig:NormalDistPlotsWithDist) shows the appropriate normal distribution plotted on top of each of the histrograms.You can see that although the curves don't fit the data exactly, they do a pretty good job of characterizing the distribution -- with just two numbers! -->
+<p>Mientras que estas gráficas ciertamente no se ven exactamente iguales, ambas tienen la característica general de ser relativamente simétricas alrededor de un pico redondeado en el medio. De hecho, esta forma es una de las formas de distribuciones comúnmente observadas cuando recolectamos datos, a esta forma se le llama distribución <em>normal</em> (o <em>Gaussiana</em>). Esta distribución es definida en términos de dos valores (los cuales llamamos <em>parámetros</em> de la distribución): la localización del pico central (que llamamos <em>media</em>) y el ancho de la distribución (que es descrita en términos de un parámetro llamado <em>desviación estándar</em>). La Figura <a href="resumir-datos.html#fig:NormalDistPlotsWithDist">3.6</a> muestra la distribución normal apropiada graficada encima de cada uno de los histogramas. Puedes ver que aunque las curvas no se ajustan exactamente a los datos, hacen un muy buen trabajo de caracterizar la distribución – ¡con sólo dos números!</p>
+<!-- As we will see later when we discuss the central limit theorem, there is a deep mathematical reason why many variables in the world exhibit the form of a normal distribution. -->
+<p>Como veremos más tarde cuando discutamos el teorema del límite central, existe una razón matemática profunda por la cual muchas variables en el mundo exhiben la forma de una distribución normal.</p>
+<!-- ### Skewness -->
+<div id="asimetría-sesgo" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Asimetría (sesgo)</h3>
+<!-- The examples in Figure \@ref(fig:NormalDistPlotsWithDist) followed the normal distribution fairly well, but in many cases the data will deviate in a systematic way from the normal distribution. One way in which the data can deviate is when they are asymmetric, such that one tail of the distribution is more dense than the other. We refer to this as "skewness".  Skewness commonly occurs when the measurement is constrained to be non-negative, such as when we are counting things or measuring elapsed times (and thus the variable can't take on negative values).  -->
+<p>Los ejemplos en la Figura <a href="resumir-datos.html#fig:NormalDistPlotsWithDist">3.6</a> siguen una distribución normal relativamente bien, pero en muchos casos los datos se desviarán de una manera sistemática de la distribución normal. Una manera en la que los datos se pueden desviar es cuando son asimétricos (o sesgados), cuando una cola de la distribución es más densa que la otra. Nos referimos a esto como “asimetría” (o sesgo, “skewness” en inglés). La asimetría comúnmente sucede cuando la medida está restringida a ser no-negativa, como cuando estamos contando cosas o midiendo lapsos de tiempo (y por lo tanto la variable no puede tomar valores negativos).</p>
+<!-- An example of skewness can be seen in the average waiting times at the airport security lines at San Francisco International Airport, plotted in the left panel of Figure \@ref(fig:SFOWaitTimes). You can see that while most wait times are less than 20 minutes, there are a number of cases where they are much longer, over 60 minutes!  This is an example of a "right-skewed" distribution, where the right tail is longer than the left; these are common when looking at counts or measured times, which can't be less than zero.  It's less common to see "left-skewed" distributions, but they can occur, for example when looking at fractional values that can't take a value greater than one. -->
+<p>Un ejemplo de asimetría se puede ver en el promedio de tiempos de espera en las líneas de seguridad aeropuertaria del Aeropuerto Internacional de San Francisco, graficado en el panel izquierdo de la Figura <a href="resumir-datos.html#fig:SFOWaitTimes">3.7</a>. Puedes observar que mientras la mayoría de los tiempos son menores a 20 minutos, hay un número de casos donde pueden ser mucho mayores, ¡sobre los 60 minutos! Este es un ejemplo de una distribución “asimétrica a la derecha”, donde la cola derecha es más larga que la izquierda; este tipo de asimetría es común cuando observamos conteos o tiempos medidos, que no pueden ser menores a cero. Es menos común ver distribuciones “asimétricas a la izquierda”, pero pueden ocurrir, por ejemplo cuando vemos valores de fracciones que no pueden tomar valores mayores a uno.</p>
+<!-- Examples of right-skewed and long-tailed distributions.  Left: Average wait times for security at SFO Terminal A (Jan-Oct 2017), obtained from https://awt.cbp.gov/ .  Right: A histogram of the number of Facebook friends amongst 3,663 individuals, obtained from the Stanford Large Network Database. The person with the maximum number of friends is indicated by the diamond. -->
+<div class="figure"><span id="fig:SFOWaitTimes"></span>
+<img src="StatsThinking21_files/figure-html/SFOWaitTimes-1.png" alt="Ejemplos de distribuciones asimétricas a la derecha y con cola larga. Izquierda: Tiempo promedio de espera en seguridad en el SFO Terminal A (Enero-Octubre 2017), obtenidos de https://awt.cbp.gov/ . Derecha: Histograma del número de amigos en Facebook entre 3,663 individuos, obtenidos de la Stanford Large Network Database. La persona con el máximo número de amigos está indicada con un diamante." width="768" height="50%" />
+<p class="caption">
+Figura 3.7: Ejemplos de distribuciones asimétricas a la derecha y con cola larga. Izquierda: Tiempo promedio de espera en seguridad en el SFO Terminal A (Enero-Octubre 2017), obtenidos de <a href="https://awt.cbp.gov/" class="uri">https://awt.cbp.gov/</a> . Derecha: Histograma del número de amigos en Facebook entre 3,663 individuos, obtenidos de la Stanford Large Network Database. La persona con el máximo número de amigos está indicada con un diamante.
+</p>
+</div>
+<!-- ### Long-tailed distributions -->
+</div>
+<div id="distribuciones-con-colas-largas" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Distribuciones con colas largas</h3>
+<!-- Historically, statistics has focused heavily on data that are normally distributed, but there are many data types that look nothing like the normal distribution. In particular, many real-world distributions are "long-tailed", meaning that the right tail extends far beyond the most typical members of the distribution.  One of the most interesting types of data where long-tailed distributions occur arises from the analysis of social networks.  For an example, let's look at the Facebook friend data from the [Stanford Large Network Database](https://snap.stanford.edu/data/egonets-Facebook.html) and plot the histogram of number of friends across the 3,663 people in the database (see right panel of Figure \@ref(fig:SFOWaitTimes)). As we can see, this distribution has a very long right tail -- the average person has 24.09 friends, while the person with the most friends (denoted by the blue dot) has 1043!  -->
+<p>Históricamente, la estadística se ha enfocado fuertemente en datos que están distribuidos de manera normal, pero existen muchos tipos de datos que no se parecen en nada a la distribución normal. En particular, muchas distribuciones en el mundo real tienen “cola larga”, esto significa que la cola derecha se extiende mucho más allá de los valores típicos de la distribución. Uno de los tipos de datos más interesantes donde ocurren distribuciones con cola larga suceden del análisis de redes sociales (<em>social networks</em>). Para un ejemplo, veamos los datos sobre la cantidad de amigos en Facebook del <a href="https://snap.stanford.edu/data/egonets-Facebook.html">Stanford Large Network Database</a> y grafiquemos el histograma del número de amigos en una muestra de 3,663 personas en la base de datos (ve el panel derecho de la Figura <a href="resumir-datos.html#fig:SFOWaitTimes">3.7</a>). Como podemos ver, esta distribución tiene una cola derecha muy larga – la persona promedio tiene 24.09 amigos, ¡mientras que la persona con la mayor cantidad de amigos (marcada por el diamante) tiene 1043!</p>
+<!-- Long-tailed distributions are increasingly being recognized in the real world.  In particular, many features of complex systems are characterized by these distributions, from the frequency of words in text, to the number of flights in and out of different airports, to the connectivity of brain networks.  There are a number of different ways that long-tailed distributions can come about, but a common one occurs in cases of the so-called "Matthew effect" from the Christian Bible: -->
+<p>Distribuciones con cola larga han sido cada vez más reconocidas en el mundo real. En particular, muchas características de sistemas complejos son caracterizadas por estas distribuciones, desde la frecuencia de palabras en un texto, hasta el número de vuelos que llegan y salen de diferentes aeropuertos, como la conectividad de redes neuronales. Existen diferentes maneras en que las distribuciones de cola larga pueden suceder, pero una común sucede en casos del llamado “Efecto Mateo” de la Biblia Cristiana:</p>
+<!-- > For to every one who has will more be given, and he will have abundance; but from him who has not, even what he has will be taken away. — Matthew 25:29, Revised Standard Version -->
+<blockquote>
+<p>Porque al que tiene, le será dado, y tendrá más; y al que no tiene, aun lo que tiene le será quitado. - Mateo 25:29, Reina Valera 1960.</p>
+</blockquote>
+<!-- This is often paraphrased as "the rich get richer".  In these situations, advantages compound, such that those with more friends have access to even more new friends, and those with more money have the ability to do things that increase their riches even more.  -->
+<p>Esto frecuentemente es parafraseado como “los ricos se enriquecen más”. En estas situaciones, las ventajas se combinan o multiplican, de tal manera que aquellos con más amigos tienen acceso aún a más amigos nuevos, y aquellos con más dinero tienen la habilidad de hacer cosas que incrementen sus riquezas aún más.</p>
+<!-- As the course progresses we will see several examples of long-tailed distributions, and we should keep in mind that many of the tools in statistics can fail when faced with long-tailed data.  As Nassim Nicholas Taleb pointed out in his book "The Black Swan", such long-tailed distributions played a critical role in the 2008 financial crisis, because many of the financial models used by traders assumed that financial systems would follow the normal distribution, which they clearly did not. -->
+<p>Conforme el curso avance veremos varios ejemplos de distribuciones de cola larga, y deberemos mantener en mente que muchas de las herramientas en estadística pueden fallar cuando nos enfrentamos con datos con cola larga. Como Nassim Nicholas Taleb señala en su libro “The Black Swan”, estas distribuciones de cola larga jugaron un papel crítico en la crisis financiera de 2008, porque muchos de los modelos financieros usados por los <em>traders</em> (operadores de inversiones) asumieron que los sistemas financieros seguirían una distribución normal, que claramente no siguieron.</p>
+<!-- ## Learning objectives -->
+</div>
+</div>
+<div id="objetivos-de-aprendizaje-2" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Objetivos de aprendizaje</h2>
+<!-- Having read this chapter, you should be able to: -->
+<p>Habiendo leído este capítulo, deberías ser capaz de:</p>
+<!-- * Compute absolute, relative, and cumulative frequency distributions for a given dataset -->
+<ul>
+<li>Calcular distribuciones de frecuencia absolutas, relativas, y acumuladas para un conjunto de datos.
+<!-- * Generate a graphical representation of a frequency distribution --></li>
+<li>Generar una representación gráfica de una distribución de frecuencias.
+<!-- * Describe the difference between a normal and a long-tailed distribution, and describe the situations that commonly give rise to each --></li>
+<li>Describir la diferencia entre una distribución normal y una distribución con cola larga, y describir las situaciones que comúnmente dan lugar a cada tipo de distribución.</li>
+</ul>
+<!-- ## Suggested readings -->
+</div>
+<div id="lecturas-sugeridas-2" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Lecturas sugeridas</h2>
+<ul>
+<li><em>The Black Swan: The Impact of the Highly Improbable</em>, by Nassim Nicholas Taleb</li>
+</ul>
+
+<!-- # Data Visualization {#data-visualization}-->
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="trabajar-con-datos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/statsthinking21/statsthinking21-core/edit/master/03-SummarizingData.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["StatsThinking21.pdf", "StatsThinking21.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 11 Estadística Bayesiana | Statistical Thinking for the 21st Century</title>
+  <meta name="description" content="A book about statistics." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 11 Estadística Bayesiana | Statistical Thinking for the 21st Century" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A book about statistics." />
+  <meta name="github-repo" content="poldrack/psych10-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 11 Estadística Bayesiana | Statistical Thinking for the 21st Century" />
+  
+  <meta name="twitter:description" content="A book about statistics." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ci-effect-size-power.html"/>
+<link rel="next" href="modelar-relaciones-categóricas.html"/>
+<script src="book_assets/header-attrs-2.7/header-attrs.js"></script>
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129414074-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129414074-1');
+</script>
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#por-qué-existe-este-libro"><i class="fa fa-check"></i><b>0.1</b> ¿Por qué existe este libro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#la-era-dorada-de-la-información"><i class="fa fa-check"></i><b>0.2</b> La era dorada de la información</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#la-importancia-de-hacer-estadísticas"><i class="fa fa-check"></i><b>0.3</b> La importancia de hacer estadísticas</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#un-libro-de-código-abierto-open-source"><i class="fa fa-check"></i><b>0.4</b> Un libro de código abierto (open source)</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>0.5</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducción.html"><a href="introducción.html#qué-es-el-pensamiento-estadístico"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es el pensamiento estadístico?</a></li>
+<li class="chapter" data-level="1.2" data-path="introducción.html"><a href="introducción.html#lidiar-con-la-ansiedad-estadística"><i class="fa fa-check"></i><b>1.2</b> Lidiar con la ansiedad estadística</a></li>
+<li class="chapter" data-level="1.3" data-path="introducción.html"><a href="introducción.html#qué-puede-hacer-la-estadística-por-nosotres"><i class="fa fa-check"></i><b>1.3</b> ¿Qué puede hacer la estadística por nosotres?</a></li>
+<li class="chapter" data-level="1.4" data-path="introducción.html"><a href="introducción.html#las-grandes-ideas-de-la-estadística"><i class="fa fa-check"></i><b>1.4</b> Las grandes ideas de la estadística</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introducción.html"><a href="introducción.html#aprendiendo-de-los-datos"><i class="fa fa-check"></i><b>1.4.1</b> Aprendiendo de los datos</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introducción.html"><a href="introducción.html#agregación-aggregation"><i class="fa fa-check"></i><b>1.4.2</b> Agregación (<em>aggregation</em>)</a></li>
+<li class="chapter" data-level="1.4.3" data-path="introducción.html"><a href="introducción.html#incertidumbre"><i class="fa fa-check"></i><b>1.4.3</b> Incertidumbre</a></li>
+<li class="chapter" data-level="1.4.4" data-path="introducción.html"><a href="introducción.html#muestreo-de-una-población"><i class="fa fa-check"></i><b>1.4.4</b> Muestreo de una población</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introducción.html"><a href="introducción.html#causalidad-y-estadística"><i class="fa fa-check"></i><b>1.5</b> Causalidad y estadística</a></li>
+<li class="chapter" data-level="1.6" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>1.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="1.7" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>1.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html"><i class="fa fa-check"></i><b>2</b> Trabajar con Datos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#qué-son-los-datos"><i class="fa fa-check"></i><b>2.1</b> ¿Qué son los datos?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#datos-cualitativos"><i class="fa fa-check"></i><b>2.1.1</b> Datos Cualitativos</a></li>
+<li class="chapter" data-level="2.1.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#datos-cuantitativos"><i class="fa fa-check"></i><b>2.1.2</b> Datos cuantitativos</a></li>
+<li class="chapter" data-level="2.1.3" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#tipos-de-números"><i class="fa fa-check"></i><b>2.1.3</b> Tipos de números</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#mediciones-discretas-versus-continuas"><i class="fa fa-check"></i><b>2.2</b> Mediciones Discretas versus Continuas</a></li>
+<li class="chapter" data-level="2.3" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#qué-constituye-a-una-buena-medición"><i class="fa fa-check"></i><b>2.3</b> ¿Qué constituye a una buena medición?</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#confiabilidad"><i class="fa fa-check"></i><b>2.3.1</b> Confiabilidad</a></li>
+<li class="chapter" data-level="2.3.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#validez"><i class="fa fa-check"></i><b>2.3.2</b> Validez</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#objetivos-de-aprendizaje-1"><i class="fa fa-check"></i><b>2.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="2.5" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#lecturas-sugeridas-1"><i class="fa fa-check"></i><b>2.5</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="2.6" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>2.6</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#escalas-de-medición"><i class="fa fa-check"></i><b>2.6.1</b> Escalas de medición</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="resumir-datos.html"><a href="resumir-datos.html"><i class="fa fa-check"></i><b>3</b> Resumir datos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="resumir-datos.html"><a href="resumir-datos.html#por-qué-resumir-datos"><i class="fa fa-check"></i><b>3.1</b> ¿Por qué resumir datos?</a></li>
+<li class="chapter" data-level="3.2" data-path="resumir-datos.html"><a href="resumir-datos.html#resumiendo-datos-usando-tablas"><i class="fa fa-check"></i><b>3.2</b> Resumiendo datos usando tablas</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="resumir-datos.html"><a href="resumir-datos.html#frequency-distributions"><i class="fa fa-check"></i><b>3.2.1</b> Distribuciones de frecuencias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="resumir-datos.html"><a href="resumir-datos.html#cumulative-distributions"><i class="fa fa-check"></i><b>3.2.2</b> Distribuciones acumuladas</a></li>
+<li class="chapter" data-level="3.2.3" data-path="resumir-datos.html"><a href="resumir-datos.html#plotting-histograms"><i class="fa fa-check"></i><b>3.2.3</b> Graficar histogramas</a></li>
+<li class="chapter" data-level="3.2.4" data-path="resumir-datos.html"><a href="resumir-datos.html#bins-de-un-histograma"><i class="fa fa-check"></i><b>3.2.4</b> Bins de un histograma</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="resumir-datos.html"><a href="resumir-datos.html#representaciones-idealizadas-de-distribuciones"><i class="fa fa-check"></i><b>3.3</b> Representaciones idealizadas de distribuciones</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="resumir-datos.html"><a href="resumir-datos.html#asimetría-sesgo"><i class="fa fa-check"></i><b>3.3.1</b> Asimetría (sesgo)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="resumir-datos.html"><a href="resumir-datos.html#distribuciones-con-colas-largas"><i class="fa fa-check"></i><b>3.3.2</b> Distribuciones con colas largas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="resumir-datos.html"><a href="resumir-datos.html#objetivos-de-aprendizaje-2"><i class="fa fa-check"></i><b>3.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="3.5" data-path="resumir-datos.html"><a href="resumir-datos.html#lecturas-sugeridas-2"><i class="fa fa-check"></i><b>3.5</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>4</b> Visualización de Datos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-visualization.html"><a href="data-visualization.html#anatomía-de-una-gráfica"><i class="fa fa-check"></i><b>4.1</b> Anatomía de una gráfica</a></li>
+<li class="chapter" data-level="4.2" data-path="data-visualization.html"><a href="data-visualization.html#principios-de-una-buena-visibilización"><i class="fa fa-check"></i><b>4.2</b> Principios de una buena visibilización</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="data-visualization.html"><a href="data-visualization.html#muestra-los-datos-y-haz-que-destaquen"><i class="fa fa-check"></i><b>4.2.1</b> Muestra los datos y haz que destaquen</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-visualization.html"><a href="data-visualization.html#maximizar-la-porporción-datostinta-dataink-ratio"><i class="fa fa-check"></i><b>4.2.2</b> Maximizar la porporción datos/tinta (data/ink ratio)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data-visualization.html"><a href="data-visualization.html#evita-gráficas-basura"><i class="fa fa-check"></i><b>4.2.3</b> Evita gráficas basura</a></li>
+<li class="chapter" data-level="4.2.4" data-path="data-visualization.html"><a href="data-visualization.html#evita-distorsionar-los-datos"><i class="fa fa-check"></i><b>4.2.4</b> Evita distorsionar los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-visualization.html"><a href="data-visualization.html#acomodando-las-limitaciones-humanas"><i class="fa fa-check"></i><b>4.3</b> Acomodando las limitaciones humanas</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-visualization.html"><a href="data-visualization.html#limitaciones-perceptuales"><i class="fa fa-check"></i><b>4.3.1</b> Limitaciones perceptuales</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-visualization.html"><a href="data-visualization.html#corrigiendo-otros-factores"><i class="fa fa-check"></i><b>4.4</b> Corrigiendo otros factores</a></li>
+<li class="chapter" data-level="4.5" data-path="data-visualization.html"><a href="data-visualization.html#objetivos-de-aprendizaje-3"><i class="fa fa-check"></i><b>4.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="4.6" data-path="data-visualization.html"><a href="data-visualization.html#lecturas-y-videos-sugeridos"><i class="fa fa-check"></i><b>4.6</b> Lecturas y videos sugeridos</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fitting-models.html"><a href="fitting-models.html"><i class="fa fa-check"></i><b>5</b> Ajustar modelos a datos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="fitting-models.html"><a href="fitting-models.html#qué-es-un-modelo"><i class="fa fa-check"></i><b>5.1</b> ¿Qué es un modelo?</a></li>
+<li class="chapter" data-level="5.2" data-path="fitting-models.html"><a href="fitting-models.html#modelado-estadístico-un-ejemplo"><i class="fa fa-check"></i><b>5.2</b> Modelado estadístico: Un ejemplo</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="fitting-models.html"><a href="fitting-models.html#mejorando-nuestro-modelo"><i class="fa fa-check"></i><b>5.2.1</b> Mejorando nuestro modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="fitting-models.html"><a href="fitting-models.html#qué-hace-que-un-modelo-sea-bueno"><i class="fa fa-check"></i><b>5.3</b> ¿Qué hace que un modelo sea “bueno”?</a></li>
+<li class="chapter" data-level="5.4" data-path="fitting-models.html"><a href="fitting-models.html#overfitting"><i class="fa fa-check"></i><b>5.4</b> ¿Un modelo puede ser demasiado bueno?</a></li>
+<li class="chapter" data-level="5.5" data-path="fitting-models.html"><a href="fitting-models.html#el-modelo-más-simple-la-media"><i class="fa fa-check"></i><b>5.5</b> El modelo más simple: La media</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="fitting-models.html"><a href="fitting-models.html#la-mediana"><i class="fa fa-check"></i><b>5.5.1</b> La mediana</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="fitting-models.html"><a href="fitting-models.html#la-moda"><i class="fa fa-check"></i><b>5.6</b> La moda</a></li>
+<li class="chapter" data-level="5.7" data-path="fitting-models.html"><a href="fitting-models.html#variabilidad-qué-tan-bien-se-ajusta-la-media-a-los-datos"><i class="fa fa-check"></i><b>5.7</b> Variabilidad: ¿Qué tan bien se ajusta la media a los datos?</a></li>
+<li class="chapter" data-level="5.8" data-path="fitting-models.html"><a href="fitting-models.html#usar-simulaciones-para-entender-la-estadística"><i class="fa fa-check"></i><b>5.8</b> Usar simulaciones para entender la estadística</a></li>
+<li class="chapter" data-level="5.9" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-z"><i class="fa fa-check"></i><b>5.9</b> Puntajes Z</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="fitting-models.html"><a href="fitting-models.html#interpretando-puntajes-z"><i class="fa fa-check"></i><b>5.9.1</b> Interpretando Puntajes Z</a></li>
+<li class="chapter" data-level="5.9.2" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-estandarizados"><i class="fa fa-check"></i><b>5.9.2</b> Puntajes Estandarizados</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="fitting-models.html"><a href="fitting-models.html#objetivos-de-aprendizaje-4"><i class="fa fa-check"></i><b>5.10</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="5.11" data-path="fitting-models.html"><a href="fitting-models.html#apéndice-1"><i class="fa fa-check"></i><b>5.11</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="fitting-models.html"><a href="fitting-models.html#proof-that-the-sum-of-errors-from-the-mean-is-zero"><i class="fa fa-check"></i><b>5.11.1</b> Proof that the sum of errors from the Mean is zero”</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>6</b> Probabilidad</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="probability.html"><a href="probability.html#qué-es-la-probabilidad"><i class="fa fa-check"></i><b>6.1</b> ¿Qué es la probabilidad?</a></li>
+<li class="chapter" data-level="6.2" data-path="probability.html"><a href="probability.html#cómo-determinamos-probabilidades"><i class="fa fa-check"></i><b>6.2</b> ¿Cómo determinamos probabilidades?</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="probability.html"><a href="probability.html#creencia-personal"><i class="fa fa-check"></i><b>6.2.1</b> Creencia personal</a></li>
+<li class="chapter" data-level="6.2.2" data-path="probability.html"><a href="probability.html#empirical-frequency"><i class="fa fa-check"></i><b>6.2.2</b> Frecuencia empírica</a></li>
+<li class="chapter" data-level="6.2.3" data-path="probability.html"><a href="probability.html#probabilidad-clásica"><i class="fa fa-check"></i><b>6.2.3</b> Probabilidad clásica</a></li>
+<li class="chapter" data-level="6.2.4" data-path="probability.html"><a href="probability.html#resolviendo-el-problema-de-de-méré"><i class="fa fa-check"></i><b>6.2.4</b> Resolviendo el problema de de Méré</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="probability.html"><a href="probability.html#distribuciones-de-probabilidad"><i class="fa fa-check"></i><b>6.3</b> Distribuciones de probabilidad</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="probability.html"><a href="probability.html#distribuciones-de-probabilidad-acumuladas"><i class="fa fa-check"></i><b>6.3.1</b> Distribuciones de probabilidad acumuladas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="probability.html"><a href="probability.html#conditional-probability"><i class="fa fa-check"></i><b>6.4</b> Probabilidad condicional</a></li>
+<li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#calcular-probabilidades-condicionales-a-partir-de-los-datos"><i class="fa fa-check"></i><b>6.5</b> Calcular probabilidades condicionales a partir de los datos</a></li>
+<li class="chapter" data-level="6.6" data-path="probability.html"><a href="probability.html#independencia"><i class="fa fa-check"></i><b>6.6</b> Independencia</a></li>
+<li class="chapter" data-level="6.7" data-path="probability.html"><a href="probability.html#bayestheorem"><i class="fa fa-check"></i><b>6.7</b> Invertir una probabilidad condicional: regla de Bayes</a></li>
+<li class="chapter" data-level="6.8" data-path="probability.html"><a href="probability.html#aprender-de-los-datos"><i class="fa fa-check"></i><b>6.8</b> Aprender de los datos</a></li>
+<li class="chapter" data-level="6.9" data-path="probability.html"><a href="probability.html#posibilidades-odds-y-razón-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>6.9</b> Posibilidades (odds) y razón de posibilidades (odds ratios)</a></li>
+<li class="chapter" data-level="6.10" data-path="probability.html"><a href="probability.html#qué-significan-las-probabilidades"><i class="fa fa-check"></i><b>6.10</b> ¿Qué significan las probabilidades?</a></li>
+<li class="chapter" data-level="6.11" data-path="probability.html"><a href="probability.html#objetivos-de-aprendizaje-5"><i class="fa fa-check"></i><b>6.11</b> Objetivos de Aprendizaje</a></li>
+<li class="chapter" data-level="6.12" data-path="probability.html"><a href="probability.html#lecturas-sugeridas-3"><i class="fa fa-check"></i><b>6.12</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="6.13" data-path="probability.html"><a href="probability.html#apéndice-2"><i class="fa fa-check"></i><b>6.13</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="6.13.1" data-path="probability.html"><a href="probability.html#derivación-de-la-regla-de-bayes"><i class="fa fa-check"></i><b>6.13.1</b> Derivación de la regla de Bayes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>7</b> Muestreo</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="sampling.html"><a href="sampling.html#how-do-we-sample"><i class="fa fa-check"></i><b>7.1</b> ¿Cómo hacemos una muestra?</a></li>
+<li class="chapter" data-level="7.2" data-path="sampling.html"><a href="sampling.html#samplingerror"><i class="fa fa-check"></i><b>7.2</b> Error de muestreo</a></li>
+<li class="chapter" data-level="7.3" data-path="sampling.html"><a href="sampling.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>7.3</b> Error estándar de la media</a></li>
+<li class="chapter" data-level="7.4" data-path="sampling.html"><a href="sampling.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>7.4</b> El teorema del límite central</a></li>
+<li class="chapter" data-level="7.5" data-path="sampling.html"><a href="sampling.html#confidence-intervals"><i class="fa fa-check"></i><b>7.5</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="7.6" data-path="sampling.html"><a href="sampling.html#objetivos-de-aprendizaje-6"><i class="fa fa-check"></i><b>7.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="7.7" data-path="sampling.html"><a href="sampling.html#lecturas-sugeridas-4"><i class="fa fa-check"></i><b>7.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html"><i class="fa fa-check"></i><b>8</b> Remuestreo y Simulación</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#simulación-monte-carlo"><i class="fa fa-check"></i><b>8.1</b> Simulación Monte Carlo</a></li>
+<li class="chapter" data-level="8.2" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#aleatoriedad-en-estadística"><i class="fa fa-check"></i><b>8.2</b> Aleatoriedad en Estadística</a></li>
+<li class="chapter" data-level="8.3" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#generando-números-aleatorios"><i class="fa fa-check"></i><b>8.3</b> Generando números aleatorios</a></li>
+<li class="chapter" data-level="8.4" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#utilizando-una-simulación-con-el-método-de-montecarlo"><i class="fa fa-check"></i><b>8.4</b> Utilizando una simulación con el Método de Montecarlo</a></li>
+<li class="chapter" data-level="8.5" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#usando-simulaciones-para-estadística-the-bootstrap"><i class="fa fa-check"></i><b>8.5</b> Usando simulaciones para estadística: The bootstrap</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#calculando-el-bootstrap"><i class="fa fa-check"></i><b>8.5.1</b> Calculando el bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#objetivos-de-aprendizaje-7"><i class="fa fa-check"></i><b>8.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="8.7" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#lecturas-sugeridas-5"><i class="fa fa-check"></i><b>8.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>9</b> Prueba de hipótesis</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#prueba-estadística-de-hipótesis-nula-null-hypothesis-statistical-testing-nhst"><i class="fa fa-check"></i><b>9.1</b> Prueba Estadística de Hipótesis Nula (Null Hypothesis Statistical Testing, NHST)</a></li>
+<li class="chapter" data-level="9.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#prueba-estadística-de-hipótesis-nula-un-ejemplo"><i class="fa fa-check"></i><b>9.2</b> Prueba estadística de hipótesis nula: Un ejemplo</a></li>
+<li class="chapter" data-level="9.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#el-proceso-de-la-prueba-de-hipótesis-nula"><i class="fa fa-check"></i><b>9.3</b> El proceso de la prueba de hipótesis nula</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-1-formular-una-hipótesis-de-interés"><i class="fa fa-check"></i><b>9.3.1</b> Paso 1: Formular una hipótesis de interés</a></li>
+<li class="chapter" data-level="9.3.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-2-especifica-las-hipótesis-nula-y-alternativa"><i class="fa fa-check"></i><b>9.3.2</b> Paso 2: Especifica las hipótesis nula y alternativa</a></li>
+<li class="chapter" data-level="9.3.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-3-recolectar-datos"><i class="fa fa-check"></i><b>9.3.3</b> Paso 3: Recolectar datos</a></li>
+<li class="chapter" data-level="9.3.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-4-ajusta-un-modelo-a-los-datos-y-calcula-el-estadístico-de-prueba"><i class="fa fa-check"></i><b>9.3.4</b> Paso 4: Ajusta un modelo a los datos y calcula el estadístico de prueba</a></li>
+<li class="chapter" data-level="9.3.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-5-determinar-la-probabilidad-de-los-datos-bajo-la-hipótesis-nula"><i class="fa fa-check"></i><b>9.3.5</b> Paso 5: Determinar la probabilidad de los datos bajo la hipótesis nula</a></li>
+<li class="chapter" data-level="9.3.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-6-evalúa-la-significatividad-estadística-del-resultado"><i class="fa fa-check"></i><b>9.3.6</b> Paso 6: Evalúa la “significatividad estadística” del resultado</a></li>
+<li class="chapter" data-level="9.3.7" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#qué-significa-un-resultado-significativo"><i class="fa fa-check"></i><b>9.3.7</b> ¿Qué significa un resultado significativo?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#nhst-en-un-contexto-moderno-pruebas-múltiples"><i class="fa fa-check"></i><b>9.4</b> NHST en un contexto moderno: Pruebas múltiples</a></li>
+<li class="chapter" data-level="9.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#objetivos-de-aprendizaje-8"><i class="fa fa-check"></i><b>9.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="9.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lecturas-sugeridas-6"><i class="fa fa-check"></i><b>9.6</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html"><i class="fa fa-check"></i><b>10</b> Cuantificar efectos y diseñar estudios</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.1</b> Intervalos de confianza</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-usando-la-distribución-normal"><i class="fa fa-check"></i><b>10.1.1</b> Intervalos de confianza usando la distribución normal</a></li>
+<li class="chapter" data-level="10.1.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-utilizando-la-distribución-t"><i class="fa fa-check"></i><b>10.1.2</b> Intervalos de confianza utilizando la distribución t</a></li>
+<li class="chapter" data-level="10.1.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-y-tamaño-de-muestra"><i class="fa fa-check"></i><b>10.1.3</b> Intervalos de confianza y tamaño de muestra</a></li>
+<li class="chapter" data-level="10.1.4" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#calcular-el-intervalo-de-confianza-utilizando-bootstrap"><i class="fa fa-check"></i><b>10.1.4</b> Calcular el intervalo de confianza utilizando “bootstrap”</a></li>
+<li class="chapter" data-level="10.1.5" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#relación-de-los-intervalos-de-confianza-con-la-prueba-de-hipótesis"><i class="fa fa-check"></i><b>10.1.5</b> Relación de los intervalos de confianza con la prueba de hipótesis</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#tamaño-de-efecto-effect-sizes"><i class="fa fa-check"></i><b>10.2</b> Tamaño de efecto (effect sizes)</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#d-de-cohen"><i class="fa fa-check"></i><b>10.2.1</b> D de Cohen</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#r-de-pearson"><i class="fa fa-check"></i><b>10.2.2</b> r de Pearson</a></li>
+<li class="chapter" data-level="10.2.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#razón-de-probabilidades-odds-ratio"><i class="fa fa-check"></i><b>10.2.3</b> Razón de probabilidades (odds ratio)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#statistical-power"><i class="fa fa-check"></i><b>10.3</b> Poder estadístico</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#análisis-de-poder"><i class="fa fa-check"></i><b>10.3.1</b> Análisis de poder</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#objetivos-de-aprendizaje-9"><i class="fa fa-check"></i><b>10.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="10.5" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#lecturas-sugeridas-7"><i class="fa fa-check"></i><b>10.5</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html"><i class="fa fa-check"></i><b>11</b> Estadística Bayesiana</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#modelos-generativos"><i class="fa fa-check"></i><b>11.1</b> Modelos Generativos</a></li>
+<li class="chapter" data-level="11.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#el-teorema-de-bayes-y-la-inferencia-inversa"><i class="fa fa-check"></i><b>11.2</b> El Teorema de Bayes y la Inferencia Inversa</a></li>
+<li class="chapter" data-level="11.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#doing-bayesian-estimation"><i class="fa fa-check"></i><b>11.3</b> Haciendo estimaciones Bayesianas</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#especificar-la-probabilidad-previa"><i class="fa fa-check"></i><b>11.3.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.3.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#recolectar-los-datos"><i class="fa fa-check"></i><b>11.3.2</b> Recolectar los datos</a></li>
+<li class="chapter" data-level="11.3.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad"><i class="fa fa-check"></i><b>11.3.3</b> Calcular la probabilidad</a></li>
+<li class="chapter" data-level="11.3.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-marginal"><i class="fa fa-check"></i><b>11.3.4</b> Calcular la probabilidad marginal</a></li>
+<li class="chapter" data-level="11.3.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.3.5</b> Calcular la probabilidad posterior</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#estimating-posterior-distributions"><i class="fa fa-check"></i><b>11.4</b> Estimar distribuciones posteriores</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#especificar-la-probabilidad-previa-1"><i class="fa fa-check"></i><b>11.4.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.4.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#recolectar-algunos-datos"><i class="fa fa-check"></i><b>11.4.2</b> Recolectar algunos datos</a></li>
+<li class="chapter" data-level="11.4.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-1"><i class="fa fa-check"></i><b>11.4.3</b> Calcular la probabilidad</a></li>
+<li class="chapter" data-level="11.4.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-marginal-1"><i class="fa fa-check"></i><b>11.4.4</b> Calcular la probabilidad marginal</a></li>
+<li class="chapter" data-level="11.4.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calculando-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.4.5</b> Calculando la probabilidad posterior</a></li>
+<li class="chapter" data-level="11.4.6" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#estimación-máxima-a-posteriori-map-por-sus-siglas-en-inglés"><i class="fa fa-check"></i><b>11.4.6</b> Estimación máxima a posteriori (MAP, por sus siglas en inglés)</a></li>
+<li class="chapter" data-level="11.4.7" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#intervalos-de-credibilidad"><i class="fa fa-check"></i><b>11.4.7</b> Intervalos de credibilidad</a></li>
+<li class="chapter" data-level="11.4.8" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#efectos-de-diferentes-probabilidades-previas"><i class="fa fa-check"></i><b>11.4.8</b> Efectos de diferentes probabilidades previas</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#elegir-una-probabilidad-previa"><i class="fa fa-check"></i><b>11.5</b> Elegir una probabilidad previa</a></li>
+<li class="chapter" data-level="11.6" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#prueba-de-hipótesis-bayesiana"><i class="fa fa-check"></i><b>11.6</b> Prueba de hipótesis Bayesiana</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#Bayes-factors"><i class="fa fa-check"></i><b>11.6.1</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="11.6.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#factores-de-bayes-para-hipótesis-estadísticas"><i class="fa fa-check"></i><b>11.6.2</b> Factores de Bayes para hipótesis estadísticas</a></li>
+<li class="chapter" data-level="11.6.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#evaluar-evidencia-a-favor-de-la-hipótesis-nula"><i class="fa fa-check"></i><b>11.6.3</b> Evaluar evidencia a favor de la hipótesis nula</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#objetivos-de-aprendizaje-10"><i class="fa fa-check"></i><b>11.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="11.8" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#suggested-readings"><i class="fa fa-check"></i><b>11.8</b> Suggested readings</a></li>
+<li class="chapter" data-level="11.9" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#apéndice-3"><i class="fa fa-check"></i><b>11.9</b> Apéndice:</a>
+<ul>
+<li class="chapter" data-level="11.9.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#muestreo-de-rechazo"><i class="fa fa-check"></i><b>11.9.1</b> Muestreo de rechazo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html"><i class="fa fa-check"></i><b>12</b> Modelar relaciones categóricas</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#ejemplo-colores-de-dulces"><i class="fa fa-check"></i><b>12.1</b> Ejemplo: Colores de dulces</a></li>
+<li class="chapter" data-level="12.2" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#chi-squared-test"><i class="fa fa-check"></i><b>12.2</b> Prueba Ji-cuadrada de Pearson</a></li>
+<li class="chapter" data-level="12.3" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#two-way-test"><i class="fa fa-check"></i><b>12.3</b> Tablas de contingencia y la prueba de dos vías</a></li>
+<li class="chapter" data-level="12.4" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#residuales-estandarizados"><i class="fa fa-check"></i><b>12.4</b> Residuales estandarizados</a></li>
+<li class="chapter" data-level="12.5" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#razones-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>12.5</b> Razones de posibilidades (odds ratios)</a></li>
+<li class="chapter" data-level="12.6" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#factores-de-bayes"><i class="fa fa-check"></i><b>12.6</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="12.7" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#análisis-categórico-más-allá-de-la-tabla-2-x-2"><i class="fa fa-check"></i><b>12.7</b> Análisis categórico más allá de la tabla 2 X 2</a></li>
+<li class="chapter" data-level="12.8" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#cuídate-de-la-paradoja-de-simpson"><i class="fa fa-check"></i><b>12.8</b> Cuídate de la paradoja de Simpson</a></li>
+<li class="chapter" data-level="12.9" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#objetivos-de-aprendizaje-11"><i class="fa fa-check"></i><b>12.9</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="12.10" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#lecturas-adicionales"><i class="fa fa-check"></i><b>12.10</b> Lecturas adicionales</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html"><i class="fa fa-check"></i><b>13</b> Modelar relaciones continuas</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#un-ejemplo-crímenes-de-odio-y-la-inequidad-de-ingreso"><i class="fa fa-check"></i><b>13.1</b> Un ejemplo: Crímenes de odio y la inequidad de ingreso</a></li>
+<li class="chapter" data-level="13.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#la-inequidad-de-ingreso-está-relacionada-a-los-crímenes-de-odio"><i class="fa fa-check"></i><b>13.2</b> ¿La inequidad de ingreso está relacionada a los crímenes de odio?</a></li>
+<li class="chapter" data-level="13.3" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#covariance-and-correlation"><i class="fa fa-check"></i><b>13.3</b> Covarianza y la correlación</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#prueba-de-hipótesis-para-correlaciones"><i class="fa fa-check"></i><b>13.3.1</b> Prueba de hipótesis para correlaciones</a></li>
+<li class="chapter" data-level="13.3.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#robust-correlations"><i class="fa fa-check"></i><b>13.3.2</b> Correlaciones Robustas</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#correlación-y-causalidad"><i class="fa fa-check"></i><b>13.4</b> Correlación y causalidad</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#gráficas-causales"><i class="fa fa-check"></i><b>13.4.1</b> Gráficas causales</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#objetivos-de-aprendizaje-12"><i class="fa fa-check"></i><b>13.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="13.6" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#lecturas-sugeridas-8"><i class="fa fa-check"></i><b>13.6</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="13.7" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#apéndice-4"><i class="fa fa-check"></i><b>13.7</b> Apéndice:</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#cuantificando-la-inequidad-el-índice-gini"><i class="fa fa-check"></i><b>13.7.1</b> Cuantificando la inequidad: El índice Gini</a></li>
+<li class="chapter" data-level="13.7.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#análisis-de-correlación-bayesiana"><i class="fa fa-check"></i><b>13.7.2</b> Análisis de correlación bayesiana</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html"><i class="fa fa-check"></i><b>14</b> El Modelo Lineal General</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#linear-regression"><i class="fa fa-check"></i><b>14.1</b> Regresión lineal</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#regression-to-the-mean"><i class="fa fa-check"></i><b>14.1.1</b> Regresión a la media</a></li>
+<li class="chapter" data-level="14.1.2" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#la-relación-entre-correlación-y-regresión"><i class="fa fa-check"></i><b>14.1.2</b> La relación entre correlación y regresión</a></li>
+<li class="chapter" data-level="14.1.3" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#errores-estándar-de-los-modelos-de-regresión"><i class="fa fa-check"></i><b>14.1.3</b> Errores estándar de los modelos de regresión</a></li>
+<li class="chapter" data-level="14.1.4" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#pruebas-estadísticas-para-los-parámetros-de-la-regresión"><i class="fa fa-check"></i><b>14.1.4</b> Pruebas estadísticas para los parámetros de la regresión</a></li>
+<li class="chapter" data-level="14.1.5" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#cuantificar-la-bondad-de-adjuste-del-modelo"><i class="fa fa-check"></i><b>14.1.5</b> Cuantificar la bondad de adjuste del modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#ajustar-modelos-más-complejos"><i class="fa fa-check"></i><b>14.2</b> Ajustar modelos más complejos</a></li>
+<li class="chapter" data-level="14.3" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#interacciones-entre-variables"><i class="fa fa-check"></i><b>14.3</b> Interacciones entre variables</a></li>
+<li class="chapter" data-level="14.4" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#más-allá-de-predictores-y-resultados-lineales"><i class="fa fa-check"></i><b>14.4</b> Más allá de predictores y resultados lineales</a></li>
+<li class="chapter" data-level="14.5" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#model-criticism"><i class="fa fa-check"></i><b>14.5</b> Criticar nuestro modelo y revisar suposiciones</a></li>
+<li class="chapter" data-level="14.6" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#qué-significa-realmente-predecir"><i class="fa fa-check"></i><b>14.6</b> ¿Qué significa realmente “predecir”?</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#cross-validation"><i class="fa fa-check"></i><b>14.6.1</b> Validación cruzada (Cross-validation)</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#objetivos-de-aprendizaje-13"><i class="fa fa-check"></i><b>14.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="14.8" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#lecturas-sugeridas-9"><i class="fa fa-check"></i><b>14.8</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="14.9" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#apéndice-5"><i class="fa fa-check"></i><b>14.9</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="14.9.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#estimar-parámetros-de-una-regresión-lineal"><i class="fa fa-check"></i><b>14.9.1</b> Estimar parámetros de una regresión lineal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="comparar-medias.html"><a href="comparar-medias.html"><i class="fa fa-check"></i><b>15</b> Comparar medias</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="comparar-medias.html"><a href="comparar-medias.html#single-mean"><i class="fa fa-check"></i><b>15.1</b> Probar el valor de una media simple</a></li>
+<li class="chapter" data-level="15.2" data-path="comparar-medias.html"><a href="comparar-medias.html#comparing-two-means"><i class="fa fa-check"></i><b>15.2</b> Comparar dos medias</a></li>
+<li class="chapter" data-level="15.3" data-path="comparar-medias.html"><a href="comparar-medias.html#ttest-linear-model"><i class="fa fa-check"></i><b>15.3</b> La prueba t como un modelo lineal</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="comparar-medias.html"><a href="comparar-medias.html#tamaños-de-efecto-para-comparar-dos-medias"><i class="fa fa-check"></i><b>15.3.1</b> Tamaños de efecto para comparar dos medias</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="comparar-medias.html"><a href="comparar-medias.html#factores-de-bayes-para-diferencias-entre-medias"><i class="fa fa-check"></i><b>15.4</b> Factores de Bayes para diferencias entre medias</a></li>
+<li class="chapter" data-level="15.5" data-path="comparar-medias.html"><a href="comparar-medias.html#paired-ttests"><i class="fa fa-check"></i><b>15.5</b> Comparar observaciones pareadas/relacionadas</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="comparar-medias.html"><a href="comparar-medias.html#prueba-de-los-signos"><i class="fa fa-check"></i><b>15.5.1</b> Prueba de los signos</a></li>
+<li class="chapter" data-level="15.5.2" data-path="comparar-medias.html"><a href="comparar-medias.html#prueba-t-para-muestras-relacionadas-paired-t-test"><i class="fa fa-check"></i><b>15.5.2</b> Prueba t para muestras relacionadas (paired t-test)</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="comparar-medias.html"><a href="comparar-medias.html#comparar-más-de-dos-medias"><i class="fa fa-check"></i><b>15.6</b> Comparar más de dos medias</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="comparar-medias.html"><a href="comparar-medias.html#ANOVA"><i class="fa fa-check"></i><b>15.6.1</b> Análisis de varianza</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="comparar-medias.html"><a href="comparar-medias.html#objetivos-de-aprendizaje-14"><i class="fa fa-check"></i><b>15.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="15.8" data-path="comparar-medias.html"><a href="comparar-medias.html#apéndice-6"><i class="fa fa-check"></i><b>15.8</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="15.8.1" data-path="comparar-medias.html"><a href="comparar-medias.html#la-prueba-t-de-muestras-relacionadas-como-un-modelo-lineal"><i class="fa fa-check"></i><b>15.8.1</b> La prueba t de muestras relacionadas como un modelo lineal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="practical-example.html"><a href="practical-example.html"><i class="fa fa-check"></i><b>16</b> Modelación estadística práctica</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="practical-example.html"><a href="practical-example.html#el-proceso-de-modelación-estadística"><i class="fa fa-check"></i><b>16.1</b> El proceso de modelación estadística</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="practical-example.html"><a href="practical-example.html#especificar-nuestra-pregunta-de-interés."><i class="fa fa-check"></i><b>16.1.1</b> 1: Especificar nuestra pregunta de interés.</a></li>
+<li class="chapter" data-level="16.1.2" data-path="practical-example.html"><a href="practical-example.html#identificar-o-recolectar-los-datos-apropiados."><i class="fa fa-check"></i><b>16.1.2</b> 2: Identificar o recolectar los datos apropiados.</a></li>
+<li class="chapter" data-level="16.1.3" data-path="practical-example.html"><a href="practical-example.html#preparar-los-datos-para-el-análisis."><i class="fa fa-check"></i><b>16.1.3</b> 3: Preparar los datos para el análisis.</a></li>
+<li class="chapter" data-level="16.1.4" data-path="practical-example.html"><a href="practical-example.html#determinar-el-modelo-apropiado."><i class="fa fa-check"></i><b>16.1.4</b> 4: Determinar el modelo apropiado.</a></li>
+<li class="chapter" data-level="16.1.5" data-path="practical-example.html"><a href="practical-example.html#ajustar-el-modelo-a-los-datos."><i class="fa fa-check"></i><b>16.1.5</b> 5: Ajustar el modelo a los datos.</a></li>
+<li class="chapter" data-level="16.1.6" data-path="practical-example.html"><a href="practical-example.html#criticar-el-modelo-para-asegurarnos-que-se-ajusta-apropiadamente."><i class="fa fa-check"></i><b>16.1.6</b> 6: Criticar el modelo para asegurarnos que se ajusta apropiadamente.</a></li>
+<li class="chapter" data-level="16.1.7" data-path="practical-example.html"><a href="practical-example.html#probar-hipótesis-y-cuantificar-el-tamaño-del-efecto."><i class="fa fa-check"></i><b>16.1.7</b> 7: Probar hipótesis y cuantificar el tamaño del efecto.</a></li>
+<li class="chapter" data-level="16.1.8" data-path="practical-example.html"><a href="practical-example.html#qué-pasa-con-los-posibles-factores-de-confusión-confounds"><i class="fa fa-check"></i><b>16.1.8</b> ¿Qué pasa con los posibles factores de confusión (confounds)?</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="practical-example.html"><a href="practical-example.html#obtener-ayuda"><i class="fa fa-check"></i><b>16.2</b> Obtener ayuda</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html"><i class="fa fa-check"></i><b>17</b> Hacer investigación reproducible</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-pensamos-que-funciona-la-ciencia"><i class="fa fa-check"></i><b>17.1</b> Cómo pensamos que funciona la ciencia</a></li>
+<li class="chapter" data-level="17.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-realmente-funciona-la-ciencia-a-veces"><i class="fa fa-check"></i><b>17.2</b> Cómo realmente funciona la ciencia (a veces)</a></li>
+<li class="chapter" data-level="17.3" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#la-crisis-de-reproducibilidad-en-la-ciencia"><i class="fa fa-check"></i><b>17.3</b> La crisis de reproducibilidad en la ciencia</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#valor-predictivo-positivo-y-significatividad-estadística"><i class="fa fa-check"></i><b>17.3.1</b> Valor predictivo positivo y significatividad estadística</a></li>
+<li class="chapter" data-level="17.3.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#la-maldición-del-ganador"><i class="fa fa-check"></i><b>17.3.2</b> La maldición del ganador</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#prácticas-cuestionables-de-investigación"><i class="fa fa-check"></i><b>17.4</b> Prácticas cuestionables de investigación</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#esp-o-qrp"><i class="fa fa-check"></i><b>17.4.1</b> ¿ESP o QRP?</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#hacer-investigación-reproducible"><i class="fa fa-check"></i><b>17.5</b> Hacer investigación reproducible</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#pre-registro"><i class="fa fa-check"></i><b>17.5.1</b> Pre-registro</a></li>
+<li class="chapter" data-level="17.5.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#prácticas-reproducibles"><i class="fa fa-check"></i><b>17.5.2</b> Prácticas reproducibles</a></li>
+<li class="chapter" data-level="17.5.3" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#replicación"><i class="fa fa-check"></i><b>17.5.3</b> Replicación</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#hacer-análisis-de-datos-reproducibles"><i class="fa fa-check"></i><b>17.6</b> Hacer análisis de datos reproducibles</a></li>
+<li class="chapter" data-level="17.7" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#conclusión-hacer-mejor-ciencia"><i class="fa fa-check"></i><b>17.7</b> Conclusión: Hacer mejor ciencia</a></li>
+<li class="chapter" data-level="17.8" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#objetivos-de-aprendizaje-15"><i class="fa fa-check"></i><b>17.8</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="17.9" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#lecturas-sugeridas-10"><i class="fa fa-check"></i><b>17.9</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Thinking for the 21st Century</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="estadística-bayesiana" class="section level1" number="11">
+<h1><span class="header-section-number">Capitulo 11</span> Estadística Bayesiana</h1>
+<!--In this chapter we will take up the approach to statistical modeling and inference that stands in contrast to the null hypothesis testing framework that you encountered in Chapter \@ref(hypothesis-testing).  This is known as "Bayesian statistics" after the Reverend Thomas Bayes, whose theorem you have already encountered in Chapter \@ref(probability).  In this chapter you will learn how Bayes' theorem provides a way of understanding data that solves many of the conceptual problems that we discussed regarding null hypothesis testing.-->
+<p>En este capítulo estaremos trabajando desde el enfoque del modelado estadístico e inferencial que contrasta con el marco de prueba de hipótesis nula que vimos en el capítulo <a href="hypothesis-testing.html#hypothesis-testing">9</a>.
+Esto se conoce como “Estadística Bayesiana”, en honor al reverendo Thomas Bayes, cuyo teorema ya has visto en el capítulo <a href="probability.html#probability">6</a>. En este capítulo aprenderás cómo el teorema de Bayes proporciona una forma de entender los datos que resuelve muchos de los problemas conceptuales que discutimos con respecto a la prueba de hipótesis nula.</p>
+<!--## Generative models-->
+<div id="modelos-generativos" class="section level2" number="11.1">
+<h2><span class="header-section-number">11.1</span> Modelos Generativos</h2>
+<!--Say you are walking down the street and a friend of yours walks right by but doesn't say hello.  You would probably try to decide why this happened -- Did they not see you?  Are they mad at you?  Are you suddenly cloaked in a magic invisibility shield?  One of the basic ideas behind Bayesian statistics is that we want to infer the details of how the data are being generated, based on the data themselves.  In this case, you want to use the data (i.e. the fact that your friend did not say hello) to infer the process that generated the data (e.g. whether or not they actually saw you, how they feel about you, etc).-->
+<p>Digamos que estás caminando por la calle y unx amigx tuyx camina a tu lado pero no te saluda. Probablemente vas a tratar de decidir por qué esto te pasó, ¿no te vieron? ¿están enojadxs contigo? ¿De repente traes una capa de invisibilidad y no te has dado cuenta? Una de las ideas básicas de la estadística Bayesiana es que queremos inferir los detalles de cómo los datos son generados, basándonos en los datos mismos. En este caso, tú quieres usar los datos (por ejemplo, el hecho de que tu amigx no te saludó), para inferir el proceso que generó esos datos (si de verdad no te vieron, cómo se sienten con respecto tuyo, etc.).</p>
+<!--The idea behind a generative model is that a *latent* (unseen) process generates the data we observe, usually with some amount of randomness in the process. When we take a sample of data from a population and estimate a parameter from the sample, what we are doing in essence is trying to learn the value of a latent variable (the population mean) that gives rise through sampling to the observed data (the sample mean).  Figure \@ref(fig:GenerativeModel) shows a schematic of this idea.-->
+<p>La idea detrás de los modelos generativos es que un proceso <em>latente</em> (que no se ha visto) genera los datos que observamos, usualmente con una cantidad de aleatoridad en el proceso. Cuando tomamos una muestra de datos de una población y estimamos el parámetro a partir de la muestra, lo que estamos haciendo en esencia es tratar de conocer el valor de la variable latente (la media de la población), la cual da lugar a través del muestreo a los datos observados (la media de la muestra). La Figura <a href="estadística-bayesiana.html#fig:GenerativeModel">11.1</a> muestra un esquema de esta idea.</p>
+<div class="figure"><span id="fig:GenerativeModel"></span>
+<img src="images/BayesianInference.png" alt="A schematic of the idea of a generative model." width="80%" />
+<p class="caption">
+Figura 11.1: A schematic of the idea of a generative model.
+</p>
+</div>
+<!--If we know the value of the latent variable, then it's easy to reconstruct what the observed data should look like.  For example, let's say that we are flipping a coin that we know to be fair, such that we would expect it to land on heads 50% of the time.  We can describe the coin by a binomial distribution with a value of $P_{heads}=0.5$, and then we could generate random samples from such a distribution in order to see what the observed data should look like. However, in general we are in the opposite situation: We don't know the value of the latent variable of interest, but we have some data that we would like to use to estimate it.-->
+<p>Si conociéramos el valor de la variable latente, entonces debería de ser fácil reconstruir cómo deberían verse los datos observados. Por ejemplo, digamos que lanzamos una moneda que sabemos que está balanceada, por lo que podemos esperar que caiga cara el 50% de las veces que se lanza. Podemos describir la moneda con una distribución binomial con un valor de <span class="math inline">\(P_{heads}=0.5\)</span>, y luego podemos generar una muestra aleatoria de tal distribución con el fin de visualizar cómo se deberían de ver los datos. No obstante, en general estamos en la posición contraria: No sabemos el valor de la variable de interés latente, pero tenemos algunos datos que nos gustaría usar para estimarlo.</p>
+<!--## Bayes' theorem and inverse inference-->
+</div>
+<div id="el-teorema-de-bayes-y-la-inferencia-inversa" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> El Teorema de Bayes y la Inferencia Inversa</h2>
+<!--The reason that Bayesian statistics has its name is because it takes advantage of Bayes' theorem to make inferences from data about the underlying process that generated the data.  Let's say that we want to know whether a coin is fair.  To test this, we flip the coin 10 times and come up with 7 heads.  Before this test we were pretty sure that the $P_{heads}=0.5$, but finding 7 heads out of 10 flips would certainly give us pause if we believed that $P_{heads}=0.5$.  We already know how to compute the conditional probability that we would flip 7 or more heads out of 10 if the coin is really fair ($P(n\ge7|p_{heads}=0.5)$), using the binomial distribution.-->
+<p>La razón por la cual la estadística Bayesiana tiene tal nombre es porque aprovecha el teorema de Bayes para hacer inferencias a partir de los datos sobre el proceso subyacente que generó los datos. Digamos que queremos saber si una moneda está balanceada. Para probar esto, lanzamos la moneda 10 veces y en 7 ocasiones cae en cara. Antes de esta prueba, estábamos muy seguros de que <span class="math inline">\(P_{heads}=0.5\)</span>, pero al caer cara 7 veces de 10 lanzamientos sin duda nos daría una pausa si creyéramos que <span class="math inline">\(P_{heads}=0.5\)</span>. Ya sabemos cómo calcular la probabilidad condicional de que caiga 7 o más veces en cara (de 10 veces que se lanza la moneda) si la moneda realmente es balanceada (<span class="math inline">\(P(n\ge7|p_{heads}=0.5)\)</span>), usando la distribución binomial.</p>
+<!--The resulting probability is 0.055.  That is a fairly small number, but this number doesn't really answer the question that we are asking -- it is telling us about the likelihood of 7 or more heads given some particular probability of heads, whereas what we really want to know is the probability of heads. This should sound familiar, as it's exactly the situation that we were in with null hypothesis testing, which told us about the likelihood of data rather than the likelihood of hypotheses.-->
+<p>La probabilidad resultante es 0.055. Ese es un número bastante pequeño, pero este número no responde realmente a la pregunta que estamos haciendo– nos está diciendo la probabilidad de que en 7 ocasiones o más la moneda caiga en cara, dada una probabilidad particular de cara, mientras que lo que queremos saber en realidad es la probabilidad de que caiga cara en esa moneda en particular. Esto debería sonar familiar, ya que es una situación exactamente igual a la que estábamos con la prueba de hipótesis nula, la cual nos mostró la probabilidad de los datos, en lugar de la probabilidad de las hipótesis.</p>
+<!--Remember that Bayes' theorem provides us with the tool that we need to invert a conditional probability:-->
+<p>Recuerda que el teorema de Bayes nos provee con una herramienta que necesitamos para invertir una probabilidad condicional.</p>
+<p><span class="math display">\[
+P(H|D) = \frac{P(D|H)*P(H)}{P(D)}
+\]</span></p>
+<!--We can think of this theorem as having four parts:-->
+<p>Podemos pensar este teorema como si tuviéramos cuatro partes:</p>
+<!--- *prior* ($P(Hypothesis)$): Our degree of belief about hypothesis H before seeing the data D
+- *likelihood* ($P(Data|Hypothesis)$): How likely are the observed data D under hypothesis H?
+- *marginal likelihood* ($P(Data)$): How likely are the observed data, combining over all possible hypotheses?
+- *posterior* ($P(Hypothesis|Data)$): Our updated belief about hypothesis H, given the data D-->
+<ul>
+<li><em>Probabilidad previa</em> (<span class="math inline">\(P(Hipótesis)\)</span>): Nuestro grado de creencia sobre la hipótesis H antes de ver los datos D.</li>
+<li><em>Probabilidad</em>/<em>Likelihood</em> (<span class="math inline">\(P(Datos|Hipótesis)\)</span>): ¿Qué tan probables son los datos observados D bajo la hipótesis H?</li>
+<li><em>Probabilidad marginal</em> (<span class="math inline">\(P(Datos)\)</span>): ¿Qué tan probables son los datos observados, combinando todas las hipótesis posibles?</li>
+<li><em>Probabilidad Posterior</em> (<span class="math inline">\(P(Hipótesis|Datos)\)</span>): Nuestra creencia actualizada sobre la hipótesis H, dados los datos D.</li>
+</ul>
+<!--In the case of our coin-flipping example:-->
+<p>En el caso de nuestro ejemplo de lanzar la moneda:</p>
+<!--- *prior* ($P_{heads}$): Our degree of belief about the likelhood of flipping heads, which was $P_{heads}=0.5$
+- *likelihood* ($P(\text{7 or more heads out of 10 flips}|P_{heads}=0.5)$): How likely are 7 or more heads out of 10 flips if $P_{heads}=0.5)$?
+- *marginal likelihood* ($P(\text{7 or more heads out of 10 flips})$): How likely are we to observe 7 heads out of 10 coin flips, in general?
+- *posterior* ($P_{heads}|\text{7 or more heads out of 10 coin flips})$): Our updated belief about $P_{heads}$ given the observed coin flips-->
+<ul>
+<li><em>Probilidad previa</em> (<span class="math inline">\(P_ {heads}\)</span>): Nuestro grado de creencia sobre la probabilidad de que caiga en cara, que fue <span class="math inline">\(P_ {heads} = 0.5\)</span>.</li>
+<li><em>Probabilidad</em> (<span class="math inline">\(P(\text{7 or more heads out of 10 flips}|P_{heads}=0.5)\)</span>): ¿Qué probabilidad hay de 7 o más caras de 10 lanzamientos si <span class="math inline">\(P_{heads}=0.5)\)</span>?</li>
+<li><em>Probabilidad marginal</em> (<span class="math inline">\(P(\text{7 or more heads out of 10 flips})\)</span>): ¿Qué probabilidades hay de que observemos 7 caras de cada 10 lanzamientos de moneda, en general?</li>
+<li><em>Probabilidad posterior</em> (<span class="math inline">\(P_{heads}|\text{7 or more heads out of 10 coin flips})\)</span>): Nuestra creencia actualizada sobre <span class="math inline">\(P_{heads}\)</span> dados los lanzamientos de moneda observados.</li>
+</ul>
+<!--Here we see one of the primary differences between frequentist and Bayesian statistics. Frequentists do not believe in the idea of a probability of a hypothesis (i.e. our degree of belief about a hypothesis) -- for them, a hypothesis is either true or it isn't. Another way to say this is that for the frequentist, the hypothesis is fixed and the data are random, which is why frequentist inference focuses on describing the probability of data given a hypothesis (i.e. the p-value). Bayesians, on the other hand, are comfortable making probability statements about both data and hypotheses.-->
+<p>Aquí vemos una de las principales diferencias entre la estadística frecuentista y bayesiana. Lxs frecuentistas no creen en la idea de una probabilidad de una hipótesis (es decir, nuestro grado de creencia sobre una hipótesis); para ellxs, una hipótesis es verdadera o no lo es. Otra forma de decir esto es que para la/el frecuentista, la hipótesis es fija y los datos son aleatorios, por lo que la inferencia frecuentista se centra en describir la probabilidad de los datos dada una hipótesis (es decir, el valor p). Lxs bayesianos, por otro lado, se sienten cómodos haciendo declaraciones de probabilidad sobre datos e hipótesis.</p>
+<!--## Doing Bayesian estimation {#doing-bayesian-estimation}-->
+</div>
+<div id="doing-bayesian-estimation" class="section level2" number="11.3">
+<h2><span class="header-section-number">11.3</span> Haciendo estimaciones Bayesianas</h2>
+<!--We ultimately want to use Bayesian statistics to make decisions about  hypotheses, but before we do that we need to estimate the parameters that are necessary to make the decision. Here we will walk through the process of Bayesian estimation.  Let's use another screening example: Airport security screening.  If you fly a lot, it's just a matter of time until one of the random explosive screenings comes back positive; I had the particularly unfortunate experience of this happening soon after September 11, 2001, when airport security staff were especially on edge.-->
+<p>En última instancia, queremos utilizar la estadística bayesiana para tomar decisiones sobre las hipótesis, pero antes de hacerlo, debemos estimar los parámetros que son necesarios para tomar la decisión. Aquí recorreremos el proceso de estimación bayesiana. Usemos otro ejemplo de inspección (<em>screening</em>): inspección de seguridad del aeropuerto. Si vuelas mucho, es solo cuestión de tiempo para que una de las inspecciones aleatorias de explosivos resulte positiva; tuve la experiencia particularmente desafortunada de que esto sucediera poco después del 11 de septiembre de 2001, cuando el personal de seguridad del aeropuerto estaba especialmente nervioso.</p>
+<!--What the security staff want to know is what is the likelihood that a person is carrying an explosive, given that the machine has given a positive test.  Let's walk through how to calculate this value using Bayesian analysis.-->
+<p>Lo que el personal de seguridad quiere saber es cuál es la probabilidad de que una persona lleve un explosivo, dado que la máquina ha dado positivo en la prueba. Veamos cómo calcular este valor mediante el análisis bayesiano.</p>
+<!--### Specifying the prior-->
+<div id="especificar-la-probabilidad-previa" class="section level3" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> Especificar la probabilidad previa</h3>
+<!--To use Bayes' theorem, we first need to specify the prior probability for the hypothesis.  In this case, we don't know the real number but we can assume that it's quite small.  According to the [FAA](https://www.faa.gov/air_traffic/by_the_numbers/media/Air_Traffic_by_the_Numbers_2018.pdf), there were 971,595,898 air passengers in the U.S. in 2017.  Let's say that one out of those travelers was carrying an explosive in their bag --- that would give a prior probability of 1 out of 971 million, which is very small!  The security personnel may have reasonably held a stronger prior in the months after the 9/11 attack, so let's say that their subjective belief was that one out of every million flyers was carrying an explosive.-->
+<p>Para usar el teorema de Bayes, primero debemos especificar la probabilidad previa para la hipótesis. En este caso, no sabemos el número real pero podemos asumar que es pequeño. De acuerdo a la <a href="https://www.faa.gov/air_traffic/by_the_numbers/media/Air_Traffic_by_the_Numbers_2018.pdf">FAA</a>, había 971,595,898 pasajeros al aire en los Estados Unidos de América en 2017. Digamos que uno de esos viajeros llevaba un explosivo en su bolsa– esto nos daría una probabilidad previa de 1 de 971 millones, lo cual es muy pequeño. El personal de seguridad seguramente tuvo en mente una probabilidad previa mucho mayor en los meses después del ataque del 9/11, así que diremos que su pensamiento subjetivo era que uno en un millón de viajeros traía consigo un explosivo.</p>
+<!--### Collect some data-->
+</div>
+<div id="recolectar-los-datos" class="section level3" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> Recolectar los datos</h3>
+<!--The data are composed of the results of the explosive screening test.  Let's say that the security staff runs the bag through their testing apparatus 3 times, and it gives a positive reading on 3 of the 3 tests.-->
+<p>Los datos se componen de los resultados de las pruebas sobre si alguien traía explosivos. Digamos que el staff de seguridad pasa una bolsa a través de su aparato para comprobar que sea seguro, lo pasa durante 3 veces, y da positivo en 3 de las 3 pruebas.</p>
+<!--### Computing the likelihood-->
+</div>
+<div id="calcular-la-probabilidad" class="section level3" number="11.3.3">
+<h3><span class="header-section-number">11.3.3</span> Calcular la probabilidad</h3>
+<!--We want to compute the likelihood of the data under the hypothesis that there is an explosive in the bag.  Let's say that we know (from the machine's manufacturer) that the sensitivity of the test is 0.99 -- that is, when a device is present, it will detect it 99% of the time. To determine the likelihood of our data under the hypothesis that a device is present, we can treat each test as a Bernoulli trial (that is, a trial with an outcome of true or false) with a probability of success of 0.99, which we can model using a binomial distribution.-->
+<p>Queremos calcular la probabilidad de los datos observados bajo la hipótesis de que hay un explosivo en la bolsa. Digamos que sabemos (por los fabricantes de la máquina) que la sensibilidad de la prueba es 0.99 – o sea, cuando un objeto explosivo está presente lo detectará un 99% de las veces. Para determinar la probabilidad de nuestros datos bajo la hipótesis de que un objeto explosivo está presente, podemos tratar cada prueba como un ensayo de Bernoulli (o sea, un ensayo con un resultado de verdadero o falso) con una probabilidad de éxito de 0.99, lo cual podemos modelar con una distribución binomial.</p>
+<!--### Computing the marginal likelihood-->
+</div>
+<div id="calcular-la-probabilidad-marginal" class="section level3" number="11.3.4">
+<h3><span class="header-section-number">11.3.4</span> Calcular la probabilidad marginal</h3>
+<!--We also need to know the overall likelihood of the data -- that is, finding 3 positives out of 3 tests. Computing the marginal likelihood is often one of the most difficult aspects of Bayesian analysis, but for our example it's simple because we can take advantage of the specific form of Bayes' theorem for a binary outcome that we introduced in Section \@ref(bayestheorem):-->
+<p>También necesitamos saber la probabilidad total de los datos, lo cual significa encontrar 3 positivos de 3 pruebas. Calcular la probabilidad marginal es comunmente uno de los aspectos del análisis Bayesiano más difíciles, pero para nuestro ejemplo, es simple, ya que, podemos tomar ventaja de la forma específica del teorema de Bayes para un resultado binario que presentamos en la sección <a href="probability.html#bayestheorem">6.7</a>:
+<span class="math display">\[
+P(E|T) = \frac{P(T|E)*P(E)}{P(T|E)*P(E) + P(T|\neg E)*P(\neg E)}
+\]</span></p>
+<!--where $E$ refers to the presence of explosives, and $T$ refers to a postive test result.-->
+<p>en donde <span class="math inline">\(E\)</span> se refiere a la presencia de explosivos y <span class="math inline">\(T\)</span> se refiere a un resultado positivo de la prueba.</p>
+<!--The marginal likelihood in this case is a weighted average of the likelihood of the data under either presence or absence of the explosive, multiplied by the probability of the explosive being present (i.e. the prior).  In this case, let's say that we know (from the manufacturer) that the specificity of the test is 0.99, such that the likelihood of a positive result when there is no explosive ($P(T|\neg E)$) is 0.01.-->
+<p>En este caso, la probabilidad marginal es una probabilidad ponderada (<em>weighted probability</em>) de la probabilidad de los datos en la presencia y en la ausencia de explosivos, multiplicada por la probabilidad de que haya un explosivo presente (es decir, la probabilidad previa). En este caso, digamos que sabemos (gracias al fabricante), que la especificidad de la prueba es 0.99, por lo que la probabilidad de un resultado positivo cuando no hay explosivo (<span class="math inline">\(P(T|\neg E)\)</span>) es 0.01.</p>
+<!--### Computing the posterior-->
+</div>
+<div id="calcular-la-probabilidad-posterior" class="section level3" number="11.3.5">
+<h3><span class="header-section-number">11.3.5</span> Calcular la probabilidad posterior</h3>
+<!--We now have all of the parts that we need to compute the posterior probability of an explosive being present, given the observed 3 positive outcomes out of 3 tests.  
+This result shows us that the posterior probability of an explosive in the bag given these positive tests (0.492) is just under 50%, again highlighting the fact that testing for rare events is almost always liable to produce high numbers of false positives, even when the specificity and sensitivity are very high.-->
+<p>Ahora que tenemos todas las partes que necesitamos para calcular la probabilidad posterior de que un explosivo esté presente en la bolsa, dados los resultados observados de 3 positivos de 3 pruebas.
+Este resultado nos muestra que la probabilidad posterior de que haya un explosivo en la bolsa dado estas pruebas positivas (0.492) está justo por debajo del 50%, de nuevo resaltando el hecho de que las pruebas para detectar eventos raros casi siempre pueden producir un gran número de falsos positivos, incluso cuando la especificidad y la sensibilidad son muy altas.</p>
+<!--An important aspect of Bayesian analysis is that it can be sequential.  Once we have the posterior from one analysis, it can become the prior for the next analysis!-->
+<p>Un aspecto importante del análisis Bayesiano es que puede ser secuencial. Una vez que tenemos la probabilidad posterior de un análisis, se puede convertir en la probabilidad previa del siguiente análisis.</p>
+<!--## Estimating posterior distributions {#estimating-posterior-distributions}-->
+</div>
+</div>
+<div id="estimating-posterior-distributions" class="section level2" number="11.4">
+<h2><span class="header-section-number">11.4</span> Estimar distribuciones posteriores</h2>
+<!--In the previous example there were only two possible outcomes -- the explosive is either there or it's not -- and we wanted to know which outcome was most likely given the data.  However, in other cases we want to use Bayesian estimation to estimate the numeric value of a parameter.  Let's say that we want to know about the effectiveness of a new drug for pain; to test this, we can administer the drug to a group of patients and then ask them whether their pain was improved or not after taking the drug.  We can use Bayesian analysis to estimate the proportion of people for whom the drug will be effective using these data.-->
+<p>En el ejemplo anterior solamente había dos posibilidades – el explosivo estaba ahí o no – y queríamos saber cuál resultado era más probable dados los datos que teníamos. Sin embargo, en otros casos queremos usar estimaciones Bayesianas para estimar el valor numérico de un parámetro. Digamos que queremos conocer la efectividad de un nuevo medicamento para el dolor; para probar esto, podemos administrar el medicamento a un grupo de pacientes y luego preguntarles si su dolor disminuyó o no después de tomar el medicamento. Podemos usar un análisis Bayesiano para estimar la proporción de personas para las cuales el medicamento será efectiva utilizando estos datos.</p>
+<!--### Specifying the prior-->
+<div id="especificar-la-probabilidad-previa-1" class="section level3" number="11.4.1">
+<h3><span class="header-section-number">11.4.1</span> Especificar la probabilidad previa</h3>
+<!--In this case, we don't have any prior information about the effectiveness of the drug, so we will use a *uniform distribution* as our prior, since all values are equally likely under a uniform distribution.  In order to simplify the example, we will only look at a subset of 99 possible values of effectiveness (from .01 to .99, in steps of .01). Therefore, each possible value has a prior probability of 1/99. -->
+<p>En ete caso, no tenemos información previa sobre la efectividad del medicamento, así que usaremos una <em>distribución uniforme</em> como nuestra probabilidad previa, ya que los valores son igualmente probables en una distribución uniforme. Para simplificar este ejemplo, solo veremos un subconjunto de 99 posibles valores de efectividad (de .01 a .99, en pasos de .01). Por lo que cada valor posible tiene una probabilidad previa de 1/99.</p>
+<!--### Collect some data-->
+</div>
+<div id="recolectar-algunos-datos" class="section level3" number="11.4.2">
+<h3><span class="header-section-number">11.4.2</span> Recolectar algunos datos</h3>
+<!--We need some data in order to estimate the effect of the drug.  Let's say that we administer the drug to 100 individuals, we find that 64 respond positively to the drug.-->
+<p>Necesitamos algunos datos para poder estimar la efectividad del medicamento. Digamos que administramos el medicamento a 100 individuos, y encontramos que 64 responden positivamente al medicamento.</p>
+<!--### Computing the likelihood-->
+</div>
+<div id="calcular-la-probabilidad-1" class="section level3" number="11.4.3">
+<h3><span class="header-section-number">11.4.3</span> Calcular la probabilidad</h3>
+<!--We can compute the likelihood of the data under any particular value of the effectiveness parameter using the `dbinom()` function in R. In Figure \@ref(fig:like2) you can see the likelihood curves over numbers of responders for several different values of $P_{respond}$. Looking at this, it seems that our observed data are relatively more likely under the hypothesis of $P_{respond}=0.7$, somewhat less likely under the hypothesis of $P_{respond}=0.5$, and quite unlikely under the hypothesis of $P_{respond}=0.3$.  One of the fundamental ideas of Bayesian inference is that we should upweight our belief in values of our parameter of interest in proportion to how likely the data are under those values, balanced against what we believe about the parameter values before having seen the data (our prior knowledge).-->
+<p>Podemos calcular la probabilidad de los datos bajo cualquier valor particular del parámetro de efectividad usando la función <code>dbinom()</code> en R. En la Figura <a href="estadística-bayesiana.html#fig:like2">11.2</a> puedes ver las curvas de probabilidad sobre el número de respondientes (quienes respondieron positivamente al medicamento) para varios valores de <span class="math inline">\(P_ {respond}\)</span>. Observando esto, parece que nuestros datos observados son relativamente más probables bajo la hipótesis de <span class="math inline">\(P_ {respond} = 0.7\)</span>, algo menos probable bajo la hipótesis de <span class="math inline">\(P_ {respond} = 0.5\)</span>, y bastante improbable bajo la hipótesis de <span class="math inline">\(P_ {respond} = 0.3\)</span>. Una de las ideas fundamentales de la inferencia bayesiana es que debemos cambiar nuestra creencia en los valores de nuestro parámetro de interés en proporción a qué tan probables serían los datos bajo esos valores, contrastados contra lo que creíamos sobre los valores del parámetro antes de haber visto los datos (nuestro conocimiento previo).</p>
+<div class="figure"><span id="fig:like2"></span>
+<img src="StatsThinking21_files/figure-html/like2-1.png" alt="Likelihood of each possible number of responders under several different hypotheses (p(respond)=0.5 (solid), 0.7 (dotted), 0.3 (dashed).  Observed value shown in the vertical line" width="384" height="50%" />
+<p class="caption">
+Figura 11.2: Likelihood of each possible number of responders under several different hypotheses (p(respond)=0.5 (solid), 0.7 (dotted), 0.3 (dashed). Observed value shown in the vertical line
+</p>
+</div>
+<!--### Computing the marginal likelihood-->
+</div>
+<div id="calcular-la-probabilidad-marginal-1" class="section level3" number="11.4.4">
+<h3><span class="header-section-number">11.4.4</span> Calcular la probabilidad marginal</h3>
+<!--In addition to the likelihood of the data under different hypotheses, we need to know the overall likelihood of the data, combining across all hypotheses (i.e., the marginal likelihood). This marginal likelihood is primarily important because it helps to ensure that the posterior values are true probabilities. In this case, our use of a set of discrete possible parameter values makes it easy to compute the marginal likelihood, because we can just compute the likelihood of each parameter value under each hypothesis and add them up.-->
+<p>Además de la probabilidad de los datos bajo diferentes hipótesis, necesitamos conocer la probabilidad general de los datos, combinando todas las hipótesis (es decir, la probabilidad marginal). Esta probabilidad marginal es particularmente importante porque ayuda a asegurar que los valores posteriores sean probabilidades verdaderas. En este caso, nuestro uso de un conjunto de posibles valores discretos de parámetros facilita el cálculo de la probabilidad marginal, porque podemos simplemente calcular la probabilidad de cada valor de parámetro bajo cada hipótesis y sumarlos.</p>
+<!--### Computing the posterior-->
+</div>
+<div id="calculando-la-probabilidad-posterior" class="section level3" number="11.4.5">
+<h3><span class="header-section-number">11.4.5</span> Calculando la probabilidad posterior</h3>
+<!--We now have all of the parts that we need to compute the posterior probability distribution across all possible values of $p_{respond}$, as shown in Figure \@ref(fig:posteriorDist).-->
+<p>Ahora tenemos todas las partes que necesitamos para calcular la distribución de probabilidad posterior a lo largo de todos los valores posibles de <span class="math inline">\(p_{respond}\)</span>, como se muestra en la Figura <a href="estadística-bayesiana.html#fig:posteriorDist">11.3</a>.</p>
+<div class="figure"><span id="fig:posteriorDist"></span>
+<img src="StatsThinking21_files/figure-html/posteriorDist-1.png" alt="Posterior probability distribution for the observed data plotted in solid line against uniform prior distribution (dotted line). The maximum a posteriori (MAP) value is signified by the diamond symbol." width="384" height="50%" />
+<p class="caption">
+Figura 11.3: Posterior probability distribution for the observed data plotted in solid line against uniform prior distribution (dotted line). The maximum a posteriori (MAP) value is signified by the diamond symbol.
+</p>
+</div>
+<!--### Maximum a posteriori (MAP) estimation-->
+</div>
+<div id="estimación-máxima-a-posteriori-map-por-sus-siglas-en-inglés" class="section level3" number="11.4.6">
+<h3><span class="header-section-number">11.4.6</span> Estimación máxima a posteriori (MAP, por sus siglas en inglés)</h3>
+<!--Given our data we would like to obtain an estimate of $p_{respond}$ for our sample.  One way to do this is to find the value of $p_{respond}$ for which the posterior probability is the highest, which we refer to as the *maximum a posteriori* (MAP) estimate.  We can find this from the data in \@ref(fig:posteriorDist) --- it's the value shown with a marker at the top of the distribution.  Note that the result (0.64) is simply the proportion of responders from our sample -- this occurs because the prior was uniform and thus didn't influence our estimate.-->
+<p>Dados nuestros datos, nos gustaría obtener una estimación de <span class="math inline">\(p_{respond}\)</span> para nuestra muestra. Una forma de hacer esto es encontrar el valor de <span class="math inline">\(p_{respond}\)</span> para el cual la probabilidad posterior es la más alta, al que nos referimos como la estimación <em>máxima a posteriori</em> (MAP). Podemos encontrar esto a partir de los datos en la Figura <a href="estadística-bayesiana.html#fig:posteriorDist">11.3</a> — es el valor que se muestra con un marcador en la parte superior de la distribución. Ten en cuenta que el resultado (0.64) es simplemente la proporción de personas respondientes (quienes respondieron positivamente al medicamento) de nuestra muestra; esto ocurre porque la probabilidad a priori (previa) era uniforme y por lo tanto no influyó en nuestra estimación.</p>
+<!--### Credible intervals-->
+</div>
+<div id="intervalos-de-credibilidad" class="section level3" number="11.4.7">
+<h3><span class="header-section-number">11.4.7</span> Intervalos de credibilidad</h3>
+<!--Often we would like to know not just a single estimate for the posterior, but an interval in which we are confident that the posterior falls.  We previously discussed the concept of confidence intervals in the context of frequentist inference, and you may remember that the interpretation of confidence intervals was particularly convoluted: It was an interval that will contain the the value of the parameter 95% of the time.  What we really want is an interval in which we are confident that the true parameter falls, and Bayesian statistics can give us such an interval, which we call a *credible interval*.-->
+<p>Frecuentemente nos gustaría saber no solo una estimación única para la probabilidad posterior, sino un intervalo en el que confiamos la probabilidad posterior caerá. Anteriormente discutimos el concepto de intervalos de confianza en el contexto de la inferencia frecuentista, y podrás recordar que la interpretación de los intervalos de confianza fue particularmente complicada: era un intervalo que contendrá el valor del parámetro el 95% del tiempo. Lo que realmente queremos es un intervalo en el que estemos segurxs de que el verdadero parámetro estará incluido, y las estadísticas bayesianas pueden darnos ese intervalo, al que llamamos <em>intervalo de credibilidad</em>.</p>
+<!--The interpretation of this credible interval is much closer to what we had hoped we could get from a confidence interval (but could not): It tells us that there is a 95% probability that the value of $p_{respond}$ falls between these two values.  Importantly, it shows that we have high confidence that $p_{respond} > 0.0$, meaning that the drug seems to have a positive effect.-->
+<p>La interpretación de este intervalo de credibilidad está mucho más cerca de lo que esperábamos que pudiéramos obtener de un intervalo de confianza (pero no obtuvimos): nos dice que hay un 95% de probabilidad de que el valor de <span class="math inline">\(p_{respond}\)</span> se encuentre entre estos dos valores. Es importante destacar que muestra que tenemos una alta confianza en que <span class="math inline">\(p_{respond} &gt; 0.0\)</span>, lo que significa que el medicamento parece tener un efecto positivo.</p>
+<!--In some cases the credible interval can be computed *numerically* based on a known distribution, but it's more common to generate a credible interval by sampling from the posterior distribution and then to compute quantiles of the samples. This is particularly useful when we don't have an easy way to express the posterior distribution numerically, which is often the case in real Bayesian data analysis.  One such method (rejection sampling) is explained in more detail in the Appendix at the end of this chapter.-->
+<p>En algunos casos el intervalo de credibilidad puede ser calculado <em>numéricamente</em> basado en una distribución conocida, pero es mucho más común generar un intervalo de credibilidad al muestrar de la distribución posterior y luego calcular cuantiles de las muestras. Esto es particularmente útil cuando no tenemos una forma sencilla de expresar la distribución posterior numéricamente, que es común en un análisis de datos Bayesiano real. Uno de estos métodos (muestreo de rechazo) se explica con más detalle en el Apéndice al final de este capítulo.</p>
+<!--### Effects of different priors-->
+</div>
+<div id="efectos-de-diferentes-probabilidades-previas" class="section level3" number="11.4.8">
+<h3><span class="header-section-number">11.4.8</span> Efectos de diferentes probabilidades previas</h3>
+<!--In the previous example we used a *flat prior*, meaning that we didn't have any reason to believe that any particular value of $p_{respond}$ was more or less likely.  However, let's say that we had instead started with some previous data: In a previous study, researchers had tested 20 people and found that 10 of them had responded positively.  This would have lead us to start with a prior belief that the treatment has an effect in 50% of people.  We can do the same computation as above, but using the information from our previous study to inform our prior (see panel A in Figure \@ref(fig:posteriorDistPrior)).-->
+<p>En el ejemplo anterior usamos una <em>probabilidad previa plana</em>, lo cual quiere decir que no teníamos ninguna razón para creer que algún valor en particular de <span class="math inline">\(p_{respond}\)</span> era más o menos probable. Sin embargo, digamos que en su lugar hubiéramos comenzado con algunos datos previos: En un estudio previo, investigadores habían puesto a prueba a 20 personas y habían encontrado que 10 de ellas respondieron positivamente. Esto nos habría llevado a comenzar con la creencia previa de que el tratamiento tiene efecto en el 50% de las personas. Podemos hacer el mismo cálculo que en el anterior, pero usando la información de nuestro estudio anterior para informar nuestra probabilidad previa (ve el panel A en la Figura <a href="estadística-bayesiana.html#fig:posteriorDistPrior">11.4</a>).</p>
+<!--Note that the likelihood and marginal likelihood did not change - only the prior changed.  The effect of the change in prior to was to pull the posterior closer to the mass of the new prior, which is centered at 0.5.-->
+<p>Nota que la probabilidad y la probabilidad marginal no cambiaron - solamente cambió la probabilidad previa. El efecto del cambio en la probabilidad previa fue jalar la probabilidad posterior más cerca a la masa de la nueva probabilidad previa, la cual está centrada en 0.5.</p>
+<!--Now let's see what happens if we come to the analysis with an even stronger prior belief.  Let's say that instead of having previously observed 10 responders out of 20 people, the prior study had instead tested 500 people and found 250 responders.  This should in principle give us a much stronger prior, and as we see in panel B of Figure \@ref(fig:posteriorDistPrior) , that's what happens: The prior is much more concentrated around 0.5, and the posterior is also much closer to the prior.  The general idea is that Bayesian inference combines the information from the prior and the likelihood, weighting the relative strength of each.-->
+<p>Ahora veamos qué pasa si llegamos al análisis con un conocimiento previo más fuerte aún. Digamos que en lugar de haber observado con anterioridad a 10 pesonas que respondieron positivamente de 20, el estudio previo había puesto a prueba a 500 personas y encontró 250 que respondieron positivamente. Esto en principio nos debería de dar una probabilidad previa más fuerte, y como vemos en el panel B de la Figura <a href="estadística-bayesiana.html#fig:posteriorDistPrior">11.4</a>, eso es lo que pasa: La probabilidad previa está mucho más concentrada alrededor de 0.5, y la probabilidad posterior está mucho más cerca de la probabilidad previa. La idea general es que la inferencia Bayesiana combina la información de la probabilidad previa y la probabilidad (<em>likelihood</em>), ponderando el peso relativo de cada uno.</p>
+<!--This example also highlights the sequential nature of Bayesian analysis -- the posterior from one analysis can become the prior for the next analysis.-->
+<p>Este ejemplo también destaca la naturaleza secuencial de los análisis Bayesianos – la probabilidad posterior de un análisis puede tornarse en la probabilidad previa del siguiente análisis.</p>
+<!--Finally, it is important to realize that if the priors are strong enough, they can completely overwhelm the data.  Let's say that you have an absolute prior that $p_{respond}$ is 0.8 or greater, such that you set the prior likelihood of all other values to zero.  What happens if we then compute the posterior?-->
+<p>Finalmente, es importante destacar que si las probabilidades previas son lo suficientemente fuertes, pueden abrumar completamente a los datos. Digamos que tienes una probabilidad previa absoluta en donde <span class="math inline">\(p_{respond}\)</span> es 0.8 o más, por lo que defines la probabilidad previa de todos los demás valores a cero. ¿Qué pasa entonces cuando calculamos la probabilidad posterior?</p>
+<div class="figure"><span id="fig:posteriorDistPrior"></span>
+<img src="StatsThinking21_files/figure-html/posteriorDistPrior-1.png" alt="A: Effects of priors on the posterior distribution.  The original posterior distribution based on a flat prior is plotted in blue. The prior based on the observation of 10 responders out of 20 people is plotted in the dotted black line, and the posterior using this prior is plotted in red.  B: Effects of the strength of the prior on the posterior distribution. The blue line shows the posterior obtained using the prior based on 50 responders out of 100 people.  The dotted black line shows the prior based on 250 responders out of 500 people, and the red line shows the posterior based on that prior. C: Effects of the strength of the prior on the posterior distribution. The blue line shows the posterior obtained using an absolute prior which states that p(respond) is 0.8 or greater.  The prior is shown in the dotted black line." width="80%" />
+<p class="caption">
+Figura 11.4: A: Effects of priors on the posterior distribution. The original posterior distribution based on a flat prior is plotted in blue. The prior based on the observation of 10 responders out of 20 people is plotted in the dotted black line, and the posterior using this prior is plotted in red. B: Effects of the strength of the prior on the posterior distribution. The blue line shows the posterior obtained using the prior based on 50 responders out of 100 people. The dotted black line shows the prior based on 250 responders out of 500 people, and the red line shows the posterior based on that prior. C: Effects of the strength of the prior on the posterior distribution. The blue line shows the posterior obtained using an absolute prior which states that p(respond) is 0.8 or greater. The prior is shown in the dotted black line.
+</p>
+</div>
+<!--In panel C of Figure \@ref(fig:posteriorDistPrior) we see that there is zero density in the posterior for any of the values where the prior was set to zero - the data are overwhelmed by the absolute prior.-->
+<p>En el panel de C de la Figura <a href="estadística-bayesiana.html#fig:posteriorDistPrior">11.4</a> observamos que hay una densidad cero en la probabilidad posterior para cualquiera de los valores en donde la probabilidad previa se ha puesto en cero - los datos se ven abrumados por el valor previo absoluto.</p>
+<!--## Choosing a prior-->
+</div>
+</div>
+<div id="elegir-una-probabilidad-previa" class="section level2" number="11.5">
+<h2><span class="header-section-number">11.5</span> Elegir una probabilidad previa</h2>
+<!--The impact of priors on the resulting inferences are the most controversial aspect of Bayesian statistics. What is the right prior to use? If the choice of prior determines the results (i.e., the posterior), how can you be sure you results are trustworthy? These are difficult questions, but we should not back away just because we are faced with hard questions. As we discussed previously, Bayesian analyses give us interpretable results (credible intervals, etc.). This alone should inspire us to think hard about these questions so that we can arrive with results that are reasonable and interpretable.-->
+<p>El impacto de las probabilidades previas en el resultado de las inferencias es uno de los aspectos más controversial de la estadística Bayesiana. ¿Cuál es la probabilidad correcta a usar? Si la elección de probabilidad previa determina los resultados (es decir, la probabilidad posterior), ¿cómo puedes estar segurx que los resultados son confiables? Estas son preguntas difíciles, pero no deberíamos de retroceder solamente porque nos enfrentemos con preguntas difíciles. Como lo discutimos previamente, los análisis Bayesianos nos dan resultados interpretables (intervalos de credibilidad, etc.). Esto nos debería de inspirar a pensar seriamente sobre estas preguntas, y así poder llegar a resultados que sean razonables e interpretables.</p>
+<!--There are various ways to choose one's priors, which (as we saw above) can impact the resulting inferences. Sometimes we have a very specific prior, as in the case where we expected our coin to lands heads 50% of the time, but in many cases we don't have such strong a starting point. *Uninformative priors* attempt to influence the resulting posterior as little as possible, as we saw in the example of the uniform prior above.  It's also common to use *weakly informative priors* (or *default priors*), which influence the result only very slightly. For example, if we had used a binomial distribution based on one heads out of two coin flips, the prior would have been centered around 0.5 but fairly flat, influence the posterior only slightly.  
+It is also possible to use priors based on the scientific literature or pre-existing data, which we would call *empirical priors*.  In general, however, we will stick to the use of uninformative/weakly informative priors, since they raise the least concern about influencing our results.-->
+<p>Hay varias formas de elegir probabilidades previas, que (como vimos anteriormente) pueden afectar las inferencias resultantes. A veces tenemos una probabilidad previa muy específica, como en el caso en el que esperábamos que nuestra moneda saliera cara el 50% de las veces, pero en muchos casos no tenemos un punto de partida tan sólido. Las <em>probabilidades previas no informativas</em> intentan influir lo menos posible en la probabilidad posterior resultante, como vimos en el ejemplo anterior con probabilidad uniforme. También es común usar <em>probabilidades previas débilmente informativas</em> (o <em>probabilidades previas por defecto (por default)</em>), que influyen en el resultado sólo muy levemente. Por ejemplo, si hubiéramos usado una distribución binomial basada en el resultado de una cara de dos lanzamientos de moneda, la probabilidad previa se habría centrado alrededor de 0.5, pero bastante plana, influyendo en la probabilidad posterior sólo ligeramente.
+También es posible utilizar probabilidades previas basadas en la literatura científica o datos preexistentes, que llamaríamos <em>probabilidades previas empíricas</em>. En general, sin embargo, nos ceñiremos al uso de probabilidades previas no-informativas / poco-informativas, ya que generan la menor preocupación de influir en nuestros resultados.</p>
+<!--## Bayesian hypothesis testing-->
+</div>
+<div id="prueba-de-hipótesis-bayesiana" class="section level2" number="11.6">
+<h2><span class="header-section-number">11.6</span> Prueba de hipótesis Bayesiana</h2>
+<!--Having learned how to perform Bayesian estimation, we now turn to the use of Bayesian methods for hypothesis testing.  Let's say that there are two politicians who differ in their beliefs about whether the public is in favor an extra tax to support the national parks. Senator Smith thinks that only 40% of people are in favor of the tax, whereas Senator Jones thinks that 60% of people are in favor.  They arrange to have a poll done to test this, which asks 1000 randomly selected people whether they support such a tax. The results are that 490 of the people in the polled sample were in favor of the tax. Based on these data, we would like to know: Do the data support the claims of one senator over the other,and by how much?  We can test this using a concept known as the [Bayes factor](https://bayesfactor.blogspot.com/2014/02/the-bayesfactor-package-this-blog-is.html),which quantifies which hypothesis is better by comparing how well each predicts the observed data.-->
+<p>Habiendo aprendido cómo realizar la estimación bayesiana, ahora pasamos al uso de métodos bayesianos para la prueba de hipótesis. Digamos que hay dos políticos que difieren en sus creencias sobre si el público está a favor de un impuesto extra para apoyar los parques nacionales. El senador Smith piensa que solo el 40% de la gente está a favor del impuesto, mientras que el senador Jones cree que el 60% de la gente está a favor. Organizan una encuesta para probar esto, que pregunta a 1000 personas seleccionadas al azar si apoyan tal impuesto. Los resultados son que 490 de las personas de la muestra encuestada estaban a favor del impuesto. Con base en estos datos, nos gustaría saber: ¿Los datos respaldan las afirmaciones de un senador sobre el otro y en qué medida? Podemos probar esto usando un concepto conocido como el <a href="https://bayesfactor.blogspot.com/2014/02/the-bayesfactor-package-this-blog-is.html">factor de Bayes</a>, que cuantifica qué hipótesis es mejor comparando qué tan bien predicen los datos cada una de las hipótesis.</p>
+<!--### Bayes factors {#Bayes-factors}-->
+<div id="Bayes-factors" class="section level3" number="11.6.1">
+<h3><span class="header-section-number">11.6.1</span> Factores de Bayes</h3>
+<!--The Bayes factor characterizes the relative likelihood of the data under two different hypotheses.  It is defined as:-->
+<p>El factor de Bayes caracteriza la probabilidad relativa de los datos bajo dos hipótesis diferentes. Es definido como:</p>
+<p><span class="math display">\[
+BF = \frac{p(data|H_1)}{p(data|H_2)}
+\]</span></p>
+<!--for two hypotheses $H_1$ and $H_2$.  In the case of our two senators, we know how to compute the likelihood of the data under each hypothesis using the binomial distribution; let's assume for the moment that our prior probability for each senator being correct is the same ($P_{H_1} = P_{H_2} = 0.5$).  We will put Senator Smith in the numerator and Senator Jones in the denominator, so that a value greater than one will reflect greater evidence for Senator Smith, and a value less than one will reflect greater evidence for Senator Jones. The resulting Bayes Factor (3325.26) provides a measure of the evidence that the data provides regarding the two hypotheses - in this case, it tells us the data support Senator Smith more than 3000 times more strongly than they support Senator Jones.-->
+<p>para dos hipótesis <span class="math inline">\(H_1\)</span> y <span class="math inline">\(H_2\)</span>. En el caso de nuestros dos senadores, sabemos cómo calcular la probabilidad de los datos bajo cada hipótesis utilizando la distribución binomial; supongamos por el momento que nuestra probabilidad previa de que cada senador esté en lo correcto es la misma (<span class="math inline">\(P_{H_1} = P_{H_2} = 0.5\)</span>). Pondremos al senador Smith en el numerador y al senador Jones en el denominador, de modo que un valor mayor que uno reflejará una mayor evidencia para el senador Smith, y un valor menor que uno reflejará una mayor evidencia para el senador Jones. El factor de Bayes resultante (3325.26) proporciona una medida de la evidencia que los datos proporcionan con respecto a las dos hipótesis; en este caso, nos dice que los datos apoyan al senador Smith más de 3000 veces más de lo que apoyan al senador Jones.</p>
+<!--### Bayes factors for statistical hypotheses-->
+</div>
+<div id="factores-de-bayes-para-hipótesis-estadísticas" class="section level3" number="11.6.2">
+<h3><span class="header-section-number">11.6.2</span> Factores de Bayes para hipótesis estadísticas</h3>
+<!--In the previous example we had specific predictions from each senator, whose likelihood we could quantify using the binomial distribution. In addition, our prior probability for the two hypotheses was equal.  However, in real data analysis we generally must deal with uncertainty about our parameters, which complicates the Bayes factor, because we need to compute the marginal likelihood (that is, an integrated average of the likelihoods over all possible model parameters, weighted by their prior probabilities).  However, in exchange we gain the ability to quantify the relative amount of evidence in favor of the null versus alternative hypotheses.-->
+<p>En el ejemplo anterior teníamos predicciones específicas de cada senador, cuya probabilidad pudimos cuantificar utilizando la distribución binomial. Además, nuestra probabilidad previa para las dos hipótesis era igual. Sin embargo, en el análisis de datos reales generalmente debemos lidiar con la incertidumbre acerca de nuestros parámetros, lo que complica el factor de Bayes, porque necesitamos calcular la probabilidad marginal (es decir, un promedio integrado de las probabilidades sobre todos los parámetros posibles del modelo, ponderado por su probabilidades). Sin embargo, a cambio, obtenemos la capacidad de cuantificar la cantidad relativa de evidencia a favor de la hipótesis nula frente a la alternativa.</p>
+<!--Let's say that we are a medical researcher performing a clinical trial for the treatment of diabetes, and we wish to know whether a particular drug reduces blood glucose compared to placebo. We recruit a set of volunteers and randomly assign them to either drug or placebo group, and we measure the change in hemoglobin A1C (a marker for blood glucose levels) in each group over the period in which the drug or placebo was administered.  What we want to know is: Is there a difference between the drug and placebo?-->
+<p>Digamos que somos un investigador médico que realiza un ensayo clínico para el tratamiento de la diabetes y deseamos saber si un medicamento en particular reduce la glucosa en sangre en comparación con el placebo. Reclutamos un conjunto de voluntarios y los asignamos aleatoriamente al grupo de fármaco o placebo, y medimos el cambio en la hemoglobina A1C (un marcador de los niveles de glucosa en sangre) en cada grupo durante el período en el que se administró el fármaco o el placebo. Lo que queremos saber es: ¿Existe alguna diferencia entre el fármaco y el placebo?</p>
+<!--First, let's generate some data and analyze them using null hypothesis testing (see Figure \@ref(fig:bayesTesting)). Then let's perform an independent-samples t-test, which shows that there is a significant difference between the groups:-->
+<p>Primero, generemos algunos datos y analicémoslos usando pruebas de hipótesis nulas (ve la Figura <a href="estadística-bayesiana.html#fig:bayesTesting">11.5</a>). Luego, realicemos una prueba t de muestras independientes, que muestra que hay una diferencia significativa entre los grupos:</p>
+<div class="figure"><span id="fig:bayesTesting"></span>
+<img src="StatsThinking21_files/figure-html/bayesTesting-1.png" alt="Box plots showing data for drug and placebo groups." width="384" height="50%" />
+<p class="caption">
+Figura 11.5: Box plots showing data for drug and placebo groups.
+</p>
+</div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  hbchange by group
+## t = 2, df = 32, p-value = 0.02
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  0.11  Inf
+## sample estimates:
+## mean in group 0 mean in group 1 
+##          -0.082          -0.650</code></pre>
+<!--This test tells us that there is a significant difference between the groups, but it doesn't quantify how strongly the evidence supports the null versus alternative hypotheses.  To measure that, we can compute a Bayes factor using `ttestBF` function from the BayesFactor package in R:-->
+<p>Esta prueba nos dice que hay una diferencia significativa entre los grupos, pero no cuantifica la fuerza con la que la evidencia apoya las hipótesis nula versus alternativa. Para medir eso, podemos calcular un factor de Bayes usando la función <code>ttestBF</code> del paquete de BayesFactor en R:</p>
+<pre><code>## Bayes factor analysis
+## --------------
+## [1] Alt., r=0.707 0&lt;d&lt;Inf    : 3.4  ±0%
+## [2] Alt., r=0.707 !(0&lt;d&lt;Inf) : 0.12 ±0%
+## 
+## Against denominator:
+##   Null, mu1-mu2 = 0 
+## ---
+## Bayes factor type: BFindepSample, JZS</code></pre>
+<!--We are particularly interested in the Bayes Factor for an effect greater than zero, which is listed in the line marked "[1]" in the report.  The Bayes factor here tells us that the alternative hypothesis (i.e. that the difference is greater than zero) is about 3 times more likely than the point null hypothesis (i.e. a mean difference of exactly zero) given the data.  Thus, while the effect is significant, the amount of evidence it provides us in favor of the alternative hypothesis is rather weak.-->
+<p>Estamos particularmente interesados en el factor de Bayes para un efecto mayor que cero, que se enumera en la línea marcada “[1]” en el informe. El factor de Bayes aquí nos dice que la hipótesis alternativa (es decir, que la diferencia es mayor que cero) es aproximadamente 3 veces más probable que la hipótesis nula puntual (es decir, una diferencia media de exactamente cero) dados los datos. Por lo tanto, si bien el efecto es significativo, la cantidad de evidencia que nos proporciona a favor de la hipótesis alternativa es bastante débil.</p>
+<!--#### One-sided tests-->
+<div id="pruebas-unilaterales" class="section level4" number="11.6.2.1">
+<h4><span class="header-section-number">11.6.2.1</span> Pruebas unilaterales</h4>
+<!--We generally are less interested in testing against the null hypothesis of a specific point value (e.g. mean difference = 0) than we are in testing against a directional null hypothesis (e.g. that the difference is less than or equal to zero).  We can also perform a directional (or *one-sided*) test using the results from `ttestBF` analysis, since it provides two Bayes factors: one for the alternative hypothesis that the mean difference is greater than zero, and one for the alternative hypothesis that the mean difference is less than zero.  If we want to assess the relative evidence for a positive effect, we can compute a Bayes factor comparing the relative evidence for a positive versus a negative effect by simply dividing the two Bayes factors returned by the function:-->
+<p>Por lo general, estamos menos interesados en contrastar la hipótesis nula de un valor puntual específico (por ejemplo, diferencia media = 0) que en contrastar una hipótesis nula direccional (por ejemplo, que la diferencia es menor o igual a cero). También podemos realizar una prueba direccional (o <em>unilateral</em>) utilizando los resultados del análisis <code>ttestBF</code>, ya que proporciona dos factores de Bayes: uno para la hipótesis alternativa de que la diferencia media es mayor que cero y otro para la hipótesis alternativa de que la diferencia media es menor que cero. Si queremos evaluar la evidencia relativa de un efecto positivo, podemos calcular un factor de Bayes comparando la evidencia relativa de un efecto positivo versus negativo simplemente dividiendo los dos factores de Bayes devueltos por la función:</p>
+<pre><code>## Bayes factor analysis
+## --------------
+## [1] Alt., r=0.707 0&lt;d&lt;Inf : 29 ±0%
+## 
+## Against denominator:
+##   Alternative, r = 0.707106781186548, mu =/= 0 !(0&lt;d&lt;Inf) 
+## ---
+## Bayes factor type: BFindepSample, JZS</code></pre>
+<!--Now we see that the Bayes factor for a positive effect versus a negative effect is substantially larger (almost 30).-->
+<p>Ahora vemos que el factor Bayes para un efecto positivo frente a un efecto negativo es sustancialmente mayor (casi 30).</p>
+<!--#### Interpreting Bayes Factors-->
+</div>
+<div id="interpretar-factores-de-bayes" class="section level4" number="11.6.2.2">
+<h4><span class="header-section-number">11.6.2.2</span> Interpretar Factores de Bayes</h4>
+<!--How do we know whether a Bayes factor of 2 or 20 is good or bad? There is a general guideline for interpretation of Bayes factors suggested by [Kass & Rafferty (1995)](https://www.andrew.cmu.edu/user/kk3n/simplicity/KassRaftery1995.pdf):-->
+<p>¿Cómo sabemos si un factor de Bayes de 2 o 20 es bueno o malo? Existe una guía general para la interpretación de los factores de Bayes sugerida por <a href="https://www.andrew.cmu.edu/user/kk3n/simplicity/KassRaftery1995.pdf">Kass &amp; Rafferty (1995)</a>:</p>
+<table>
+<thead>
+<tr class="header">
+<th>BF</th>
+<th>Strength of evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1 to 3</td>
+<td>not worth more than a bare mention</td>
+</tr>
+<tr class="even">
+<td>3 to 20</td>
+<td>positive</td>
+</tr>
+<tr class="odd">
+<td>20 to 150</td>
+<td>strong</td>
+</tr>
+<tr class="even">
+<td>&gt;150</td>
+<td>very strong</td>
+</tr>
+</tbody>
+</table>
+<!--Based on this, even though the statisical result is significant, the amount of evidence in favor of the alternative vs. the point null hypothesis is weak enough that it's not worth even mentioning, whereas the evidence for the directional hypothesis is relatively strong.-->
+<p>Con base en esto, aunque el resultado estadístico es significativo, la cantidad de evidencia a favor de la hipótesis alternativa frente a la hipótesis nula puntual es lo suficientemente débil como para ni siquiera mencionarla, mientras que la evidencia para la hipótesis direccional es relativamente sólida.</p>
+<!--### Assessing evidence for the null hypothesis-->
+</div>
+</div>
+<div id="evaluar-evidencia-a-favor-de-la-hipótesis-nula" class="section level3" number="11.6.3">
+<h3><span class="header-section-number">11.6.3</span> Evaluar evidencia a favor de la hipótesis nula</h3>
+<!--Because the Bayes factor is comparing evidence for two hypotheses, it also allows us to assess whether there is evidence in favor of the null hypothesis, which we couldn't do with standard null hypothesis testing (because it starts with the assumption that the null is true).  This can be very useful for determining whether a non-significant result really provides strong evidence that there is no effect, or instead just reflects weak evidence overall.-->
+<p>Debido a que el factor de Bayes está comparando evidencia para dos hipótesis, también nos permite evaluar si hay evidencia a favor de la hipótesis nula, lo cual no podríamos hacer con la prueba estándar de hipótesis nula (porque comienza con la suposición de que la nula es cierta). Esto puede ser muy útil para determinar si un resultado no significativo realmente proporciona pruebas sólidas de que no hay ningún efecto o, en cambio, solo refleja una evidencia débil en general.</p>
+<!--## Learning objectives-->
+</div>
+</div>
+<div id="objetivos-de-aprendizaje-10" class="section level2" number="11.7">
+<h2><span class="header-section-number">11.7</span> Objetivos de aprendizaje</h2>
+<!--After reading this chapter, should be able to:-->
+<p>Después de leer este capítulo, debes ser capaz de:</p>
+<!--* Describe the main differences between Bayesian analysis and null hypothesis testing
+* Describe and perform the steps in a Bayesian analysis
+* Describe the effects of different priors, and the considerations that go into choosing a prior
+* Describe the difference in interpretation between a confidence interval and a Bayesian credible interval-->
+<ul>
+<li>Describir las principales diferencias entre el análisis bayesiano y la prueba de hipótesis nula.</li>
+<li>Describir y realizar los pasos en un análisis bayesiano.</li>
+<li>Describir los efectos de diferentes probabilidades previas y las consideraciones que intervienen en la elección de una probabilidad previa.</li>
+<li>Describir la diferencia de interpretación entre un intervalo de confianza y un intervalo de credibilidad bayesiano.</li>
+</ul>
+</div>
+<div id="suggested-readings" class="section level2" number="11.8">
+<h2><span class="header-section-number">11.8</span> Suggested readings</h2>
+<ul>
+<li><em>The Theory That Would Not Die: How Bayes’ Rule Cracked the Enigma Code, Hunted Down Russian Submarines, and Emerged Triumphant from Two Centuries of Controversy</em>, by Sharon Bertsch McGrayne</li>
+<li><em>Doing Bayesian Data Analysis: A Tutorial Introduction with R</em>, by John K. Kruschke</li>
+</ul>
+<!-- ## Appendix:  -->
+</div>
+<div id="apéndice-3" class="section level2" number="11.9">
+<h2><span class="header-section-number">11.9</span> Apéndice:</h2>
+<!-- ### Rejection sampling -->
+<div id="muestreo-de-rechazo" class="section level3" number="11.9.1">
+<h3><span class="header-section-number">11.9.1</span> Muestreo de rechazo</h3>
+<!-- We will generate samples from our posterior distribution using a simple algorithm known as [*rejection sampling*](https://am207.github.io/2017/wiki/rejectionsampling.html).  The idea is that we choose a random value of x (in this case $p_{respond}$) and a random value of y (in this case, the posterior probability of $p_{respond}$) each from a uniform distribution. We then only accept the sample if $y < f(x)$ - in this case, if the randomly selected value of y is less than the actual posterior probability of y.  Figure \@ref(fig:rejectionSampling) shows an example of a histogram of samples using rejection sampling, along with the 95% credible intervals obtained using this method.   -->
+<p>Generaremos muestras a partir de nuestra distribución de probabilidad posterior usando un algoritmo simple conocido como <a href="https://am207.github.io/2017/wiki/rejectionsampling.html"><em>muestreo de rechazo</em>(<em>rejection sampling</em>)</a>. La idea es que elegimos un valor aleatorio de x (en este caso <span class="math inline">\(p_{respond}\)</span>) y un valor aleatorio de y (en este caso, la probabilidad posterior de <span class="math inline">\(p_{respond}\)</span>) cada uno de una distribución uniforme. Luego aceptamos la muestra sólo si <span class="math inline">\(y &lt; f(x)\)</span> - en este caso, si el valor seleccionado aleatoriamente de y es menor que la probabilidad posterior real de y. La Figura <a href="estadística-bayesiana.html#fig:rejectionSampling">11.6</a> muestra un ejemplo de un histograma de muestras usando el muestreo de rechazo, junto con el intervalo de credibilidad del 95% obtenido usando este método.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="estadística-bayesiana.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute credible intervals for example</span></span>
+<span id="cb10-2"><a href="estadística-bayesiana.html#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="estadística-bayesiana.html#cb10-3" aria-hidden="true" tabindex="-1"></a>nsamples <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="cb10-4"><a href="estadística-bayesiana.html#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="estadística-bayesiana.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create random uniform variates for x and y</span></span>
+<span id="cb10-6"><a href="estadística-bayesiana.html#cb10-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(nsamples)</span>
+<span id="cb10-7"><a href="estadística-bayesiana.html#cb10-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(nsamples)</span>
+<span id="cb10-8"><a href="estadística-bayesiana.html#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="estadística-bayesiana.html#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create f(x)</span></span>
+<span id="cb10-10"><a href="estadística-bayesiana.html#cb10-10" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(<span class="at">x =</span> nResponders, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> x)</span>
+<span id="cb10-11"><a href="estadística-bayesiana.html#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="estadística-bayesiana.html#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># accept samples where y &lt; f(x)</span></span>
+<span id="cb10-13"><a href="estadística-bayesiana.html#cb10-13" aria-hidden="true" tabindex="-1"></a>accept <span class="ot">&lt;-</span> <span class="fu">which</span>(y <span class="sc">&lt;</span> fx)</span>
+<span id="cb10-14"><a href="estadística-bayesiana.html#cb10-14" aria-hidden="true" tabindex="-1"></a>accepted_samples <span class="ot">&lt;-</span> x[accept]</span>
+<span id="cb10-15"><a href="estadística-bayesiana.html#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="estadística-bayesiana.html#cb10-16" aria-hidden="true" tabindex="-1"></a>credible_interval <span class="ot">&lt;-</span> <span class="fu">quantile</span>(<span class="at">x =</span> accepted_samples, </span>
+<span id="cb10-17"><a href="estadística-bayesiana.html#cb10-17" aria-hidden="true" tabindex="-1"></a>                              <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb10-18"><a href="estadística-bayesiana.html#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(credible_interval)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2.5%</td>
+<td align="right">0.54</td>
+</tr>
+<tr class="even">
+<td align="left">98%</td>
+<td align="right">0.73</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:rejectionSampling"></span>
+<img src="StatsThinking21_files/figure-html/rejectionSampling-1.png" alt="Rejection sampling example.The black line shows the density of all possible values of p(respond); the blue lines show the 2.5th and 97.5th percentiles of the distribution, which represent the 95 percent credible interval for the estimate of p(respond)." width="384" height="50%" />
+<p class="caption">
+Figura 11.6: Rejection sampling example.The black line shows the density of all possible values of p(respond); the blue lines show the 2.5th and 97.5th percentiles of the distribution, which represent the 95 percent credible interval for the estimate of p(respond).
+</p>
+</div>
+
+<!-- # Modeling categorical relationships -->
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ci-effect-size-power.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modelar-relaciones-categóricas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/statsthinking21/statsthinking21-core/edit/master/11-BayesianStatistics.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["StatsThinking21.pdf", "StatsThinking21.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
