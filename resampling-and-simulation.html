@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capitulo 8 Remuestreo y Simulación | Statistical Thinking for the 21st Century</title>
   <meta name="description" content="Un libro sobre estadistica." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capitulo 8 Remuestreo y Simulación | Statistical Thinking for the 21st Century" />
   <meta property="og:type" content="book" />
@@ -31,8 +31,9 @@
   
 <link rel="prev" href="sampling.html"/>
 <link rel="next" href="hypothesis-testing.html"/>
-<script src="book_assets/header-attrs-2.6/header-attrs.js"></script>
-<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<script src="book_assets/header-attrs-2.11/header-attrs.js"></script>
+<script src="book_assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,7 +49,8 @@
 
 
 
-
+<link href="book_assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="book_assets/anchor-sections-1.0.1/anchor-sections.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129414074-1"></script>
 <script>
@@ -126,6 +128,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 </head>
 
 <body>
@@ -146,41 +171,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#un-libro-de-código-abierto-open-source"><i class="fa fa-check"></i><b>0.4</b> Un libro de código abierto (open source)</a></li>
 <li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#agradecimientos"><i class="fa fa-check"></i><b>0.5</b> Agradecimientos</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="introducción.html"><a href="introducción.html#qué-es-el-pensamiento-estadístico"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es el pensamiento estadístico?</a></li>
-<li class="chapter" data-level="1.2" data-path="introducción.html"><a href="introducción.html#lidiar-con-la-ansiedad-estadística"><i class="fa fa-check"></i><b>1.2</b> Lidiar con la ansiedad estadística</a></li>
-<li class="chapter" data-level="1.3" data-path="introducción.html"><a href="introducción.html#qué-puede-hacer-la-estadística-por-nosotrxs"><i class="fa fa-check"></i><b>1.3</b> ¿Qué puede hacer la estadística por nosotrxs?</a></li>
-<li class="chapter" data-level="1.4" data-path="introducción.html"><a href="introducción.html#las-grandes-ideas-de-la-estadística"><i class="fa fa-check"></i><b>1.4</b> Las grandes ideas de la estadística</a>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#qué-es-el-pensamiento-estadístico"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es el pensamiento estadístico?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#lidiar-con-la-ansiedad-estadística"><i class="fa fa-check"></i><b>1.2</b> Lidiar con la ansiedad estadística</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#qué-puede-hacer-la-estadística-por-nosotrxs"><i class="fa fa-check"></i><b>1.3</b> ¿Qué puede hacer la estadística por nosotrxs?</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#las-grandes-ideas-de-la-estadística"><i class="fa fa-check"></i><b>1.4</b> Las grandes ideas de la estadística</a>
 <ul>
-<li class="chapter" data-level="1.4.1" data-path="introducción.html"><a href="introducción.html#aprender-de-los-datos"><i class="fa fa-check"></i><b>1.4.1</b> Aprender de los datos</a></li>
-<li class="chapter" data-level="1.4.2" data-path="introducción.html"><a href="introducción.html#agregación-aggregation"><i class="fa fa-check"></i><b>1.4.2</b> Agregación (<em>aggregation</em>)</a></li>
-<li class="chapter" data-level="1.4.3" data-path="introducción.html"><a href="introducción.html#incertidumbre"><i class="fa fa-check"></i><b>1.4.3</b> Incertidumbre</a></li>
-<li class="chapter" data-level="1.4.4" data-path="introducción.html"><a href="introducción.html#muestrear-de-una-población"><i class="fa fa-check"></i><b>1.4.4</b> Muestrear de una población</a></li>
+<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#aprender-de-los-datos"><i class="fa fa-check"></i><b>1.4.1</b> Aprender de los datos</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#agregación-aggregation"><i class="fa fa-check"></i><b>1.4.2</b> Agregación (<em>aggregation</em>)</a></li>
+<li class="chapter" data-level="1.4.3" data-path="introduction.html"><a href="introduction.html#incertidumbre"><i class="fa fa-check"></i><b>1.4.3</b> Incertidumbre</a></li>
+<li class="chapter" data-level="1.4.4" data-path="introduction.html"><a href="introduction.html#muestrear-de-una-población"><i class="fa fa-check"></i><b>1.4.4</b> Muestrear de una población</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="introducción.html"><a href="introducción.html#causalidad-y-estadística"><i class="fa fa-check"></i><b>1.5</b> Causalidad y estadística</a></li>
-<li class="chapter" data-level="1.6" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>1.6</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="1.7" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>1.7</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#causalidad-y-estadística"><i class="fa fa-check"></i><b>1.5</b> Causalidad y estadística</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>1.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>1.7</b> Lecturas sugeridas</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html"><i class="fa fa-check"></i><b>2</b> Trabajar con Datos</a>
+<li class="chapter" data-level="2" data-path="working-with-data.html"><a href="working-with-data.html"><i class="fa fa-check"></i><b>2</b> Trabajar con Datos</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#qué-son-los-datos"><i class="fa fa-check"></i><b>2.1</b> ¿Qué son los datos?</a>
+<li class="chapter" data-level="2.1" data-path="working-with-data.html"><a href="working-with-data.html#qué-son-los-datos"><i class="fa fa-check"></i><b>2.1</b> ¿Qué son los datos?</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#datos-cualitativos"><i class="fa fa-check"></i><b>2.1.1</b> Datos Cualitativos</a></li>
-<li class="chapter" data-level="2.1.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#datos-cuantitativos"><i class="fa fa-check"></i><b>2.1.2</b> Datos cuantitativos</a></li>
-<li class="chapter" data-level="2.1.3" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#tipos-de-números"><i class="fa fa-check"></i><b>2.1.3</b> Tipos de números</a></li>
+<li class="chapter" data-level="2.1.1" data-path="working-with-data.html"><a href="working-with-data.html#datos-cualitativos"><i class="fa fa-check"></i><b>2.1.1</b> Datos Cualitativos</a></li>
+<li class="chapter" data-level="2.1.2" data-path="working-with-data.html"><a href="working-with-data.html#datos-cuantitativos"><i class="fa fa-check"></i><b>2.1.2</b> Datos cuantitativos</a></li>
+<li class="chapter" data-level="2.1.3" data-path="working-with-data.html"><a href="working-with-data.html#tipos-de-números"><i class="fa fa-check"></i><b>2.1.3</b> Tipos de números</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#mediciones-discretas-versus-continuas"><i class="fa fa-check"></i><b>2.2</b> Mediciones Discretas versus Continuas</a></li>
-<li class="chapter" data-level="2.3" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#qué-constituye-a-una-buena-medición"><i class="fa fa-check"></i><b>2.3</b> ¿Qué constituye a una buena medición?</a>
+<li class="chapter" data-level="2.2" data-path="working-with-data.html"><a href="working-with-data.html#mediciones-discretas-versus-continuas"><i class="fa fa-check"></i><b>2.2</b> Mediciones Discretas versus Continuas</a></li>
+<li class="chapter" data-level="2.3" data-path="working-with-data.html"><a href="working-with-data.html#qué-constituye-a-una-buena-medición"><i class="fa fa-check"></i><b>2.3</b> ¿Qué constituye a una buena medición?</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#confiabilidad"><i class="fa fa-check"></i><b>2.3.1</b> Confiabilidad</a></li>
-<li class="chapter" data-level="2.3.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#validez"><i class="fa fa-check"></i><b>2.3.2</b> Validez</a></li>
+<li class="chapter" data-level="2.3.1" data-path="working-with-data.html"><a href="working-with-data.html#confiabilidad"><i class="fa fa-check"></i><b>2.3.1</b> Confiabilidad</a></li>
+<li class="chapter" data-level="2.3.2" data-path="working-with-data.html"><a href="working-with-data.html#validez"><i class="fa fa-check"></i><b>2.3.2</b> Validez</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>2.4</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="2.5" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>2.5</b> Lecturas sugeridas</a></li>
-<li class="chapter" data-level="2.6" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>2.6</b> Apéndice</a>
+<li class="chapter" data-level="2.4" data-path="working-with-data.html"><a href="working-with-data.html#objetivos-de-aprendizaje-1"><i class="fa fa-check"></i><b>2.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="2.5" data-path="working-with-data.html"><a href="working-with-data.html#lecturas-sugeridas-1"><i class="fa fa-check"></i><b>2.5</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="2.6" data-path="working-with-data.html"><a href="working-with-data.html#apéndice"><i class="fa fa-check"></i><b>2.6</b> Apéndice</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#escalas-de-medición"><i class="fa fa-check"></i><b>2.6.1</b> Escalas de medición</a></li>
+<li class="chapter" data-level="2.6.1" data-path="working-with-data.html"><a href="working-with-data.html#escalas-de-medición"><i class="fa fa-check"></i><b>2.6.1</b> Escalas de medición</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="summarizing-data.html"><a href="summarizing-data.html"><i class="fa fa-check"></i><b>3</b> Resumir datos</a>
@@ -198,8 +223,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3.1" data-path="summarizing-data.html"><a href="summarizing-data.html#asimetría-sesgo"><i class="fa fa-check"></i><b>3.3.1</b> Asimetría (sesgo)</a></li>
 <li class="chapter" data-level="3.3.2" data-path="summarizing-data.html"><a href="summarizing-data.html#distribuciones-con-colas-largas"><i class="fa fa-check"></i><b>3.3.2</b> Distribuciones con colas largas</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>3.4</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="3.5" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>3.5</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="3.4" data-path="summarizing-data.html"><a href="summarizing-data.html#objetivos-de-aprendizaje-2"><i class="fa fa-check"></i><b>3.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="3.5" data-path="summarizing-data.html"><a href="summarizing-data.html#lecturas-sugeridas-2"><i class="fa fa-check"></i><b>3.5</b> Lecturas sugeridas</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>4</b> Visualización de Datos</a>
 <ul>
@@ -216,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="data-visualization.html"><a href="data-visualization.html#limitaciones-perceptuales"><i class="fa fa-check"></i><b>4.3.1</b> Limitaciones perceptuales</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="data-visualization.html"><a href="data-visualization.html#corrigiendo-otros-factores"><i class="fa fa-check"></i><b>4.4</b> Corrigiendo otros factores</a></li>
-<li class="chapter" data-level="4.5" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>4.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="4.5" data-path="data-visualization.html"><a href="data-visualization.html#objetivos-de-aprendizaje-3"><i class="fa fa-check"></i><b>4.5</b> Objetivos de aprendizaje</a></li>
 <li class="chapter" data-level="4.6" data-path="data-visualization.html"><a href="data-visualization.html#lecturas-y-videos-sugeridos"><i class="fa fa-check"></i><b>4.6</b> Lecturas y videos sugeridos</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="fitting-models.html"><a href="fitting-models.html"><i class="fa fa-check"></i><b>5</b> Ajustar modelos a datos</a>
@@ -228,22 +253,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="fitting-models.html"><a href="fitting-models.html#qué-hace-que-un-modelo-sea-bueno"><i class="fa fa-check"></i><b>5.3</b> ¿Qué hace que un modelo sea “bueno?”</a></li>
 <li class="chapter" data-level="5.4" data-path="fitting-models.html"><a href="fitting-models.html#overfitting"><i class="fa fa-check"></i><b>5.4</b> ¿Un modelo puede ser demasiado bueno?</a></li>
-<li class="chapter" data-level="5.5" data-path="fitting-models.html"><a href="fitting-models.html#el-modelo-más-simple-la-media"><i class="fa fa-check"></i><b>5.5</b> El modelo más simple: La media</a>
+<li class="chapter" data-level="5.5" data-path="fitting-models.html"><a href="fitting-models.html#resumir-datos-usando-la-media"><i class="fa fa-check"></i><b>5.5</b> Resumir datos usando la media</a></li>
+<li class="chapter" data-level="5.6" data-path="fitting-models.html"><a href="fitting-models.html#resumir-datos-robústamente-usando-la-mediana"><i class="fa fa-check"></i><b>5.6</b> Resumir datos robústamente usando la mediana</a></li>
+<li class="chapter" data-level="5.7" data-path="fitting-models.html"><a href="fitting-models.html#la-moda"><i class="fa fa-check"></i><b>5.7</b> La moda</a></li>
+<li class="chapter" data-level="5.8" data-path="fitting-models.html"><a href="fitting-models.html#variabilidad-qué-tan-bien-se-ajusta-la-media-a-los-datos"><i class="fa fa-check"></i><b>5.8</b> Variabilidad: ¿Qué tan bien se ajusta la media a los datos?</a></li>
+<li class="chapter" data-level="5.9" data-path="fitting-models.html"><a href="fitting-models.html#usar-simulaciones-para-entender-la-estadística"><i class="fa fa-check"></i><b>5.9</b> Usar simulaciones para entender la estadística</a></li>
+<li class="chapter" data-level="5.10" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-z"><i class="fa fa-check"></i><b>5.10</b> Puntajes Z</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="fitting-models.html"><a href="fitting-models.html#la-mediana"><i class="fa fa-check"></i><b>5.5.1</b> La mediana</a></li>
+<li class="chapter" data-level="5.10.1" data-path="fitting-models.html"><a href="fitting-models.html#interpretando-puntajes-z"><i class="fa fa-check"></i><b>5.10.1</b> Interpretando Puntajes Z</a></li>
+<li class="chapter" data-level="5.10.2" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-estandarizados"><i class="fa fa-check"></i><b>5.10.2</b> Puntajes Estandarizados</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="fitting-models.html"><a href="fitting-models.html#la-moda"><i class="fa fa-check"></i><b>5.6</b> La moda</a></li>
-<li class="chapter" data-level="5.7" data-path="fitting-models.html"><a href="fitting-models.html#variabilidad-qué-tan-bien-se-ajusta-la-media-a-los-datos"><i class="fa fa-check"></i><b>5.7</b> Variabilidad: ¿Qué tan bien se ajusta la media a los datos?</a></li>
-<li class="chapter" data-level="5.8" data-path="fitting-models.html"><a href="fitting-models.html#usar-simulaciones-para-entender-la-estadística"><i class="fa fa-check"></i><b>5.8</b> Usar simulaciones para entender la estadística</a></li>
-<li class="chapter" data-level="5.9" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-z"><i class="fa fa-check"></i><b>5.9</b> Puntajes Z</a>
+<li class="chapter" data-level="5.11" data-path="fitting-models.html"><a href="fitting-models.html#objetivos-de-aprendizaje-4"><i class="fa fa-check"></i><b>5.11</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="5.12" data-path="fitting-models.html"><a href="fitting-models.html#apéndice-1"><i class="fa fa-check"></i><b>5.12</b> Apéndice</a>
 <ul>
-<li class="chapter" data-level="5.9.1" data-path="fitting-models.html"><a href="fitting-models.html#interpretando-puntajes-z"><i class="fa fa-check"></i><b>5.9.1</b> Interpretando Puntajes Z</a></li>
-<li class="chapter" data-level="5.9.2" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-estandarizados"><i class="fa fa-check"></i><b>5.9.2</b> Puntajes Estandarizados</a></li>
-</ul></li>
-<li class="chapter" data-level="5.10" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>5.10</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="5.11" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>5.11</b> Apéndice</a>
-<ul>
-<li class="chapter" data-level="5.11.1" data-path="fitting-models.html"><a href="fitting-models.html#proof-that-the-sum-of-errors-from-the-mean-is-zero"><i class="fa fa-check"></i><b>5.11.1</b> Proof that the sum of errors from the Mean is zero"</a></li>
+<li class="chapter" data-level="5.12.1" data-path="fitting-models.html"><a href="fitting-models.html#prueba-de-que-la-suma-de-los-errores-a-partir-de-la-media-es-igual-a-cero"><i class="fa fa-check"></i><b>5.12.1</b> Prueba de que la suma de los errores a partir de la media es igual a cero</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>6</b> Probabilidad</a>
@@ -264,12 +287,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#calcular-probabilidades-condicionales-a-partir-de-los-datos"><i class="fa fa-check"></i><b>6.5</b> Calcular probabilidades condicionales a partir de los datos</a></li>
 <li class="chapter" data-level="6.6" data-path="probability.html"><a href="probability.html#independencia"><i class="fa fa-check"></i><b>6.6</b> Independencia</a></li>
 <li class="chapter" data-level="6.7" data-path="probability.html"><a href="probability.html#bayestheorem"><i class="fa fa-check"></i><b>6.7</b> Invertir una probabilidad condicional: regla de Bayes</a></li>
-<li class="chapter" data-level="6.8" data-path="introducción.html"><a href="introducción.html#aprender-de-los-datos"><i class="fa fa-check"></i><b>6.8</b> Aprender de los datos</a></li>
+<li class="chapter" data-level="6.8" data-path="probability.html"><a href="probability.html#aprender-de-los-datos-1"><i class="fa fa-check"></i><b>6.8</b> Aprender de los datos</a></li>
 <li class="chapter" data-level="6.9" data-path="probability.html"><a href="probability.html#posibilidades-odds-y-razón-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>6.9</b> Posibilidades (odds) y razón de posibilidades (odds ratios)</a></li>
 <li class="chapter" data-level="6.10" data-path="probability.html"><a href="probability.html#qué-significan-las-probabilidades"><i class="fa fa-check"></i><b>6.10</b> ¿Qué significan las probabilidades?</a></li>
-<li class="chapter" data-level="6.11" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>6.11</b> Objetivos de Aprendizaje</a></li>
-<li class="chapter" data-level="6.12" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>6.12</b> Lecturas sugeridas</a></li>
-<li class="chapter" data-level="6.13" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>6.13</b> Apéndice</a>
+<li class="chapter" data-level="6.11" data-path="probability.html"><a href="probability.html#objetivos-de-aprendizaje-5"><i class="fa fa-check"></i><b>6.11</b> Objetivos de Aprendizaje</a></li>
+<li class="chapter" data-level="6.12" data-path="probability.html"><a href="probability.html#lecturas-sugeridas-3"><i class="fa fa-check"></i><b>6.12</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="6.13" data-path="probability.html"><a href="probability.html#apéndice-2"><i class="fa fa-check"></i><b>6.13</b> Apéndice</a>
 <ul>
 <li class="chapter" data-level="6.13.1" data-path="probability.html"><a href="probability.html#derivación-de-la-regla-de-bayes"><i class="fa fa-check"></i><b>6.13.1</b> Derivación de la regla de Bayes</a></li>
 </ul></li>
@@ -280,22 +303,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="sampling.html"><a href="sampling.html#samplingerror"><i class="fa fa-check"></i><b>7.2</b> Error de muestreo</a></li>
 <li class="chapter" data-level="7.3" data-path="sampling.html"><a href="sampling.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>7.3</b> Error estándar de la media</a></li>
 <li class="chapter" data-level="7.4" data-path="sampling.html"><a href="sampling.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>7.4</b> El teorema del límite central</a></li>
-<li class="chapter" data-level="7.5" data-path="sampling.html"><a href="sampling.html#confidence-intervals"><i class="fa fa-check"></i><b>7.5</b> Intervalos de confianza</a></li>
-<li class="chapter" data-level="7.6" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>7.6</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="7.7" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>7.7</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="7.5" data-path="sampling.html"><a href="sampling.html#objetivos-de-aprendizaje-6"><i class="fa fa-check"></i><b>7.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="7.6" data-path="sampling.html"><a href="sampling.html#lecturas-sugeridas-4"><i class="fa fa-check"></i><b>7.6</b> Lecturas sugeridas</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html"><i class="fa fa-check"></i><b>8</b> Remuestreo y Simulación</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#simulación-monte-carlo"><i class="fa fa-check"></i><b>8.1</b> Simulación Monte Carlo</a></li>
+<li class="chapter" data-level="8.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#simulación-montecarlo"><i class="fa fa-check"></i><b>8.1</b> Simulación Montecarlo</a></li>
 <li class="chapter" data-level="8.2" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#aleatoriedad-en-estadística"><i class="fa fa-check"></i><b>8.2</b> Aleatoriedad en Estadística</a></li>
 <li class="chapter" data-level="8.3" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#generando-números-aleatorios"><i class="fa fa-check"></i><b>8.3</b> Generando números aleatorios</a></li>
 <li class="chapter" data-level="8.4" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#utilizando-una-simulación-con-el-método-de-montecarlo"><i class="fa fa-check"></i><b>8.4</b> Utilizando una simulación con el Método de Montecarlo</a></li>
-<li class="chapter" data-level="8.5" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#usando-simulaciones-para-estadística-the-bootstrap"><i class="fa fa-check"></i><b>8.5</b> Usando simulaciones para estadística: The bootstrap</a>
+<li class="chapter" data-level="8.5" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#usando-simulaciones-para-estadística-bootstrap"><i class="fa fa-check"></i><b>8.5</b> Usando simulaciones para estadística: bootstrap</a>
 <ul>
 <li class="chapter" data-level="8.5.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#calculando-el-bootstrap"><i class="fa fa-check"></i><b>8.5.1</b> Calculando el bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>8.6</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="8.7" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>8.7</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="8.6" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#objetivos-de-aprendizaje-7"><i class="fa fa-check"></i><b>8.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="8.7" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#lecturas-sugeridas-5"><i class="fa fa-check"></i><b>8.7</b> Lecturas sugeridas</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>9</b> Prueba de hipótesis</a>
 <ul>
@@ -307,13 +329,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-2-especifica-las-hipótesis-nula-y-alternativa"><i class="fa fa-check"></i><b>9.3.2</b> Paso 2: Especifica las hipótesis nula y alternativa</a></li>
 <li class="chapter" data-level="9.3.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-3-recolectar-datos"><i class="fa fa-check"></i><b>9.3.3</b> Paso 3: Recolectar datos</a></li>
 <li class="chapter" data-level="9.3.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-4-ajusta-un-modelo-a-los-datos-y-calcula-el-estadístico-de-prueba"><i class="fa fa-check"></i><b>9.3.4</b> Paso 4: Ajusta un modelo a los datos y calcula el estadístico de prueba</a></li>
-<li class="chapter" data-level="9.3.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-5-determinar-la-probabilidad-de-los-datos-bajo-la-hipótesis-nula"><i class="fa fa-check"></i><b>9.3.5</b> Paso 5: Determinar la probabilidad de los datos bajo la hipótesis nula</a></li>
+<li class="chapter" data-level="9.3.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-5-determinar-la-probabilidad-de-los-resultados-observados-bajo-la-hipótesis-nula"><i class="fa fa-check"></i><b>9.3.5</b> Paso 5: Determinar la probabilidad de los resultados observados bajo la hipótesis nula</a></li>
 <li class="chapter" data-level="9.3.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-6-evalúa-la-significatividad-estadística-del-resultado"><i class="fa fa-check"></i><b>9.3.6</b> Paso 6: Evalúa la “significatividad estadística” del resultado</a></li>
 <li class="chapter" data-level="9.3.7" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#qué-significa-un-resultado-significativo"><i class="fa fa-check"></i><b>9.3.7</b> ¿Qué significa un resultado significativo?</a></li>
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#nhst-en-un-contexto-moderno-pruebas-múltiples"><i class="fa fa-check"></i><b>9.4</b> NHST en un contexto moderno: Pruebas múltiples</a></li>
-<li class="chapter" data-level="9.5" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>9.5</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="9.6" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>9.6</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="9.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#objetivos-de-aprendizaje-8"><i class="fa fa-check"></i><b>9.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="9.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lecturas-sugeridas-6"><i class="fa fa-check"></i><b>9.6</b> Lecturas sugeridas</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html"><i class="fa fa-check"></i><b>10</b> Cuantificar efectos y diseñar estudios</a>
 <ul>
@@ -329,133 +351,133 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="10.2.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#d-de-cohen"><i class="fa fa-check"></i><b>10.2.1</b> D de Cohen</a></li>
 <li class="chapter" data-level="10.2.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#r-de-pearson"><i class="fa fa-check"></i><b>10.2.2</b> r de Pearson</a></li>
-<li class="chapter" data-level="10.2.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#razón-de-probabilidades-odds-ratio"><i class="fa fa-check"></i><b>10.2.3</b> Razón de probabilidades (odds ratio)</a></li>
+<li class="chapter" data-level="10.2.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#razón-de-posibilidades-odds-ratio"><i class="fa fa-check"></i><b>10.2.3</b> Razón de posibilidades (odds ratio)</a></li>
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#statistical-power"><i class="fa fa-check"></i><b>10.3</b> Poder estadístico</a>
 <ul>
 <li class="chapter" data-level="10.3.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#análisis-de-poder"><i class="fa fa-check"></i><b>10.3.1</b> Análisis de poder</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>10.4</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="10.5" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>10.5</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="10.4" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#objetivos-de-aprendizaje-9"><i class="fa fa-check"></i><b>10.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="10.5" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#lecturas-sugeridas-7"><i class="fa fa-check"></i><b>10.5</b> Lecturas sugeridas</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html"><i class="fa fa-check"></i><b>11</b> Estadística Bayesiana</a>
+<li class="chapter" data-level="11" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>11</b> Estadística Bayesiana</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#modelos-generativos"><i class="fa fa-check"></i><b>11.1</b> Modelos Generativos</a></li>
-<li class="chapter" data-level="11.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#el-teorema-de-bayes-y-la-inferencia-inversa"><i class="fa fa-check"></i><b>11.2</b> El Teorema de Bayes y la Inferencia Inversa</a></li>
-<li class="chapter" data-level="11.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#doing-bayesian-estimation"><i class="fa fa-check"></i><b>11.3</b> Haciendo estimaciones Bayesianas</a>
+<li class="chapter" data-level="11.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#modelos-generativos"><i class="fa fa-check"></i><b>11.1</b> Modelos Generativos</a></li>
+<li class="chapter" data-level="11.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#el-teorema-de-bayes-y-la-inferencia-inversa"><i class="fa fa-check"></i><b>11.2</b> El Teorema de Bayes y la Inferencia Inversa</a></li>
+<li class="chapter" data-level="11.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#doing-bayesian-estimation"><i class="fa fa-check"></i><b>11.3</b> Haciendo estimaciones Bayesianas</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#especificar-la-probabilidad-previa"><i class="fa fa-check"></i><b>11.3.1</b> Especificar la probabilidad previa</a></li>
-<li class="chapter" data-level="11.3.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#recolectar-los-datos"><i class="fa fa-check"></i><b>11.3.2</b> Recolectar los datos</a></li>
-<li class="chapter" data-level="11.3.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad"><i class="fa fa-check"></i><b>11.3.3</b> Calcular la probabilidad</a></li>
-<li class="chapter" data-level="11.3.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-marginal"><i class="fa fa-check"></i><b>11.3.4</b> Calcular la probabilidad marginal</a></li>
-<li class="chapter" data-level="11.3.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.3.5</b> Calcular la probabilidad posterior</a></li>
+<li class="chapter" data-level="11.3.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#especificar-la-probabilidad-previa"><i class="fa fa-check"></i><b>11.3.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.3.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#recolectar-los-datos"><i class="fa fa-check"></i><b>11.3.2</b> Recolectar los datos</a></li>
+<li class="chapter" data-level="11.3.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-likelihood"><i class="fa fa-check"></i><b>11.3.3</b> Calcular la probabilidad (likelihood)</a></li>
+<li class="chapter" data-level="11.3.4" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-marginal-marginal-likelihood"><i class="fa fa-check"></i><b>11.3.4</b> Calcular la probabilidad marginal (marginal likelihood)</a></li>
+<li class="chapter" data-level="11.3.5" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.3.5</b> Calcular la probabilidad posterior</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#estimating-posterior-distributions"><i class="fa fa-check"></i><b>11.4</b> Estimar distribuciones posteriores</a>
+<li class="chapter" data-level="11.4" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#estimating-posterior-distributions"><i class="fa fa-check"></i><b>11.4</b> Estimar distribuciones posteriores</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#especificar-la-probabilidad-previa-1"><i class="fa fa-check"></i><b>11.4.1</b> Especificar la probabilidad previa</a></li>
-<li class="chapter" data-level="11.4.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#recolectar-algunos-datos"><i class="fa fa-check"></i><b>11.4.2</b> Recolectar algunos datos</a></li>
-<li class="chapter" data-level="11.4.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-1"><i class="fa fa-check"></i><b>11.4.3</b> Calcular la probabilidad</a></li>
-<li class="chapter" data-level="11.4.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-marginal-1"><i class="fa fa-check"></i><b>11.4.4</b> Calcular la probabilidad marginal</a></li>
-<li class="chapter" data-level="11.4.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calculando-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.4.5</b> Calculando la probabilidad posterior</a></li>
-<li class="chapter" data-level="11.4.6" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#estimación-máxima-a-posteriori-map-por-sus-siglas-en-inglés"><i class="fa fa-check"></i><b>11.4.6</b> Estimación máxima a posteriori (MAP, por sus siglas en inglés)</a></li>
-<li class="chapter" data-level="11.4.7" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#intervalos-de-credibilidad"><i class="fa fa-check"></i><b>11.4.7</b> Intervalos de credibilidad</a></li>
-<li class="chapter" data-level="11.4.8" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#efectos-de-diferentes-probabilidades-previas"><i class="fa fa-check"></i><b>11.4.8</b> Efectos de diferentes probabilidades previas</a></li>
+<li class="chapter" data-level="11.4.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#especificar-la-probabilidad-previa-1"><i class="fa fa-check"></i><b>11.4.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.4.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#recolectar-algunos-datos"><i class="fa fa-check"></i><b>11.4.2</b> Recolectar algunos datos</a></li>
+<li class="chapter" data-level="11.4.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-likelihood-1"><i class="fa fa-check"></i><b>11.4.3</b> Calcular la probabilidad (likelihood)</a></li>
+<li class="chapter" data-level="11.4.4" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-marginal"><i class="fa fa-check"></i><b>11.4.4</b> Calcular la probabilidad marginal</a></li>
+<li class="chapter" data-level="11.4.5" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-posterior-1"><i class="fa fa-check"></i><b>11.4.5</b> Calcular la probabilidad posterior</a></li>
+<li class="chapter" data-level="11.4.6" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#estimación-máxima-a-posteriori-map-maximum-a-posteriori"><i class="fa fa-check"></i><b>11.4.6</b> Estimación máxima a posteriori (MAP, maximum a posteriori)</a></li>
+<li class="chapter" data-level="11.4.7" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#intervalos-de-credibilidad"><i class="fa fa-check"></i><b>11.4.7</b> Intervalos de credibilidad</a></li>
+<li class="chapter" data-level="11.4.8" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#efectos-de-diferentes-probabilidades-previas"><i class="fa fa-check"></i><b>11.4.8</b> Efectos de diferentes probabilidades previas</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#elegir-una-probabilidad-previa"><i class="fa fa-check"></i><b>11.5</b> Elegir una probabilidad previa</a></li>
-<li class="chapter" data-level="11.6" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#prueba-de-hipótesis-bayesiana"><i class="fa fa-check"></i><b>11.6</b> Prueba de hipótesis Bayesiana</a>
+<li class="chapter" data-level="11.5" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#elegir-una-probabilidad-previa"><i class="fa fa-check"></i><b>11.5</b> Elegir una probabilidad previa</a></li>
+<li class="chapter" data-level="11.6" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#prueba-de-hipótesis-bayesiana"><i class="fa fa-check"></i><b>11.6</b> Prueba de hipótesis Bayesiana</a>
 <ul>
-<li class="chapter" data-level="11.6.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#Bayes-factors"><i class="fa fa-check"></i><b>11.6.1</b> Factores de Bayes</a></li>
-<li class="chapter" data-level="11.6.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#factores-de-bayes-para-hipótesis-estadísticas"><i class="fa fa-check"></i><b>11.6.2</b> Factores de Bayes para hipótesis estadísticas</a></li>
-<li class="chapter" data-level="11.6.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#evaluar-evidencia-a-favor-de-la-hipótesis-nula"><i class="fa fa-check"></i><b>11.6.3</b> Evaluar evidencia a favor de la hipótesis nula</a></li>
+<li class="chapter" data-level="11.6.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#Bayes-factors"><i class="fa fa-check"></i><b>11.6.1</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="11.6.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#factores-de-bayes-para-hipótesis-estadísticas"><i class="fa fa-check"></i><b>11.6.2</b> Factores de Bayes para hipótesis estadísticas</a></li>
+<li class="chapter" data-level="11.6.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#evaluar-evidencia-a-favor-de-la-hipótesis-nula"><i class="fa fa-check"></i><b>11.6.3</b> Evaluar evidencia a favor de la hipótesis nula</a></li>
 </ul></li>
-<li class="chapter" data-level="11.7" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>11.7</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="11.8" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#suggested-readings"><i class="fa fa-check"></i><b>11.8</b> Suggested readings</a></li>
-<li class="chapter" data-level="11.9" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>11.9</b> Apéndice:</a>
+<li class="chapter" data-level="11.7" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#objetivos-de-aprendizaje-10"><i class="fa fa-check"></i><b>11.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="11.8" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#lecturas-sugeridas-8"><i class="fa fa-check"></i><b>11.8</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="11.9" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#apéndice-3"><i class="fa fa-check"></i><b>11.9</b> Apéndice:</a>
 <ul>
-<li class="chapter" data-level="11.9.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#muestreo-de-rechazo"><i class="fa fa-check"></i><b>11.9.1</b> Muestreo de rechazo</a></li>
+<li class="chapter" data-level="11.9.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#muestreo-de-rechazo"><i class="fa fa-check"></i><b>11.9.1</b> Muestreo de rechazo</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html"><i class="fa fa-check"></i><b>12</b> Modelar relaciones categóricas</a>
+<li class="chapter" data-level="12" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html"><i class="fa fa-check"></i><b>12</b> Modelar relaciones categóricas</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#ejemplo-colores-de-dulces"><i class="fa fa-check"></i><b>12.1</b> Ejemplo: Colores de dulces</a></li>
-<li class="chapter" data-level="12.2" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#chi-squared-test"><i class="fa fa-check"></i><b>12.2</b> Prueba Ji-cuadrada de Pearson</a></li>
-<li class="chapter" data-level="12.3" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#two-way-test"><i class="fa fa-check"></i><b>12.3</b> Tablas de contingencia y la prueba de dos vías</a></li>
-<li class="chapter" data-level="12.4" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#residuales-estandarizados"><i class="fa fa-check"></i><b>12.4</b> Residuales estandarizados</a></li>
-<li class="chapter" data-level="12.5" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#razones-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>12.5</b> Razones de posibilidades (odds ratios)</a></li>
-<li class="chapter" data-level="12.6" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#factores-de-bayes"><i class="fa fa-check"></i><b>12.6</b> Factores de Bayes</a></li>
-<li class="chapter" data-level="12.7" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#análisis-categórico-más-allá-de-la-tabla-2-x-2"><i class="fa fa-check"></i><b>12.7</b> Análisis categórico más allá de la tabla 2 X 2</a></li>
-<li class="chapter" data-level="12.8" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#cuídate-de-la-paradoja-de-simpson"><i class="fa fa-check"></i><b>12.8</b> Cuídate de la paradoja de Simpson</a></li>
-<li class="chapter" data-level="12.9" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>12.9</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="12.10" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#lecturas-adicionales"><i class="fa fa-check"></i><b>12.10</b> Lecturas adicionales</a></li>
+<li class="chapter" data-level="12.1" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#ejemplo-dulces-de-colores"><i class="fa fa-check"></i><b>12.1</b> Ejemplo: Dulces de colores</a></li>
+<li class="chapter" data-level="12.2" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#chi-squared-test"><i class="fa fa-check"></i><b>12.2</b> Prueba Ji-cuadrada de Pearson</a></li>
+<li class="chapter" data-level="12.3" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#two-way-test"><i class="fa fa-check"></i><b>12.3</b> Tablas de contingencia y la prueba de dos vías</a></li>
+<li class="chapter" data-level="12.4" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#residuales-estandarizados-standardized-residuales"><i class="fa fa-check"></i><b>12.4</b> Residuales estandarizados (standardized residuales)</a></li>
+<li class="chapter" data-level="12.5" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#razones-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>12.5</b> Razones de posibilidades (odds ratios)</a></li>
+<li class="chapter" data-level="12.6" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#factores-de-bayes"><i class="fa fa-check"></i><b>12.6</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="12.7" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#análisis-categóricos-más-allá-de-la-tabla-2-x-2"><i class="fa fa-check"></i><b>12.7</b> Análisis categóricos más allá de la tabla 2 X 2</a></li>
+<li class="chapter" data-level="12.8" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#cuídate-de-la-paradoja-de-simpson"><i class="fa fa-check"></i><b>12.8</b> Cuídate de la paradoja de Simpson</a></li>
+<li class="chapter" data-level="12.9" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#objetivos-de-aprendizaje-11"><i class="fa fa-check"></i><b>12.9</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="12.10" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#lecturas-adicionales"><i class="fa fa-check"></i><b>12.10</b> Lecturas adicionales</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html"><i class="fa fa-check"></i><b>13</b> Modelar relaciones continuas</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#un-ejemplo-crímenes-de-odio-y-la-inequidad-de-ingreso"><i class="fa fa-check"></i><b>13.1</b> Un ejemplo: Crímenes de odio y la inequidad de ingreso</a></li>
-<li class="chapter" data-level="13.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#la-inequidad-de-ingreso-está-relacionada-a-los-crímenes-de-odio"><i class="fa fa-check"></i><b>13.2</b> ¿La inequidad de ingreso está relacionada a los crímenes de odio?</a></li>
-<li class="chapter" data-level="13.3" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#covariance-and-correlation"><i class="fa fa-check"></i><b>13.3</b> Covarianza y la correlación</a>
+<li class="chapter" data-level="13.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#un-ejemplo-crímenes-de-odio-y-desigualdad-de-ingreso"><i class="fa fa-check"></i><b>13.1</b> Un ejemplo: Crímenes de odio y desigualdad de ingreso</a></li>
+<li class="chapter" data-level="13.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#la-desigualdad-de-ingreso-está-relacionada-con-los-crímenes-de-odio"><i class="fa fa-check"></i><b>13.2</b> ¿La desigualdad de ingreso está relacionada con los crímenes de odio?</a></li>
+<li class="chapter" data-level="13.3" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#covariance-and-correlation"><i class="fa fa-check"></i><b>13.3</b> Covarianza y correlación</a>
 <ul>
 <li class="chapter" data-level="13.3.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#prueba-de-hipótesis-para-correlaciones"><i class="fa fa-check"></i><b>13.3.1</b> Prueba de hipótesis para correlaciones</a></li>
-<li class="chapter" data-level="13.3.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#robust-correlations"><i class="fa fa-check"></i><b>13.3.2</b> Correlaciones Robustas</a></li>
+<li class="chapter" data-level="13.3.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#robust-correlations"><i class="fa fa-check"></i><b>13.3.2</b> Correlaciones robustas</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#correlación-y-causalidad"><i class="fa fa-check"></i><b>13.4</b> Correlación y causalidad</a>
 <ul>
 <li class="chapter" data-level="13.4.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#gráficas-causales"><i class="fa fa-check"></i><b>13.4.1</b> Gráficas causales</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>13.5</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="13.6" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>13.6</b> Lecturas sugeridas</a></li>
-<li class="chapter" data-level="13.7" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>13.7</b> Apéndice:</a>
+<li class="chapter" data-level="13.5" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#objetivos-de-aprendizaje-12"><i class="fa fa-check"></i><b>13.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="13.6" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#lecturas-sugeridas-9"><i class="fa fa-check"></i><b>13.6</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="13.7" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#apéndice-4"><i class="fa fa-check"></i><b>13.7</b> Apéndice:</a>
 <ul>
-<li class="chapter" data-level="13.7.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#cuantificando-la-inequidad-el-índice-gini"><i class="fa fa-check"></i><b>13.7.1</b> Cuantificando la inequidad: El índice Gini</a></li>
+<li class="chapter" data-level="13.7.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#cuantificando-la-desigualdad-el-índice-gini"><i class="fa fa-check"></i><b>13.7.1</b> Cuantificando la desigualdad: El índice Gini</a></li>
 <li class="chapter" data-level="13.7.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#análisis-de-correlación-bayesiana"><i class="fa fa-check"></i><b>13.7.2</b> Análisis de correlación bayesiana</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html"><i class="fa fa-check"></i><b>14</b> El Modelo Lineal General</a>
+<li class="chapter" data-level="14" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html"><i class="fa fa-check"></i><b>14</b> El Modelo Lineal General</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#linear-regression"><i class="fa fa-check"></i><b>14.1</b> Regresión lineal</a>
+<li class="chapter" data-level="14.1" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#linear-regression"><i class="fa fa-check"></i><b>14.1</b> Regresión lineal</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#regression-to-the-mean"><i class="fa fa-check"></i><b>14.1.1</b> Regresión a la media</a></li>
-<li class="chapter" data-level="14.1.2" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#la-relación-entre-correlación-y-regresión"><i class="fa fa-check"></i><b>14.1.2</b> La relación entre correlación y regresión</a></li>
-<li class="chapter" data-level="14.1.3" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#errores-estándar-de-los-modelos-de-regresión"><i class="fa fa-check"></i><b>14.1.3</b> Errores estándar de los modelos de regresión</a></li>
-<li class="chapter" data-level="14.1.4" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#pruebas-estadísticas-para-los-parámetros-de-la-regresión"><i class="fa fa-check"></i><b>14.1.4</b> Pruebas estadísticas para los parámetros de la regresión</a></li>
-<li class="chapter" data-level="14.1.5" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#cuantificar-la-bondad-de-adjuste-del-modelo"><i class="fa fa-check"></i><b>14.1.5</b> Cuantificar la bondad de adjuste del modelo</a></li>
+<li class="chapter" data-level="14.1.1" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#regression-to-the-mean"><i class="fa fa-check"></i><b>14.1.1</b> Regresión a la media</a></li>
+<li class="chapter" data-level="14.1.2" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#la-relación-entre-correlación-y-regresión"><i class="fa fa-check"></i><b>14.1.2</b> La relación entre correlación y regresión</a></li>
+<li class="chapter" data-level="14.1.3" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#errores-estándar-de-los-modelos-de-regresión"><i class="fa fa-check"></i><b>14.1.3</b> Errores estándar de los modelos de regresión</a></li>
+<li class="chapter" data-level="14.1.4" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#pruebas-estadísticas-para-los-parámetros-de-la-regresión"><i class="fa fa-check"></i><b>14.1.4</b> Pruebas estadísticas para los parámetros de la regresión</a></li>
+<li class="chapter" data-level="14.1.5" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#cuantificar-la-bondad-de-adjuste-del-modelo"><i class="fa fa-check"></i><b>14.1.5</b> Cuantificar la bondad de adjuste del modelo</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#ajustar-modelos-más-complejos"><i class="fa fa-check"></i><b>14.2</b> Ajustar modelos más complejos</a></li>
-<li class="chapter" data-level="14.3" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#interacciones-entre-variables"><i class="fa fa-check"></i><b>14.3</b> Interacciones entre variables</a></li>
-<li class="chapter" data-level="14.4" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#más-allá-de-predictores-y-resultados-lineales"><i class="fa fa-check"></i><b>14.4</b> Más allá de predictores y resultados lineales</a></li>
-<li class="chapter" data-level="14.5" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#model-criticism"><i class="fa fa-check"></i><b>14.5</b> Criticar nuestro modelo y revisar suposiciones</a></li>
-<li class="chapter" data-level="14.6" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#qué-significa-realmente-predecir"><i class="fa fa-check"></i><b>14.6</b> ¿Qué significa realmente “predecir?”</a>
+<li class="chapter" data-level="14.2" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#ajustar-modelos-más-complejos"><i class="fa fa-check"></i><b>14.2</b> Ajustar modelos más complejos</a></li>
+<li class="chapter" data-level="14.3" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#interacciones-entre-variables"><i class="fa fa-check"></i><b>14.3</b> Interacciones entre variables</a></li>
+<li class="chapter" data-level="14.4" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#más-allá-de-predictores-y-resultados-lineales"><i class="fa fa-check"></i><b>14.4</b> Más allá de predictores y resultados lineales</a></li>
+<li class="chapter" data-level="14.5" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#model-criticism"><i class="fa fa-check"></i><b>14.5</b> Criticar nuestro modelo y revisar suposiciones</a></li>
+<li class="chapter" data-level="14.6" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#qué-significa-realmente-predecir"><i class="fa fa-check"></i><b>14.6</b> ¿Qué significa realmente “predecir?”</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#cross-validation"><i class="fa fa-check"></i><b>14.6.1</b> Validación cruzada (Cross-validation)</a></li>
+<li class="chapter" data-level="14.6.1" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#cross-validation"><i class="fa fa-check"></i><b>14.6.1</b> Validación cruzada (Cross-validation)</a></li>
 </ul></li>
-<li class="chapter" data-level="14.7" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>14.7</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="14.8" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>14.8</b> Lecturas sugeridas</a></li>
-<li class="chapter" data-level="14.9" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>14.9</b> Apéndice</a>
+<li class="chapter" data-level="14.7" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#objetivos-de-aprendizaje-13"><i class="fa fa-check"></i><b>14.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="14.8" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#lecturas-sugeridas-10"><i class="fa fa-check"></i><b>14.8</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="14.9" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#apéndice-5"><i class="fa fa-check"></i><b>14.9</b> Apéndice</a>
 <ul>
-<li class="chapter" data-level="14.9.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#estimar-parámetros-de-una-regresión-lineal"><i class="fa fa-check"></i><b>14.9.1</b> Estimar parámetros de una regresión lineal</a></li>
+<li class="chapter" data-level="14.9.1" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#estimar-parámetros-de-una-regresión-lineal"><i class="fa fa-check"></i><b>14.9.1</b> Estimar parámetros de una regresión lineal</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="comparar-medias.html"><a href="comparar-medias.html"><i class="fa fa-check"></i><b>15</b> Comparar medias</a>
+<li class="chapter" data-level="15" data-path="comparing-means.html"><a href="comparing-means.html"><i class="fa fa-check"></i><b>15</b> Comparar medias</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="comparar-medias.html"><a href="comparar-medias.html#single-mean"><i class="fa fa-check"></i><b>15.1</b> Probar el valor de una media simple</a></li>
-<li class="chapter" data-level="15.2" data-path="comparar-medias.html"><a href="comparar-medias.html#comparing-two-means"><i class="fa fa-check"></i><b>15.2</b> Comparar dos medias</a></li>
-<li class="chapter" data-level="15.3" data-path="comparar-medias.html"><a href="comparar-medias.html#ttest-linear-model"><i class="fa fa-check"></i><b>15.3</b> La prueba t como un modelo lineal</a>
+<li class="chapter" data-level="15.1" data-path="comparing-means.html"><a href="comparing-means.html#single-mean"><i class="fa fa-check"></i><b>15.1</b> Probar el valor de una media simple</a></li>
+<li class="chapter" data-level="15.2" data-path="comparing-means.html"><a href="comparing-means.html#comparing-two-means"><i class="fa fa-check"></i><b>15.2</b> Comparar dos medias</a></li>
+<li class="chapter" data-level="15.3" data-path="comparing-means.html"><a href="comparing-means.html#ttest-linear-model"><i class="fa fa-check"></i><b>15.3</b> La prueba t como un modelo lineal</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="comparar-medias.html"><a href="comparar-medias.html#tamaños-de-efecto-para-comparar-dos-medias"><i class="fa fa-check"></i><b>15.3.1</b> Tamaños de efecto para comparar dos medias</a></li>
+<li class="chapter" data-level="15.3.1" data-path="comparing-means.html"><a href="comparing-means.html#tamaños-de-efecto-para-comparar-dos-medias"><i class="fa fa-check"></i><b>15.3.1</b> Tamaños de efecto para comparar dos medias</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="comparar-medias.html"><a href="comparar-medias.html#factores-de-bayes-para-diferencias-entre-medias"><i class="fa fa-check"></i><b>15.4</b> Factores de Bayes para diferencias entre medias</a></li>
-<li class="chapter" data-level="15.5" data-path="comparar-medias.html"><a href="comparar-medias.html#paired-ttests"><i class="fa fa-check"></i><b>15.5</b> Comparar observaciones pareadas/relacionadas</a>
+<li class="chapter" data-level="15.4" data-path="comparing-means.html"><a href="comparing-means.html#factores-de-bayes-para-diferencias-entre-medias"><i class="fa fa-check"></i><b>15.4</b> Factores de Bayes para diferencias entre medias</a></li>
+<li class="chapter" data-level="15.5" data-path="comparing-means.html"><a href="comparing-means.html#paired-ttests"><i class="fa fa-check"></i><b>15.5</b> Comparar observaciones pareadas/relacionadas</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="comparar-medias.html"><a href="comparar-medias.html#prueba-de-los-signos"><i class="fa fa-check"></i><b>15.5.1</b> Prueba de los signos</a></li>
-<li class="chapter" data-level="15.5.2" data-path="comparar-medias.html"><a href="comparar-medias.html#prueba-t-para-muestras-relacionadas-paired-t-test"><i class="fa fa-check"></i><b>15.5.2</b> Prueba t para muestras relacionadas (paired t-test)</a></li>
+<li class="chapter" data-level="15.5.1" data-path="comparing-means.html"><a href="comparing-means.html#prueba-de-los-signos"><i class="fa fa-check"></i><b>15.5.1</b> Prueba de los signos</a></li>
+<li class="chapter" data-level="15.5.2" data-path="comparing-means.html"><a href="comparing-means.html#prueba-t-para-muestras-relacionadas-paired-t-test"><i class="fa fa-check"></i><b>15.5.2</b> Prueba t para muestras relacionadas (paired t-test)</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="comparar-medias.html"><a href="comparar-medias.html#comparar-más-de-dos-medias"><i class="fa fa-check"></i><b>15.6</b> Comparar más de dos medias</a>
+<li class="chapter" data-level="15.6" data-path="comparing-means.html"><a href="comparing-means.html#comparar-más-de-dos-medias"><i class="fa fa-check"></i><b>15.6</b> Comparar más de dos medias</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="comparar-medias.html"><a href="comparar-medias.html#ANOVA"><i class="fa fa-check"></i><b>15.6.1</b> Análisis de varianza</a></li>
+<li class="chapter" data-level="15.6.1" data-path="comparing-means.html"><a href="comparing-means.html#ANOVA"><i class="fa fa-check"></i><b>15.6.1</b> Análisis de varianza (analysis of variance, ANOVA)</a></li>
 </ul></li>
-<li class="chapter" data-level="15.7" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>15.7</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="15.8" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>15.8</b> Apéndice</a>
+<li class="chapter" data-level="15.7" data-path="comparing-means.html"><a href="comparing-means.html#objetivos-de-aprendizaje-14"><i class="fa fa-check"></i><b>15.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="15.8" data-path="comparing-means.html"><a href="comparing-means.html#apéndice-6"><i class="fa fa-check"></i><b>15.8</b> Apéndice</a>
 <ul>
-<li class="chapter" data-level="15.8.1" data-path="comparar-medias.html"><a href="comparar-medias.html#la-prueba-t-de-muestras-relacionadas-como-un-modelo-lineal"><i class="fa fa-check"></i><b>15.8.1</b> La prueba t de muestras relacionadas como un modelo lineal</a></li>
+<li class="chapter" data-level="15.8.1" data-path="comparing-means.html"><a href="comparing-means.html#la-prueba-t-de-muestras-relacionadas-como-un-modelo-lineal"><i class="fa fa-check"></i><b>15.8.1</b> La prueba t de muestras relacionadas como un modelo lineal</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="practical-example.html"><a href="practical-example.html"><i class="fa fa-check"></i><b>16</b> Modelación estadística práctica</a>
@@ -476,7 +498,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html"><i class="fa fa-check"></i><b>17</b> Hacer investigación reproducible</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-pensamos-que-funciona-la-ciencia"><i class="fa fa-check"></i><b>17.1</b> Cómo pensamos que funciona la ciencia</a></li>
-<li class="chapter" data-level="17.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-realmente-funciona-la-ciencia-a-veces"><i class="fa fa-check"></i><b>17.2</b> Cómo realmente funciona la ciencia (a veces)</a></li>
+<li class="chapter" data-level="17.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-funciona-a-veces-realmente-la-ciencia"><i class="fa fa-check"></i><b>17.2</b> Cómo funciona (a veces) realmente la ciencia</a></li>
 <li class="chapter" data-level="17.3" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#la-crisis-de-reproducibilidad-en-la-ciencia"><i class="fa fa-check"></i><b>17.3</b> La crisis de reproducibilidad en la ciencia</a>
 <ul>
 <li class="chapter" data-level="17.3.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#valor-predictivo-positivo-y-significatividad-estadística"><i class="fa fa-check"></i><b>17.3.1</b> Valor predictivo positivo y significatividad estadística</a></li>
@@ -494,8 +516,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="17.6" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#hacer-análisis-de-datos-reproducibles"><i class="fa fa-check"></i><b>17.6</b> Hacer análisis de datos reproducibles</a></li>
 <li class="chapter" data-level="17.7" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#conclusión-hacer-mejor-ciencia"><i class="fa fa-check"></i><b>17.7</b> Conclusión: Hacer mejor ciencia</a></li>
-<li class="chapter" data-level="17.8" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>17.8</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="17.9" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>17.9</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="17.8" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#objetivos-de-aprendizaje-15"><i class="fa fa-check"></i><b>17.8</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="17.9" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#lecturas-sugeridas-11"><i class="fa fa-check"></i><b>17.9</b> Lecturas sugeridas</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 </ul>
@@ -518,19 +540,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="resampling-and-simulation" class="section level1" number="8">
 <h1><span class="header-section-number">Capitulo 8</span> Remuestreo y Simulación</h1>
 <!--The use of computer simulations has become an essential aspect of modern statistics. For example, one of the most important books in practical computer science, called *Numerical Recipes*, says the following:-->
-<p>El uso de las simulaciones a computadora se ha convertido en un aspecto esencial de la estadística moderna. Por ejemplo, uno de los libros más importantes en informática práctica se llama “Recetas numéricas,” y recita lo siguiente:</p>
+<p>El uso de las simulaciones en computadora se ha convertido en un aspecto esencial de la estadística moderna. Por ejemplo, uno de los libros más importantes en informática práctica se llama “Recetas numéricas,” y recita lo siguiente:</p>
 <!-- > "Offered the choice between mastery of a five-foot shelf of analytical statistics books and middling ability at performing statistical Monte Carlo simulations, we would surely choose to have the latter skill."-->
 <blockquote>
-<p>“Si nos ofrecieran la opción entre tener el dominio de una estantería de cinco pies llena de libros de estadística y una mediana capacidad para realizar simulaciones estadísticas a lo Monte Carlo, seguramente elegiríamos la segunda opción.”</p>
+<p>“Si nos ofrecieran la opción entre tener el dominio de una estantería de cinco pies llena de libros de estadística y una mediana capacidad para realizar simulaciones estadísticas a lo Montecarlo, seguramente elegiríamos la segunda opción.”</p>
 </blockquote>
 <!--In this chapter we will introduce the concept of a Monte Carlo simulation and discuss how it can be used to perform statistical analyses.-->
-<p>En este capítulo hablaremos del concepto de una simulación Monte Carlo y discutiremos cómo puede ser usada para realizar análisis estadísticos.</p>
+<p>En este capítulo hablaremos del concepto de una simulación Montecarlo y discutiremos cómo puede ser usada para realizar análisis estadísticos.</p>
 <!--## Monte Carlo simulation-->
-<div id="simulación-monte-carlo" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Simulación Monte Carlo</h2>
+<div id="simulación-montecarlo" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Simulación Montecarlo</h2>
 <!--The concept of Monte Carlo simulation was devised by the mathematicians Stan Ulam and Nicholas Metropolis, who were working to develop an atomic weapon for the US as part of the Manhattan Project. They needed to compute the average distance that a neutron would travel in a substance before it collided with an atomic nucleus, but they could not compute this using standard mathematics.
 Ulam realized that these computations could be simulated using random numbers, just like a casino game. In a casino game such as a roulette wheel, numbers are generated at random; to estimate the probability of a specific outcome, one could play the game hundreds of times. Ulam's uncle had gambled at the Monte Carlo casino in Monaco, which is apparently where the name came from for this new technique.-->
-<p>El concepto de la simulación Monte Carlo fue ideada por los matemáticos Stan Ulam y Nicholas Metropolis, quienes estuvieron trabajando para desarrollar un arma atómica para los Estados Unidos de América, como parte del Proyecto Manhattan. Necesitaban calcular el promedio de la distancia que recorrería un neutrón en una sustancia antes de que chocara con un núcleo atómico, pero no pudieron calcular esto usando matemáticas estándar. Ulam notó que estos cálculos podían ser simulados usando números aleatorios, justo como un juego de casino. En un juego de casino, como la ruleta, los números son generados de manera aleatoria; para estimar la probabilidad de un resultado específico, uno podría jugar el juego cientos de veces. El tío de Ulam había jugado en el casino Monte Carlo en Monaco, de ahí viene el nombre para esta nueva técnica.</p>
+<p>El concepto de la simulación Montecarlo fue ideada por los matemáticos Stan Ulam y Nicholas Metropolis, quienes estuvieron trabajando para desarrollar un arma atómica para los Estados Unidos de América, como parte del Proyecto Manhattan. Necesitaban calcular el promedio de la distancia que recorrería un neutrón en una sustancia antes de que chocara con un núcleo atómico, pero no pudieron calcular esto usando matemáticas estándar.
+Ulam notó que estos cálculos podían ser simulados usando números aleatorios, justo como un juego de casino. En un juego de casino, como la ruleta, los números son generados de manera aleatoria; para estimar la probabilidad de un resultado específico, uno podría jugar el juego cientos de veces. El tío de Ulam había jugado en el casino Montecarlo en Mónaco, de ahí viene el nombre para esta nueva técnica.</p>
 <!--There are four steps to performing a Monte Carlo simulation:-->
 <p>Hay cuatro pasos a seguir para realizar una simulación Montecarlo:</p>
 <!--1. Define a domain of possible values
@@ -538,114 +561,103 @@ Ulam realized that these computations could be simulated using random numbers, j
 3. Perform a computation using the random numbers
 4. Combine the results across many repetitions-->
 <ol style="list-style-type: decimal">
-<li>Definir el dominio posible de los valores</li>
-<li>Generar números al azar dentro de ese dominio a partir de una distribución de probabilidad</li>
-<li>Realizar un cálculo usando números aleatorios</li>
-<li>Combinar los resultados a través de muchas repeticiones</li>
+<li>Definir el dominio posible de los valores.</li>
+<li>Generar números al azar dentro de ese dominio a partir de una distribución de probabilidad.</li>
+<li>Realizar un cálculo usando números aleatorios .</li>
+<li>Combinar los resultados a través de muchas repeticiones .</li>
 </ol>
-<!--As an example, let's say that I want to figure out how much time to allow for an in-class quiz.  Say that we know that the distribution of quiz completion times is normal, with mean of 5 minutes and standard deviation of 1 minute.  Given this, how long does the test period need to be so that we expect all students to finish the exam 99% of the time? There are two ways to solve this problem.  The first is to calculate the answer using a mathematical theory known as the statistics of extreme values. However, this involves complicated mathematics. Alternatively, we could use Monte Carlo simulation.  To do this, we need to generate random samples from a normal distribution.-->
-<p>Como un ejemplo, digamos que quiero descubrir cuánto tiempo debo dejar para un test en clase. Digamos que sabemos que la distribución del tiempo para completar el test es normal, con una media de 5 minutos y una desviación estándar de 1 minuto. Sabiendo esto, ¿qué tan largo debe ser el periodo de tiempo para que esperemos que todos los estudiantes terminen el examen el 99% del tiempo? Hay dos formas de resolver este problema. El primero es calculando la respuesta usando una teoría matemática conocida como estadística de valores extremos. No obstante, esto requiere matemáticas complejas. De forma alternativa, podríamos usar el método de Montecarlo. Para hacer esto, necesitamos generar muestras aleatorias de una distribución normal.</p>
+<!--As an example, let's say that I want to figure out how much time to allow for an in-class quiz.  We will pretend for the moment that we know that the distribution of quiz completion times is normal, with mean of 5 minutes and standard deviation of 1 minute.  Given this, how long does the test period need to be so that we expect all students to finish the exam 99% of the time? There are two ways to solve this problem.  The first is to calculate the answer using a mathematical theory known as the statistics of extreme values. However, this involves complicated mathematics. Alternatively, we could use Monte Carlo simulation.  To do this, we need to generate random samples from a normal distribution.-->
+<p>Como un ejemplo, digamos que quiero descubrir cuánto tiempo debo dejar para un test en clase. Pretenderemos por el momento que sabemos que la distribución del tiempo para completar el test es normal, con una media de 5 minutos y una desviación estándar de 1 minuto. Sabiendo esto, ¿qué tan extenso debe ser el periodo de tiempo para que esperemos que todos los estudiantes terminen el examen el 99% de las veces? Hay dos formas de resolver este problema. El primero es calculando la respuesta usando una teoría matemática conocida como estadística de valores extremos. No obstante, esto requiere matemáticas complejas. De forma alternativa, podríamos usar el método de Montecarlo. Para hacer esto, necesitamos generar muestras aleatorias obtenidas de una distribución normal.</p>
 <!--## Randomness in statistics-->
 </div>
 <div id="aleatoriedad-en-estadística" class="section level2" number="8.2">
 <h2><span class="header-section-number">8.2</span> Aleatoriedad en Estadística</h2>
 <!--The term "random" is often used colloquially to refer to things that are bizarre or unexpected, but in statistics the term has a very specific meaning: A process is *random* if it is unpredictable.  For example, if I flip a fair coin 10 times, the value of the outcome on one flip does not provide me with any information that lets me predict the outcome on the next flip. It's important to note that the fact that something is unpredictable doesn't necessarily mean that it is not deterministic.  For example, when we flip a coin, the outcome of the flip is determined by the laws of physics; if we knew all of the conditions in enough detail, we should be able to predict the outcome of the flip.  However, many factors combine to make the outcome of the coin flip unpredictable in practice.-->
-<p>El término “aleatorio” es usado coloquialmente para describir cosas que son bizarras o inesperadas, pero en estadística el término tiene un significado específico: Un proceso se considera <em>aleatorio</em> si es impredecible. Por ejemplo, si lanzo una moneda 10 veces, el valor del resultado de una vez que la lances no va a predecir el resultado de la segunda vez que lo lances. Es importante destacar que el hecho de que algo es impredecible, no quiere decir que no es determinista. Por ejemplo, cuando lanzamos una moneda, el resultado de ésta está determinada por las leyes de la física; si supiéramos que todas las condiciones con suficiente detalle, podríamos predecir el resultado de cuando lancemos la moneda. De cualquier forma, son muchos factores los que se combinan para hacer el resultado del lanzamiento de la moneda impredecible en la práctica.</p>
+<p>El término “aleatorio” es usado coloquialmente para describir cosas que son bizarras o inesperadas, pero en estadística el término tiene un significado específico: Un proceso se considera <em>aleatorio</em> si es impredecible. Por ejemplo, si lanzo una moneda 10 veces, el valor del resultado de una vez que la lances no va a predecir el resultado de la segunda vez que la lances. Es importante destacar que el hecho de que algo es impredecible, no quiere decir que no es determinista. Por ejemplo, cuando lanzamos una moneda, el resultado de ésta está determinada por las leyes de la física; si supiéramos que todas las condiciones con suficiente detalle, podríamos predecir el resultado de cuando lancemos la moneda. De cualquier forma, son muchos factores los que se combinan para hacer el resultado del lanzamiento de la moneda impredecible en la práctica.</p>
 <!--Psychologists have shown that humans actually have a fairly bad sense of randomness. First, we tend to see patterns when they don't exist. In the extreme, this leads to the phenomenon of *pareidolia*, in which people will perceive familiar objects within random patterns (such as perceiving a cloud as a human face or seeing the Virgin Mary in a piece of toast).  Second, humans tend to think of random processes as self-correcting, which leads us to expect that we are "due for a win" after losing many rounds in a game of chance, a phenomenon known as the "gambler's fallacy".-->
-<p>Lxs psicólogxs han demostrado que lxs humanxs tienen un sentido algo ineficiente para la aleatoriedad. En primera instancia, tendemos a ver patrones en donde no existen. De forma extrema, esto nos lleva al fenómeno de la <em>pareidolia</em>, en el cual las personas tienden a percibir objetos familiares en patrones aleatorios (como ver una nube con una rostro humano, o ver a la Vírgen María en un pedazo de pan tostado). En segunda instancia, lxs humanxs tienden a pensar en procesos aleatorios como una forma de auto-corrección, lo cual nos lleva a creer que vamos a ganar después de varias rondas de perder un juego de azar, es un fenómeno llamada “la falacia del jugador.”</p>
+<p>Lxs psicólogxs han demostrado que lxs humanxs tienen un sentido algo ineficiente para la aleatoriedad. En primera instancia, tendemos a ver patrones en donde no existen. De forma extrema, esto nos lleva al fenómeno de la <em>pareidolia</em>, en el cual las personas tienden a percibir objetos familiares en patrones aleatorios (como ver una nube con una rostro humano, o ver a la Vírgen María en un pedazo de pan tostado). En segunda instancia, lxs humanxs tienden a pensar en procesos aleatorios como una forma de auto-corrección, lo cual nos lleva a creer que vamos a ganar después de varias rondas de perder un juego de azar, un fenómeno llamado “la falacia del jugador.”</p>
 <!--## Generating random numbers {#generating-random-numbers}-->
 </div>
 <div id="generando-números-aleatorios" class="section level2" number="8.3">
 <h2><span class="header-section-number">8.3</span> Generando números aleatorios</h2>
 <!--Running a Monte Carlo simulation requires that we generate random numbers.  Generating truly random numbers (i.e. numbers that are completely unpredictable) is only possible through physical processes, such as the decay of atoms or the rolling of dice, which are difficult to obtain and/or too slow to be useful for computer simulation (though they can be obtained from the [NIST Randomness Beacon](https://www.nist.gov/programs-projects/nist-randomness-beacon])).-->
-<p>Hacer correr una simulación con el método de Montecarlo requiere que generemos números aleatorios. Para generar números genuinamente aleatorios (por ejemplo, números que son completamente impredecibles) es solamente posible a través de procesos físicos, como decaimiento de átomos o el rodar unos dados, los cuales son difíciles de obtener o muy lentos como para que sean útiles en una simulación a computadora (aunque pueden obtenerse mediante <a href="https://www.nist.gov/programs-projects/nist-randomness-beacon%5D">NIST Randomness Beacon</a>).</p>
+<p>Hacer correr una simulación con el método de Montecarlo requiere que generemos números aleatorios. Para generar números genuinamente aleatorios (por ejemplo, números que son completamente impredecibles) es solamente posible a través de procesos físicos, como el decaimiento de átomos o el rodar unos dados, los cuales son difíciles de obtener o muy lentos como para que sean útiles en una simulación en computadora (aunque pueden obtenerse mediante <a href="https://www.nist.gov/programs-projects/nist-randomness-beacon%5D">NIST Randomness Beacon</a>).</p>
 <!--In general, instead of truly random numbers we use *pseudo-random* numbers generated using a computer algorithm; these numbers will seem random in the sense that they are difficult to predict, but the series of numbers will actually repeat at some point.  For example, the random number generator used in R will repeat after $2^{19937} - 1$ numbers.  That's far more than the number of seconds in the history of the universe, and we generally think that this is fine for most purposes in statistical analysis.-->
 <p>En general, en lugar de números verdaderamente aleatorios, podemos usar números <em>pseudo-aleatorios</em>, generados utilizando un algoritmo de computadora; estos números pueden aparentar ser aleatorios en el sentido de que son difíciles de predecir, pero las series de números eventualmente se repetirán en algún punto. Por ejemplo, el generador de números aleatorios utilizados en R se repetirán después de <span class="math inline">\(2^{19937} - 1\)</span> números. Eso es mucho más que el número de segundos en la historia de universo, y generalmente pensamos que esto funciona para la mayoría de los propósitos en análisis estadísticos.</p>
 <!--Most statistical software includes functions to generate random numbers for each of the major probability distributions, such as the uniform distribution (all values between 0 and 1 equally), normal distribution, and binomial distribution (e.g. rolling the dice, coin flips).  Figure \@ref(fig:rngExamples) shows examples of numbers generated from uniform and a normal distribution functions.-->
-<p>La mayoría de los softwares estadísticos incluyen funciones para generar números aleatorios para cada una de las grandes probabilidades de distribuciones, tal como la distribución uniforme (todos los valores entre 0 y 1 son equitativos), la distribución normal y la distribución binominal (por ejemplo, echar los dados o lanzar una moneda). La Figura <a href="resampling-and-simulation.html#fig:rngExamples">8.1</a> muestra ejemplos de números generados a partir de funciones de distribución uniformes y normales.</p>
-<div class="figure"><span id="fig:rngExamples"></span>
-<img src="StatsThinking21_files/figure-html/rngExamples-1.png" alt="Examples of random numbers generated from a uniform (left) or normal (right) distribution." width="768" height="50%" />
+<p>La mayoría de los softwares estadísticos incluyen funciones para generar números aleatorios para cada una de las grandes distribuciones de probabilidad, tal como la distribución uniforme (todos los valores entre 0 y 1 son igualmente probables), la distribución normal y la distribución binominal (por ejemplo, echar los dados o lanzar una moneda). La Figura <a href="resampling-and-simulation.html#fig:rngExamples">8.1</a> muestra ejemplos de números generados a partir de funciones de distribución uniformes y normales.</p>
+<!-- fig.cap="Examples of random numbers generated from a uniform (left) or normal (right) distribution." -->
+<div class="figure"><span style="display:block;" id="fig:rngExamples"></span>
+<img src="StatsThinking21_files/figure-html/rngExamples-1.png" alt="Ejemplos de números aleatorios generados a partir de una distribución uniforme (izquierda) y normal (derecha)." width="768" height="50%" />
 <p class="caption">
-Figura 8.1: Examples of random numbers generated from a uniform (left) or normal (right) distribution.
+Figura 8.1: Ejemplos de números aleatorios generados a partir de una distribución uniforme (izquierda) y normal (derecha).
 </p>
 </div>
 <!--One can also generate random numbers for any distribution using a *quantile* function for the distribution. This is the inverse of the cumulative distribution function; instead of identifying the cumulative probabilities for a set of values, the quantile function identifies the values for a set of cumulative probabilities. Using the quantile function, we can generate random numbers from a uniform distribution, and then map those into the distribution of interest via its quantile function.-->
-<p>Unx puede también generar números aleatorios por cualquier distribución utilizando una función de <em>cuantil</em> para la distribución. Esto es lo inverso de la función de distribución cumulativa; en lugar de identificar las probabilidades cumulativas de un set de valores, la función de cuantiles identifica los valores para un set de probabilidades cumulativas. Usando la función de cuantiles, podemos generar números aleatorios de una distribución uniforme, y después mapearlos en la distribución de interés mediante su función de cuantil.</p>
-<!--By default, the random number generators in statistical software will generate a different set of random numbers every time they are run. However, it is also possible to generate exactly the same set of random numbers, by setting what is called the *random seed* to a specific value.  We will do this in many of the examples in this book, in order to make sure that the examples are reproducible.-->
-<p>Por la forma en la que están creados, los generadores de números aleatorios en software estadísticos generan diferentes grupos de números aleatorios cada vez que los eches a correr. Sin embargo, también es posible que generen el mismo grupo de números aleatorios al configurar lo que se llama <em>semilla aleatoria</em> (o por su nombre en inglés <em>random seed</em>) a un valor específico. Haremos esto en muchos ejemplos en este libro, con el propósito de asegurarnos que los ejemplos son reproducibles.</p>
+<p>Unx puede también generar números aleatorios para cualquier distribución utilizando una función de <em>cuantil</em> para la distribución. Esto es lo inverso de la función de distribución cumulativa; en lugar de identificar las probabilidades cumulativas de un conjunto de valores, la función de cuantiles identifica los valores para un conjunto de probabilidades cumulativas. Usando la función de cuantiles, podemos generar números aleatorios de una distribución uniforme, y después mapearlos en la distribución de interés mediante su función de cuantil.</p>
+<!--By default, the random number generators in statistical software will generate a different set of random numbers every time they are run. However, it is also possible to generate exactly the same set of random numbers, by setting what is called the *random seed* to a specific value.  If you were to look at the code that generated these figures, We will do this in many of the examples in this book, in order to make sure that the examples are reproducible.-->
+<p>Por la forma en la que están creados, los generadores de números aleatorios en software estadísticos generan diferentes grupos de números aleatorios cada vez que los eches a correr. Sin embargo, también es posible que generen el mismo grupo de números aleatorios al configurar lo que se llama <em>semilla aleatoria</em> (o por su nombre en inglés <em>random seed</em>) en un valor específico. Haremos esto en muchos ejemplos en este libro, con el propósito de asegurarnos que los ejemplos sean reproducibles.</p>
 <!--## Using Monte Carlo simulation-->
 </div>
 <div id="utilizando-una-simulación-con-el-método-de-montecarlo" class="section level2" number="8.4">
 <h2><span class="header-section-number">8.4</span> Utilizando una simulación con el Método de Montecarlo</h2>
-<!--Let's go back to our example of exam finishing times. Let's say that I administer three quizzes and record the finishing times for each student for each exam, which might look like the distributions presented in Figure \@ref(fig:finishingTimes).-->
-<p>Regresemos a nuestro ejemplo sobre los tiempos de finalización de un examen. Dígamos que administro tres pruebas y grabo los tiempos en que cada alumno termina su examen, lo cual se vería como las distribuciones que se presentan en la Figura <a href="resampling-and-simulation.html#fig:finishingTimes">8.2</a>.</p>
-<div class="figure"><span id="fig:finishingTimes"></span>
-<img src="StatsThinking21_files/figure-html/finishingTimes-1.png" alt="Simulated finishing time distributions." width="768" height="50%" />
+<!--Let's go back to our example of exam finishing times. Say that I administer three quizzes and record the finishing times for each student for each exam, which might look like the distributions presented in Figure \@ref(fig:finishingTimes).-->
+<p>Regresemos a nuestro ejemplo sobre los tiempos de finalización de un examen. Digamos que administro tres pruebas y grabo los tiempos en que cada alumno termina su examen, lo cual se vería como las distribuciones que se presentan en la Figura <a href="resampling-and-simulation.html#fig:finishingTimes">8.2</a>.</p>
+<!-- fig.cap="Simulated finishing time distributions." -->
+<div class="figure"><span style="display:block;" id="fig:finishingTimes"></span>
+<img src="StatsThinking21_files/figure-html/finishingTimes-1.png" alt="Distribuciones de simulaciones de tiempos de término del examen." width="768" height="50%" />
 <p class="caption">
-Figura 8.2: Simulated finishing time distributions.
+Figura 8.2: Distribuciones de simulaciones de tiempos de término del examen.
 </p>
 </div>
-<!--However, what we really want to know is not what the distribution of finishing times looks like, but rather what the distribution of the *longest* finishing time for each quiz looks like.  To do this, we can simulate the finishing time for a quiz, using the assumption that the finishing times are distributed normally, as stated above; for each of these simulated quizzes, we then record the longest finishing time. We repeat this simulation a large number of times (5000 should be enough) and record the distribution of finishing times, which is shown in Figure \@ref(fig:finishTimeSim).-->
-<p>Sin embargo, lo que realmente queremos saber no es cómo se ve la distribución de los tiempos de finalización del examen, sino más bien cómo se ve la distribución del tiempo <em>más largo</em> de finalización de cada examen. Para hacer eso, podemos simular el tiempo de finalización para cada examen, asumiendo que los tiempos de finalización están distribuidos de forma normal, como hemos establecido arriba; para cada uno de estas simulaciones de examenes, después grabamos el tiempo más largo de finalización. Repetimos esta simulación un gran número de veces (5000 debería ser suficiente) y luego grabamos la distribución de los tiempos de finalización, lo cual se muestra en la Figura <a href="resampling-and-simulation.html#fig:finishTimeSim">8.3</a>.</p>
-<div class="figure"><span id="fig:finishTimeSim"></span>
-<img src="StatsThinking21_files/figure-html/finishTimeSim-1.png" alt="Distribution of maximum finishing times across simulations." width="384" height="50%" />
+<!--What we really want to know to answer our question is not what the distribution of finishing times looks like, but rather what the distribution of the *longest* finishing time for each quiz looks like.  To do this, we can simulate the finishing time for a quiz, using the assumption that the finishing times are distributed normally, as stated above; for each of these simulated quizzes, we then record the longest finishing time. We repeat this simulation a large number of times (5000 should be enough) and record the distribution of finishing times, which is shown in Figure \@ref(fig:finishTimeSim).-->
+<p>Lo que realmente queremos saber para contestar nuestra pregunta no es cómo se ve la distribución de los tiempos de finalización del examen, sino más bien cómo se ve la distribución del tiempo <em>más largo</em> de finalización de cada examen. Para hacer eso, podemos simular el tiempo de finalización para cada examen, asumiendo que los tiempos de finalización están distribuidos de forma normal, como hemos establecido arriba; para cada uno de estas simulaciones de examenes, después registramos el tiempo más largo de finalización. Repetimos esta simulación un gran número de veces (5000 debería ser suficiente) y luego registramos la distribución de los tiempos de finalización, lo cual se muestra en la Figura <a href="resampling-and-simulation.html#fig:finishTimeSim">8.3</a>.</p>
+<!-- fig.cap="Distribution of maximum finishing times across simulations." -->
+<div class="figure"><span style="display:block;" id="fig:finishTimeSim"></span>
+<img src="StatsThinking21_files/figure-html/finishTimeSim-1.png" alt="Distribución de tiempos máximos de finalización de examen a lo largo de diferentes simulaciones." width="384" height="50%" />
 <p class="caption">
-Figura 8.3: Distribution of maximum finishing times across simulations.
+Figura 8.3: Distribución de tiempos máximos de finalización de examen a lo largo de diferentes simulaciones.
 </p>
 </div>
-<!--This shows that the 99th percentile of the finishing time distribution falls at 8.74, meaning that if we were to give that much time for the quiz, then everyone should finish 99% of the time. It's always important to remember that our assumptions matter -- if they are wrong, then the results of the simulation are useless. In this case, we assumed that the finishing time distribution was normally distributed with a particular mean and standard deviation; if these assumptions are incorrect (and they almost certainly are), then the true answer could be very different.-->
-<p>Esto muestra que el percentil número 99 de la distribución de la finalización del examen se encuentra en 8.74, lo cual significa que si diéramos esa cantidad de tiempo para el examen, entonces al menos el 99% de personas deberían de terminar a tiempo. Siempre es importante recordar que nuestras suposiciones importan– si están mal, entonces los resultados de la simulación serán inservibles. En este caso, asumimos que la distribución del tiempo de finalización estaba distribuido normalmente con una media en particular y una desviación estándar; si estas suposiciones son incorrectas (y casi siempre lo son), entonces la respuesta real podría ser muy diferente.</p>
+<!--This shows that the 99th percentile of the finishing time distribution falls at 8.74, meaning that if we were to give that much time for the quiz, then everyone should finish 99% of the time. It's always important to remember that our assumptions matter -- if they are wrong, then the results of the simulation are useless. In this case, we assumed that the finishing time distribution was normally distributed with a particular mean and standard deviation; if these assumptions are incorrect (and they almost certainly are, since it's rare for elapsed times to be normally distributed), then the true answer could be very different.-->
+<p>Esto muestra que el percentil número 99 de la distribución de la finalización del examen se encuentra en 8.74, lo cual significa que si diéramos esa cantidad de tiempo para el examen, entonces al menos el 99% de las veces todas las personas terminarían el examen a tiempo. Siempre es importante recordar que nuestras suposiciones importan– si están mal, entonces los resultados de la simulación serán inservibles. En este caso, asumimos que la distribución del tiempo de finalización estaba distribuido normalmente con una media y una desviación estándar en particular; si estas suposiciones son incorrectas (y casi ciertamente lo son, puesto que es raro que los tiempos de finalización tengan una distribución normal), entonces la respuesta real podría ser muy diferente.</p>
 <!--## Using simulation for statistics: The bootstrap-->
 </div>
-<div id="usando-simulaciones-para-estadística-the-bootstrap" class="section level2" number="8.5">
-<h2><span class="header-section-number">8.5</span> Usando simulaciones para estadística: The bootstrap</h2>
+<div id="usando-simulaciones-para-estadística-bootstrap" class="section level2" number="8.5">
+<h2><span class="header-section-number">8.5</span> Usando simulaciones para estadística: bootstrap</h2>
 <!--So far we have used simulation to demonstrate statistical principles, but we can also use simulation to answer real statistical questions.  In this section we will introduce a concept known as the *bootstrap* that lets us use simulation to quantify our uncertainty about statistical estimates. Later in the course, we will see other examples of how simulation can often be used to answer statistical questions, especially when theoretical statistical methods are not available or when their assumptions are too difficult to meet.-->
-<p>Hasta ahora hemos utilizado simulaciones para demostrar principios estadísticos, pero también podemos usar simulaciones para responder a preguntas estadísticas reales. En esta sección vamos a presentar un concepto conocido como el <em>bootstrap</em> (por su nombre en inglés), este nos permite usar simulaciones para cuantificar la incertidumbre de estimaciones estadísticas. Más tarde en este curso, veremos otros ejemplos de cómo la simulación puede ser utilizada en muchas ocasiones para responder preguntas estadísticas, en especial, cuando los métodos de teoría estadística no están disponibles o sus suposiciones son muy difíciles de cumplir.</p>
+<p>Hasta ahora hemos utilizado simulaciones para demostrar principios estadísticos, pero también podemos usar simulaciones para responder a preguntas estadísticas reales. En esta sección vamos a presentar un concepto conocido como el <em>bootstrap</em> (por su nombre en inglés, que no tiene traducción al español), este nos permite usar simulaciones para cuantificar la incertidumbre de estimaciones estadísticas. Más tarde en este curso, veremos otros ejemplos de cómo la simulación puede ser utilizada en muchas ocasiones para responder preguntas estadísticas, en especial, cuando los métodos de teoría estadística no están disponibles o sus suposiciones son muy difíciles de cumplir.</p>
 <!--### Computing the bootstrap-->
 <div id="calculando-el-bootstrap" class="section level3" number="8.5.1">
 <h3><span class="header-section-number">8.5.1</span> Calculando el bootstrap</h3>
-<!--In the previous chapter, we used our knowledge of the sampling distribution of the mean to compute the standard error of the mean and confidence intervals.  But what if we can't assume that the estimates are normally distributed, or we don't know their distribution?  The idea of the bootstrap is to use the data themselves to estimate an answer.  The name comes from the idea of pulling one's self up by one's own bootstraps, expressing the idea that we don't have any external source of leverage so we have to rely upon the data themselves.  The bootstrap method was conceived by Bradley Efron of the Stanford Department of Statistics, who is one of the world's most influential statisticians.-->
-<p>En el capítulo anterior, utilizamos nuestro conocimiento del muestro de la distribución de la media para calcular el error estándar de la media y los intervalos de confianza. Pero ¿qué pasa si no podemos asumir que las estimaciones están distribuidas de forma normal, o si no sabemos su distribución? La idea del bootstrap es usar los mismos datos para estimar la respuesta. El nombre viene de la idea de levantarse a unx mismx por las cuerdas de sus propias botas, expresando la idea de que no necesitamos herramientas externas para utilizar como palanca, así que tenemos que asir de los mismos datos. El método boostrap fue acuñado por Bradley Efron en el Departamento de Estadística de Stanford, quien es uno de los estadísticos más influyentes del mundo.</p>
-<!--The idea behind the bootstrap is that we repeatedly sample from the actual dataset; importantly, we sample *with replacement*, such that the same data point will often end up being represented multiple times within one of the samples.  We then compute our statistic of interest on each of the bootstrap samples, and use the distribution of those estimates as our sampling distribution.-->
-<p>La idea detrás del bootstrap es que repetidamente tomamos muestras del conjunto de datos real; lo que es más importante, muestreamos <em>con reemplazo</em>, de modo que el mismo punto de datos a menudo terminará representado varias veces en una de las muestras. Después calculamos nuestro interés estadístico en cada una de las muestras del bootstrap, y utilizamos la distribución de esos estimados como nuestra distribución muestral.</p>
-<!--Let's start by using the bootstrap to estimate the sampling distribution of the mean, so that we can compare the result to the standard error of the mean (SEM) that we discussed earlier.-->
-<p>Comencemos utilizando el bootstrap para estimar la distribución muestral de la media, para que podamos comparar el resultado del error estándar de la media (SEM, por sus siglas en inglés), que mencionamos hace unos momentos.</p>
-<div class="figure"><span id="fig:bootstrapSEM"></span>
-<img src="StatsThinking21_files/figure-html/bootstrapSEM-1.png" alt="An example of bootstrapping to compute the standard error of the mean. The histogram shows the distribution of means across bootstrap samples, while the red line shows the normal distribution based on the sample mean and standard deviation." width="384" height="50%" />
+<!--In the previous chapter, we used our knowledge of the sampling distribution of the mean to compute the standard error of the mean.  But what if we can't assume that the estimates are normally distributed, or we don't know their distribution?  The idea of the bootstrap is to use the data themselves to estimate an answer.  The name comes from the idea of pulling one's self up by one's own bootstraps, expressing the idea that we don't have any external source of leverage so we have to rely upon the data themselves.  The bootstrap method was conceived by Bradley Efron of the Stanford Department of Statistics, who is one of the world's most influential statisticians.-->
+<p>En el capítulo anterior, utilizamos nuestro conocimiento del muestreo de la distribución de la media para calcular el error estándar de la media. Pero ¿qué pasa si no podemos asumir que las estimaciones están distribuidas de forma normal, o si no sabemos su distribución? La idea del bootstrap es usar los mismos datos para estimar la respuesta. El nombre viene de la idea de levantarse a unx mismx por las agujetas de sus propias botas, expresando la idea de que no necesitamos herramientas externas para utilizar como palanca, así que tenemos que asirnos de los mismos datos. El método boostrap fue acuñado por Bradley Efron en el Departamento de Estadística de Stanford, quien es uno de los estadísticos más influyentes del mundo.</p>
+<!--The idea behind the bootstrap is that we repeatedly sample from the actual dataset; importantly, we sample *with replacement*, such that the same data point will often end up being represented multiple times within one of the samples.  We then compute our statistic of interest on each of the bootstrap samples, and use the distribution of those estimates as our sampling distribution.  In a sense, we treat our particular sample as the entire population, and then repeatedly sample with replacement to generate our samples for analysis. This makes the assumption that our particular sample is an accurate reflection of the population, which is probably reasonable for larger samples but can break down when samples are smaller. -->
+<p>La idea detrás del bootstrap es que repetidamente tomamos muestras del conjunto de datos real; lo que es más importante, muestreamos <em>con reemplazo</em>, de modo que el mismo punto de datos a menudo terminará representado varias veces en una de las muestras. Después calculamos nuestro estadístico de interés en cada una de las muestras del bootstrap, y utilizamos la distribución de esos estimados como nuestra distribución muestral. En cierto sentido, tratamos a nuestra muestra como si fuera la población completa, y luego muestreamos repetidamente con reemplazo para generar nuestras muestras para el análisis. Esto se basa en la suposición de que nuestra muestra particular es una representación precisa de la población, lo cual es razonablemente probable para muestras grandes, pero puede quebrantarse cuando las muestras son pequeñas.</p>
+<!--Let's start by using the bootstrap to estimate the sampling distribution of the mean of adult height in the NHANES dataset, so that we can compare the result to the standard error of the mean (SEM) that we discussed earlier.-->
+<p>Comencemos utilizando el bootstrap para estimar la distribución muestral de la media de alturas de personas adultas en la base de datos NHANES, para que podamos comparar el resultado del error estándar de la media (SEM, <em>standard error of the mean</em>), que mencionamos hace unos momentos.</p>
+<!-- fig.cap="An example of bootstrapping to compute the standard error of the mean adult height in the NHANES dataset. The histogram shows the distribution of means across bootstrap samples, while the red line shows the normal distribution based on the sample mean and standard deviation." -->
+<div class="figure"><span style="display:block;" id="fig:bootstrapSEM"></span>
+<img src="StatsThinking21_files/figure-html/bootstrapSEM-1.png" alt="Un ejemplo de cálculo de boostrap del error estándar de la media (SEM) de altura de personas adultas en la base de datos NHANES. El histograma muestra la distribución de las medias a lo largo de las diferentes muestras bootstrap, mientras que la línea roja muestra la distribución normal basada en la media y desviación estándar de la muestra." width="384" height="50%" />
 <p class="caption">
-Figura 8.4: An example of bootstrapping to compute the standard error of the mean. The histogram shows the distribution of means across bootstrap samples, while the red line shows the normal distribution based on the sample mean and standard deviation.
+Figura 8.4: Un ejemplo de cálculo de boostrap del error estándar de la media (SEM) de altura de personas adultas en la base de datos NHANES. El histograma muestra la distribución de las medias a lo largo de las diferentes muestras bootstrap, mientras que la línea roja muestra la distribución normal basada en la media y desviación estándar de la muestra.
 </p>
 </div>
-<!--Figure \@ref(fig:bootstrapSEM) shows that the distribution of means across bootstrap samples is fairly close to the theoretical estimate based on the assumption of normality.  We can also use the bootstrap samples to compute a confidence interval for the mean, simply by computing the quantiles of interest from the distribution of bootstrap samples.-->
-<p>La Figura <a href="resampling-and-simulation.html#fig:bootstrapSEM">8.4</a> muestra que la distribución de la media a través de las muestras del bootstrap es muy cercana al estimado teórico basado en la suposición de normalidad. También podemos usar las muestras de bootstrap para calcular un intervalo de confianza para la media, simplemente al calcular los cuantiles de interés de la distribución de las muestras del bootstrap.</p>
-<table>
-<caption><span id="tab:unnamed-chunk-34">Tabla 8.1: </span>Confidence limits for normal distribution and bootstrap methods</caption>
-<thead>
-<tr class="header">
-<th align="left">type</th>
-<th align="right">2.5%</th>
-<th align="right">97.5%</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Normal</td>
-<td align="right">166</td>
-<td align="right">173</td>
-</tr>
-<tr class="even">
-<td align="left">Bootstrap</td>
-<td align="right">166</td>
-<td align="right">172</td>
-</tr>
-</tbody>
-</table>
-<!--We would not usually employ the bootstrap to compute confidence intervals for the mean (since we can generally assume that the normal distribution is appropriate for the sampling distribution of the mean, as long as our sample is large enough), but this example shows how the method gives us roughly the same result as the standard method based on the normal distribution.  The bootstrap would more often be used to generate standard errors for estimates of other statistics where we know or suspect that the normal distribution is not appropriate.-->
-<p>Usualmente no utilizaríamos el bootstrap para calcular intervalos de confianza para la media (ya que, generalmente podemos asumir que la distribución normal es apropiada para la distribución muestral de la media, siempre y cuando nuestra muestra sea lo suficientemente grande), pero este ejemplo muestra que el método nos da un resultado aproximadamente igual al método estándar basado en distribución normal. El bootstrap es más comunmente utilizado para generar errores estándar para estimaciones de otras estadísticas, en donde sabemos o sospechamos que la distribución normal no es apropiada.</p>
+<!--Figure \@ref(fig:bootstrapSEM) shows that the distribution of means across bootstrap samples is fairly close to the theoretical estimate based on the assumption of normality.  We would not usually employ the bootstrap to compute confidence intervals for the mean (since we can generally assume that the normal distribution is appropriate for the sampling distribution of the mean, as long as our sample is large enough), but this example shows how the method gives us roughly the same result as the standard method based on the normal distribution. The bootstrap would more often be used to generate standard errors for estimates of other statistics where we know or suspect that the normal distribution is not appropriate. In addition, in a later chapter you will see how we can also use the bootstrap samples to generate estimates of the uncertainty in our sample statistic as well. -->
+<p>La Figura <a href="resampling-and-simulation.html#fig:bootstrapSEM">8.4</a> muestra que la distribución de la media a través de las muestras del bootstrap es muy cercana al estimado teórico basado en la suposición de normalidad. Usualmente no usaríamos el bootstrap para calcular intervalos de confianza de la media (puesto que generalmente podemos asumir que la distribución normal es apropiada para la distribución muestral de la media, siempre y cuando nuestra muestra sea lo suficientemente grande), pero este ejemplo muestra cómo este método nos brinda aproximadamente el mismo resultado que el método estándar basado en la distribución normal. El bootstrap sería más comúnmente usado para generar errores estándar para estimaciones de otros estadísticos donde sabemos o sospechamos que la distribución normal no es apropiada. Además, en un capítulo posterior revisarás cómo podemos usar también muestras de bootstrap para generar estimaciones de incertidumbre del estadístico de nuestra muestra.</p>
+<!---
+
+Table: (\#tab:unnamed-chunk-28)Confidence limits for normal distribution and bootstrap methods
+
+|type      | 2.5%| 97.5%|
+|:---------|----:|-----:|
+|Normal    |  166|   173|
+|Bootstrap |  166|   172|
+--->
 <!--## Learning objectives-->
 </div>
 </div>
-<div id="objetivos-de-aprendizaje" class="section level2" number="8.6">
+<div id="objetivos-de-aprendizaje-7" class="section level2" number="8.6">
 <h2><span class="header-section-number">8.6</span> Objetivos de aprendizaje</h2>
 <!--After reading this chapter, you should be able to:-->
 <p>Después de haber leído este capítulo, deberías ser capaz de:</p>
@@ -661,10 +673,10 @@ Figura 8.4: An example of bootstrapping to compute the standard error of the mea
 </ul>
 <!--## Suggested readings-->
 </div>
-<div id="lecturas-sugeridas" class="section level2" number="8.7">
+<div id="lecturas-sugeridas-5" class="section level2" number="8.7">
 <h2><span class="header-section-number">8.7</span> Lecturas sugeridas</h2>
 <ul>
-<li><em>Computer Age Statistical Inference: Algorithms, Evidence and Data Science</em>, by Bradley Efron and Trevor Hastie.</li>
+<li><em>Computer Age Statistical Inference: Algorithms, Evidence and Data Science</em>, por Bradley Efron y Trevor Hastie.</li>
 </ul>
 
 <!-- # Hypothesis testing -->
@@ -680,7 +692,6 @@ Figura 8.4: An example of bootstrapping to compute the standard error of the mea
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
-<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
 <script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -699,6 +710,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -719,6 +731,10 @@ gitbook.start({
 "text": null
 },
 "download": ["StatsThinking21.pdf", "StatsThinking21.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

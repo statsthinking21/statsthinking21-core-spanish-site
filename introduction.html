@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 1 Introducción | Statistical Thinking for the 21st Century</title>
+  <meta name="description" content="Un libro sobre estadistica." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 1 Introducción | Statistical Thinking for the 21st Century" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Un libro sobre estadistica." />
+  <meta name="github-repo" content="poldrack/psych10-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 1 Introducción | Statistical Thinking for the 21st Century" />
+  
+  <meta name="twitter:description" content="Un libro sobre estadistica." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="working-with-data.html"/>
+<script src="book_assets/header-attrs-2.11/header-attrs.js"></script>
+<script src="book_assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="book_assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="book_assets/anchor-sections-1.0.1/anchor-sections.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129414074-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129414074-1');
+</script>
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#por-qué-existe-este-libro"><i class="fa fa-check"></i><b>0.1</b> ¿Por qué existe este libro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#la-era-dorada-de-la-información"><i class="fa fa-check"></i><b>0.2</b> La era dorada de la información</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#la-importancia-de-hacer-estadísticas"><i class="fa fa-check"></i><b>0.3</b> La importancia de hacer estadísticas</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#un-libro-de-código-abierto-open-source"><i class="fa fa-check"></i><b>0.4</b> Un libro de código abierto (open source)</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#agradecimientos"><i class="fa fa-check"></i><b>0.5</b> Agradecimientos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#qué-es-el-pensamiento-estadístico"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es el pensamiento estadístico?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#lidiar-con-la-ansiedad-estadística"><i class="fa fa-check"></i><b>1.2</b> Lidiar con la ansiedad estadística</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#qué-puede-hacer-la-estadística-por-nosotrxs"><i class="fa fa-check"></i><b>1.3</b> ¿Qué puede hacer la estadística por nosotrxs?</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#las-grandes-ideas-de-la-estadística"><i class="fa fa-check"></i><b>1.4</b> Las grandes ideas de la estadística</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#aprender-de-los-datos"><i class="fa fa-check"></i><b>1.4.1</b> Aprender de los datos</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#agregación-aggregation"><i class="fa fa-check"></i><b>1.4.2</b> Agregación (<em>aggregation</em>)</a></li>
+<li class="chapter" data-level="1.4.3" data-path="introduction.html"><a href="introduction.html#incertidumbre"><i class="fa fa-check"></i><b>1.4.3</b> Incertidumbre</a></li>
+<li class="chapter" data-level="1.4.4" data-path="introduction.html"><a href="introduction.html#muestrear-de-una-población"><i class="fa fa-check"></i><b>1.4.4</b> Muestrear de una población</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#causalidad-y-estadística"><i class="fa fa-check"></i><b>1.5</b> Causalidad y estadística</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>1.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>1.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="working-with-data.html"><a href="working-with-data.html"><i class="fa fa-check"></i><b>2</b> Trabajar con Datos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="working-with-data.html"><a href="working-with-data.html#qué-son-los-datos"><i class="fa fa-check"></i><b>2.1</b> ¿Qué son los datos?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="working-with-data.html"><a href="working-with-data.html#datos-cualitativos"><i class="fa fa-check"></i><b>2.1.1</b> Datos Cualitativos</a></li>
+<li class="chapter" data-level="2.1.2" data-path="working-with-data.html"><a href="working-with-data.html#datos-cuantitativos"><i class="fa fa-check"></i><b>2.1.2</b> Datos cuantitativos</a></li>
+<li class="chapter" data-level="2.1.3" data-path="working-with-data.html"><a href="working-with-data.html#tipos-de-números"><i class="fa fa-check"></i><b>2.1.3</b> Tipos de números</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="working-with-data.html"><a href="working-with-data.html#mediciones-discretas-versus-continuas"><i class="fa fa-check"></i><b>2.2</b> Mediciones Discretas versus Continuas</a></li>
+<li class="chapter" data-level="2.3" data-path="working-with-data.html"><a href="working-with-data.html#qué-constituye-a-una-buena-medición"><i class="fa fa-check"></i><b>2.3</b> ¿Qué constituye a una buena medición?</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="working-with-data.html"><a href="working-with-data.html#confiabilidad"><i class="fa fa-check"></i><b>2.3.1</b> Confiabilidad</a></li>
+<li class="chapter" data-level="2.3.2" data-path="working-with-data.html"><a href="working-with-data.html#validez"><i class="fa fa-check"></i><b>2.3.2</b> Validez</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="working-with-data.html"><a href="working-with-data.html#objetivos-de-aprendizaje-1"><i class="fa fa-check"></i><b>2.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="2.5" data-path="working-with-data.html"><a href="working-with-data.html#lecturas-sugeridas-1"><i class="fa fa-check"></i><b>2.5</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="2.6" data-path="working-with-data.html"><a href="working-with-data.html#apéndice"><i class="fa fa-check"></i><b>2.6</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="working-with-data.html"><a href="working-with-data.html#escalas-de-medición"><i class="fa fa-check"></i><b>2.6.1</b> Escalas de medición</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="summarizing-data.html"><a href="summarizing-data.html"><i class="fa fa-check"></i><b>3</b> Resumir datos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="summarizing-data.html"><a href="summarizing-data.html#por-qué-resumir-datos"><i class="fa fa-check"></i><b>3.1</b> ¿Por qué resumir datos?</a></li>
+<li class="chapter" data-level="3.2" data-path="summarizing-data.html"><a href="summarizing-data.html#resumir-datos-usando-tablas"><i class="fa fa-check"></i><b>3.2</b> Resumir datos usando tablas</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="summarizing-data.html"><a href="summarizing-data.html#frequency-distributions"><i class="fa fa-check"></i><b>3.2.1</b> Distribuciones de frecuencias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="summarizing-data.html"><a href="summarizing-data.html#cumulative-distributions"><i class="fa fa-check"></i><b>3.2.2</b> Distribuciones acumuladas</a></li>
+<li class="chapter" data-level="3.2.3" data-path="summarizing-data.html"><a href="summarizing-data.html#plotting-histograms"><i class="fa fa-check"></i><b>3.2.3</b> Graficar histogramas</a></li>
+<li class="chapter" data-level="3.2.4" data-path="summarizing-data.html"><a href="summarizing-data.html#bins-de-un-histograma"><i class="fa fa-check"></i><b>3.2.4</b> <em>Bins</em> de un histograma</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="summarizing-data.html"><a href="summarizing-data.html#representaciones-idealizadas-de-distribuciones"><i class="fa fa-check"></i><b>3.3</b> Representaciones idealizadas de distribuciones</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="summarizing-data.html"><a href="summarizing-data.html#asimetría-sesgo"><i class="fa fa-check"></i><b>3.3.1</b> Asimetría (sesgo)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="summarizing-data.html"><a href="summarizing-data.html#distribuciones-con-colas-largas"><i class="fa fa-check"></i><b>3.3.2</b> Distribuciones con colas largas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="summarizing-data.html"><a href="summarizing-data.html#objetivos-de-aprendizaje-2"><i class="fa fa-check"></i><b>3.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="3.5" data-path="summarizing-data.html"><a href="summarizing-data.html#lecturas-sugeridas-2"><i class="fa fa-check"></i><b>3.5</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>4</b> Visualización de Datos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-visualization.html"><a href="data-visualization.html#anatomía-de-una-gráfica"><i class="fa fa-check"></i><b>4.1</b> Anatomía de una gráfica</a></li>
+<li class="chapter" data-level="4.2" data-path="data-visualization.html"><a href="data-visualization.html#principios-de-una-buena-visibilización"><i class="fa fa-check"></i><b>4.2</b> Principios de una buena visibilización</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="data-visualization.html"><a href="data-visualization.html#muestra-los-datos-y-haz-que-destaquen"><i class="fa fa-check"></i><b>4.2.1</b> Muestra los datos y haz que destaquen</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-visualization.html"><a href="data-visualization.html#maximiza-la-proporción-datostinta-dataink-ratio"><i class="fa fa-check"></i><b>4.2.2</b> Maximiza la proporción datos/tinta (data/ink ratio)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data-visualization.html"><a href="data-visualization.html#evita-gráficas-basura"><i class="fa fa-check"></i><b>4.2.3</b> Evita gráficas basura</a></li>
+<li class="chapter" data-level="4.2.4" data-path="data-visualization.html"><a href="data-visualization.html#evita-distorsionar-los-datos"><i class="fa fa-check"></i><b>4.2.4</b> Evita distorsionar los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-visualization.html"><a href="data-visualization.html#ajustarse-a-las-limitaciones-humanas"><i class="fa fa-check"></i><b>4.3</b> Ajustarse a las limitaciones humanas</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-visualization.html"><a href="data-visualization.html#limitaciones-perceptuales"><i class="fa fa-check"></i><b>4.3.1</b> Limitaciones perceptuales</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-visualization.html"><a href="data-visualization.html#corrigiendo-otros-factores"><i class="fa fa-check"></i><b>4.4</b> Corrigiendo otros factores</a></li>
+<li class="chapter" data-level="4.5" data-path="data-visualization.html"><a href="data-visualization.html#objetivos-de-aprendizaje-3"><i class="fa fa-check"></i><b>4.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="4.6" data-path="data-visualization.html"><a href="data-visualization.html#lecturas-y-videos-sugeridos"><i class="fa fa-check"></i><b>4.6</b> Lecturas y videos sugeridos</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fitting-models.html"><a href="fitting-models.html"><i class="fa fa-check"></i><b>5</b> Ajustar modelos a datos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="fitting-models.html"><a href="fitting-models.html#qué-es-un-modelo"><i class="fa fa-check"></i><b>5.1</b> ¿Qué es un modelo?</a></li>
+<li class="chapter" data-level="5.2" data-path="fitting-models.html"><a href="fitting-models.html#modelado-estadístico-un-ejemplo"><i class="fa fa-check"></i><b>5.2</b> Modelado estadístico: Un ejemplo</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="fitting-models.html"><a href="fitting-models.html#mejorando-nuestro-modelo"><i class="fa fa-check"></i><b>5.2.1</b> Mejorando nuestro modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="fitting-models.html"><a href="fitting-models.html#qué-hace-que-un-modelo-sea-bueno"><i class="fa fa-check"></i><b>5.3</b> ¿Qué hace que un modelo sea “bueno?”</a></li>
+<li class="chapter" data-level="5.4" data-path="fitting-models.html"><a href="fitting-models.html#overfitting"><i class="fa fa-check"></i><b>5.4</b> ¿Un modelo puede ser demasiado bueno?</a></li>
+<li class="chapter" data-level="5.5" data-path="fitting-models.html"><a href="fitting-models.html#resumir-datos-usando-la-media"><i class="fa fa-check"></i><b>5.5</b> Resumir datos usando la media</a></li>
+<li class="chapter" data-level="5.6" data-path="fitting-models.html"><a href="fitting-models.html#resumir-datos-robústamente-usando-la-mediana"><i class="fa fa-check"></i><b>5.6</b> Resumir datos robústamente usando la mediana</a></li>
+<li class="chapter" data-level="5.7" data-path="fitting-models.html"><a href="fitting-models.html#la-moda"><i class="fa fa-check"></i><b>5.7</b> La moda</a></li>
+<li class="chapter" data-level="5.8" data-path="fitting-models.html"><a href="fitting-models.html#variabilidad-qué-tan-bien-se-ajusta-la-media-a-los-datos"><i class="fa fa-check"></i><b>5.8</b> Variabilidad: ¿Qué tan bien se ajusta la media a los datos?</a></li>
+<li class="chapter" data-level="5.9" data-path="fitting-models.html"><a href="fitting-models.html#usar-simulaciones-para-entender-la-estadística"><i class="fa fa-check"></i><b>5.9</b> Usar simulaciones para entender la estadística</a></li>
+<li class="chapter" data-level="5.10" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-z"><i class="fa fa-check"></i><b>5.10</b> Puntajes Z</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="fitting-models.html"><a href="fitting-models.html#interpretando-puntajes-z"><i class="fa fa-check"></i><b>5.10.1</b> Interpretando Puntajes Z</a></li>
+<li class="chapter" data-level="5.10.2" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-estandarizados"><i class="fa fa-check"></i><b>5.10.2</b> Puntajes Estandarizados</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="fitting-models.html"><a href="fitting-models.html#objetivos-de-aprendizaje-4"><i class="fa fa-check"></i><b>5.11</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="5.12" data-path="fitting-models.html"><a href="fitting-models.html#apéndice-1"><i class="fa fa-check"></i><b>5.12</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="5.12.1" data-path="fitting-models.html"><a href="fitting-models.html#prueba-de-que-la-suma-de-los-errores-a-partir-de-la-media-es-igual-a-cero"><i class="fa fa-check"></i><b>5.12.1</b> Prueba de que la suma de los errores a partir de la media es igual a cero</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>6</b> Probabilidad</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="probability.html"><a href="probability.html#qué-es-la-probabilidad"><i class="fa fa-check"></i><b>6.1</b> ¿Qué es la probabilidad?</a></li>
+<li class="chapter" data-level="6.2" data-path="probability.html"><a href="probability.html#cómo-determinamos-probabilidades"><i class="fa fa-check"></i><b>6.2</b> ¿Cómo determinamos probabilidades?</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="probability.html"><a href="probability.html#creencia-personal"><i class="fa fa-check"></i><b>6.2.1</b> Creencia personal</a></li>
+<li class="chapter" data-level="6.2.2" data-path="probability.html"><a href="probability.html#empirical-frequency"><i class="fa fa-check"></i><b>6.2.2</b> Frecuencia empírica</a></li>
+<li class="chapter" data-level="6.2.3" data-path="probability.html"><a href="probability.html#probabilidad-clásica"><i class="fa fa-check"></i><b>6.2.3</b> Probabilidad clásica</a></li>
+<li class="chapter" data-level="6.2.4" data-path="probability.html"><a href="probability.html#resolviendo-el-problema-de-de-méré"><i class="fa fa-check"></i><b>6.2.4</b> Resolviendo el problema de de Méré</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="probability.html"><a href="probability.html#distribuciones-de-probabilidad"><i class="fa fa-check"></i><b>6.3</b> Distribuciones de probabilidad</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="probability.html"><a href="probability.html#distribuciones-de-probabilidad-acumuladas"><i class="fa fa-check"></i><b>6.3.1</b> Distribuciones de probabilidad acumuladas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="probability.html"><a href="probability.html#conditional-probability"><i class="fa fa-check"></i><b>6.4</b> Probabilidad condicional</a></li>
+<li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#calcular-probabilidades-condicionales-a-partir-de-los-datos"><i class="fa fa-check"></i><b>6.5</b> Calcular probabilidades condicionales a partir de los datos</a></li>
+<li class="chapter" data-level="6.6" data-path="probability.html"><a href="probability.html#independencia"><i class="fa fa-check"></i><b>6.6</b> Independencia</a></li>
+<li class="chapter" data-level="6.7" data-path="probability.html"><a href="probability.html#bayestheorem"><i class="fa fa-check"></i><b>6.7</b> Invertir una probabilidad condicional: regla de Bayes</a></li>
+<li class="chapter" data-level="6.8" data-path="probability.html"><a href="probability.html#aprender-de-los-datos-1"><i class="fa fa-check"></i><b>6.8</b> Aprender de los datos</a></li>
+<li class="chapter" data-level="6.9" data-path="probability.html"><a href="probability.html#posibilidades-odds-y-razón-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>6.9</b> Posibilidades (odds) y razón de posibilidades (odds ratios)</a></li>
+<li class="chapter" data-level="6.10" data-path="probability.html"><a href="probability.html#qué-significan-las-probabilidades"><i class="fa fa-check"></i><b>6.10</b> ¿Qué significan las probabilidades?</a></li>
+<li class="chapter" data-level="6.11" data-path="probability.html"><a href="probability.html#objetivos-de-aprendizaje-5"><i class="fa fa-check"></i><b>6.11</b> Objetivos de Aprendizaje</a></li>
+<li class="chapter" data-level="6.12" data-path="probability.html"><a href="probability.html#lecturas-sugeridas-3"><i class="fa fa-check"></i><b>6.12</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="6.13" data-path="probability.html"><a href="probability.html#apéndice-2"><i class="fa fa-check"></i><b>6.13</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="6.13.1" data-path="probability.html"><a href="probability.html#derivación-de-la-regla-de-bayes"><i class="fa fa-check"></i><b>6.13.1</b> Derivación de la regla de Bayes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>7</b> Muestreo</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="sampling.html"><a href="sampling.html#how-do-we-sample"><i class="fa fa-check"></i><b>7.1</b> ¿Cómo hacemos una muestra?</a></li>
+<li class="chapter" data-level="7.2" data-path="sampling.html"><a href="sampling.html#samplingerror"><i class="fa fa-check"></i><b>7.2</b> Error de muestreo</a></li>
+<li class="chapter" data-level="7.3" data-path="sampling.html"><a href="sampling.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>7.3</b> Error estándar de la media</a></li>
+<li class="chapter" data-level="7.4" data-path="sampling.html"><a href="sampling.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>7.4</b> El teorema del límite central</a></li>
+<li class="chapter" data-level="7.5" data-path="sampling.html"><a href="sampling.html#objetivos-de-aprendizaje-6"><i class="fa fa-check"></i><b>7.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="7.6" data-path="sampling.html"><a href="sampling.html#lecturas-sugeridas-4"><i class="fa fa-check"></i><b>7.6</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html"><i class="fa fa-check"></i><b>8</b> Remuestreo y Simulación</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#simulación-montecarlo"><i class="fa fa-check"></i><b>8.1</b> Simulación Montecarlo</a></li>
+<li class="chapter" data-level="8.2" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#aleatoriedad-en-estadística"><i class="fa fa-check"></i><b>8.2</b> Aleatoriedad en Estadística</a></li>
+<li class="chapter" data-level="8.3" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#generando-números-aleatorios"><i class="fa fa-check"></i><b>8.3</b> Generando números aleatorios</a></li>
+<li class="chapter" data-level="8.4" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#utilizando-una-simulación-con-el-método-de-montecarlo"><i class="fa fa-check"></i><b>8.4</b> Utilizando una simulación con el Método de Montecarlo</a></li>
+<li class="chapter" data-level="8.5" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#usando-simulaciones-para-estadística-bootstrap"><i class="fa fa-check"></i><b>8.5</b> Usando simulaciones para estadística: bootstrap</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#calculando-el-bootstrap"><i class="fa fa-check"></i><b>8.5.1</b> Calculando el bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#objetivos-de-aprendizaje-7"><i class="fa fa-check"></i><b>8.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="8.7" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#lecturas-sugeridas-5"><i class="fa fa-check"></i><b>8.7</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>9</b> Prueba de hipótesis</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#prueba-estadística-de-hipótesis-nula-null-hypothesis-statistical-testing-nhst"><i class="fa fa-check"></i><b>9.1</b> Prueba Estadística de Hipótesis Nula (Null Hypothesis Statistical Testing, NHST)</a></li>
+<li class="chapter" data-level="9.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#prueba-estadística-de-hipótesis-nula-un-ejemplo"><i class="fa fa-check"></i><b>9.2</b> Prueba estadística de hipótesis nula: Un ejemplo</a></li>
+<li class="chapter" data-level="9.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#el-proceso-de-la-prueba-de-hipótesis-nula"><i class="fa fa-check"></i><b>9.3</b> El proceso de la prueba de hipótesis nula</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-1-formular-una-hipótesis-de-interés"><i class="fa fa-check"></i><b>9.3.1</b> Paso 1: Formular una hipótesis de interés</a></li>
+<li class="chapter" data-level="9.3.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-2-especifica-las-hipótesis-nula-y-alternativa"><i class="fa fa-check"></i><b>9.3.2</b> Paso 2: Especifica las hipótesis nula y alternativa</a></li>
+<li class="chapter" data-level="9.3.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-3-recolectar-datos"><i class="fa fa-check"></i><b>9.3.3</b> Paso 3: Recolectar datos</a></li>
+<li class="chapter" data-level="9.3.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-4-ajusta-un-modelo-a-los-datos-y-calcula-el-estadístico-de-prueba"><i class="fa fa-check"></i><b>9.3.4</b> Paso 4: Ajusta un modelo a los datos y calcula el estadístico de prueba</a></li>
+<li class="chapter" data-level="9.3.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-5-determinar-la-probabilidad-de-los-resultados-observados-bajo-la-hipótesis-nula"><i class="fa fa-check"></i><b>9.3.5</b> Paso 5: Determinar la probabilidad de los resultados observados bajo la hipótesis nula</a></li>
+<li class="chapter" data-level="9.3.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-6-evalúa-la-significatividad-estadística-del-resultado"><i class="fa fa-check"></i><b>9.3.6</b> Paso 6: Evalúa la “significatividad estadística” del resultado</a></li>
+<li class="chapter" data-level="9.3.7" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#qué-significa-un-resultado-significativo"><i class="fa fa-check"></i><b>9.3.7</b> ¿Qué significa un resultado significativo?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#nhst-en-un-contexto-moderno-pruebas-múltiples"><i class="fa fa-check"></i><b>9.4</b> NHST en un contexto moderno: Pruebas múltiples</a></li>
+<li class="chapter" data-level="9.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#objetivos-de-aprendizaje-8"><i class="fa fa-check"></i><b>9.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="9.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lecturas-sugeridas-6"><i class="fa fa-check"></i><b>9.6</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html"><i class="fa fa-check"></i><b>10</b> Cuantificar efectos y diseñar estudios</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>10.1</b> Intervalos de confianza</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-usando-la-distribución-normal"><i class="fa fa-check"></i><b>10.1.1</b> Intervalos de confianza usando la distribución normal</a></li>
+<li class="chapter" data-level="10.1.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-utilizando-la-distribución-t"><i class="fa fa-check"></i><b>10.1.2</b> Intervalos de confianza utilizando la distribución t</a></li>
+<li class="chapter" data-level="10.1.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#intervalos-de-confianza-y-tamaño-de-muestra"><i class="fa fa-check"></i><b>10.1.3</b> Intervalos de confianza y tamaño de muestra</a></li>
+<li class="chapter" data-level="10.1.4" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#calcular-el-intervalo-de-confianza-utilizando-bootstrap"><i class="fa fa-check"></i><b>10.1.4</b> Calcular el intervalo de confianza utilizando “bootstrap”</a></li>
+<li class="chapter" data-level="10.1.5" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#relación-de-los-intervalos-de-confianza-con-la-prueba-de-hipótesis"><i class="fa fa-check"></i><b>10.1.5</b> Relación de los intervalos de confianza con la prueba de hipótesis</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#tamaño-de-efecto-effect-sizes"><i class="fa fa-check"></i><b>10.2</b> Tamaño de efecto (effect sizes)</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#d-de-cohen"><i class="fa fa-check"></i><b>10.2.1</b> D de Cohen</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#r-de-pearson"><i class="fa fa-check"></i><b>10.2.2</b> r de Pearson</a></li>
+<li class="chapter" data-level="10.2.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#razón-de-posibilidades-odds-ratio"><i class="fa fa-check"></i><b>10.2.3</b> Razón de posibilidades (odds ratio)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#statistical-power"><i class="fa fa-check"></i><b>10.3</b> Poder estadístico</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#análisis-de-poder"><i class="fa fa-check"></i><b>10.3.1</b> Análisis de poder</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#objetivos-de-aprendizaje-9"><i class="fa fa-check"></i><b>10.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="10.5" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#lecturas-sugeridas-7"><i class="fa fa-check"></i><b>10.5</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>11</b> Estadística Bayesiana</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#modelos-generativos"><i class="fa fa-check"></i><b>11.1</b> Modelos Generativos</a></li>
+<li class="chapter" data-level="11.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#el-teorema-de-bayes-y-la-inferencia-inversa"><i class="fa fa-check"></i><b>11.2</b> El Teorema de Bayes y la Inferencia Inversa</a></li>
+<li class="chapter" data-level="11.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#doing-bayesian-estimation"><i class="fa fa-check"></i><b>11.3</b> Haciendo estimaciones Bayesianas</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#especificar-la-probabilidad-previa"><i class="fa fa-check"></i><b>11.3.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.3.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#recolectar-los-datos"><i class="fa fa-check"></i><b>11.3.2</b> Recolectar los datos</a></li>
+<li class="chapter" data-level="11.3.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-likelihood"><i class="fa fa-check"></i><b>11.3.3</b> Calcular la probabilidad (likelihood)</a></li>
+<li class="chapter" data-level="11.3.4" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-marginal-marginal-likelihood"><i class="fa fa-check"></i><b>11.3.4</b> Calcular la probabilidad marginal (marginal likelihood)</a></li>
+<li class="chapter" data-level="11.3.5" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.3.5</b> Calcular la probabilidad posterior</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#estimating-posterior-distributions"><i class="fa fa-check"></i><b>11.4</b> Estimar distribuciones posteriores</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#especificar-la-probabilidad-previa-1"><i class="fa fa-check"></i><b>11.4.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.4.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#recolectar-algunos-datos"><i class="fa fa-check"></i><b>11.4.2</b> Recolectar algunos datos</a></li>
+<li class="chapter" data-level="11.4.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-likelihood-1"><i class="fa fa-check"></i><b>11.4.3</b> Calcular la probabilidad (likelihood)</a></li>
+<li class="chapter" data-level="11.4.4" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-marginal"><i class="fa fa-check"></i><b>11.4.4</b> Calcular la probabilidad marginal</a></li>
+<li class="chapter" data-level="11.4.5" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-posterior-1"><i class="fa fa-check"></i><b>11.4.5</b> Calcular la probabilidad posterior</a></li>
+<li class="chapter" data-level="11.4.6" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#estimación-máxima-a-posteriori-map-maximum-a-posteriori"><i class="fa fa-check"></i><b>11.4.6</b> Estimación máxima a posteriori (MAP, maximum a posteriori)</a></li>
+<li class="chapter" data-level="11.4.7" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#intervalos-de-credibilidad"><i class="fa fa-check"></i><b>11.4.7</b> Intervalos de credibilidad</a></li>
+<li class="chapter" data-level="11.4.8" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#efectos-de-diferentes-probabilidades-previas"><i class="fa fa-check"></i><b>11.4.8</b> Efectos de diferentes probabilidades previas</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#elegir-una-probabilidad-previa"><i class="fa fa-check"></i><b>11.5</b> Elegir una probabilidad previa</a></li>
+<li class="chapter" data-level="11.6" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#prueba-de-hipótesis-bayesiana"><i class="fa fa-check"></i><b>11.6</b> Prueba de hipótesis Bayesiana</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#Bayes-factors"><i class="fa fa-check"></i><b>11.6.1</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="11.6.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#factores-de-bayes-para-hipótesis-estadísticas"><i class="fa fa-check"></i><b>11.6.2</b> Factores de Bayes para hipótesis estadísticas</a></li>
+<li class="chapter" data-level="11.6.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#evaluar-evidencia-a-favor-de-la-hipótesis-nula"><i class="fa fa-check"></i><b>11.6.3</b> Evaluar evidencia a favor de la hipótesis nula</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#objetivos-de-aprendizaje-10"><i class="fa fa-check"></i><b>11.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="11.8" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#lecturas-sugeridas-8"><i class="fa fa-check"></i><b>11.8</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="11.9" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#apéndice-3"><i class="fa fa-check"></i><b>11.9</b> Apéndice:</a>
+<ul>
+<li class="chapter" data-level="11.9.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#muestreo-de-rechazo"><i class="fa fa-check"></i><b>11.9.1</b> Muestreo de rechazo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html"><i class="fa fa-check"></i><b>12</b> Modelar relaciones categóricas</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#ejemplo-dulces-de-colores"><i class="fa fa-check"></i><b>12.1</b> Ejemplo: Dulces de colores</a></li>
+<li class="chapter" data-level="12.2" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#chi-squared-test"><i class="fa fa-check"></i><b>12.2</b> Prueba Ji-cuadrada de Pearson</a></li>
+<li class="chapter" data-level="12.3" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#two-way-test"><i class="fa fa-check"></i><b>12.3</b> Tablas de contingencia y la prueba de dos vías</a></li>
+<li class="chapter" data-level="12.4" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#residuales-estandarizados-standardized-residuales"><i class="fa fa-check"></i><b>12.4</b> Residuales estandarizados (standardized residuales)</a></li>
+<li class="chapter" data-level="12.5" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#razones-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>12.5</b> Razones de posibilidades (odds ratios)</a></li>
+<li class="chapter" data-level="12.6" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#factores-de-bayes"><i class="fa fa-check"></i><b>12.6</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="12.7" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#análisis-categóricos-más-allá-de-la-tabla-2-x-2"><i class="fa fa-check"></i><b>12.7</b> Análisis categóricos más allá de la tabla 2 X 2</a></li>
+<li class="chapter" data-level="12.8" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#cuídate-de-la-paradoja-de-simpson"><i class="fa fa-check"></i><b>12.8</b> Cuídate de la paradoja de Simpson</a></li>
+<li class="chapter" data-level="12.9" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#objetivos-de-aprendizaje-11"><i class="fa fa-check"></i><b>12.9</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="12.10" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#lecturas-adicionales"><i class="fa fa-check"></i><b>12.10</b> Lecturas adicionales</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html"><i class="fa fa-check"></i><b>13</b> Modelar relaciones continuas</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#un-ejemplo-crímenes-de-odio-y-desigualdad-de-ingreso"><i class="fa fa-check"></i><b>13.1</b> Un ejemplo: Crímenes de odio y desigualdad de ingreso</a></li>
+<li class="chapter" data-level="13.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#la-desigualdad-de-ingreso-está-relacionada-con-los-crímenes-de-odio"><i class="fa fa-check"></i><b>13.2</b> ¿La desigualdad de ingreso está relacionada con los crímenes de odio?</a></li>
+<li class="chapter" data-level="13.3" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#covariance-and-correlation"><i class="fa fa-check"></i><b>13.3</b> Covarianza y correlación</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#prueba-de-hipótesis-para-correlaciones"><i class="fa fa-check"></i><b>13.3.1</b> Prueba de hipótesis para correlaciones</a></li>
+<li class="chapter" data-level="13.3.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#robust-correlations"><i class="fa fa-check"></i><b>13.3.2</b> Correlaciones robustas</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#correlación-y-causalidad"><i class="fa fa-check"></i><b>13.4</b> Correlación y causalidad</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#gráficas-causales"><i class="fa fa-check"></i><b>13.4.1</b> Gráficas causales</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#objetivos-de-aprendizaje-12"><i class="fa fa-check"></i><b>13.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="13.6" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#lecturas-sugeridas-9"><i class="fa fa-check"></i><b>13.6</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="13.7" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#apéndice-4"><i class="fa fa-check"></i><b>13.7</b> Apéndice:</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#cuantificando-la-desigualdad-el-índice-gini"><i class="fa fa-check"></i><b>13.7.1</b> Cuantificando la desigualdad: El índice Gini</a></li>
+<li class="chapter" data-level="13.7.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#análisis-de-correlación-bayesiana"><i class="fa fa-check"></i><b>13.7.2</b> Análisis de correlación bayesiana</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html"><i class="fa fa-check"></i><b>14</b> El Modelo Lineal General</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#linear-regression"><i class="fa fa-check"></i><b>14.1</b> Regresión lineal</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#regression-to-the-mean"><i class="fa fa-check"></i><b>14.1.1</b> Regresión a la media</a></li>
+<li class="chapter" data-level="14.1.2" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#la-relación-entre-correlación-y-regresión"><i class="fa fa-check"></i><b>14.1.2</b> La relación entre correlación y regresión</a></li>
+<li class="chapter" data-level="14.1.3" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#errores-estándar-de-los-modelos-de-regresión"><i class="fa fa-check"></i><b>14.1.3</b> Errores estándar de los modelos de regresión</a></li>
+<li class="chapter" data-level="14.1.4" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#pruebas-estadísticas-para-los-parámetros-de-la-regresión"><i class="fa fa-check"></i><b>14.1.4</b> Pruebas estadísticas para los parámetros de la regresión</a></li>
+<li class="chapter" data-level="14.1.5" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#cuantificar-la-bondad-de-adjuste-del-modelo"><i class="fa fa-check"></i><b>14.1.5</b> Cuantificar la bondad de adjuste del modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#ajustar-modelos-más-complejos"><i class="fa fa-check"></i><b>14.2</b> Ajustar modelos más complejos</a></li>
+<li class="chapter" data-level="14.3" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#interacciones-entre-variables"><i class="fa fa-check"></i><b>14.3</b> Interacciones entre variables</a></li>
+<li class="chapter" data-level="14.4" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#más-allá-de-predictores-y-resultados-lineales"><i class="fa fa-check"></i><b>14.4</b> Más allá de predictores y resultados lineales</a></li>
+<li class="chapter" data-level="14.5" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#model-criticism"><i class="fa fa-check"></i><b>14.5</b> Criticar nuestro modelo y revisar suposiciones</a></li>
+<li class="chapter" data-level="14.6" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#qué-significa-realmente-predecir"><i class="fa fa-check"></i><b>14.6</b> ¿Qué significa realmente “predecir?”</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#cross-validation"><i class="fa fa-check"></i><b>14.6.1</b> Validación cruzada (Cross-validation)</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#objetivos-de-aprendizaje-13"><i class="fa fa-check"></i><b>14.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="14.8" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#lecturas-sugeridas-10"><i class="fa fa-check"></i><b>14.8</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="14.9" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#apéndice-5"><i class="fa fa-check"></i><b>14.9</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="14.9.1" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#estimar-parámetros-de-una-regresión-lineal"><i class="fa fa-check"></i><b>14.9.1</b> Estimar parámetros de una regresión lineal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="comparing-means.html"><a href="comparing-means.html"><i class="fa fa-check"></i><b>15</b> Comparar medias</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="comparing-means.html"><a href="comparing-means.html#single-mean"><i class="fa fa-check"></i><b>15.1</b> Probar el valor de una media simple</a></li>
+<li class="chapter" data-level="15.2" data-path="comparing-means.html"><a href="comparing-means.html#comparing-two-means"><i class="fa fa-check"></i><b>15.2</b> Comparar dos medias</a></li>
+<li class="chapter" data-level="15.3" data-path="comparing-means.html"><a href="comparing-means.html#ttest-linear-model"><i class="fa fa-check"></i><b>15.3</b> La prueba t como un modelo lineal</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="comparing-means.html"><a href="comparing-means.html#tamaños-de-efecto-para-comparar-dos-medias"><i class="fa fa-check"></i><b>15.3.1</b> Tamaños de efecto para comparar dos medias</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="comparing-means.html"><a href="comparing-means.html#factores-de-bayes-para-diferencias-entre-medias"><i class="fa fa-check"></i><b>15.4</b> Factores de Bayes para diferencias entre medias</a></li>
+<li class="chapter" data-level="15.5" data-path="comparing-means.html"><a href="comparing-means.html#paired-ttests"><i class="fa fa-check"></i><b>15.5</b> Comparar observaciones pareadas/relacionadas</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="comparing-means.html"><a href="comparing-means.html#prueba-de-los-signos"><i class="fa fa-check"></i><b>15.5.1</b> Prueba de los signos</a></li>
+<li class="chapter" data-level="15.5.2" data-path="comparing-means.html"><a href="comparing-means.html#prueba-t-para-muestras-relacionadas-paired-t-test"><i class="fa fa-check"></i><b>15.5.2</b> Prueba t para muestras relacionadas (paired t-test)</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="comparing-means.html"><a href="comparing-means.html#comparar-más-de-dos-medias"><i class="fa fa-check"></i><b>15.6</b> Comparar más de dos medias</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="comparing-means.html"><a href="comparing-means.html#ANOVA"><i class="fa fa-check"></i><b>15.6.1</b> Análisis de varianza (analysis of variance, ANOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="comparing-means.html"><a href="comparing-means.html#objetivos-de-aprendizaje-14"><i class="fa fa-check"></i><b>15.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="15.8" data-path="comparing-means.html"><a href="comparing-means.html#apéndice-6"><i class="fa fa-check"></i><b>15.8</b> Apéndice</a>
+<ul>
+<li class="chapter" data-level="15.8.1" data-path="comparing-means.html"><a href="comparing-means.html#la-prueba-t-de-muestras-relacionadas-como-un-modelo-lineal"><i class="fa fa-check"></i><b>15.8.1</b> La prueba t de muestras relacionadas como un modelo lineal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="practical-example.html"><a href="practical-example.html"><i class="fa fa-check"></i><b>16</b> Modelación estadística práctica</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="practical-example.html"><a href="practical-example.html#el-proceso-de-modelación-estadística"><i class="fa fa-check"></i><b>16.1</b> El proceso de modelación estadística</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="practical-example.html"><a href="practical-example.html#especificar-nuestra-pregunta-de-interés."><i class="fa fa-check"></i><b>16.1.1</b> 1: Especificar nuestra pregunta de interés.</a></li>
+<li class="chapter" data-level="16.1.2" data-path="practical-example.html"><a href="practical-example.html#identificar-o-recolectar-los-datos-apropiados."><i class="fa fa-check"></i><b>16.1.2</b> 2: Identificar o recolectar los datos apropiados.</a></li>
+<li class="chapter" data-level="16.1.3" data-path="practical-example.html"><a href="practical-example.html#preparar-los-datos-para-el-análisis."><i class="fa fa-check"></i><b>16.1.3</b> 3: Preparar los datos para el análisis.</a></li>
+<li class="chapter" data-level="16.1.4" data-path="practical-example.html"><a href="practical-example.html#determinar-el-modelo-apropiado."><i class="fa fa-check"></i><b>16.1.4</b> 4: Determinar el modelo apropiado.</a></li>
+<li class="chapter" data-level="16.1.5" data-path="practical-example.html"><a href="practical-example.html#ajustar-el-modelo-a-los-datos."><i class="fa fa-check"></i><b>16.1.5</b> 5: Ajustar el modelo a los datos.</a></li>
+<li class="chapter" data-level="16.1.6" data-path="practical-example.html"><a href="practical-example.html#criticar-el-modelo-para-asegurarnos-que-se-ajusta-apropiadamente."><i class="fa fa-check"></i><b>16.1.6</b> 6: Criticar el modelo para asegurarnos que se ajusta apropiadamente.</a></li>
+<li class="chapter" data-level="16.1.7" data-path="practical-example.html"><a href="practical-example.html#probar-hipótesis-y-cuantificar-el-tamaño-del-efecto."><i class="fa fa-check"></i><b>16.1.7</b> 7: Probar hipótesis y cuantificar el tamaño del efecto.</a></li>
+<li class="chapter" data-level="16.1.8" data-path="practical-example.html"><a href="practical-example.html#qué-pasa-con-los-posibles-factores-de-confusión-confounds"><i class="fa fa-check"></i><b>16.1.8</b> ¿Qué pasa con los posibles factores de confusión (confounds)?</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="practical-example.html"><a href="practical-example.html#obtener-ayuda"><i class="fa fa-check"></i><b>16.2</b> Obtener ayuda</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html"><i class="fa fa-check"></i><b>17</b> Hacer investigación reproducible</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-pensamos-que-funciona-la-ciencia"><i class="fa fa-check"></i><b>17.1</b> Cómo pensamos que funciona la ciencia</a></li>
+<li class="chapter" data-level="17.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-funciona-a-veces-realmente-la-ciencia"><i class="fa fa-check"></i><b>17.2</b> Cómo funciona (a veces) realmente la ciencia</a></li>
+<li class="chapter" data-level="17.3" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#la-crisis-de-reproducibilidad-en-la-ciencia"><i class="fa fa-check"></i><b>17.3</b> La crisis de reproducibilidad en la ciencia</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#valor-predictivo-positivo-y-significatividad-estadística"><i class="fa fa-check"></i><b>17.3.1</b> Valor predictivo positivo y significatividad estadística</a></li>
+<li class="chapter" data-level="17.3.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#la-maldición-del-ganador"><i class="fa fa-check"></i><b>17.3.2</b> La maldición del ganador</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#prácticas-cuestionables-de-investigación"><i class="fa fa-check"></i><b>17.4</b> Prácticas cuestionables de investigación</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#esp-o-qrp"><i class="fa fa-check"></i><b>17.4.1</b> ¿ESP o QRP?</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#hacer-investigación-reproducible"><i class="fa fa-check"></i><b>17.5</b> Hacer investigación reproducible</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#pre-registro"><i class="fa fa-check"></i><b>17.5.1</b> Pre-registro</a></li>
+<li class="chapter" data-level="17.5.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#prácticas-reproducibles"><i class="fa fa-check"></i><b>17.5.2</b> Prácticas reproducibles</a></li>
+<li class="chapter" data-level="17.5.3" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#replicación"><i class="fa fa-check"></i><b>17.5.3</b> Replicación</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#hacer-análisis-de-datos-reproducibles"><i class="fa fa-check"></i><b>17.6</b> Hacer análisis de datos reproducibles</a></li>
+<li class="chapter" data-level="17.7" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#conclusión-hacer-mejor-ciencia"><i class="fa fa-check"></i><b>17.7</b> Conclusión: Hacer mejor ciencia</a></li>
+<li class="chapter" data-level="17.8" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#objetivos-de-aprendizaje-15"><i class="fa fa-check"></i><b>17.8</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="17.9" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#lecturas-sugeridas-11"><i class="fa fa-check"></i><b>17.9</b> Lecturas sugeridas</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Thinking for the 21st Century</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction" class="section level1" number="1">
+<h1><span class="header-section-number">Capitulo 1</span> Introducción</h1>
+<!-- "Statistical thinking will one day be as necessary for efficient citizenship as the ability to read and write.” - H.G. Wells-->
+<p>“Algún día el pensamiento estadístico será tan necesario para la eficiencia ciudadana como la habilidad de leer y escribir” - H. G. Wells</p>
+<!--## What is statistical thinking?-->
+<div id="qué-es-el-pensamiento-estadístico" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> ¿Qué es el pensamiento estadístico?</h2>
+<!--Statistical thinking is a way of understanding a complex world by describing it in relatively simple terms that nonetheless capture essential aspects of its structure or function, and that also provide us some idea of how uncertain we are about that knowledge.  The foundations of statistical thinking come primarily from mathematics and statistics, but also from computer science, psychology, and other fields of study.-->
+<p>El pensamiento estadístico es una manera de entender el mundo complejo mediante la descripción relativamente simple en términos que capturen los aspectos esenciales de su estructura o su función, además de que nos provee con la idea de qué tanta incertidumbre tenemos sobre ese mismo conocimiento. Los fundamentos del pensamiento estadístico vienen principalmente de las matemáticas y estadística, sin embargo, también de las ciencias computacionales, psicología y otras áreas de estudio.</p>
+<!--We can distinguish statistical thinking from other forms of thinking that are less likely to describe the world accurately.  In particular, human intuition often tries to answer the same questions that we can answer using statistical thinking, but often gets the answer wrong.  For example, in recent years most Americans have reported that they think that violent crime was worse compared to the previous year ([Pew Research Center](http://www.pewresearch.org/fact-tank/2018/01/30/5-facts-about-crime-in-the-u-s/)).  However, a statistical analysis of the actual crime data shows that in fact violent crime has steadily *decreased* since the 1990's.  Intuition fails us because we rely upon best guesses (which psychologists refer to as *heuristics*) that can often get it wrong.  For example, humans often judge the prevalence of some event (like violent crime) using an *availability heuristic* -- that is, how easily can we think of an example of violent crime. For this reason, our judgments of increasing crime rates may be more reflective of increasing news coverage, in spite of an actual decrease in the rate of crime. Statistical thinking provides us with the tools to more accurately understand the world and overcome the biases of human judgment.-->
+<p>Podemos distinguir el pensamiento estadístico de otras formas de pensamiento que son menos probables de describir el mundo acertadamente. En particular, la intuición humana a menudo intenta responder las mismas preguntas que se pueden contestar con el pensamiento estadístico, pero frecuentemente de manera errónea. Por ejemplo, en años recientes la mayoría de lxs Americanxs han reportado que piensan que los crímenes violentos han empeorado en comparación con años previos (<a href="http://www.pewresearch.org/fact-tank/2018/01/30/5-facts-about-crime-in-the-u-s/">Pew Research Center</a>). Sin embargo, un análisis estadístico de los datos de violencia criminal muestra que en realidad han ido disminuyendo paulatinamente desde la década de los noventas. La intuición falla porque dependemos de las mejores estimaciones o suposiciones (lo que lxs psicólogxs llaman <em>heurística</em>) que a menudo pueden equivocarse. Por ejemplo, las personas con frecuencia juzgan la prevalencia de algún evento (como el crimen violento) utilizando una <em>heurística de disponibilidad</em> – eso es, qué tan fácil podemos pensar en un ejemplo de crimen violento. Por esta razón, nuestros juicios del aumento de las tasas de violencia pueden ser más indicativas de un aumento en la cobertura de noticias, a pesar de una verdadera disminución en dicha tasa de crimen. El pensamiento estadístico nos provee de las herramientas para entender el mundo con más exactitud y superar los sesgos del juicio humano.</p>
+<!--## Dealing with statistics anxiety-->
+</div>
+<div id="lidiar-con-la-ansiedad-estadística" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Lidiar con la ansiedad estadística</h2>
+<!--Many people come to their first statistics class with a lot of trepidation and anxiety, especially once they hear that they will also have to learn to code in order to analyze data. In my class I give students a survey prior to the first session in order to measure their attitude towards statistics, asking them to rate a number of statments on a scale of 1 (strongly disagree) to 7 (strongly agree). One of the items on the survey is "The thought of being enrolled in a statistics course makes me nervous".  In a recent class, almost two-thirds of the class responded with a five or higher, and about one-fourth of the students said that they strongly agreed with the statement.  So if you feel nervous about starting to learn statistics, you are not alone.-->
+<p>Muchas personas entran a su primera clase de estadística con mucho temor y ansiedad, especialmente una vez que escuchan que también van a tener que aprender código, a fin de analizar datos. En mi clase le doy a lxs estudientes una encuesta previa a la primera sesión de clase con la intención de medir su actitud hacia la estadística, pidiéndoles que califiquen un número de afirmaciones en una escala del 1 (totalmente en desacuerdo) a 7 (totalmente de acuerdo). Uno de los ítems en la encuesta es “El pensamiento de inscribirme a un curso de estadística me pone nerviosx.” En una clase reciente, casi dos tercios de la clase respondió con un cinco o más, y un cuarto de lxs estudiantes mencionó que estaban totalmente de acuerdo con la frase. Entonces si tú te sientes nerviosx acerca de empezar a aprender estadística, no estás solx.</p>
+<!--Anxiety feels uncomfortable, but psychology tells us that this kind of emotional arousal can actually help us perform *better* on many tasks, by focusing our attention. So if you start to feel anxious about the material in this book, remind yourself that many other readers are feeling similarly, and that this emotional arousal could actually help you learn the material better (even if it doesn't seem like it!).-->
+<p>La ansiedad se siente incómoda, pero la psicología nos dice que esta clase de respuesta emocional en realidad puede ayudarnos a desempeñarnos <em>mejor</em> en varias tareas, mediante focalizar nuestra atención. Así que si empiezas a sentirte ansiosx por el material en este libro, recuerda que muchxs otrxs leyendo esto se sienten de una manera similar y que esta respuesta emocional en realidad puede ayudarte a aprender mejor el material (¡incluso si no parece de esa manera!).</p>
+<!--## What can statistics do for us?-->
+</div>
+<div id="qué-puede-hacer-la-estadística-por-nosotrxs" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> ¿Qué puede hacer la estadística por nosotrxs?</h2>
+<!--There are three major things that we can do with statistics:-->
+<p>Hay tres principales cosas que podemos hacer con la estadística:</p>
+<!--- *Describe*: The world is complex and we often need to describe it in a simplified way that we can understand.  
+- *Decide*: We often need to make decisions based on data, usually in the face of uncertainty.
+- *Predict*: We often wish to make predictions about new situations based on our knowledge of previous situations.-->
+<ul>
+<li><em>Describir</em>: El mundo es complejo y en ocasiones necesitamos describirlo en una manera simplificada en la que podamos entender.</li>
+<li><em>Decidir</em>: En ocasiones necesitamos tomar decisiones basadas en datos, usualmente de cara a la incertidumbre.</li>
+<li><em>Predecir</em>: En ocasiones deseamos hacer predicciones sobre nuevas situaciones basadas en nuestro conocimiento de situaciones previas.</li>
+</ul>
+<!--Let's look at an example of these in action, centered on a question that many of us are interested in: How do we decide what's healthy to eat? There are many different sources of guidance; government dietary guidelines, diet books, and bloggers, just to name a few.  Let's focus in on a specific question: Is saturated fat in our diet a bad thing?-->
+<p>Veamos un ejemplo de esto en acción, centrado en una pregunta en la que muchxs de nosotrxs estamos interesadxs: ¿Cómo decidimos qué es saludable al comer? Hay diferentes fuentes de guía; pautas alimentarias gubernamentales, libros dietéticos y <em>bloggers</em>, sólo por nombrar algunxs. Hay que enfocarnos en una pregunta específica: ¿La grasa saturada en nuestra dieta es algo malo?</p>
+<!--One way that we might answer this question is common sense.  If we eat fat,  then it's going to turn straight into fat in our bodies, right?  And we have all seen photos of arteries clogged with fat, so eating fat is going to clog our arteries, right?-->
+<p>Una manera en la que podemos responder esta pregunta es sentido común. Si comemos grasa, ésta se va a convertir en grasa en nuestro cuerpo, ¿cierto? Y todxs hemos visto fotos de arterias obstruidas con grasa, así que comer grasa va a obstruir nuestras arterias, ¿cierto?</p>
+<!--Another way that we might answer this question is by listening to authority figures.  The Dietary Guidelines from the US Food and Drug Administration have as one of their Key Recommendations that "A healthy eating pattern limits saturated fats". You might hope that these guidelines would be based on good science, and in some cases they are, but as Nina Teicholz outlined in her book "Big Fat Surprise"[@teic:2014], this particular recommendation seems to be based more on the longstanding dogma of nutrition researchers than on actual evidence.-->
+<p>Otra manera en la que podemos responder esta pregunta es mediante escuchar a figuras de autoridad. Las pautas alimenticias de la FDA (<em>Food and Drug Administration</em>, por sus siglas en inglés) tienen como una de sus recomendaciones clave que “Un patrón de comida saludable limita las grasas saturadas.” Uno esperaría que estas pautas estén basadas en ciencia, y en algunos casos es así, pero como Nina Teicholz señaló en su libro “Big Fat Surprise”<span class="citation">(<a href="#ref-teic:2014" role="doc-biblioref">Teicholz 2014</a>)</span>, esta recomendación en particular parece estar más basada en el antiguo dogma de investigadores de la nutrición que en evidencia actual.</p>
+<!--Finally, we might look at actual scientific research.  Let's start by looking at a large study called the PURE study, which has examined diets and health outcomes (including death) in more than 135,000 people from 18 different countries.  In one of the analyses of this dataset (published in *The Lancet* in 2017; @dehg:ment:zhan:2017), the PURE investigators reported an analysis of how intake of various classes of macronutrients (including saturated fats and carbohydrates) was related to the likelihood of dying during the time that people were followed. People were followed for a *median* of 7.4 years, meaning that half of the people in the study were followed for less and half were followed for more than 7.4 years. Figure \@ref(fig:PureDeathSatFat) plots some of the data from the study (extracted from the paper), showing the relationship between the intake of both saturated fats and carbohydrates and the risk of dying from any cause.-->
+<p>Finalmente, podríamos revisar verdadera investigación científica. Empecemos por revisar el gran estudio llamado <em>PURE Study</em> (por sus siglas en inglés), el cual ha examinado dietas y resultados de salud (incluida la muerte) en más de 135,000 personas de 18 países diferentes. En uno de los análisis de esta base de datos (publicada en <em>The Lancet</em> en 2017; <span class="citation"><a href="#ref-dehg:ment:zhan:2017" role="doc-biblioref">Dehghan et al.</a> (<a href="#ref-dehg:ment:zhan:2017" role="doc-biblioref">2017</a>)</span>), lxs investigadores de PURE reportaron un análisis de cómo el consumo de varias clases de macronutrientes (incluidas las grasas saturadas y carbohidratos) estaba relacionada con la probabilidad de morir durante el tiempo en que se siguió a las personas. Las personas en el estudio fueron seguidas por una duración <em>mediana</em> de 7.4 años, significando que la mitad de las personas del estudio fueron seguidas por menos y la otra mitad fue seguida por más de 7.4 años. La Figura <a href="introduction.html#fig:PureDeathSatFat">1.1</a> grafica algunos de los datos del estudio (extraídos del documento), mostrando la relación entre el consumo de las grasas saturadas y carbohidratos y el riesgo de morir por cualquier causa.</p>
+<div class="figure"><span style="display:block;" id="fig:PureDeathSatFat"></span>
+<img src="StatsThinking21_files/figure-html/PureDeathSatFat-1.png" alt="Una gráfica de datos del estudio PURE, mostrando la relación entre muerte debido a cualquier causa y la ingesta relativa de grasas saturadas y carbohidratos." width="384" height="50%" />
+<p class="caption">
+Figura 1.1: Una gráfica de datos del estudio PURE, mostrando la relación entre muerte debido a cualquier causa y la ingesta relativa de grasas saturadas y carbohidratos.
+</p>
+</div>
+<!--This plot is based on ten numbers.  To obtain these numbers, the researchers split the group of 135,335 study participants (which we call the "sample") into 5 groups ("quintiles") after ordering them in terms of their intake of either of the nutrients; the first quintile contains the 20% of people with the lowest intake, and the 5th quintile contains the 20% with the highest intake.  The researchers then computed how often people in each of those groups died during the time they were being followed. The figure expresses this in terms of the *relative risk* of dying in comparison to the lowest quintile: If this number is greater than one, it means that people in the group are _more_ likely to die than are people in the lowest quintile, whereas if it's less than one, it means that people in the group are _less_ likely to die. The figure is pretty clear: People who ate more saturated fat were *less* likely to die during the study, with the lowest death rate seen for people who were in the fourth quintile (that is, who ate more fat than the lowest 60% but less than the top 20%).  The opposite is seen for carbohydrates; the more carbs a person ate, the more likely they were to die during the study. This example shows how we can use statistics to *describe* a complex dataset in terms of a much simpler set of numbers; if we had to look at the data from each of the study participants at the same time, we would be overloaded with data and it would be hard to see the pattern that emerges when they are described more simply.-->
+<p>Esta gráfica está basada en diez números. Para obtener estos números, lxs investigadorxs dividieron al grupo de 135,335 participantes (al que llamaremos “muestra”) en 5 grupos (“quintiles”) después de haberlos ordenado en términos de su ingesta nutrimental; el primer quintil contiene el 20% de personas con la menor ingesta, y el 5to quintil contiene el 20% con la mayor ingesta. Lxs investigadorxs luego calcularon qué tan seguido las personas en cada uno de esos grupos había muerto durante el periodo que habían sido estudiadxs. La figura expresa esto en términos del <em>riesgo relativo</em> de morir en comparación al quintil menor: Si este número es mayor que uno, significa que las personas en ese grupo son <em>más</em> propensas a morir que las personas en el quintil menor, mientras que si es menor que uno, significa que las personas en este grupo son <em>menos</em> propensas a morir. La figura es bastante clara: Las personas que comieron más grasas saturadas tenían <em>menor</em> probabilidad de morir durante el estudio, con la menor tasa de muerte observada para las personas que estaban en el cuarto quintil (es decir, quienes comieron más grasa que el 60% más bajo pero menos que el 20% superior). Lo contrario fue observado en la ingesta de carbohidratos; la mayor cantidad de carbohidratos que una persona comió, la mayor probabilidad que tenían de morir durante el estudio. Este ejemplo muestra cómo podemos utilizar estadística para <em>describir</em> una compleja base de datos en términos mucho más sencillos con un conjunto de números; si tenemos que revisar los datos de cada participante del estudio al mismo tiempo, estaríamos saturadxs con datos y sería más complicado observar el patrón que emerge cuando son descritos de una manera más sencilla.</p>
+<!--The numbers in Figure \@ref(fig:PureDeathSatFat) seem to show that deaths decrease with saturated fat and increase with carbohydrate intake, but we also know that there is a lot of uncertainty in the data; there are some people who died early even though they ate a low-carb diet, and, similarly, some people who ate a ton of carbs but lived to a ripe old age.  Given this variability, we want to *decide* whether the relationships that we see in the data are large enough that we wouldn't expect them to occur randomly if there was not truly a relationship between diet and longevity.  Statistics provide us with the tools to make these kinds of decisions, and often people from the outside view this as *the* main purpose of statistics.  But as we will see throughout the book, this need for black-and-white decisions based on fuzzy evidence has often led researchers astray.-->
+<p>Los números en la Figura <a href="introduction.html#fig:PureDeathSatFat">1.1</a> parecen mostrar que las muertes disminuyen con la ingesta de grasas saturadas y aumentan con la ingesta de carbohidratos, pero también sabemos que hay mucha incertidumbre en los datos; hay algunas personas que murieron de manera prematura incluso si tenían una dieta baja en carbohidratos, y, de manera similar, algunas personas que comían muchísimos carbohidratos pero vivieron hasta una edad avanzada. Dada esta variabilidad, queremos <em>decidir</em> si las relaciones que vemos en los datos son lo sucifiente estrechas como para no esperar que ocurran al azar si no hubiera realmente una relación entre la dieta y la longevidad. La estadística nos provee con las herramientas para tomar este tipo de decisones, y a menudo las personas externas ven esto como <em>el</em> principal propósito de la estadística. Pero como veremos a lo largo del libro, esta necesidad de tomar decisiones en blanco y negro basadas en evidencias vagas a menudo ha llevado a lxs investigadores por mal camino.</p>
+<!--Based on the data we would also like to make predictions about future outcomes.  For example, a life insurance company might want to use data about a particular person's intake of fat and carbohydrate to predict how long they are likely to live.  An important aspect of prediction is that it requires us to generalize from the data we already have to some other situation, often in the future; if our conclusions were limited to the specific people in the study at a particular time, then the study would not be very useful.  In general, researchers must assume that their particular sample is representative of a larger *population*, which requires that they obtain the sample in a way that provides an unbiased picture of the population. For example, if the PURE study had recruited all of its participants from religious sects that practice vegetarianism, then we probably wouldn't want to generalize the results to people who follow different dietary standards.-->
+<p>Basándonos en los datos, también nos gustaría hacer predicciones sobre resultados futuros. Por ejemplo, es posible que una compañía de seguros de vida desee usar datos sobre la ingesta de grasas y carbohidratos de una persona en particular para predecir cuánto tiempo es probable que viva. Un aspecto importante de la predicción es que requiere que generalicemos a partir de los datos que ya tenemos a alguna otra situación, a menudo en el futuro; si nuestras conclusiones se limitaran a las personas específicas del estudio en un momento determinado, entonces el estudio no sería muy útil. En general, lxs investigadorxs deben asumir que su muestra particular es representativa de una <em>población</em> más grande, lo que requiere que obtengan la muestra de una manera que proporcione una imagen no sesgada de la población. Por ejemplo, si el estudio PURE hubiera reclutado a todos sus participantes de sectas religiosas que practican el vegetarianismo, probablemente no querríamos generalizar los resultados a personas que siguen diferentes estándares dietéticos.</p>
+<!--## The big ideas of statistics-->
+</div>
+<div id="las-grandes-ideas-de-la-estadística" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Las grandes ideas de la estadística</h2>
+<!--There are a number of very basic ideas that cut through nearly all aspects of statistical thinking.  Several of these are outlined by @stig in his outstanding book "The Seven Pillars of Statistical Wisdom", which I have augmented here.-->
+<p>Hay un número de ideas sumamente básicas que interceptan casi todos los aspectos del pensamiento estadístico. Algunas de ellas son señaladas por <span class="citation">(<a href="#ref-stig" role="doc-biblioref">Stigler 2016</a>)</span> en su increíble libro “Los Siete Pilares de la Sabiduría Estadística,”las cuales he ampliado aquí.</p>
+<!--### Learning from data-->
+<div id="aprender-de-los-datos" class="section level3" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Aprender de los datos</h3>
+<!--One way to think of statistics is as a set of tools that enable us to learn from data.  In any situation, we start with a set of ideas or *hypotheses* about what might be the case.  In the PURE study, the researchers may have started out with the expectation that eating more fat would lead to higher death rates, given the prevailing negative dogma about saturated fats.  Later in the course we will introduce the idea of *prior knowledge*, which is meant to reflect the knowledge that we bring to a situation.  This prior knowledge can vary in its strength, often based on our amount of experience; if I visit a restaurant for the first time, I am likely to have a weak expectation of how good it will be, but if I visit a restaurant where I have eaten ten times before, my expectations will be much stronger. Similarly, if I look at a restaurant review site and see that a restaurant's average rating of four stars is only based on three reviews, I will have a weaker expectation than I would if it was based on 300 reviews.-->
+<p>Una forma de pensar en la estadística es como un conjunto de herramientas que nos permiten aprender de los datos. En cualquier situación, comenzamos con un conjunto de ideas o <em>hipótesis</em> sobre cuál podría ser el caso. En el estudio PURE, lxs investigadorxs pueden haber comenzado con la expectativa de que comer más grasa conduciría a tasas de mortalidad más altas, dado el dogma negativo predominante sobre las grasas saturadas. Más adelante en el curso presentaremos la idea de <em>conocimiento previo</em>, que pretende reflejar el conocimiento que aportamos a una situación. Este conocimiento previo puede variar en su fuerza, a menudo basado en nuestra cantidad de experiencia; si visito un restaurante por primera vez, es probable que tenga una expectativa débil de lo bueno que será, pero si visito un restaurante donde he comido diez veces antes, mis expectativas serán mucho más fuertes. De manera similar, si miro un sitio de reseñas de restaurantes y veo que la calificación promedio de un restaurante de cuatro estrellas se basa solo en tres reseñas, tendré una expectativa más débil de la que tendría si se basara en 300 reseñas.</p>
+<!--Statistics provides us with a way to describe how new data can be best used to update our beliefs, and in this way there are deep links between statistics and psychology. In fact, many theories of human and animal learning from psychology are closely aligned with ideas from the new field of *machine learning*. Machine learning is a field at the interface of statistics and computer science that focuses on how to build computer algorithms that can learn from experience. While statistics and machine learning often try to solve the same problems, researchers from these fields often take very different approaches; the famous statistician Leo Breiman once referred to them as "The Two Cultures" to reflect how different their approaches can be [@breiman2001]. In this book I will try to blend the two cultures together because both approaches provide useful tools for thinking about data.-->
+<p>La estadística nos proporciona una manera de describir cómo se pueden utilizar mejor los nuevos datos para actualizar nuestras creencias y, de esta manera, existen vínculos profundos entre la estadística y la psicología. De hecho, muchas teorías del aprendizaje humano y animal de la psicología están estrechamente alineadas con ideas del nuevo campo del <em>aprendizaje automático</em> (<em>machine learning</em>). El aprendizaje automático es un campo en la interfaz de las estadísticas y la informática que se centra en cómo construir algoritmos informáticos que puedan aprender de la experiencia. Si bien las estadísticas y el aprendizaje automático a menudo intentan resolver los mismos problemas, los investigadores de estos campos suelen adoptar enfoques muy diferentes; el famoso estadístico Leo Breiman una vez se refirió a ellos como “Las dos culturas” para reflejar cuán diferentes pueden ser sus enfoques <span class="citation">(<a href="#ref-breiman2001" role="doc-biblioref">Breiman 2001</a>)</span>. En este libro intentaré combinar las dos culturas porque ambos enfoques proporcionan herramientas útiles para pensar en los datos.</p>
+<!--### Aggregation-->
+</div>
+<div id="agregación-aggregation" class="section level3" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Agregación (<em>aggregation</em>)</h3>
+<!--Another way to think of statistics is as "the science of throwing away data".  In the example of the PURE study above, we took more than 100,000 numbers and condensed them into ten.  It is this kind of *aggregation* that is one of the most important concepts in statistics.  When it was first advanced, this was revolutionary: If we throw out all of the details about every one of the participants, then how can we be sure that we aren't missing something important?-->
+<p>Otra manera de pensar en la estadística es como “la ciencia de tirar datos.” En el ejemplo anterior del estudio PURE, tomamos más de 100,000 números y los condensamos a diez. Es esta clase de <em>agregación</em> la que es uno de los conceptos más importantes de la estadística. Cuando fue desarrollado por primera vez, fue revolucionario: si descartamos todos los detalles sobre cada uno de lxs participantes, ¿cómo podemos estar seguros de que no nos estamos perdiendo algo importante?</p>
+<!--As we will see, statistics provides us ways to characterize the structure of aggregates of data, with theoretical foundations that explain why this usually works well.  However, it's also important to keep in mind that aggregation can go too far, and later we will encounter cases where a summary can provide a very misleading picture of the data being summarized.-->
+<p>Como veremos, la estadística nos proporciona formas de caracterizar la estructura de agregados de datos, con fundamentos teóricos que explican por qué esto suele funcionar bien. Sin embargo, también es importante tener en cuenta que la agregación puede ir demasiado lejos, y más adelante encontraremos casos en los que un resumen puede proporcionar una imagen muy engañosa de los datos que están siendo resumidos.</p>
+<!--### Uncertainty-->
+</div>
+<div id="incertidumbre" class="section level3" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> Incertidumbre</h3>
+<!--The world is an uncertain place. We now know that cigarette smoking causes lung cancer, but this causation is probabilistic: A 68-year-old man who smoked two packs a day for the past 50 years and continues to smoke has a 15% (1 out of 7) risk of getting lung cancer, which is much higher than the chance of lung cancer in a nonsmoker. However, it also means that there will be many people who smoke their entire lives and never get lung cancer.  Statistics provides us with the tools to characterize uncertainty, to make decisions under uncertainty, and to make predictions whose uncertainty we can quantify.-->
+<p>El mundo es un lugar incierto. Ahora sabemos que fumar cigarrillos causa cáncer de pulmón, pero esta causa es probabilística: un hombre de 68 años que ha fumado dos paquetes al día durante los últimos 50 años y sigue fumando tiene un riesgo del 15% (1 de cada 7) de contraer cáncer de pulmón, que es mucho mayor que la probabilidad de cáncer de pulmón en una persona que no fuma. Sin embargo, también significa que habrá muchas personas que fumarán durante toda su vida y nunca tendrán cáncer de pulmón. La estadística nos proporciona las herramientas para caracterizar la incertidumbre, tomar decisiones en condiciones de incertidumbre y realizar predicciones cuya incertidumbre podemos cuantificar.</p>
+<!--One often sees journalists write that scientific researchers have "proven" some hypothesis.  But statistical analysis can never "prove" a hypothesis, in the sense of demonstrating that it must be true (as one would in a logical or mathematical proof).  Statistics can provide us with evidence, but it's always tentative and subject to the uncertainty that is always present in the real world.-->
+<p>A menudo se ve a lxs periodistas escribir que lxs investigadorxs científicxs han “probado” algunas hipótesis. Pero el análisis estadístico nunca puede “probar” una hipótesis, en el sentido de demostrar que debe ser verdadera (como se haría en una prueba lógica o matemática). La estadística puede proporcionarnos evidencias, pero siempre son provisionales y están sujetas a la incertidumbre que siempre está presente en el mundo real.</p>
+<!--### Sampling from a population-->
+</div>
+<div id="muestrear-de-una-población" class="section level3" number="1.4.4">
+<h3><span class="header-section-number">1.4.4</span> Muestrear de una población</h3>
+<!--The concept of aggregation implies that we can make useful insights by collapsing across data -- but how much data do we need?  The idea of *sampling* says that we can summarize an entire population based on just a small number of samples from the population, as long as those samples are obtained in the right way.  For example, the PURE study enrolled a sample of about 135,000 people, but its goal was to provide insights about the billions of humans who make up the population from which those people were sampled. As we already discussed above, the way that the study sample is obtained is critical, as it determines how broadly we can generalize the results. Another fundamental insight about sampling is that while larger samples are always better (in terms of their ability to accurately represent the entire population), there are diminishing returns as the sample gets larger. In fact, the rate at which the benefit of larger samples decreases follows a simple mathematical rule, growing as the square root of the sample size, such that in order to double the quality of our data we need to quadruple the size of our sample.-->
+<p>El concepto de agregación implica que podemos obtener información útil al colapsar los datos, pero ¿cuántos datos necesitamos? La idea de <em>muestreo</em> dice que podemos resumir una población completa basándonos en solo una pequeña cantidad de muestras de la población, siempre que esas muestras se obtengan de la manera correcta. Por ejemplo, el estudio PURE inscribió una muestra de aproximadamente 135,000 personas, pero su objetivo era proporcionar información sobre los miles de millones de seres humanos que componen la población de la que se tomaron muestras. Como ya comentamos anteriormente, la forma en que se obtiene la muestra del estudio es fundamental, ya que determina qué tan ampliamente podemos generalizar los resultados. Otra idea fundamental sobre el muestreo es que, si bien las muestras más grandes son siempre mejores (en términos de su capacidad para representar con precisión a toda la población), hay rendimientos decrecientes a medida que la muestra aumenta. De hecho, la velocidad a la que disminuye el beneficio de muestras más grandes sigue una regla matemática simple, que crece como la raíz cuadrada del tamaño de la muestra, de modo que para duplicar la calidad de nuestros datos necesitamos cuadriplicar el tamaño de nuestra muestra.</p>
+<!--## Causality and statistics-->
+</div>
+</div>
+<div id="causalidad-y-estadística" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Causalidad y estadística</h2>
+<!--The PURE study seemed to provide pretty strong evidence for a positive relationship between eating saturated fat and living longer, but this doesn't tell us what we really want to know: If we eat more saturated fat, will that cause us to live longer? This is because we don't know whether there is a direct causal relationship between eating saturated fat and living longer. The data are consistent with such a relationship, but they are equally consistent with some other factor causing both higher saturated fat and longer life.  For example, it is likely that people who are richer eat more saturated fat and richer people tend to live longer, but their longer life is not necessarily due to fat intake --- it could instead be due to better health care, reduced psychological stress, better food quality, or many other factors.  The PURE study investigators tried to account for these factors, but we can't be certain that their efforts completely removed the effects of other variables.  The fact that other factors may explain the relationship between saturated fat intake and death is an example of why introductory statistics classes often teach that "correlation does not imply causation", though the renowned data visualization expert Edward Tufte has added, "but it sure is a hint."-->
+<p>El estudio PURE pareció proporcionar pruebas bastante sólidas de una relación positiva entre comer grasas saturadas y vivir más tiempo, pero esto no nos dice lo que realmente queremos saber: si comemos más grasas saturadas, ¿nos hará vivir más tiempo? Esto se debe a que no sabemos si existe una relación causal directa entre comer grasas saturadas y vivir más tiempo. Los datos son consistentes con tal relación, pero son igualmente consistentes con algún otro factor que cause tanto una mayor ingesta de grasas saturadas como una vida más larga. Por ejemplo, es probable que las personas que son más ricas consuman más grasas saturadas y las personas más ricas tienden a vivir más tiempo, pero su vida más larga no se debe necesariamente a la ingesta de grasas, sino que podría deberse a una mejor atención de la salud, una reducción del estrés psicológico, mejor calidad de los alimentos o muchos otros factores. Los investigadores del estudio PURE intentaron tener en cuenta estos factores, pero no podemos estar seguros de que sus esfuerzos eliminaron por completo los efectos de otras variables. El hecho de que otros factores puedan explicar la relación entre la ingesta de grasas saturadas y la muerte es un ejemplo de por qué las clases de introducción a la estadística a menudo enseñan que “la correlación no implica causalidad,” aunque el renombrado experto en visualización de datos Edward Tufte ha agregado, “pero seguro que es una pista.”</p>
+<!--Although observational research (like the PURE study) cannot conclusively demonstrate causal relations, we generally think that causation can be demonstrated using studies that experimentally control and manipulate a specific factor.  In medicine, such a study is referred to as a *randomized controlled trial* (RCT). Let's say that we wanted to do an RCT to examine whether increasing saturated fat intake increases life span.  To do this, we would sample a group of people, and then assign them to either a treatment group (which would be told to increase  their saturated fat intake) or a control group (who would be told to keep eating the same as before).  It is essential that we assign the individuals to these groups randomly. Otherwise, people who choose the treatment might be different in some way than people who choose the control group -- for example, they might be more likely to engage in other healthy behaviors as well.  We would then follow the participants over time and see how many people in each group died.  Because we randomized the participants to treatment or control groups, we can be reasonably confident that there are no other differences between the groups that would *confound* the treatment effect; however, we still can't be certain because sometimes randomization yields treatment versus control groups that _do_ vary in some important way.  Researchers often try to address these confounds using statistical analyses, but removing the influence of a confound from the data can be very difficult.-->
+<p>Aunque la investigación observacional (como el estudio PURE) no puede demostrar de manera concluyente relaciones causales, generalmente pensamos que la causalidad se puede demostrar utilizando estudios que controlan y manipulan experimentalmente un factor específico. En medicina, este tipo de estudio se conoce como <em>ensayo controlado aleatorio</em> (ECA, en inglés <em>randomized controlled trial</em>, RCT). Digamos que queríamos hacer un ECA para examinar si el aumentar la ingesta de grasas saturadas aumenta la esperanza de vida. Para hacer esto, tomaríamos muestras de un grupo de personas y luego las asignaríamos a un grupo de tratamiento (al que se le indicaría que aumentara su ingesta de grasas saturadas) o un grupo de control (al que se le diría que siguiera comiendo lo mismo que antes) . Es fundamental que asignemos a los individuos a estos grupos al azar. De lo contrario, las personas que eligen el tratamiento pudieran ser diferentes de alguna manera a las personas que eligen el grupo de control – por ejemplo, pudiera ser más probable que también adopten otros comportamientos saludables. Luego seguiríamos a los participantes a lo largo del tiempo y veríamos cuántas personas de cada grupo murieron. Debido a que asignamos al azar a los participantes a los grupos de tratamiento o de control, podemos estar razonablemente seguros de que no hay otras diferencias entre los grupos que pudieran <em>confundir</em> el efecto del tratamiento; sin embargo, todavía no podemos estar seguros porque a veces la aleatorización produce grupos de tratamiento versus grupos de control que <em>varían</em> de alguna manera importante. Lxs investigadores a menudo intentan abordar estos factores de confusión mediante análisis estadísticos, pero eliminar la influencia de un factor de confusión de los datos puede resultar muy difícil.</p>
+<!--A number of RCTs have examined the question of whether changing saturated fat intake results in better health and longer life.  These trials have focused on *reducing* saturated fat because of the strong dogma amongst nutrition researchers that saturated fat is deadly; most of these researchers would have probably argued that it was not ethical to cause people to eat *more* saturated fat!  However, the RCTs have shown a very consistent pattern: Overall there is no appreciable effect on death rates of reducing saturated fat intake.-->
+<p>Varios ECA han examinado la cuestión de si cambiar la ingesta de grasas saturadas da como resultado una mejor salud y una vida más larga. Estos ensayos se han centrado en <em>reducir</em> las grasas saturadas debido al fuerte dogma entre los investigadores en nutrición de que las grasas saturadas son mortales; la mayoría de estos investigadores probablemente habrían argumentado que no era ético hacer que las personas comieran <em>más</em> grasas saturadas. Sin embargo, los ECA han mostrado un patrón muy consistente: en general, no hay un efecto apreciable sobre las tasas de muerte al reducir la ingesta de grasas saturadas.</p>
+<!--## Learning objectives-->
+</div>
+<div id="objetivos-de-aprendizaje" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Objetivos de aprendizaje</h2>
+<!--Having read this chapter, you should be able to:-->
+<p>Al leer este capítulo, deberías de ser capaz de:</p>
+<!--* Describe the central goals and fundamental concepts of statistics
+* Describe the difference between experimental and observational research with regard to what can be inferred about causality
+* Explain how randomization provides the ability to make inferences about causation.-->
+<ul>
+<li>Describir los objetivos centrales y conceptos fundamentales de la estadística.</li>
+<li>Describir la diferencia entre investigación experimental y observacional con respecto a lo que puede inferir sobre la causalidad.</li>
+<li>Explicar cómo la aleatorización nos provee de la habilidad para hacer inferencias acerca de la causalidad.</li>
+</ul>
+<!--## Suggested readings-->
+</div>
+<div id="lecturas-sugeridas" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Lecturas sugeridas</h2>
+<ul>
+<li><em>The Seven Pillars of Statistical Wisdom</em>, por Stephen Stigler.</li>
+<li><em>The Lady Tasting Tea: How Statistics Revolutionized Science in the Twentieth Century</em>, por David Salsburg.</li>
+<li><em>Naked Statistics: Stripping the Dread from the Data</em>, por Charles Wheelan.</li>
+</ul>
+
+<!--# Working with data-->
+</div>
+</div>
+<h3>Referencias</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-breiman2001" class="csl-entry">
+Breiman, Leo. 2001. <span>“Statistical Modeling: The Two Cultures (with Comments and a Rejoinder by the Author).”</span> <em>Statist. Sci.</em> 16 (3): 199–231. <a href="https://doi.org/10.1214/ss/1009213726">https://doi.org/10.1214/ss/1009213726</a>.
+</div>
+<div id="ref-dehg:ment:zhan:2017" class="csl-entry">
+Dehghan, Mahshid, Andrew Mente, Xiaohe Zhang, Sumathi Swaminathan, Wei Li, Viswanathan Mohan, Romaina Iqbal, et al. 2017. <span>“Associations of Fats and Carbohydrate Intake with Cardiovascular Disease and Mortality in 18 Countries from Five Continents (PURE): A Prospective Cohort Study.”</span> <em>Lancet</em> 390 (10107): 2050–62. <a href="https://doi.org/10.1016/S0140-6736(17)32252-3">https://doi.org/10.1016/S0140-6736(17)32252-3</a>.
+</div>
+<div id="ref-stig" class="csl-entry">
+Stigler, Stephen M. 2016. <em>The Seven Pillars of Statistical Wisdom</em>. Harvard University Press.
+</div>
+<div id="ref-teic:2014" class="csl-entry">
+Teicholz, Nina. 2014. <em>The Big Fat Surprise</em>. Simon &amp; Schuster.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="working-with-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/statsthinking21/statsthinking21-core-spanish/edit/main/01-Intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["StatsThinking21.pdf", "StatsThinking21.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
