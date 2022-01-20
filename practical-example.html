@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capitulo 16 Modelación estadística práctica | Statistical Thinking for the 21st Century</title>
   <meta name="description" content="Un libro sobre estadistica." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capitulo 16 Modelación estadística práctica | Statistical Thinking for the 21st Century" />
   <meta property="og:type" content="book" />
@@ -29,10 +29,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="comparar-medias.html"/>
+<link rel="prev" href="comparing-means.html"/>
 <link rel="next" href="doing-reproducible-research.html"/>
-<script src="book_assets/header-attrs-2.6/header-attrs.js"></script>
-<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<script src="book_assets/header-attrs-2.11/header-attrs.js"></script>
+<script src="book_assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,7 +49,8 @@
 
 
 
-
+<link href="book_assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="book_assets/anchor-sections-1.0.1/anchor-sections.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129414074-1"></script>
 <script>
@@ -126,6 +128,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 </head>
 
 <body>
@@ -146,41 +171,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#un-libro-de-código-abierto-open-source"><i class="fa fa-check"></i><b>0.4</b> Un libro de código abierto (open source)</a></li>
 <li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#agradecimientos"><i class="fa fa-check"></i><b>0.5</b> Agradecimientos</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="introducción.html"><a href="introducción.html#qué-es-el-pensamiento-estadístico"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es el pensamiento estadístico?</a></li>
-<li class="chapter" data-level="1.2" data-path="introducción.html"><a href="introducción.html#lidiar-con-la-ansiedad-estadística"><i class="fa fa-check"></i><b>1.2</b> Lidiar con la ansiedad estadística</a></li>
-<li class="chapter" data-level="1.3" data-path="introducción.html"><a href="introducción.html#qué-puede-hacer-la-estadística-por-nosotrxs"><i class="fa fa-check"></i><b>1.3</b> ¿Qué puede hacer la estadística por nosotrxs?</a></li>
-<li class="chapter" data-level="1.4" data-path="introducción.html"><a href="introducción.html#las-grandes-ideas-de-la-estadística"><i class="fa fa-check"></i><b>1.4</b> Las grandes ideas de la estadística</a>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#qué-es-el-pensamiento-estadístico"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es el pensamiento estadístico?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#lidiar-con-la-ansiedad-estadística"><i class="fa fa-check"></i><b>1.2</b> Lidiar con la ansiedad estadística</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#qué-puede-hacer-la-estadística-por-nosotrxs"><i class="fa fa-check"></i><b>1.3</b> ¿Qué puede hacer la estadística por nosotrxs?</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#las-grandes-ideas-de-la-estadística"><i class="fa fa-check"></i><b>1.4</b> Las grandes ideas de la estadística</a>
 <ul>
-<li class="chapter" data-level="1.4.1" data-path="introducción.html"><a href="introducción.html#aprender-de-los-datos"><i class="fa fa-check"></i><b>1.4.1</b> Aprender de los datos</a></li>
-<li class="chapter" data-level="1.4.2" data-path="introducción.html"><a href="introducción.html#agregación-aggregation"><i class="fa fa-check"></i><b>1.4.2</b> Agregación (<em>aggregation</em>)</a></li>
-<li class="chapter" data-level="1.4.3" data-path="introducción.html"><a href="introducción.html#incertidumbre"><i class="fa fa-check"></i><b>1.4.3</b> Incertidumbre</a></li>
-<li class="chapter" data-level="1.4.4" data-path="introducción.html"><a href="introducción.html#muestrear-de-una-población"><i class="fa fa-check"></i><b>1.4.4</b> Muestrear de una población</a></li>
+<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#aprender-de-los-datos"><i class="fa fa-check"></i><b>1.4.1</b> Aprender de los datos</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#agregación-aggregation"><i class="fa fa-check"></i><b>1.4.2</b> Agregación (<em>aggregation</em>)</a></li>
+<li class="chapter" data-level="1.4.3" data-path="introduction.html"><a href="introduction.html#incertidumbre"><i class="fa fa-check"></i><b>1.4.3</b> Incertidumbre</a></li>
+<li class="chapter" data-level="1.4.4" data-path="introduction.html"><a href="introduction.html#muestrear-de-una-población"><i class="fa fa-check"></i><b>1.4.4</b> Muestrear de una población</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="introducción.html"><a href="introducción.html#causalidad-y-estadística"><i class="fa fa-check"></i><b>1.5</b> Causalidad y estadística</a></li>
-<li class="chapter" data-level="1.6" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>1.6</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="1.7" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>1.7</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#causalidad-y-estadística"><i class="fa fa-check"></i><b>1.5</b> Causalidad y estadística</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>1.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>1.7</b> Lecturas sugeridas</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html"><i class="fa fa-check"></i><b>2</b> Trabajar con Datos</a>
+<li class="chapter" data-level="2" data-path="working-with-data.html"><a href="working-with-data.html"><i class="fa fa-check"></i><b>2</b> Trabajar con Datos</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#qué-son-los-datos"><i class="fa fa-check"></i><b>2.1</b> ¿Qué son los datos?</a>
+<li class="chapter" data-level="2.1" data-path="working-with-data.html"><a href="working-with-data.html#qué-son-los-datos"><i class="fa fa-check"></i><b>2.1</b> ¿Qué son los datos?</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#datos-cualitativos"><i class="fa fa-check"></i><b>2.1.1</b> Datos Cualitativos</a></li>
-<li class="chapter" data-level="2.1.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#datos-cuantitativos"><i class="fa fa-check"></i><b>2.1.2</b> Datos cuantitativos</a></li>
-<li class="chapter" data-level="2.1.3" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#tipos-de-números"><i class="fa fa-check"></i><b>2.1.3</b> Tipos de números</a></li>
+<li class="chapter" data-level="2.1.1" data-path="working-with-data.html"><a href="working-with-data.html#datos-cualitativos"><i class="fa fa-check"></i><b>2.1.1</b> Datos Cualitativos</a></li>
+<li class="chapter" data-level="2.1.2" data-path="working-with-data.html"><a href="working-with-data.html#datos-cuantitativos"><i class="fa fa-check"></i><b>2.1.2</b> Datos cuantitativos</a></li>
+<li class="chapter" data-level="2.1.3" data-path="working-with-data.html"><a href="working-with-data.html#tipos-de-números"><i class="fa fa-check"></i><b>2.1.3</b> Tipos de números</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#mediciones-discretas-versus-continuas"><i class="fa fa-check"></i><b>2.2</b> Mediciones Discretas versus Continuas</a></li>
-<li class="chapter" data-level="2.3" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#qué-constituye-a-una-buena-medición"><i class="fa fa-check"></i><b>2.3</b> ¿Qué constituye a una buena medición?</a>
+<li class="chapter" data-level="2.2" data-path="working-with-data.html"><a href="working-with-data.html#mediciones-discretas-versus-continuas"><i class="fa fa-check"></i><b>2.2</b> Mediciones Discretas versus Continuas</a></li>
+<li class="chapter" data-level="2.3" data-path="working-with-data.html"><a href="working-with-data.html#qué-constituye-a-una-buena-medición"><i class="fa fa-check"></i><b>2.3</b> ¿Qué constituye a una buena medición?</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#confiabilidad"><i class="fa fa-check"></i><b>2.3.1</b> Confiabilidad</a></li>
-<li class="chapter" data-level="2.3.2" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#validez"><i class="fa fa-check"></i><b>2.3.2</b> Validez</a></li>
+<li class="chapter" data-level="2.3.1" data-path="working-with-data.html"><a href="working-with-data.html#confiabilidad"><i class="fa fa-check"></i><b>2.3.1</b> Confiabilidad</a></li>
+<li class="chapter" data-level="2.3.2" data-path="working-with-data.html"><a href="working-with-data.html#validez"><i class="fa fa-check"></i><b>2.3.2</b> Validez</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>2.4</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="2.5" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>2.5</b> Lecturas sugeridas</a></li>
-<li class="chapter" data-level="2.6" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>2.6</b> Apéndice</a>
+<li class="chapter" data-level="2.4" data-path="working-with-data.html"><a href="working-with-data.html#objetivos-de-aprendizaje-1"><i class="fa fa-check"></i><b>2.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="2.5" data-path="working-with-data.html"><a href="working-with-data.html#lecturas-sugeridas-1"><i class="fa fa-check"></i><b>2.5</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="2.6" data-path="working-with-data.html"><a href="working-with-data.html#apéndice"><i class="fa fa-check"></i><b>2.6</b> Apéndice</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#escalas-de-medición"><i class="fa fa-check"></i><b>2.6.1</b> Escalas de medición</a></li>
+<li class="chapter" data-level="2.6.1" data-path="working-with-data.html"><a href="working-with-data.html#escalas-de-medición"><i class="fa fa-check"></i><b>2.6.1</b> Escalas de medición</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="summarizing-data.html"><a href="summarizing-data.html"><i class="fa fa-check"></i><b>3</b> Resumir datos</a>
@@ -198,8 +223,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3.1" data-path="summarizing-data.html"><a href="summarizing-data.html#asimetría-sesgo"><i class="fa fa-check"></i><b>3.3.1</b> Asimetría (sesgo)</a></li>
 <li class="chapter" data-level="3.3.2" data-path="summarizing-data.html"><a href="summarizing-data.html#distribuciones-con-colas-largas"><i class="fa fa-check"></i><b>3.3.2</b> Distribuciones con colas largas</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>3.4</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="3.5" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>3.5</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="3.4" data-path="summarizing-data.html"><a href="summarizing-data.html#objetivos-de-aprendizaje-2"><i class="fa fa-check"></i><b>3.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="3.5" data-path="summarizing-data.html"><a href="summarizing-data.html#lecturas-sugeridas-2"><i class="fa fa-check"></i><b>3.5</b> Lecturas sugeridas</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>4</b> Visualización de Datos</a>
 <ul>
@@ -216,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="data-visualization.html"><a href="data-visualization.html#limitaciones-perceptuales"><i class="fa fa-check"></i><b>4.3.1</b> Limitaciones perceptuales</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="data-visualization.html"><a href="data-visualization.html#corrigiendo-otros-factores"><i class="fa fa-check"></i><b>4.4</b> Corrigiendo otros factores</a></li>
-<li class="chapter" data-level="4.5" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>4.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="4.5" data-path="data-visualization.html"><a href="data-visualization.html#objetivos-de-aprendizaje-3"><i class="fa fa-check"></i><b>4.5</b> Objetivos de aprendizaje</a></li>
 <li class="chapter" data-level="4.6" data-path="data-visualization.html"><a href="data-visualization.html#lecturas-y-videos-sugeridos"><i class="fa fa-check"></i><b>4.6</b> Lecturas y videos sugeridos</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="fitting-models.html"><a href="fitting-models.html"><i class="fa fa-check"></i><b>5</b> Ajustar modelos a datos</a>
@@ -228,22 +253,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="fitting-models.html"><a href="fitting-models.html#qué-hace-que-un-modelo-sea-bueno"><i class="fa fa-check"></i><b>5.3</b> ¿Qué hace que un modelo sea “bueno?”</a></li>
 <li class="chapter" data-level="5.4" data-path="fitting-models.html"><a href="fitting-models.html#overfitting"><i class="fa fa-check"></i><b>5.4</b> ¿Un modelo puede ser demasiado bueno?</a></li>
-<li class="chapter" data-level="5.5" data-path="fitting-models.html"><a href="fitting-models.html#el-modelo-más-simple-la-media"><i class="fa fa-check"></i><b>5.5</b> El modelo más simple: La media</a>
+<li class="chapter" data-level="5.5" data-path="fitting-models.html"><a href="fitting-models.html#resumir-datos-usando-la-media"><i class="fa fa-check"></i><b>5.5</b> Resumir datos usando la media</a></li>
+<li class="chapter" data-level="5.6" data-path="fitting-models.html"><a href="fitting-models.html#resumir-datos-robústamente-usando-la-mediana"><i class="fa fa-check"></i><b>5.6</b> Resumir datos robústamente usando la mediana</a></li>
+<li class="chapter" data-level="5.7" data-path="fitting-models.html"><a href="fitting-models.html#la-moda"><i class="fa fa-check"></i><b>5.7</b> La moda</a></li>
+<li class="chapter" data-level="5.8" data-path="fitting-models.html"><a href="fitting-models.html#variabilidad-qué-tan-bien-se-ajusta-la-media-a-los-datos"><i class="fa fa-check"></i><b>5.8</b> Variabilidad: ¿Qué tan bien se ajusta la media a los datos?</a></li>
+<li class="chapter" data-level="5.9" data-path="fitting-models.html"><a href="fitting-models.html#usar-simulaciones-para-entender-la-estadística"><i class="fa fa-check"></i><b>5.9</b> Usar simulaciones para entender la estadística</a></li>
+<li class="chapter" data-level="5.10" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-z"><i class="fa fa-check"></i><b>5.10</b> Puntajes Z</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="fitting-models.html"><a href="fitting-models.html#la-mediana"><i class="fa fa-check"></i><b>5.5.1</b> La mediana</a></li>
+<li class="chapter" data-level="5.10.1" data-path="fitting-models.html"><a href="fitting-models.html#interpretando-puntajes-z"><i class="fa fa-check"></i><b>5.10.1</b> Interpretando Puntajes Z</a></li>
+<li class="chapter" data-level="5.10.2" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-estandarizados"><i class="fa fa-check"></i><b>5.10.2</b> Puntajes Estandarizados</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="fitting-models.html"><a href="fitting-models.html#la-moda"><i class="fa fa-check"></i><b>5.6</b> La moda</a></li>
-<li class="chapter" data-level="5.7" data-path="fitting-models.html"><a href="fitting-models.html#variabilidad-qué-tan-bien-se-ajusta-la-media-a-los-datos"><i class="fa fa-check"></i><b>5.7</b> Variabilidad: ¿Qué tan bien se ajusta la media a los datos?</a></li>
-<li class="chapter" data-level="5.8" data-path="fitting-models.html"><a href="fitting-models.html#usar-simulaciones-para-entender-la-estadística"><i class="fa fa-check"></i><b>5.8</b> Usar simulaciones para entender la estadística</a></li>
-<li class="chapter" data-level="5.9" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-z"><i class="fa fa-check"></i><b>5.9</b> Puntajes Z</a>
+<li class="chapter" data-level="5.11" data-path="fitting-models.html"><a href="fitting-models.html#objetivos-de-aprendizaje-4"><i class="fa fa-check"></i><b>5.11</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="5.12" data-path="fitting-models.html"><a href="fitting-models.html#apéndice-1"><i class="fa fa-check"></i><b>5.12</b> Apéndice</a>
 <ul>
-<li class="chapter" data-level="5.9.1" data-path="fitting-models.html"><a href="fitting-models.html#interpretando-puntajes-z"><i class="fa fa-check"></i><b>5.9.1</b> Interpretando Puntajes Z</a></li>
-<li class="chapter" data-level="5.9.2" data-path="fitting-models.html"><a href="fitting-models.html#puntajes-estandarizados"><i class="fa fa-check"></i><b>5.9.2</b> Puntajes Estandarizados</a></li>
-</ul></li>
-<li class="chapter" data-level="5.10" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>5.10</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="5.11" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>5.11</b> Apéndice</a>
-<ul>
-<li class="chapter" data-level="5.11.1" data-path="fitting-models.html"><a href="fitting-models.html#proof-that-the-sum-of-errors-from-the-mean-is-zero"><i class="fa fa-check"></i><b>5.11.1</b> Proof that the sum of errors from the Mean is zero"</a></li>
+<li class="chapter" data-level="5.12.1" data-path="fitting-models.html"><a href="fitting-models.html#prueba-de-que-la-suma-de-los-errores-a-partir-de-la-media-es-igual-a-cero"><i class="fa fa-check"></i><b>5.12.1</b> Prueba de que la suma de los errores a partir de la media es igual a cero</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>6</b> Probabilidad</a>
@@ -264,12 +287,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#calcular-probabilidades-condicionales-a-partir-de-los-datos"><i class="fa fa-check"></i><b>6.5</b> Calcular probabilidades condicionales a partir de los datos</a></li>
 <li class="chapter" data-level="6.6" data-path="probability.html"><a href="probability.html#independencia"><i class="fa fa-check"></i><b>6.6</b> Independencia</a></li>
 <li class="chapter" data-level="6.7" data-path="probability.html"><a href="probability.html#bayestheorem"><i class="fa fa-check"></i><b>6.7</b> Invertir una probabilidad condicional: regla de Bayes</a></li>
-<li class="chapter" data-level="6.8" data-path="introducción.html"><a href="introducción.html#aprender-de-los-datos"><i class="fa fa-check"></i><b>6.8</b> Aprender de los datos</a></li>
+<li class="chapter" data-level="6.8" data-path="probability.html"><a href="probability.html#aprender-de-los-datos-1"><i class="fa fa-check"></i><b>6.8</b> Aprender de los datos</a></li>
 <li class="chapter" data-level="6.9" data-path="probability.html"><a href="probability.html#posibilidades-odds-y-razón-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>6.9</b> Posibilidades (odds) y razón de posibilidades (odds ratios)</a></li>
 <li class="chapter" data-level="6.10" data-path="probability.html"><a href="probability.html#qué-significan-las-probabilidades"><i class="fa fa-check"></i><b>6.10</b> ¿Qué significan las probabilidades?</a></li>
-<li class="chapter" data-level="6.11" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>6.11</b> Objetivos de Aprendizaje</a></li>
-<li class="chapter" data-level="6.12" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>6.12</b> Lecturas sugeridas</a></li>
-<li class="chapter" data-level="6.13" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>6.13</b> Apéndice</a>
+<li class="chapter" data-level="6.11" data-path="probability.html"><a href="probability.html#objetivos-de-aprendizaje-5"><i class="fa fa-check"></i><b>6.11</b> Objetivos de Aprendizaje</a></li>
+<li class="chapter" data-level="6.12" data-path="probability.html"><a href="probability.html#lecturas-sugeridas-3"><i class="fa fa-check"></i><b>6.12</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="6.13" data-path="probability.html"><a href="probability.html#apéndice-2"><i class="fa fa-check"></i><b>6.13</b> Apéndice</a>
 <ul>
 <li class="chapter" data-level="6.13.1" data-path="probability.html"><a href="probability.html#derivación-de-la-regla-de-bayes"><i class="fa fa-check"></i><b>6.13.1</b> Derivación de la regla de Bayes</a></li>
 </ul></li>
@@ -280,22 +303,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="sampling.html"><a href="sampling.html#samplingerror"><i class="fa fa-check"></i><b>7.2</b> Error de muestreo</a></li>
 <li class="chapter" data-level="7.3" data-path="sampling.html"><a href="sampling.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>7.3</b> Error estándar de la media</a></li>
 <li class="chapter" data-level="7.4" data-path="sampling.html"><a href="sampling.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>7.4</b> El teorema del límite central</a></li>
-<li class="chapter" data-level="7.5" data-path="sampling.html"><a href="sampling.html#confidence-intervals"><i class="fa fa-check"></i><b>7.5</b> Intervalos de confianza</a></li>
-<li class="chapter" data-level="7.6" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>7.6</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="7.7" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>7.7</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="7.5" data-path="sampling.html"><a href="sampling.html#objetivos-de-aprendizaje-6"><i class="fa fa-check"></i><b>7.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="7.6" data-path="sampling.html"><a href="sampling.html#lecturas-sugeridas-4"><i class="fa fa-check"></i><b>7.6</b> Lecturas sugeridas</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html"><i class="fa fa-check"></i><b>8</b> Remuestreo y Simulación</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#simulación-monte-carlo"><i class="fa fa-check"></i><b>8.1</b> Simulación Monte Carlo</a></li>
+<li class="chapter" data-level="8.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#simulación-montecarlo"><i class="fa fa-check"></i><b>8.1</b> Simulación Montecarlo</a></li>
 <li class="chapter" data-level="8.2" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#aleatoriedad-en-estadística"><i class="fa fa-check"></i><b>8.2</b> Aleatoriedad en Estadística</a></li>
 <li class="chapter" data-level="8.3" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#generando-números-aleatorios"><i class="fa fa-check"></i><b>8.3</b> Generando números aleatorios</a></li>
 <li class="chapter" data-level="8.4" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#utilizando-una-simulación-con-el-método-de-montecarlo"><i class="fa fa-check"></i><b>8.4</b> Utilizando una simulación con el Método de Montecarlo</a></li>
-<li class="chapter" data-level="8.5" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#usando-simulaciones-para-estadística-the-bootstrap"><i class="fa fa-check"></i><b>8.5</b> Usando simulaciones para estadística: The bootstrap</a>
+<li class="chapter" data-level="8.5" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#usando-simulaciones-para-estadística-bootstrap"><i class="fa fa-check"></i><b>8.5</b> Usando simulaciones para estadística: bootstrap</a>
 <ul>
 <li class="chapter" data-level="8.5.1" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#calculando-el-bootstrap"><i class="fa fa-check"></i><b>8.5.1</b> Calculando el bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>8.6</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="8.7" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>8.7</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="8.6" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#objetivos-de-aprendizaje-7"><i class="fa fa-check"></i><b>8.6</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="8.7" data-path="resampling-and-simulation.html"><a href="resampling-and-simulation.html#lecturas-sugeridas-5"><i class="fa fa-check"></i><b>8.7</b> Lecturas sugeridas</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>9</b> Prueba de hipótesis</a>
 <ul>
@@ -307,13 +329,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-2-especifica-las-hipótesis-nula-y-alternativa"><i class="fa fa-check"></i><b>9.3.2</b> Paso 2: Especifica las hipótesis nula y alternativa</a></li>
 <li class="chapter" data-level="9.3.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-3-recolectar-datos"><i class="fa fa-check"></i><b>9.3.3</b> Paso 3: Recolectar datos</a></li>
 <li class="chapter" data-level="9.3.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-4-ajusta-un-modelo-a-los-datos-y-calcula-el-estadístico-de-prueba"><i class="fa fa-check"></i><b>9.3.4</b> Paso 4: Ajusta un modelo a los datos y calcula el estadístico de prueba</a></li>
-<li class="chapter" data-level="9.3.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-5-determinar-la-probabilidad-de-los-datos-bajo-la-hipótesis-nula"><i class="fa fa-check"></i><b>9.3.5</b> Paso 5: Determinar la probabilidad de los datos bajo la hipótesis nula</a></li>
+<li class="chapter" data-level="9.3.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-5-determinar-la-probabilidad-de-los-resultados-observados-bajo-la-hipótesis-nula"><i class="fa fa-check"></i><b>9.3.5</b> Paso 5: Determinar la probabilidad de los resultados observados bajo la hipótesis nula</a></li>
 <li class="chapter" data-level="9.3.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paso-6-evalúa-la-significatividad-estadística-del-resultado"><i class="fa fa-check"></i><b>9.3.6</b> Paso 6: Evalúa la “significatividad estadística” del resultado</a></li>
 <li class="chapter" data-level="9.3.7" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#qué-significa-un-resultado-significativo"><i class="fa fa-check"></i><b>9.3.7</b> ¿Qué significa un resultado significativo?</a></li>
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#nhst-en-un-contexto-moderno-pruebas-múltiples"><i class="fa fa-check"></i><b>9.4</b> NHST en un contexto moderno: Pruebas múltiples</a></li>
-<li class="chapter" data-level="9.5" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>9.5</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="9.6" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>9.6</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="9.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#objetivos-de-aprendizaje-8"><i class="fa fa-check"></i><b>9.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="9.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lecturas-sugeridas-6"><i class="fa fa-check"></i><b>9.6</b> Lecturas sugeridas</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html"><i class="fa fa-check"></i><b>10</b> Cuantificar efectos y diseñar estudios</a>
 <ul>
@@ -329,133 +351,133 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="10.2.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#d-de-cohen"><i class="fa fa-check"></i><b>10.2.1</b> D de Cohen</a></li>
 <li class="chapter" data-level="10.2.2" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#r-de-pearson"><i class="fa fa-check"></i><b>10.2.2</b> r de Pearson</a></li>
-<li class="chapter" data-level="10.2.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#razón-de-probabilidades-odds-ratio"><i class="fa fa-check"></i><b>10.2.3</b> Razón de probabilidades (odds ratio)</a></li>
+<li class="chapter" data-level="10.2.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#razón-de-posibilidades-odds-ratio"><i class="fa fa-check"></i><b>10.2.3</b> Razón de posibilidades (odds ratio)</a></li>
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#statistical-power"><i class="fa fa-check"></i><b>10.3</b> Poder estadístico</a>
 <ul>
 <li class="chapter" data-level="10.3.1" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#análisis-de-poder"><i class="fa fa-check"></i><b>10.3.1</b> Análisis de poder</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>10.4</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="10.5" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>10.5</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="10.4" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#objetivos-de-aprendizaje-9"><i class="fa fa-check"></i><b>10.4</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="10.5" data-path="ci-effect-size-power.html"><a href="ci-effect-size-power.html#lecturas-sugeridas-7"><i class="fa fa-check"></i><b>10.5</b> Lecturas sugeridas</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html"><i class="fa fa-check"></i><b>11</b> Estadística Bayesiana</a>
+<li class="chapter" data-level="11" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>11</b> Estadística Bayesiana</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#modelos-generativos"><i class="fa fa-check"></i><b>11.1</b> Modelos Generativos</a></li>
-<li class="chapter" data-level="11.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#el-teorema-de-bayes-y-la-inferencia-inversa"><i class="fa fa-check"></i><b>11.2</b> El Teorema de Bayes y la Inferencia Inversa</a></li>
-<li class="chapter" data-level="11.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#doing-bayesian-estimation"><i class="fa fa-check"></i><b>11.3</b> Haciendo estimaciones Bayesianas</a>
+<li class="chapter" data-level="11.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#modelos-generativos"><i class="fa fa-check"></i><b>11.1</b> Modelos Generativos</a></li>
+<li class="chapter" data-level="11.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#el-teorema-de-bayes-y-la-inferencia-inversa"><i class="fa fa-check"></i><b>11.2</b> El Teorema de Bayes y la Inferencia Inversa</a></li>
+<li class="chapter" data-level="11.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#doing-bayesian-estimation"><i class="fa fa-check"></i><b>11.3</b> Haciendo estimaciones Bayesianas</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#especificar-la-probabilidad-previa"><i class="fa fa-check"></i><b>11.3.1</b> Especificar la probabilidad previa</a></li>
-<li class="chapter" data-level="11.3.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#recolectar-los-datos"><i class="fa fa-check"></i><b>11.3.2</b> Recolectar los datos</a></li>
-<li class="chapter" data-level="11.3.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad"><i class="fa fa-check"></i><b>11.3.3</b> Calcular la probabilidad</a></li>
-<li class="chapter" data-level="11.3.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-marginal"><i class="fa fa-check"></i><b>11.3.4</b> Calcular la probabilidad marginal</a></li>
-<li class="chapter" data-level="11.3.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.3.5</b> Calcular la probabilidad posterior</a></li>
+<li class="chapter" data-level="11.3.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#especificar-la-probabilidad-previa"><i class="fa fa-check"></i><b>11.3.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.3.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#recolectar-los-datos"><i class="fa fa-check"></i><b>11.3.2</b> Recolectar los datos</a></li>
+<li class="chapter" data-level="11.3.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-likelihood"><i class="fa fa-check"></i><b>11.3.3</b> Calcular la probabilidad (likelihood)</a></li>
+<li class="chapter" data-level="11.3.4" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-marginal-marginal-likelihood"><i class="fa fa-check"></i><b>11.3.4</b> Calcular la probabilidad marginal (marginal likelihood)</a></li>
+<li class="chapter" data-level="11.3.5" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.3.5</b> Calcular la probabilidad posterior</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#estimating-posterior-distributions"><i class="fa fa-check"></i><b>11.4</b> Estimar distribuciones posteriores</a>
+<li class="chapter" data-level="11.4" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#estimating-posterior-distributions"><i class="fa fa-check"></i><b>11.4</b> Estimar distribuciones posteriores</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#especificar-la-probabilidad-previa-1"><i class="fa fa-check"></i><b>11.4.1</b> Especificar la probabilidad previa</a></li>
-<li class="chapter" data-level="11.4.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#recolectar-algunos-datos"><i class="fa fa-check"></i><b>11.4.2</b> Recolectar algunos datos</a></li>
-<li class="chapter" data-level="11.4.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-1"><i class="fa fa-check"></i><b>11.4.3</b> Calcular la probabilidad</a></li>
-<li class="chapter" data-level="11.4.4" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calcular-la-probabilidad-marginal-1"><i class="fa fa-check"></i><b>11.4.4</b> Calcular la probabilidad marginal</a></li>
-<li class="chapter" data-level="11.4.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#calculando-la-probabilidad-posterior"><i class="fa fa-check"></i><b>11.4.5</b> Calculando la probabilidad posterior</a></li>
-<li class="chapter" data-level="11.4.6" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#estimación-máxima-a-posteriori-map-por-sus-siglas-en-inglés"><i class="fa fa-check"></i><b>11.4.6</b> Estimación máxima a posteriori (MAP, por sus siglas en inglés)</a></li>
-<li class="chapter" data-level="11.4.7" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#intervalos-de-credibilidad"><i class="fa fa-check"></i><b>11.4.7</b> Intervalos de credibilidad</a></li>
-<li class="chapter" data-level="11.4.8" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#efectos-de-diferentes-probabilidades-previas"><i class="fa fa-check"></i><b>11.4.8</b> Efectos de diferentes probabilidades previas</a></li>
+<li class="chapter" data-level="11.4.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#especificar-la-probabilidad-previa-1"><i class="fa fa-check"></i><b>11.4.1</b> Especificar la probabilidad previa</a></li>
+<li class="chapter" data-level="11.4.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#recolectar-algunos-datos"><i class="fa fa-check"></i><b>11.4.2</b> Recolectar algunos datos</a></li>
+<li class="chapter" data-level="11.4.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-likelihood-1"><i class="fa fa-check"></i><b>11.4.3</b> Calcular la probabilidad (likelihood)</a></li>
+<li class="chapter" data-level="11.4.4" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-marginal"><i class="fa fa-check"></i><b>11.4.4</b> Calcular la probabilidad marginal</a></li>
+<li class="chapter" data-level="11.4.5" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#calcular-la-probabilidad-posterior-1"><i class="fa fa-check"></i><b>11.4.5</b> Calcular la probabilidad posterior</a></li>
+<li class="chapter" data-level="11.4.6" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#estimación-máxima-a-posteriori-map-maximum-a-posteriori"><i class="fa fa-check"></i><b>11.4.6</b> Estimación máxima a posteriori (MAP, maximum a posteriori)</a></li>
+<li class="chapter" data-level="11.4.7" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#intervalos-de-credibilidad"><i class="fa fa-check"></i><b>11.4.7</b> Intervalos de credibilidad</a></li>
+<li class="chapter" data-level="11.4.8" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#efectos-de-diferentes-probabilidades-previas"><i class="fa fa-check"></i><b>11.4.8</b> Efectos de diferentes probabilidades previas</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#elegir-una-probabilidad-previa"><i class="fa fa-check"></i><b>11.5</b> Elegir una probabilidad previa</a></li>
-<li class="chapter" data-level="11.6" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#prueba-de-hipótesis-bayesiana"><i class="fa fa-check"></i><b>11.6</b> Prueba de hipótesis Bayesiana</a>
+<li class="chapter" data-level="11.5" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#elegir-una-probabilidad-previa"><i class="fa fa-check"></i><b>11.5</b> Elegir una probabilidad previa</a></li>
+<li class="chapter" data-level="11.6" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#prueba-de-hipótesis-bayesiana"><i class="fa fa-check"></i><b>11.6</b> Prueba de hipótesis Bayesiana</a>
 <ul>
-<li class="chapter" data-level="11.6.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#Bayes-factors"><i class="fa fa-check"></i><b>11.6.1</b> Factores de Bayes</a></li>
-<li class="chapter" data-level="11.6.2" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#factores-de-bayes-para-hipótesis-estadísticas"><i class="fa fa-check"></i><b>11.6.2</b> Factores de Bayes para hipótesis estadísticas</a></li>
-<li class="chapter" data-level="11.6.3" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#evaluar-evidencia-a-favor-de-la-hipótesis-nula"><i class="fa fa-check"></i><b>11.6.3</b> Evaluar evidencia a favor de la hipótesis nula</a></li>
+<li class="chapter" data-level="11.6.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#Bayes-factors"><i class="fa fa-check"></i><b>11.6.1</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="11.6.2" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#factores-de-bayes-para-hipótesis-estadísticas"><i class="fa fa-check"></i><b>11.6.2</b> Factores de Bayes para hipótesis estadísticas</a></li>
+<li class="chapter" data-level="11.6.3" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#evaluar-evidencia-a-favor-de-la-hipótesis-nula"><i class="fa fa-check"></i><b>11.6.3</b> Evaluar evidencia a favor de la hipótesis nula</a></li>
 </ul></li>
-<li class="chapter" data-level="11.7" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>11.7</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="11.8" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#suggested-readings"><i class="fa fa-check"></i><b>11.8</b> Suggested readings</a></li>
-<li class="chapter" data-level="11.9" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>11.9</b> Apéndice:</a>
+<li class="chapter" data-level="11.7" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#objetivos-de-aprendizaje-10"><i class="fa fa-check"></i><b>11.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="11.8" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#lecturas-sugeridas-8"><i class="fa fa-check"></i><b>11.8</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="11.9" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#apéndice-3"><i class="fa fa-check"></i><b>11.9</b> Apéndice:</a>
 <ul>
-<li class="chapter" data-level="11.9.1" data-path="estadística-bayesiana.html"><a href="estadística-bayesiana.html#muestreo-de-rechazo"><i class="fa fa-check"></i><b>11.9.1</b> Muestreo de rechazo</a></li>
+<li class="chapter" data-level="11.9.1" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html#muestreo-de-rechazo"><i class="fa fa-check"></i><b>11.9.1</b> Muestreo de rechazo</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html"><i class="fa fa-check"></i><b>12</b> Modelar relaciones categóricas</a>
+<li class="chapter" data-level="12" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html"><i class="fa fa-check"></i><b>12</b> Modelar relaciones categóricas</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#ejemplo-colores-de-dulces"><i class="fa fa-check"></i><b>12.1</b> Ejemplo: Colores de dulces</a></li>
-<li class="chapter" data-level="12.2" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#chi-squared-test"><i class="fa fa-check"></i><b>12.2</b> Prueba Ji-cuadrada de Pearson</a></li>
-<li class="chapter" data-level="12.3" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#two-way-test"><i class="fa fa-check"></i><b>12.3</b> Tablas de contingencia y la prueba de dos vías</a></li>
-<li class="chapter" data-level="12.4" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#residuales-estandarizados"><i class="fa fa-check"></i><b>12.4</b> Residuales estandarizados</a></li>
-<li class="chapter" data-level="12.5" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#razones-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>12.5</b> Razones de posibilidades (odds ratios)</a></li>
-<li class="chapter" data-level="12.6" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#factores-de-bayes"><i class="fa fa-check"></i><b>12.6</b> Factores de Bayes</a></li>
-<li class="chapter" data-level="12.7" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#análisis-categórico-más-allá-de-la-tabla-2-x-2"><i class="fa fa-check"></i><b>12.7</b> Análisis categórico más allá de la tabla 2 X 2</a></li>
-<li class="chapter" data-level="12.8" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#cuídate-de-la-paradoja-de-simpson"><i class="fa fa-check"></i><b>12.8</b> Cuídate de la paradoja de Simpson</a></li>
-<li class="chapter" data-level="12.9" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>12.9</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="12.10" data-path="modelar-relaciones-categóricas.html"><a href="modelar-relaciones-categóricas.html#lecturas-adicionales"><i class="fa fa-check"></i><b>12.10</b> Lecturas adicionales</a></li>
+<li class="chapter" data-level="12.1" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#ejemplo-dulces-de-colores"><i class="fa fa-check"></i><b>12.1</b> Ejemplo: Dulces de colores</a></li>
+<li class="chapter" data-level="12.2" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#chi-squared-test"><i class="fa fa-check"></i><b>12.2</b> Prueba Ji-cuadrada de Pearson</a></li>
+<li class="chapter" data-level="12.3" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#two-way-test"><i class="fa fa-check"></i><b>12.3</b> Tablas de contingencia y la prueba de dos vías</a></li>
+<li class="chapter" data-level="12.4" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#residuales-estandarizados-standardized-residuales"><i class="fa fa-check"></i><b>12.4</b> Residuales estandarizados (standardized residuales)</a></li>
+<li class="chapter" data-level="12.5" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#razones-de-posibilidades-odds-ratios"><i class="fa fa-check"></i><b>12.5</b> Razones de posibilidades (odds ratios)</a></li>
+<li class="chapter" data-level="12.6" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#factores-de-bayes"><i class="fa fa-check"></i><b>12.6</b> Factores de Bayes</a></li>
+<li class="chapter" data-level="12.7" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#análisis-categóricos-más-allá-de-la-tabla-2-x-2"><i class="fa fa-check"></i><b>12.7</b> Análisis categóricos más allá de la tabla 2 X 2</a></li>
+<li class="chapter" data-level="12.8" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#cuídate-de-la-paradoja-de-simpson"><i class="fa fa-check"></i><b>12.8</b> Cuídate de la paradoja de Simpson</a></li>
+<li class="chapter" data-level="12.9" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#objetivos-de-aprendizaje-11"><i class="fa fa-check"></i><b>12.9</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="12.10" data-path="modeling-categorical-relationships.html"><a href="modeling-categorical-relationships.html#lecturas-adicionales"><i class="fa fa-check"></i><b>12.10</b> Lecturas adicionales</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html"><i class="fa fa-check"></i><b>13</b> Modelar relaciones continuas</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#un-ejemplo-crímenes-de-odio-y-la-inequidad-de-ingreso"><i class="fa fa-check"></i><b>13.1</b> Un ejemplo: Crímenes de odio y la inequidad de ingreso</a></li>
-<li class="chapter" data-level="13.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#la-inequidad-de-ingreso-está-relacionada-a-los-crímenes-de-odio"><i class="fa fa-check"></i><b>13.2</b> ¿La inequidad de ingreso está relacionada a los crímenes de odio?</a></li>
-<li class="chapter" data-level="13.3" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#covariance-and-correlation"><i class="fa fa-check"></i><b>13.3</b> Covarianza y la correlación</a>
+<li class="chapter" data-level="13.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#un-ejemplo-crímenes-de-odio-y-desigualdad-de-ingreso"><i class="fa fa-check"></i><b>13.1</b> Un ejemplo: Crímenes de odio y desigualdad de ingreso</a></li>
+<li class="chapter" data-level="13.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#la-desigualdad-de-ingreso-está-relacionada-con-los-crímenes-de-odio"><i class="fa fa-check"></i><b>13.2</b> ¿La desigualdad de ingreso está relacionada con los crímenes de odio?</a></li>
+<li class="chapter" data-level="13.3" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#covariance-and-correlation"><i class="fa fa-check"></i><b>13.3</b> Covarianza y correlación</a>
 <ul>
 <li class="chapter" data-level="13.3.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#prueba-de-hipótesis-para-correlaciones"><i class="fa fa-check"></i><b>13.3.1</b> Prueba de hipótesis para correlaciones</a></li>
-<li class="chapter" data-level="13.3.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#robust-correlations"><i class="fa fa-check"></i><b>13.3.2</b> Correlaciones Robustas</a></li>
+<li class="chapter" data-level="13.3.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#robust-correlations"><i class="fa fa-check"></i><b>13.3.2</b> Correlaciones robustas</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#correlación-y-causalidad"><i class="fa fa-check"></i><b>13.4</b> Correlación y causalidad</a>
 <ul>
 <li class="chapter" data-level="13.4.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#gráficas-causales"><i class="fa fa-check"></i><b>13.4.1</b> Gráficas causales</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>13.5</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="13.6" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>13.6</b> Lecturas sugeridas</a></li>
-<li class="chapter" data-level="13.7" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>13.7</b> Apéndice:</a>
+<li class="chapter" data-level="13.5" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#objetivos-de-aprendizaje-12"><i class="fa fa-check"></i><b>13.5</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="13.6" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#lecturas-sugeridas-9"><i class="fa fa-check"></i><b>13.6</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="13.7" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#apéndice-4"><i class="fa fa-check"></i><b>13.7</b> Apéndice:</a>
 <ul>
-<li class="chapter" data-level="13.7.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#cuantificando-la-inequidad-el-índice-gini"><i class="fa fa-check"></i><b>13.7.1</b> Cuantificando la inequidad: El índice Gini</a></li>
+<li class="chapter" data-level="13.7.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#cuantificando-la-desigualdad-el-índice-gini"><i class="fa fa-check"></i><b>13.7.1</b> Cuantificando la desigualdad: El índice Gini</a></li>
 <li class="chapter" data-level="13.7.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#análisis-de-correlación-bayesiana"><i class="fa fa-check"></i><b>13.7.2</b> Análisis de correlación bayesiana</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html"><i class="fa fa-check"></i><b>14</b> El Modelo Lineal General</a>
+<li class="chapter" data-level="14" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html"><i class="fa fa-check"></i><b>14</b> El Modelo Lineal General</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#linear-regression"><i class="fa fa-check"></i><b>14.1</b> Regresión lineal</a>
+<li class="chapter" data-level="14.1" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#linear-regression"><i class="fa fa-check"></i><b>14.1</b> Regresión lineal</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#regression-to-the-mean"><i class="fa fa-check"></i><b>14.1.1</b> Regresión a la media</a></li>
-<li class="chapter" data-level="14.1.2" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#la-relación-entre-correlación-y-regresión"><i class="fa fa-check"></i><b>14.1.2</b> La relación entre correlación y regresión</a></li>
-<li class="chapter" data-level="14.1.3" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#errores-estándar-de-los-modelos-de-regresión"><i class="fa fa-check"></i><b>14.1.3</b> Errores estándar de los modelos de regresión</a></li>
-<li class="chapter" data-level="14.1.4" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#pruebas-estadísticas-para-los-parámetros-de-la-regresión"><i class="fa fa-check"></i><b>14.1.4</b> Pruebas estadísticas para los parámetros de la regresión</a></li>
-<li class="chapter" data-level="14.1.5" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#cuantificar-la-bondad-de-adjuste-del-modelo"><i class="fa fa-check"></i><b>14.1.5</b> Cuantificar la bondad de adjuste del modelo</a></li>
+<li class="chapter" data-level="14.1.1" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#regression-to-the-mean"><i class="fa fa-check"></i><b>14.1.1</b> Regresión a la media</a></li>
+<li class="chapter" data-level="14.1.2" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#la-relación-entre-correlación-y-regresión"><i class="fa fa-check"></i><b>14.1.2</b> La relación entre correlación y regresión</a></li>
+<li class="chapter" data-level="14.1.3" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#errores-estándar-de-los-modelos-de-regresión"><i class="fa fa-check"></i><b>14.1.3</b> Errores estándar de los modelos de regresión</a></li>
+<li class="chapter" data-level="14.1.4" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#pruebas-estadísticas-para-los-parámetros-de-la-regresión"><i class="fa fa-check"></i><b>14.1.4</b> Pruebas estadísticas para los parámetros de la regresión</a></li>
+<li class="chapter" data-level="14.1.5" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#cuantificar-la-bondad-de-adjuste-del-modelo"><i class="fa fa-check"></i><b>14.1.5</b> Cuantificar la bondad de adjuste del modelo</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#ajustar-modelos-más-complejos"><i class="fa fa-check"></i><b>14.2</b> Ajustar modelos más complejos</a></li>
-<li class="chapter" data-level="14.3" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#interacciones-entre-variables"><i class="fa fa-check"></i><b>14.3</b> Interacciones entre variables</a></li>
-<li class="chapter" data-level="14.4" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#más-allá-de-predictores-y-resultados-lineales"><i class="fa fa-check"></i><b>14.4</b> Más allá de predictores y resultados lineales</a></li>
-<li class="chapter" data-level="14.5" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#model-criticism"><i class="fa fa-check"></i><b>14.5</b> Criticar nuestro modelo y revisar suposiciones</a></li>
-<li class="chapter" data-level="14.6" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#qué-significa-realmente-predecir"><i class="fa fa-check"></i><b>14.6</b> ¿Qué significa realmente “predecir?”</a>
+<li class="chapter" data-level="14.2" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#ajustar-modelos-más-complejos"><i class="fa fa-check"></i><b>14.2</b> Ajustar modelos más complejos</a></li>
+<li class="chapter" data-level="14.3" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#interacciones-entre-variables"><i class="fa fa-check"></i><b>14.3</b> Interacciones entre variables</a></li>
+<li class="chapter" data-level="14.4" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#más-allá-de-predictores-y-resultados-lineales"><i class="fa fa-check"></i><b>14.4</b> Más allá de predictores y resultados lineales</a></li>
+<li class="chapter" data-level="14.5" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#model-criticism"><i class="fa fa-check"></i><b>14.5</b> Criticar nuestro modelo y revisar suposiciones</a></li>
+<li class="chapter" data-level="14.6" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#qué-significa-realmente-predecir"><i class="fa fa-check"></i><b>14.6</b> ¿Qué significa realmente “predecir?”</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#cross-validation"><i class="fa fa-check"></i><b>14.6.1</b> Validación cruzada (Cross-validation)</a></li>
+<li class="chapter" data-level="14.6.1" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#cross-validation"><i class="fa fa-check"></i><b>14.6.1</b> Validación cruzada (Cross-validation)</a></li>
 </ul></li>
-<li class="chapter" data-level="14.7" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>14.7</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="14.8" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>14.8</b> Lecturas sugeridas</a></li>
-<li class="chapter" data-level="14.9" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>14.9</b> Apéndice</a>
+<li class="chapter" data-level="14.7" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#objetivos-de-aprendizaje-13"><i class="fa fa-check"></i><b>14.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="14.8" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#lecturas-sugeridas-10"><i class="fa fa-check"></i><b>14.8</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="14.9" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#apéndice-5"><i class="fa fa-check"></i><b>14.9</b> Apéndice</a>
 <ul>
-<li class="chapter" data-level="14.9.1" data-path="el-modelo-lineal-general.html"><a href="el-modelo-lineal-general.html#estimar-parámetros-de-una-regresión-lineal"><i class="fa fa-check"></i><b>14.9.1</b> Estimar parámetros de una regresión lineal</a></li>
+<li class="chapter" data-level="14.9.1" data-path="the-general-lineal-model.html"><a href="the-general-lineal-model.html#estimar-parámetros-de-una-regresión-lineal"><i class="fa fa-check"></i><b>14.9.1</b> Estimar parámetros de una regresión lineal</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="comparar-medias.html"><a href="comparar-medias.html"><i class="fa fa-check"></i><b>15</b> Comparar medias</a>
+<li class="chapter" data-level="15" data-path="comparing-means.html"><a href="comparing-means.html"><i class="fa fa-check"></i><b>15</b> Comparar medias</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="comparar-medias.html"><a href="comparar-medias.html#single-mean"><i class="fa fa-check"></i><b>15.1</b> Probar el valor de una media simple</a></li>
-<li class="chapter" data-level="15.2" data-path="comparar-medias.html"><a href="comparar-medias.html#comparing-two-means"><i class="fa fa-check"></i><b>15.2</b> Comparar dos medias</a></li>
-<li class="chapter" data-level="15.3" data-path="comparar-medias.html"><a href="comparar-medias.html#ttest-linear-model"><i class="fa fa-check"></i><b>15.3</b> La prueba t como un modelo lineal</a>
+<li class="chapter" data-level="15.1" data-path="comparing-means.html"><a href="comparing-means.html#single-mean"><i class="fa fa-check"></i><b>15.1</b> Probar el valor de una media simple</a></li>
+<li class="chapter" data-level="15.2" data-path="comparing-means.html"><a href="comparing-means.html#comparing-two-means"><i class="fa fa-check"></i><b>15.2</b> Comparar dos medias</a></li>
+<li class="chapter" data-level="15.3" data-path="comparing-means.html"><a href="comparing-means.html#ttest-linear-model"><i class="fa fa-check"></i><b>15.3</b> La prueba t como un modelo lineal</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="comparar-medias.html"><a href="comparar-medias.html#tamaños-de-efecto-para-comparar-dos-medias"><i class="fa fa-check"></i><b>15.3.1</b> Tamaños de efecto para comparar dos medias</a></li>
+<li class="chapter" data-level="15.3.1" data-path="comparing-means.html"><a href="comparing-means.html#tamaños-de-efecto-para-comparar-dos-medias"><i class="fa fa-check"></i><b>15.3.1</b> Tamaños de efecto para comparar dos medias</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="comparar-medias.html"><a href="comparar-medias.html#factores-de-bayes-para-diferencias-entre-medias"><i class="fa fa-check"></i><b>15.4</b> Factores de Bayes para diferencias entre medias</a></li>
-<li class="chapter" data-level="15.5" data-path="comparar-medias.html"><a href="comparar-medias.html#paired-ttests"><i class="fa fa-check"></i><b>15.5</b> Comparar observaciones pareadas/relacionadas</a>
+<li class="chapter" data-level="15.4" data-path="comparing-means.html"><a href="comparing-means.html#factores-de-bayes-para-diferencias-entre-medias"><i class="fa fa-check"></i><b>15.4</b> Factores de Bayes para diferencias entre medias</a></li>
+<li class="chapter" data-level="15.5" data-path="comparing-means.html"><a href="comparing-means.html#paired-ttests"><i class="fa fa-check"></i><b>15.5</b> Comparar observaciones pareadas/relacionadas</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="comparar-medias.html"><a href="comparar-medias.html#prueba-de-los-signos"><i class="fa fa-check"></i><b>15.5.1</b> Prueba de los signos</a></li>
-<li class="chapter" data-level="15.5.2" data-path="comparar-medias.html"><a href="comparar-medias.html#prueba-t-para-muestras-relacionadas-paired-t-test"><i class="fa fa-check"></i><b>15.5.2</b> Prueba t para muestras relacionadas (paired t-test)</a></li>
+<li class="chapter" data-level="15.5.1" data-path="comparing-means.html"><a href="comparing-means.html#prueba-de-los-signos"><i class="fa fa-check"></i><b>15.5.1</b> Prueba de los signos</a></li>
+<li class="chapter" data-level="15.5.2" data-path="comparing-means.html"><a href="comparing-means.html#prueba-t-para-muestras-relacionadas-paired-t-test"><i class="fa fa-check"></i><b>15.5.2</b> Prueba t para muestras relacionadas (paired t-test)</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="comparar-medias.html"><a href="comparar-medias.html#comparar-más-de-dos-medias"><i class="fa fa-check"></i><b>15.6</b> Comparar más de dos medias</a>
+<li class="chapter" data-level="15.6" data-path="comparing-means.html"><a href="comparing-means.html#comparar-más-de-dos-medias"><i class="fa fa-check"></i><b>15.6</b> Comparar más de dos medias</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="comparar-medias.html"><a href="comparar-medias.html#ANOVA"><i class="fa fa-check"></i><b>15.6.1</b> Análisis de varianza</a></li>
+<li class="chapter" data-level="15.6.1" data-path="comparing-means.html"><a href="comparing-means.html#ANOVA"><i class="fa fa-check"></i><b>15.6.1</b> Análisis de varianza (analysis of variance, ANOVA)</a></li>
 </ul></li>
-<li class="chapter" data-level="15.7" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>15.7</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="15.8" data-path="trabajar-con-datos.html"><a href="trabajar-con-datos.html#apéndice"><i class="fa fa-check"></i><b>15.8</b> Apéndice</a>
+<li class="chapter" data-level="15.7" data-path="comparing-means.html"><a href="comparing-means.html#objetivos-de-aprendizaje-14"><i class="fa fa-check"></i><b>15.7</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="15.8" data-path="comparing-means.html"><a href="comparing-means.html#apéndice-6"><i class="fa fa-check"></i><b>15.8</b> Apéndice</a>
 <ul>
-<li class="chapter" data-level="15.8.1" data-path="comparar-medias.html"><a href="comparar-medias.html#la-prueba-t-de-muestras-relacionadas-como-un-modelo-lineal"><i class="fa fa-check"></i><b>15.8.1</b> La prueba t de muestras relacionadas como un modelo lineal</a></li>
+<li class="chapter" data-level="15.8.1" data-path="comparing-means.html"><a href="comparing-means.html#la-prueba-t-de-muestras-relacionadas-como-un-modelo-lineal"><i class="fa fa-check"></i><b>15.8.1</b> La prueba t de muestras relacionadas como un modelo lineal</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="practical-example.html"><a href="practical-example.html"><i class="fa fa-check"></i><b>16</b> Modelación estadística práctica</a>
@@ -476,7 +498,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html"><i class="fa fa-check"></i><b>17</b> Hacer investigación reproducible</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-pensamos-que-funciona-la-ciencia"><i class="fa fa-check"></i><b>17.1</b> Cómo pensamos que funciona la ciencia</a></li>
-<li class="chapter" data-level="17.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-realmente-funciona-la-ciencia-a-veces"><i class="fa fa-check"></i><b>17.2</b> Cómo realmente funciona la ciencia (a veces)</a></li>
+<li class="chapter" data-level="17.2" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#cómo-funciona-a-veces-realmente-la-ciencia"><i class="fa fa-check"></i><b>17.2</b> Cómo funciona (a veces) realmente la ciencia</a></li>
 <li class="chapter" data-level="17.3" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#la-crisis-de-reproducibilidad-en-la-ciencia"><i class="fa fa-check"></i><b>17.3</b> La crisis de reproducibilidad en la ciencia</a>
 <ul>
 <li class="chapter" data-level="17.3.1" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#valor-predictivo-positivo-y-significatividad-estadística"><i class="fa fa-check"></i><b>17.3.1</b> Valor predictivo positivo y significatividad estadística</a></li>
@@ -494,8 +516,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="17.6" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#hacer-análisis-de-datos-reproducibles"><i class="fa fa-check"></i><b>17.6</b> Hacer análisis de datos reproducibles</a></li>
 <li class="chapter" data-level="17.7" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#conclusión-hacer-mejor-ciencia"><i class="fa fa-check"></i><b>17.7</b> Conclusión: Hacer mejor ciencia</a></li>
-<li class="chapter" data-level="17.8" data-path="introducción.html"><a href="introducción.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>17.8</b> Objetivos de aprendizaje</a></li>
-<li class="chapter" data-level="17.9" data-path="introducción.html"><a href="introducción.html#lecturas-sugeridas"><i class="fa fa-check"></i><b>17.9</b> Lecturas sugeridas</a></li>
+<li class="chapter" data-level="17.8" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#objetivos-de-aprendizaje-15"><i class="fa fa-check"></i><b>17.8</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="17.9" data-path="doing-reproducible-research.html"><a href="doing-reproducible-research.html#lecturas-sugeridas-11"><i class="fa fa-check"></i><b>17.9</b> Lecturas sugeridas</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 </ul>
@@ -518,7 +540,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="practical-example" class="section level1" number="16">
 <h1><span class="header-section-number">Capitulo 16</span> Modelación estadística práctica</h1>
 <!-- In this chapter we will bring together everything that we have learned, by applying our knowledge to a practical example.  In 2007, Christopher Gardner and colleagues from Stanford published a study in the *Journal of the American Medical Association* titled "Comparison of the Atkins, Zone, Ornish, and LEARN Diets for Change in Weight and Related Risk Factors Among Overweight Premenopausal Women -- The A TO Z Weight Loss Study: A Randomized Trial" [@gard:kiaz:alha:2007]. We will use this study to show how one would go about analyzing an experimental dataset from start to finish. -->
-<p>En este capítulo reuniremos todo lo que hemos aprendido, aplicando nuestro conocimiento a un ejemplo práctico. En 2007, Christopher Gardner y colegas de Stanford publicaron un estudio en el <em>Journal of the American Medical Association</em> titulado “Comparison of the Atkins, Zone, Ornish, and LEARN Diets for Change in Weight and Related Risk Factors Among Overweight Premenopausal Women – The A TO Z Weight Loss Study: A Randomized Trial” <span class="citation">(<a href="referencias.html#ref-gard:kiaz:alha:2007" role="doc-biblioref">Gardner et al. 2007</a>)</span>. Usaremos este estudio para mostrar cómo haría uno para analizar un conjunto de datos experimental de inicio a fin.</p>
+<p>En este capítulo reuniremos todo lo que hemos aprendido, aplicando nuestro conocimiento a un ejemplo práctico. En 2007, Christopher Gardner y colegas de Stanford publicaron un estudio en el <em>Journal of the American Medical Association</em> titulado “Comparison of the Atkins, Zone, Ornish, and LEARN Diets for Change in Weight and Related Risk Factors Among Overweight Premenopausal Women – The A TO Z Weight Loss Study: A Randomized Trial” <span class="citation">(<a href="#ref-gard:kiaz:alha:2007" role="doc-biblioref">Gardner et al. 2007</a>)</span>. Usaremos este estudio para mostrar cómo analizaríamos un conjunto de datos experimental de inicio a fin.</p>
 <!-- ## The process of statistical modeling -->
 <div id="el-proceso-de-modelación-estadística" class="section level2" number="16.1">
 <h2><span class="header-section-number">16.1</span> El proceso de modelación estadística</h2>
@@ -554,13 +576,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="identificar-o-recolectar-los-datos-apropiados." class="section level3" number="16.1.2">
 <h3><span class="header-section-number">16.1.2</span> 2: Identificar o recolectar los datos apropiados.</h3>
 <!-- To answer their question, the investigators randomly assigned each of 311 overweight/obese women to one of four different diets (Atkins, Zone, Ornish, or LEARN), and measured their weight along with many other measures of health over time.  The authors recorded a large number of variables, but for the main question of interest let's focus on a single variable: Body Mass Index (BMI).  Further, since our goal is to measure lasting changes in BMI, we will only look at the measurement taken at 12 months after onset of the diet. -->
-<p>Para responder la pregunta, los investigadores asignaron aleatoriamente a 311 mujeres con sobrepeso u obesidad a una de cuatro diferentes dietas (Atkins, Zone, Ornish, or LEARN), y midieron su peso junto con otras variables de salud a lo largo del tiempo. Los autores registraron un gran número de variables, pero para la pregunta principal de interés nos enfocaremos en una variable sencilla: Índice de Masa Corporal (IMC; Body Mass Index, BMI). Además, como nuestra meta es medir cambios perdurables en IMC, revisaremos únicamente la medición tomada 12 meses después del inicio de la dieta.</p>
+<p>Para responder la pregunta, los investigadores asignaron aleatoriamente a 311 mujeres con sobrepeso u obesidad a una de cuatro diferentes dietas (Atkins, Zone, Ornish, o LEARN), y midieron su peso junto con otras variables de salud a lo largo del tiempo. Los autores registraron un gran número de variables, pero para la pregunta principal de interés nos enfocaremos en una variable sencilla: Índice de Masa Corporal (IMC; <em>Body Mass Index</em>, BMI). Además, como nuestra meta es medir cambios perdurables en IMC, revisaremos únicamente la medición tomada 12 meses después del inicio de la dieta.</p>
 <!-- ### 3: Prepare the data for analysis -->
 </div>
 <div id="preparar-los-datos-para-el-análisis." class="section level3" number="16.1.3">
 <h3><span class="header-section-number">16.1.3</span> 3: Preparar los datos para el análisis.</h3>
 <!-- Box plots for each condition, with the 50th percentile (i.e the median) shown as a black line for each group. -->
-<div class="figure"><span id="fig:AtoZBMIChangeDensity"></span>
+<div class="figure"><span style="display:block;" id="fig:AtoZBMIChangeDensity"></span>
 <img src="StatsThinking21_files/figure-html/AtoZBMIChangeDensity-1.png" alt="Boxplots para cada condición, con el percentil 50 (i.e. la mediana) mostrada con una línea negra para cada grupo." width="50%" />
 <p class="caption">
 Figura 16.1: Boxplots para cada condición, con el percentil 50 (i.e. la mediana) mostrada con una línea negra para cada grupo.
@@ -589,7 +611,7 @@ Figura 16.1: Boxplots para cada condición, con el percentil 50 (i.e. la median
 </ul></li>
 <li>¿Qué estamos comparando?
 <ul>
-<li>Media de IMC entre cuatro grupos de dieta.</li>
+<li>Media de IMC de cuatro grupos de dieta.</li>
 <li>ANOVA es apropiado.</li>
 </ul></li>
 <li>¿Las observaciones son independientes?
@@ -632,10 +654,10 @@ BMIChange12Months \sim diet
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 2.2 on 307 degrees of freedom
-## Multiple R-squared:  0.0338,	Adjusted R-squared:  0.0243 
+## Multiple R-squared:  0.0338, Adjusted R-squared:  0.0243 
 ## F-statistic: 3.58 on 3 and 307 DF,  p-value: 0.0143</code></pre>
-<!-- Note that the software automatically generated dummy variables that correspond to three of the four diets, leaving the Atkins diet without a dummy variable. This means that the intercept models the Atkins diet, and the other three variables model the difference between each of those diets and the Atkins diet. Atkins was chosen as the unmodeled baseline variable simply because it is first in alphabetical order. -->
-<p>Nota que el software estadístico automáticamente generó las variables ficticias (dummy) que corresponden a tres de las cuatro dietas, dejando la dieta Atkins sin una variable ficticia (dummy). Esto significa que el intercepto modela la dieta Atkins, y las otras tres variables modelan la diferencia entre cada una de ellas y la dieta Atkins. Atkins fue elegida como la variable de línea base sin modelar simplemente porque es la primera en orden alfabético.</p>
+<!-- Note that the software automatically generated dummy variables that correspond to three of the four diets, leaving the Atkins diet without a dummy variable. This means that the intercept represents the mean of the Atkins diet group, and the other three variables model the difference between each of those diets and the Atkins diet. Atkins was chosen as the unmodeled baseline variable simply because it is first in alphabetical order. -->
+<p>Nota que el software estadístico automáticamente generó las variables ficticias (<em>dummy variable</em>) que corresponden a tres de las cuatro dietas, dejando la dieta Atkins sin una variable ficticia (<em>dummy variable</em>). Esto significa que la constante representa la media del grupo de la dieta Atkins, y las otras tres variables modelan la diferencia entre las medias de cada una de las dietas y la media de la dieta Atkins. Atkins fue elegida como la variable de línea base sin modelar simplemente porque es la primera en orden alfabético.</p>
 <!-- ### 6. Criticize the model to make sure it fits properly -->
 </div>
 <div id="criticar-el-modelo-para-asegurarnos-que-se-ajusta-apropiadamente." class="section level3" number="16.1.6">
@@ -643,16 +665,16 @@ BMIChange12Months \sim diet
 <!-- The first thing we want to do is to critique the model to make sure that it is appropriate. One thing we can do is to look at the residuals from the model. In Figure \@ref(fig:residualPlot), we plot the residuals for each individual grouped by diet. There are no obvious differences in the distributions of residuals across conditions, we can go ahead with the analysis. -->
 <p>La primera cosa que queremos hacer es criticar el modelo para asegurarnos que es apropiado. Una cosa que podemos hacer es ver los residuales del modelo. En la Figura <a href="practical-example.html#fig:residualPlot">16.2</a>, graficamos los residuales para cada persona agrupados según la dieta. No hay diferencias obvias en las distribuciones de los residuales entre las condiciones, podemos seguir adelante con el análisis.</p>
 <!-- Distribution of residuals for for each condition -->
-<div class="figure"><span id="fig:residualPlot"></span>
+<div class="figure"><span style="display:block;" id="fig:residualPlot"></span>
 <img src="StatsThinking21_files/figure-html/residualPlot-1.png" alt="Distribución de residuales para cada condición." width="384" />
 <p class="caption">
 Figura 16.2: Distribución de residuales para cada condición.
 </p>
 </div>
-<!-- Another important assumption of the statistical tests that we apply to linear models is that the residuals from the model are normally distributed. The right panel of Figure \@ref(fig:diagnosticQQPlot) shows a Q-Q (quantile-quantile) plot, which plots the residuals against their expected values based on their quantiles in the normal distribution. If the residuals are normally distributed then the data points should fall along the dashed line --- in this case it looks pretty good, except for a couple of outliers that are apparent here.  Because this model is also relatively robust to violations of normality, and these are fairly small, we will go ahead and use the results. -->
-<p>Otra suposición importante de las pruebas estadísticas que aplicamos a modelos lineales es que los residuales del modelo están normalmente distribuidos. El panel derecho de la Figura <a href="practical-example.html#fig:diagnosticQQPlot">16.3</a> muestra una gráfica Q-Q (<em>quantile-quantile</em>, cuantil-cuantil) que grafica los residuales contra su valor esperado basado en sus cuantiles en la distribución normal. Si los residuales están normalmente distribuidos entonces los datos caerían a lo largo de la línea punteada — en este caso se ven bastante bien, excepto por un par de outliers (valores atípicos) que son aparentes aquí. Debido a que este modelo es también relativamente robusto a desviaciones de la normalidad, y a que éstas son relativamente pequeñas, seguiremos adelante y usaremos estos resultados.</p>
+<!-- Another important assumption of the statistical tests that we apply to linear models is that the residuals from the model are normally distributed.  It is a common misconception that linear models require that the *data* are normally distributed, but this is not the case; the only requirement for the statistics to be correct is that the residual errors are normally distributed.  The right panel of Figure \@ref(fig:diagnosticQQPlot) shows a Q-Q (quantile-quantile) plot, which plots the residuals against their expected values based on their quantiles in the normal distribution. If the residuals are normally distributed then the data points should fall along the dashed line --- in this case it looks pretty good, except for a couple of outliers that are apparent at the very bottom.  Because this model is also relatively robust to violations of normality, and these are fairly small, we will go ahead and use the results. -->
+<p>Otra suposición importante de las pruebas estadísticas que aplicamos a modelos lineales es que los residuales del modelo estén normalmente distribuidos. Es una idea equivocada algo común pensar que los modelos lineales requieren que los <em>datos</em> estén distribuidos de manera normal, pero esto no es correcto; el único requisito para que las estadísticas estén correctas es que los errores residuales estén normalmente distribuidos. El panel derecho de la Figura <a href="practical-example.html#fig:diagnosticQQPlot">16.3</a> muestra una gráfica Q-Q (<em>quantile-quantile</em>, cuantil-cuantil) que grafica los residuales contra su valor esperado basado en sus cuantiles en la distribución normal. Si los residuales están normalmente distribuidos entonces los datos caerían a lo largo de la línea punteada — en este caso se ven bastante bien, excepto por un par de valores atípicos (<em>outliers</em>) que son evidentes hasta abajo. Debido a que este modelo es también relativamente robusto a desviaciones de la normalidad, y a que éstas son relativamente pequeñas, seguiremos adelante y usaremos estos resultados.</p>
 <!-- Q-Q plot of actual residual values against theoretical residual values -->
-<div class="figure"><span id="fig:diagnosticQQPlot"></span>
+<div class="figure"><span style="display:block;" id="fig:diagnosticQQPlot"></span>
 <img src="StatsThinking21_files/figure-html/diagnosticQQPlot-1.png" alt="Gráfica Q-Q de los valores residuales reales contra sus valores residuales teóricos." width="384" />
 <p class="caption">
 Figura 16.3: Gráfica Q-Q de los valores residuales reales contra sus valores residuales teóricos.
@@ -663,9 +685,9 @@ Figura 16.3: Gráfica Q-Q de los valores residuales reales contra sus valores re
 <div id="probar-hipótesis-y-cuantificar-el-tamaño-del-efecto." class="section level3" number="16.1.7">
 <h3><span class="header-section-number">16.1.7</span> 7: Probar hipótesis y cuantificar el tamaño del efecto.</h3>
 <!-- First let's look back at the summary of results from the ANOVA, shown in Step 5 above. The significant F test shows us that there is a significant difference between diets, but we should also note that the model doesn't actually account for much variance in the data; the R-squared value is only 0.03, showing that the model is only accounting for a few percent of the variance in weight loss.  Thus, we would not want to overinterpret this result. -->
-<p>Primero, veamos de nuevo el resumen de resultados del ANOVA, mostrado en el Paso 5 arriba. La prueba F significativa nos muestra que existe una diferencia significativa entre las dietas, pero deberíamos notar también que el modelo realmente no explica mucha varianza en los datos; el valor de R-cuadrada (R-squared) es sólo 0.03, mostrando que el modelo sólo explica muy poco porcentaje de la varianza en la pérdida de peso. Por lo tanto, no querremos sobre-interpretar este resultado.</p>
+<p>Primero, veamos de nuevo el resumen de resultados del ANOVA, mostrado en el Paso 5 arriba. La prueba F significativa nos muestra que existe una diferencia significativa entre las dietas, pero deberíamos notar también que el modelo realmente no explica mucha varianza en los datos; el valor de R-cuadrada (<em>R-squared</em>) es sólo 0.03, mostrando que el modelo sólo explica muy poco porcentaje de la varianza en la pérdida de peso. Por lo tanto, no querremos sobre-interpretar este resultado.</p>
 <!-- The significant result in the omnibus F test also doesn't tell us which diets differ from which others. We can find out more by comparing means across conditions.  Because we are doing several comparisons, we need to correct for those comparisons, which is accomplished using a procedure known as the Tukey method, which is implemented by our statistical software: -->
-<p>El resultado significativo en la prueba F omnibus tampoco nos dice cuáles dietas difieren de cuáles otras. Podemos averiguar más si comparamos las medias entre condiciones. Como estaríamos haciendo varias comparaciones, necesitamos corregir por eso, esto se puede lograr usando un procedimiento conocido como método Tukey, que se puede calcular con nuestro software estadístico:</p>
+<p>El resultado significativo en la prueba F omnibus tampoco nos dice cuáles dietas difieren de cuáles otras. Podemos averiguar más si comparamos las medias entre condiciones. Como estaríamos haciendo varias comparaciones, necesitamos aplicar una corrección por esas comparaciones múltiples, esto se puede lograr usando un procedimiento conocido como método Tukey, que se puede calcular con nuestro software estadístico:</p>
 <pre><code>##  diet   emmean    SE  df lower.CL upper.CL .group
 ##  Atkins  -1.62 0.251 307    -2.11    -1.13  a    
 ##  LEARN   -0.85 0.247 307    -1.34    -0.36  ab   
@@ -674,27 +696,21 @@ Figura 16.3: Gráfica Q-Q de los valores residuales reales contra sus valores re
 ## 
 ## Confidence level used: 0.95 
 ## P value adjustment: tukey method for comparing a family of 4 estimates 
-## significance level used: alpha = 0.05</code></pre>
-<!-- The letters in the rightmost column show us which of the groups differ from one another, using a method that adjusts for the number of comparisons being performed.  This shows that Atkins and LEARN diets don't differ from one another (since they share the letter a), and the LEARN, Ornish, and Zone diets don't differ from one another (since they share the letter b), but the Atkins diet differs from the Ornish and Zone diets (since they share no letters). -->
-<p>Las letras en la columna hasta la derecha nos muestra cuáles de los grupos difieren de los otros, usando un método que ajusta por el número de comparaciones siendo realizadas. Esto nos muestra que las dietas Atkins y LEARN no difieren entre sí (porque comparten la letra a), y las dietas LEARN, Ornish, y Zone no difieren entre sí (porque comparten la letra b), pero la dieta Atkins difiere de las dietas Ornish y Zone (porque no comparten letras).</p>
-<!-- #### Bayes factor -->
-<div id="factor-de-bayes" class="section level4" number="16.1.7.1">
-<h4><span class="header-section-number">16.1.7.1</span> Factor de Bayes</h4>
-<!-- Let's say that we want to have a better way to describe the amount of evidence provided by the data.  One way we can do this is to compute a Bayes factor, which we can do by fitting the full model (including diet) and the reduced model (without diet) and then comparing their fit. For the reduced model, we only include an intercept. Note that Bayesian analysis can take substantially more time to run, since it requires the use of sampling techniques related to the Monte Carlo simulations that we discussed in Chapter 11. -->
-<p>Digamos que queremos tener una mejor manera de describir la cantidad de evidencia provista por los datos. Una manera de hacer esto es calculando el factor de Bayes, que podemos realizar ajustando el modelo completo (incluyendo dieta) y el modelo reducido (sin incluir dieta) y luego comparando sus ajustes. Para el modelo reducido, sólo incluimos un intercepto. Nota que el análisis Bayesiano puede tomar un tiempo sustancialmente mayor para completarse, porque requiere el uso de técnicas de muestreo relacionadas con simulaciones Monte Carlo que discutimos en el Capítulo 11.</p>
-<p>[Aquí iría el resultado del análisis Bayesiano mencionado usando la función <span class="math inline">\(brm()\)</span> en el software estadístico R, pero el paquete no está actualizado para la versión 4 de R, por lo que se tuvo que dejar fuera el cálculo.]</p>
-<!-- This shows us that there is very strong evidence (Bayes factor of nearly 100) for differences between the diets. -->
-<p>Esto nos muestra que hay evidencia muy fuerte (factor de Bayes cercano a 100) de que existen diferencias entre las dietas.</p>
+## significance level used: alpha = 0.05 
+## NOTE: Compact letter displays can be misleading
+##       because they show NON-findings rather than findings.
+##       Consider using &#39;pairs()&#39;, &#39;pwpp()&#39;, or &#39;pwpm()&#39; instead.</code></pre>
+<!-- The letters in the rightmost column show us which of the groups differ from one another, using a method that adjusts for the number of comparisons being performed; conditions that share a letter are not significantly different from one another.  This shows that Atkins and LEARN diets don't differ from one another (since they share the letter a), and the LEARN, Ornish, and Zone diets don't differ from one another (since they share the letter b), but the Atkins diet differs from the Ornish and Zone diets (since they share no letters). -->
+<p>Las letras en la columna hasta la derecha nos muestran cuáles de los grupos difieren de los otros, usando un método que ajusta por el número de comparaciones siendo realizadas; las condiciones que comparten una letra no son significativamente diferentes entre ellas. Esto nos muestra que las dietas Atkins y LEARN no difieren entre sí (porque comparten la letra a), y las dietas LEARN, Ornish, y Zone no difieren entre sí (porque comparten la letra b), pero la dieta Atkins difiere de las dietas Ornish y Zone (porque no comparten letras).</p>
 <!-- ### What about possible confounds? -->
-</div>
 </div>
 <div id="qué-pasa-con-los-posibles-factores-de-confusión-confounds" class="section level3" number="16.1.8">
 <h3><span class="header-section-number">16.1.8</span> ¿Qué pasa con los posibles factores de confusión (confounds)?</h3>
-<!-- If we look more closely at the Garder paper, we will see that they also report statistics on how many individuals in each group had been diagnosed with *metabolic syndrome*, which is a syndrome characterized by high blood pressure, high blood glucose, excess body fat around the waist, and abnormal cholesterol levels and is associated with increased risk for cardiovascular problems. Here are the data from the Gardner paper: -->
-<p>Si vemos más de cerca el artículo de Gardner, veremos que también reportaron estadísticas sobre cuántas personas en cada grupo habían sido diagnosticadas con <em>síndrome metabólico</em>, que es un síndrome caracterizado por presión sanguínea alta, alta glucosa en sangre, exceso de grasa corporal alrededor de la cintura, y niveles de colesterol anormales; este síndrome está asociado con mayor riesgo de problemas cardiovasculares. En la tabla <a href="practical-example.html#tab:metabolicSyndrome">16.1</a> están los datos del artículo de Gardner.</p>
+<!-- If we look more closely at the Garder paper, we will see that they also report statistics on how many individuals in each group had been diagnosed with *metabolic syndrome*, which is a syndrome characterized by high blood pressure, high blood glucose, excess body fat around the waist, and abnormal cholesterol levels and is associated with increased risk for cardiovascular problems. The data from the Gardner paper are presented in Table \@ref(tab:metsymData). -->
+<p>Si vemos más de cerca el artículo de Gardner, veremos que también reportaron estadísticas sobre cuántas personas en cada grupo habían sido diagnosticadas con <em>síndrome metabólico</em>, que es un síndrome caracterizado por presión sanguínea alta, alta glucosa en sangre, exceso de grasa corporal alrededor de la cintura, y niveles de colesterol anormales; este síndrome está asociado con mayor riesgo de problemas cardiovasculares. Los datos del artículo de Gardner se presentan en la Tabla <a href="practical-example.html#tab:metsymData">16.1</a>.</p>
 <table>
 <caption>
-<span id="tab:metabolicSyndrome">Tabla 16.1: </span>Presencia de síndrome metabólico en cada grupo del estudio AtoZ.
+<span id="tab:metsymData">Tabla 16.1: </span>Presencia de síndrome metabólico en cada grupo del estudio AtoZ.
 </caption>
 <thead>
 <tr>
@@ -757,7 +773,7 @@ Zone
 </tbody>
 </table>
 <!-- Looking at the data it seems that the rates are slightly different across groups, with more metabolic syndrome cases in the Ornish and Zone diets -- which were exactly the diets with poorer outcomes.  Let's say that we are interested in testing whether the rate of metabolic syndrome was significantly different between the groups, since this might make us concerned that these differences could have affected the results of the diet outcomes.  -->
-<p>Mirando estos datos parece que las proporciones son ligeramente distintas entre los grupos, con más casos de síndrome metabólico en las dietas Ornish y Zone – que fueron justamente las dietas con peores resultados. Digamos que estamos interesados en probar si la proporción de personas con síndrome metabólico fue significativamente diferente entre los grupos, porque esto nos podría preocupar que estas diferencias hayan podido afectar los resultados de las dietas.</p>
+<p>Mirando estos datos parece que las proporciones son ligeramente distintas entre los grupos, con más casos de síndrome metabólico en las dietas Ornish y Zone – que fueron justamente las dietas con peores resultados. Digamos que estamos interesados en probar si la proporción de personas con síndrome metabólico fue significativamente diferente entre los grupos, porque esto nos podría llevar a preocuparnos de que estas diferencias hayan podido haber afectado los resultados de las dietas.</p>
 <!-- #### Determine the appropriate model -->
 <div id="determinar-el-modelo-apropiado" class="section level4" number="16.1.8.1">
 <h4><span class="header-section-number">16.1.8.1</span> Determinar el modelo apropiado</h4>
@@ -773,14 +789,14 @@ Zone
 </ul></li>
 <li>¿Qué estamos comparando?
 <ul>
-<li>proporción con síndrome metabólico entre los cuatro grupos de dieta</li>
-<li>prueba ji-cuadrada de bondad de ajuste (goodness of fit) es apropiada contra la hipótesis nula de no diferencia</li>
+<li>proporción de síndrome metabólico en los cuatro grupos de dieta</li>
+<li>prueba ji-cuadrada de bondad de ajuste (<em>goodness of fit</em>) es apropiada contra la hipótesis nula de no diferencia</li>
 </ul></li>
 </ul>
 <!-- Let's first compute that statistic, using the chi-squared test function in our statistical software: -->
 <p>Primero calculemos el estadístico, usando una función de la prueba ji-cuadrada en nuestro software estadístico:</p>
 <pre><code>## 
-## 	Pearson&#39;s Chi-squared test
+##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  contTable
 ## X-squared = 4, df = 3, p-value = 0.3</code></pre>
@@ -805,9 +821,15 @@ Zone
 <div id="obtener-ayuda" class="section level2" number="16.2">
 <h2><span class="header-section-number">16.2</span> Obtener ayuda</h2>
 <!-- Whenever one is analyzing real data, it's useful to check your analysis plan with a trained statistician, as there are many potential problems that could arise in real data.  In fact, it's best to speak to a statistician before you even start the project, as their advice regarding the design or implementation of the study could save you major headaches down the road.  Most universities have statistical consulting offices that offer free assistance to members of the university community.  Understanding the content of this book won't prevent you from needing their help at some point, but it will help you have a more informed conversation with them and better understand the advice that they offer. -->
-<p>Siempre que uno analiza datos reales, es útil verificar nuestro plan de análisis con un estadístico capacitado, porque hay muchos problemas potenciales que podrían surgir en datos reales. De hecho, es mucho mejor hablar con un estadístico antes de siquiera comenzar el proyecto, pues su asesoría acerca del diseño o implementación del estudio podrían salvarte de grandes dolores de cabeza posteriormente. La mayoría de las universidades tienen oficinas o departamentos de consultoría estadística que ofrecen asistencia gratuita a los miembros de la comunidad universitaria. Entender el contenido de este libro no evitará que necesites su ayuda en algún punto, pero sí te ayudará a tener una conversación más informada con ese departamento y a entender mejor la asesoría que puedan ofrecerte.</p>
+<p>Siempre que uno analiza datos reales, es útil verificar nuestro plan de análisis con una persona entrenada en estadística, porque hay muchos problemas potenciales que podrían surgir en datos reales. De hecho, es mucho mejor hablar con un estadísticx antes de siquiera comenzar el proyecto, pues su asesoría acerca del diseño o implementación del estudio podrían salvarte de grandes dolores de cabeza posteriormente. La mayoría de las universidades tienen oficinas o departamentos de consultoría estadística que ofrecen asistencia gratuita a los miembros de la comunidad universitaria. Entender el contenido de este libro no evitará que necesites su ayuda en algún punto, pero sí te ayudará a tener una conversación más informada con ese departamento y a entender mejor la asesoría que puedan ofrecerte.</p>
 
 <!-- # Doing reproducible research -->
+</div>
+</div>
+<h3>Referencias</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-gard:kiaz:alha:2007" class="csl-entry">
+Gardner, Christopher D, Alexandre Kiazand, Sofiya Alhassan, Soowon Kim, Randall S Stafford, Raymond R Balise, Helena C Kraemer, and Abby C King. 2007. <span>“Comparison of the Atkins, Zone, Ornish, and LEARN Diets for Change in Weight and Related Risk Factors Among Overweight Premenopausal Women: The a TO z Weight Loss Study: A Randomized Trial.”</span> <em>JAMA</em> 297 (9): 969–77. <a href="https://doi.org/10.1001/jama.297.9.969">https://doi.org/10.1001/jama.297.9.969</a>.
 </div>
 </div>
             </section>
@@ -815,12 +837,11 @@ Zone
           </div>
         </div>
       </div>
-<a href="comparar-medias.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="comparing-means.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="doing-reproducible-research.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
-<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
 <script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -839,6 +860,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -859,6 +881,10 @@ gitbook.start({
 "text": null
 },
 "download": ["StatsThinking21.pdf", "StatsThinking21.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
