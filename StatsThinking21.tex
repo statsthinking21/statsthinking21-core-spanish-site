@@ -161,7 +161,7 @@ Translation to Spanish(MX) by\\
 Manuel Mejia\\
 Tanya Nuño\\
 Lizeth Reyes}
-\date{Draft: 2022-01-19}
+\date{Draft: 2022-03-23}
 
 \begin{document}
 \maketitle
@@ -903,7 +903,7 @@ Edward Tufte propuso una idea llamada \emph{proporción datos/tinta} (\emph{data
 data/ink\ ratio = \frac{amount\, of\, ink\, used\, on\, data}{total\, amount\, of\, ink}
 \]
 
-El punto de esto es minimizar la contaminazión visual y permitir mostrar los datos. Por ejemplo, toma las dos presentaciones sobre la salud dental en la Figura \ref{fig:dataInkExample}. Ambos paneles muestran los mismos datos, pero el panel A es mucho más sencillo de comprender, porque es relativamente alta la proporción de datos/tinta.
+El punto de esto es minimizar la contaminación visual y permitir mostrar los datos. Por ejemplo, toma las dos presentaciones sobre la salud dental en la Figura \ref{fig:dataInkExample}. Ambos paneles muestran los mismos datos, pero el panel A es mucho más sencillo de comprender, porque es relativamente alta la proporción de datos/tinta.
 
 \begin{figure}
 \includegraphics[height=0.5\textheight]{StatsThinking21_files/figure-latex/dataInkExample-1} \caption{Un ejemplo de los mismos datos graficados en dos porporciones datos/tinta diferentes.}\label{fig:dataInkExample}
@@ -962,7 +962,7 @@ El factor de engaño apoya el argumento de que uno siempre debería de incluir e
 \hypertarget{ajustarse-a-las-limitaciones-humanas}{%
 \section{Ajustarse a las limitaciones humanas}\label{ajustarse-a-las-limitaciones-humanas}}
 
-Les humanes tienen limitaciones perceptuales y cognitivas que pueden hacer ciertas visializaciones difíciles de entender. Siempre es importante tener esto en cuenta cuando se construye una visualización.
+Les humanes tienen limitaciones perceptuales y cognitivas que pueden hacer ciertas visualizaciones difíciles de entender. Siempre es importante tener esto en cuenta cuando se construye una visualización.
 
 \hypertarget{limitaciones-perceptuales}{%
 \subsection{Limitaciones perceptuales}\label{limitaciones-perceptuales}}
@@ -1151,7 +1151,7 @@ donde \(\hat{\beta_0}\) es nuestra estimación para la \emph{constante} (\emph{i
 Nuestro error es mucho más pequeño utilizando este modelo -- sólo 8.36 centímetros en promedio. ¿Puedes pensar en otras variables que también se relacionen con la estatura? ¿Qué hay del género? En el Panel D de la Figura \ref{fig:childHeightLine} graficamos los datos con líneas distintas para género masculino y femenino. Observando sólo la gráfica, parece ser que existe una diferencia entre género masculino y femenino, pero es relativamente pequeño y solamente comienza después de la etapa de la pubertad. En la Figura \ref{fig:msePlot} trazamos los valores de la raíz del error cuadrático medio a través de los diferentes modelos, incluyendo un modelo más que tiene un parámetro adicional que modela el efecto del género. Aquí podemos ver que el modelo mejoró un poco al pasar de moda a media, posteriormente mejora más al pasar de media a media + edad, y mejora sólo un poco más al incluir el género también.
 
 \begin{figure}
-\includegraphics[height=0.5\textheight]{StatsThinking21_files/figure-latex/msePlot-1} \caption{Error cuadrático medio graficado para cada uno de los modelos probados arriba.}\label{fig:msePlot}
+\includegraphics[height=0.5\textheight]{StatsThinking21_files/figure-latex/msePlot-1} \caption{Raíz del error cuadrático medio graficado para cada uno de los modelos probados arriba.}\label{fig:msePlot}
 \end{figure}
 
 \hypertarget{quuxe9-hace-que-un-modelo-sea-bueno}{%
@@ -1477,7 +1477,9 @@ La teoría de probabilidad es la rama de las matemáticas que trata con el azar 
 \hypertarget{quuxe9-es-la-probabilidad}{%
 \section{¿Qué es la probabilidad?}\label{quuxe9-es-la-probabilidad}}
 
-De manera informal, usualmente pensamos a la probabilidad (\emph{probability}) como el número que describe la probabilidad (\emph{likelihood}) de que un evento ocurra, que va de un rango desde cero (imposibilidad) a uno (certeza). A veces las probabilidades se expresarán en porcentajes, que van de un rango de cero a cien, como cuando en el pronóstico del tiempo se predice que hay un veinte por ciento de probabilidad de lluvia para hoy. En cada caso, estos números expresan qué tan probable es que suceda un evento en particular, desde la absoluta imposibilidad hasta la absoluta certeza.
+De manera informal, usualmente pensamos a la probabilidad (\emph{probability}) como el número que describe la verosimilitud o probabilidad (\emph{likelihood}) de que un evento ocurra, que va de un rango desde cero (imposibilidad) a uno (certeza). A veces las probabilidades se expresarán en porcentajes, que van de un rango de cero a cien, como cuando en el pronóstico del tiempo se predice que hay un veinte por ciento de probabilidad de lluvia para hoy. En cada caso, estos números expresan qué tan probable es que suceda un evento en particular, desde la absoluta imposibilidad hasta la absoluta certeza.
+
+\textbf{Nota de traducción:} En términos informales, en inglés es común diferenciar entre \emph{probabilidad} y \emph{verosimilitud} (\emph{likelihood}), pero en español esto no es común. Para esta traducción, hemos decidido usar el término ``probabilidad'' de manera indistinta en español, pero marcando entre paréntesis cuando esa probabilidad en específico se refiere a la verosimilitud, por ejemplo: ``(\emph{likelihood}).'' La diferencia clave entre probabilidad y verosimilitud depende de sobre qué estamos condicionando el valor a estimar o calcular. En el caso de \emph{probabilidad}, condicionamos sobre una distribución en particular, por lo que estimamos la \emph{probabilidad} de observar un dato aleatorio condicionado a que provenga de una distribución en particular. Esto se escribiría como \(P(dato | distribución)\). En el caso de \emph{verosimilitud}, condicionamos sobre un dato en particular ya observado: por lo que estimamos la \emph{verosimilitud} de una distribución condicionado a que ya observamos ese dato específico. Esto se escribiría como \(L(distribución | dato)\). En la mayoría de las ocasiones en este libro, la verosimilitud se puede estimar con la probabilidad inversa: \(P(dato | distribución)\), pero esto puede variar en ejemplos más complejos. Para una explicación breve sobre esto, puedes revisar el video de StatQuest \href{https://www.youtube.com/watch?v=pYxNSUDSFH4}{``Probability is not Likelihood. Find out why!''}.
 
 Para formalizar la teoría de probabilidad, primero necesitamos definar algunos términos:
 
@@ -1488,7 +1490,7 @@ Para formalizar la teoría de probabilidad, primero necesitamos definar algunos 
 \item
   El \textbf{espacio muestral} es el conjunto de posibles resultados de un experimento. Los representamos enlistándolos dentro de un par de llaves ( \{\} ). En el caso de un lanzamiento de moneda, el espacio muestral es \{cara, cruz\}. En el caso de un dado de seis lados, el espacio muestral es cada uno de los posibles números que pueden aparecer: \{1,2,3,4,5,6\}. Para el tiempo que toma llegar al trabajo, el espacio muestral son todos los posibles números reales mayores a cero (porque no se puede llegar a algún lugar en un tiempo negativo, al menos aún no se puede). No nos preocuparemos en tratar de escribir todos esos números entre las llaves.
 \item
-  Un \textbf{evento} es un subconjunto del espacio muestral. En principio puede ser uno o más de los posibles resultados en el espacio muestral, pero aquí nos enfocaremos principalmente en \emph{eventos elementales} que consisten en exactamente un solo posible resultado. Por ejemplo, esto podría ser el obtener cara en un solo lanzamiento de moneda, sacar un 4 en un lanzamiento de dado, o tardar 21 minutos en llegar a casa en la nueva ruta.
+  Un \textbf{evento} es un subconjunto del espacio muestral. En principio puede ser uno o más de los posibles resultados en el espacio muestral, pero aquí nos enfocaremos principalmente en \emph{eventos simples} que consisten en exactamente un solo posible resultado (\textbf{Nota de traducción}: lo más común es que se les llame ``eventos simples,'' pero también es muy común llamarles ``eventos elementales,'' o ``suceso simple/elemental''). Por ejemplo, esto podría ser el obtener cara en un solo lanzamiento de moneda, sacar un 4 en un lanzamiento de dado, o tardar 21 minutos en llegar a casa en la nueva ruta.
 \end{itemize}
 
 Ahora que tenemos estas definiciones, podemos delinear las características formales de una probabilidad, las cuales fueron primero definidas por el matemático ruso Andrei Kolmogorov. Estas son las características que \emph{debe} tener un valor si va a ser una probabilidad. Digamos que tenemos un espacio muestral definido por N eventos independientes, \({E_1, E_2, ... , E_N}\), y \(X\) es una variable aleatoria que denota cuál de los eventos ha ocurrido. \(P(X=E_i)\) es la probabilidad del evento \(i\):
@@ -1502,7 +1504,7 @@ Ahora que tenemos estas definiciones, podemos delinear las características form
   \[
   \sum_{i=1}^N{P(X=E_i)} = P(X=E_1) + P(X=E_2) + ... + P(X=E_N) = 1
   \]
-  Esto se interpreta como ``Toma todos los eventos elementales N, que hemos etiquetado desde 1 hasta N, y suma sus probabilidades. Estas deben sumar 1.''
+  Esto se interpreta como ``Toma todos los eventos simples N, que hemos etiquetado desde 1 hasta N, y suma sus probabilidades. Estas deben sumar 1.''
 \item
   La probabilidad de cualquier evento individual no puede ser mayor a uno: \(P(X=E_i)\le 1\). Esto es sugerido por el punto anterior; como deben de sumar uno, y no pueden ser números negativos, entonces cualquier probabilidad en particular no puede ser mayor a uno.
 \end{itemize}
@@ -1539,7 +1541,7 @@ Es poco probable que cualquiera de nosotros haya lanzado una moneda decenas de m
 
 La probabilidad clásica surgió del estudio de juegos de azar como los dados y las cartas. Un ejemplo famoso surgió del problema que se encontró un jugador francés que se conocía por el nombre de Chevalier de Méré. de Méré jugaba dos diferentes juegos de dados: En el primero él apostaba en la probabilidad de obtener por lo menos un seis en cuatro lanzamientos de un dado de seis lados, mientras que en el segundo juego apostaba en la probabilidad de obtener por lo menos un doble seis en 24 lanzamientos de dos dados. Él esperaba ganar dinero en ambos juegos, pero encontró que mientras que en promedio él ganaba dinero en el primer juego, realmente terminaba perdiendo dinero en promedio cuando jugaba el segundo juego muchas veces. Para entender esto buscó a su amigo, el matemático Blaise Pascal, quien es reconocido como uno de los fundadores de la teoría de probabilidad.
 
-¿Cómo podemos entender esta pregunta usando teoría de probabilidad? En probabilidad clásica, comenzamos con una suposición de que todos los eventos elementales en el espacio muestral son igualmente probables; esto es, cuando lanzas un dado, cada uno de los posibles resultados (\{1,2,3,4,5,6\}) es igualmente probable que ocurra. (¡No se permiten dados cargados (o manipulados)! Considerando esto, podemos calcular la probabilidad de cualquier resultado individual como un uno dividido entre el número de resultados posibles:
+¿Cómo podemos entender esta pregunta usando teoría de probabilidad? En probabilidad clásica, comenzamos con una suposición de que todos los eventos simples en el espacio muestral son igualmente probables; esto es, cuando lanzas un dado, cada uno de los posibles resultados (\{1,2,3,4,5,6\}) es igualmente probable que ocurra. (¡No se permiten dados cargados (o manipulados)! Considerando esto, podemos calcular la probabilidad de cualquier resultado individual como un uno dividido entre el número de resultados posibles:
 
 \[
 P(resultados_i) = \frac{1}{\text{número de resultados posibles}}
@@ -2943,7 +2945,7 @@ Digamos que estás caminando por la calle y unx amigx tuyx camina a tu lado pero
 La idea detrás de los modelos generativos es que un proceso \emph{latente} (que no se ha visto) genera los datos que observamos, usualmente con una cantidad de aleatoridad en el proceso. Cuando tomamos una muestra de datos de una población y estimamos el parámetro a partir de la muestra, lo que estamos haciendo en esencia es tratar de conocer el valor de la variable latente (la media de la población), la cual da lugar a través del muestreo a los datos observados (la media de la muestra). La Figura \ref{fig:GenerativeModel} muestra un esquema de esta idea.
 
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{images/BayesianInference} \caption{A schematic of the idea of a generative model.}\label{fig:GenerativeModel}
+\includegraphics[width=0.8\linewidth]{images/BayesianInference} \caption{Una representación esquematizada de la idea de un modelo generativo.}\label{fig:GenerativeModel}
 \end{figure}
 
 Si conociéramos el valor de la variable latente, entonces debería de ser fácil reconstruir cómo deberían verse los datos observados. Por ejemplo, digamos que lanzamos una moneda que sabemos que está balanceada, por lo que podemos esperar que caiga cara el 50\% de las veces que se lanza. Podemos describir la moneda con una distribución binomial con un valor de \(P_{heads}=0.5\), y luego podemos generar una muestra aleatoria de tal distribución con el fin de visualizar cómo se deberían de ver los datos. No obstante, en general estamos en la posición contraria: No sabemos el valor de la variable de interés latente, pero tenemos algunos datos que nos gustaría usar para estimarlo.
@@ -3693,11 +3695,11 @@ Una forma útil de describir las relaciones causales entre variables es mediante
 Sin embargo, en realidad, los efectos sobre el tiempo de finalización y las calificaciones no se deben directamente a la cantidad de tiempo dedicado al estudio, sino más bien a la cantidad de conocimientos que adquiere el alumno al estudiar. Por lo general, diríamos que el conocimiento es una variable \emph{latente}, es decir, no podemos medirlo directamente, pero podemos verlo reflejado en variables que podemos medir (como calificaciones y tiempos de finalización). La Figura \ref{fig:latentCausalGraph} muestra esto.
 
 \begin{figure}
-\includegraphics[width=6.94in,height=0.5\textheight]{images/dag_example} \caption{Una gráfica mostrando las relaciones causales entre tres variables: tiempo de estudio, calificaciones de exámenes, y tiempos de finalización de exámenes.  Una flecha verde representa una relación positiva (esto es, más tiempo de estudio causa mayor calificación en exámenes), y una flecha roja representa una relación negativa (esto es, más tiempo de estudio causa menor tiempo para finalizar un examen).}\label{fig:simpleCausalGraph}
+\includegraphics[width=0.6\linewidth]{images/dag_example} \caption{Una gráfica mostrando las relaciones causales entre tres variables: tiempo de estudio, calificaciones de exámenes, y tiempos de finalización de exámenes.  Una flecha verde representa una relación positiva (esto es, más tiempo de estudio causa mayor calificación en exámenes), y una flecha roja representa una relación negativa (esto es, más tiempo de estudio causa menor tiempo para finalizar un examen).}\label{fig:simpleCausalGraph}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=6.94in,height=0.5\textheight]{images/dag_latent_example} \caption{Una gráfica mostrando las mismas relaciones causales que antes, pero ahora también mostrando la variable latente (conocimiento) en un cuadro.}\label{fig:latentCausalGraph}
+\includegraphics[width=0.6\linewidth]{images/dag_latent_example} \caption{Una gráfica mostrando las mismas relaciones causales que antes, pero ahora también mostrando la variable latente (conocimiento) en un cuadro.}\label{fig:latentCausalGraph}
 \end{figure}
 
 Aquí diríamos que el conocimiento \emph{media} la relación entre el tiempo de estudio y las calificaciones/tiempos de finalización. Eso significa que si pudiéramos mantener el conocimiento constante (por ejemplo, administrando un medicamento que causa el olvido inmediato), entonces la cantidad de tiempo de estudio ya no debería tener un efecto sobre las calificaciones y los tiempos de finalización.
@@ -3731,7 +3733,7 @@ Después de leer este capítulo tú deberás ser capaz de:
 \end{itemize}
 
 \hypertarget{apuxe9ndice-4}{%
-\section{Apéndice:}\label{apuxe9ndice-4}}
+\section{Apéndice}\label{apuxe9ndice-4}}
 
 \hypertarget{cuantificando-la-desigualdad-el-uxedndice-gini}{%
 \subsection{Cuantificando la desigualdad: El índice Gini}\label{cuantificando-la-desigualdad-el-uxedndice-gini}}
@@ -3741,8 +3743,6 @@ Antes de que miremos el análisis reportado en la historia, primero es útil ent
 \[
 G = \frac{\displaystyle{\sum_{i=1}^n \sum_{j=1}^n \left| x_i - x_j \right|}}{\displaystyle{2n\sum_{i=1}^n x_i}} 
 \]
-
-\textless!.. fig.cap=``Lorenz curves for A) perfect equality, B) normally distributed income, and C) high inequality (equal income except for one very wealthy individual).'' --\textgreater{}
 
 \begin{figure}
 \includegraphics[width=0.8\linewidth]{StatsThinking21_files/figure-latex/gini0-1} \caption{Curvas de Lorenz para A) igualdad perfecta, B) ingreso distribuido normalmente, y C) alta desigualdad (ingreso igual a excepción de una sola persona con muy altos ingresos).}\label{fig:gini0}
@@ -3801,7 +3801,7 @@ Puede haber múltiples variables dependientes, pero para este curso nos enfocare
 Un modelo lineal general es uno en donde nuestro modelo para la variable dependiente está compuesto por una \emph{combinación lineal} de variables independientes que cada una es multiplicada por un peso (el cual es frecuentemente referido con la letra griega beta - \(\beta\)), que determina la contribución relativa de esa variable independiente a la predicción del modelo.
 
 \begin{figure}
-\includegraphics[height=0.5\textheight]{StatsThinking21_files/figure-latex/StudytimeGrades-1} \caption{Relation between study time and grades}\label{fig:StudytimeGrades}
+\includegraphics[height=0.5\textheight]{StatsThinking21_files/figure-latex/StudytimeGrades-1} \caption{Relación entre tiempo de estudio y calificaciones.}\label{fig:StudytimeGrades}
 \end{figure}
 
 Como ejemplo, generemos unos datos simulados de la relación entre tiempo de estudio y calificación en exámenes (ve la Figura \ref{fig:StudytimeGrades}). Dados estos datos, quisiéramos hacer el ejercicio de desarrollar cada una de las tres actividades fundamentales de la Estadística:
@@ -3846,7 +3846,7 @@ La versión más simple del modelo de regresión lineal (con una sola variable i
 \[
 y = x * \beta_x + \beta_0 + \epsilon
 \]
-El valor \(\beta_x\) nos dice cuánto esperaríamos que \(y\) cambiara dado un cambio de una sola unidad en \(x\). El intercepto \(\beta_0\) es un offset general (una compensación general), que nos dice cuál valor esperaríamos de \(y\) cuando \(x=0\); recordarás de nuestra discusión previa sobre modelos que esto es importante para poder modelar la magnitud general de los datos, aún cuando \(x\) nunca tenga realmente un valor de cero. El término del error \(\epsilon\) se refiere al error que queda después de que el modelo ha sido ajustado a los datos; frecuentemente nos referimos a este error como los \emph{residuales} del modelo. Si queremos saber cómo predecir \(y\) (que llamamos \(\hat{y}\)) después de estimar los valores \(\beta\), entonces podemos ignorar el término del error por el momento:
+El valor \(\beta_x\) nos dice cuánto esperaríamos que \(y\) cambiara dado un cambio de una sola unidad en \(x\). La constante \(\beta_0\) es un \emph{offset} general (una compensación general), que nos dice cuál valor esperaríamos de \(y\) cuando \(x=0\); recordarás de nuestra discusión previa sobre modelos que esto es importante para poder modelar la magnitud general de los datos, aún cuando \(x\) nunca tenga realmente un valor de cero. El término del error \(\epsilon\) se refiere al error que queda después de que el modelo ha sido ajustado a los datos; frecuentemente nos referimos a este error como los \emph{residuales} del modelo. Si queremos saber cómo predecir \(y\) (que llamamos \(\hat{y}\)) después de estimar los valores \(\beta\), entonces podemos ignorar el término del error por el momento:
 
 \[
 \hat{y} = x * \hat{\beta_x} + \hat{\beta_0} 
@@ -3854,15 +3854,15 @@ El valor \(\beta_x\) nos dice cuánto esperaríamos que \(y\) cambiara dado un c
 Nota que esto es simplemente la ecuación de una línea, donde \(\hat{\beta_x}\) es nuestra estimación de la pendiente y \(\hat{\beta_0}\) es la constante. La Figura \ref{fig:LinearRegression} muestra un ejemplo de este modelo aplicado a los datos de tiempo de estudio.
 
 \begin{figure}
-\includegraphics[height=0.5\textheight]{StatsThinking21_files/figure-latex/LinearRegression-1} \caption{The linear regression solution for the study time data is shown in the solid line The value of the intercept is equivalent to the predicted value of the y variable when the x variable is equal to zero; this is shown with a dotted line.  The value of beta is equal to the slope of the line -- that is, how much y changes for a unit change in x.  This is shown schematically in the dashed lines, which show the degree of increase in grade for a single unit increase in study time.}\label{fig:LinearRegression}
+\includegraphics[height=0.5\textheight]{StatsThinking21_files/figure-latex/LinearRegression-1} \caption{La solución de la regresión lineal para los datos de tiempo de estudio se muestran con la línea continua azul. El valor de la constante es equivalente al valor predicho en la variable Y cuando la variable X es igual a cero; esto se muestra con la línea punteada. El valor de beta es igual a la pendiente de la línea -- esto es, cuánto cambia Y por cada unidad de cambio en X. Esto se muestra esquemáticamente con las líneas discontinuas (que forman un triángulo con la línea azul), las cuales muestran el nivel de incremento en calificación por cada unidad incrementada en tiempo de estudio.}\label{fig:LinearRegression}
 \end{figure}
 
-No entraremos en detalles sobre cómo se calcula la pendiente y el intercepto que mejor ajustan a los datos; si estás interesadx, los detalles están disponibles en el Apéndice.
+No entraremos en detalles sobre cómo se calcula la pendiente y la constante que mejor ajustan a los datos; si estás interesadx, los detalles están disponibles en el Apéndice.
 
 \hypertarget{regression-to-the-mean}{%
 \subsection{Regresión a la media}\label{regression-to-the-mean}}
 
-El concepto de \emph{regresión a la media} fue una de las contribuciones esenciales de Galton a la ciencia, y aún se mantiene como un punto crítico a entender cuando interpretamos los resultados de análisis de datos experimentales. Digamos que queremos estudiar los efectos de una intervención de lectura para el rendimiento de lectores de baja habilidad de lectura (``lectores pobres''). Para probar nuestra hipótesis, podríamos ir a una escuela y reclutar a aquellas personas en el 25\% más bajo de la distribución en una prueba de lectura, administrar la intervención, y luego examinar su rendimiento en la prueba después de la intervención. Digamos que la intervención realmente no tiene efecto, de manera que los puntajes de lectura de cada persona son simplemente muestras independientes de una distribución normal. Los resultados de una simulación por computadora de este experimento hipotético se presentan en la Tabla \ref{tab:readingTable}.
+El concepto de \emph{regresión a la media} fue una de las contribuciones esenciales de Galton a la ciencia, y aún se mantiene como un punto crítico a entender cuando interpretamos los resultados de análisis de datos experimentales. Digamos que queremos estudiar los efectos de una intervención de lectura sobre el rendimiento de lectores con baja habilidad de lectura (``malos lectores''). Para probar nuestra hipótesis, podríamos ir a una escuela y reclutar a aquellas personas en el 25\% más bajo de la distribución en una prueba de lectura, administrar la intervención, y luego examinar su rendimiento en la prueba después de la intervención. Digamos que la intervención realmente no tiene efecto, de manera que los puntajes de lectura de cada persona son simplemente muestras independientes de una distribución normal. Los resultados de una simulación por computadora de este experimento hipotético se presentan en la Tabla \ref{tab:readingTable}.
 
 \begin{table}
 
@@ -3884,15 +3884,15 @@ Si observamos la diferencia entre el rendimiento promedio en el primer y en el s
 \hypertarget{la-relaciuxf3n-entre-correlaciuxf3n-y-regresiuxf3n}{%
 \subsection{La relación entre correlación y regresión}\label{la-relaciuxf3n-entre-correlaciuxf3n-y-regresiuxf3n}}
 
-Hay una relación cercana entre los coeficientes de correlación y los coeficientes de regresión. Recuerda que el coeficiente de correlación de Pearson es calculado como la división de la covarianza entre la multiplicación de las desviaciones estándar de \(x\) y \(y\):
+Hay una relación cercana entre los coeficientes de correlación y los coeficientes de regresión. Recuerda que el coeficiente de correlación de Pearson es calculado como la división de la covarianza entre el resultado de la multiplicación de las desviaciones estándar de \(x\) y \(y\):
 
 \[
-\hat{r} = \frac{covariance_{xy}}{s_x * s_y}
+\hat{r} = \frac{covarianza_{xy}}{s_x * s_y}
 \]
 mientras que el coeficiente de regresión beta para x es calculado como:
 
 \[
-\hat{\beta_x} = \frac{covariance_{xy}}{s_x*s_x}
+\hat{\beta_x} = \frac{covarianza_{xy}}{s_x*s_x}
 \]
 
 Basándonos en estas dos ecuaciones, podemos derivar la relación entre \(\hat{r}\) y \(\hat{beta}\):
@@ -3904,12 +3904,12 @@ covariance_{xy} = \hat{r} * s_x * s_y
 \[
 \hat{\beta_x} =  \frac{\hat{r} * s_x * s_y}{s_x * s_x} = r * \frac{s_y}{s_x}
 \]
-Esto es, la pendiente de la regresión es igual al valor de la correlación multiplicado por la división/proporción entre las desviaciones estándar de \(y\) y \(x\). Una cosa que nos dice esto es que cuando las desviaciones estándar de \(x\) y \(y\) son iguales (e.g.~cuando los datos han sido convertidos a puntajes Z), entonces la correlación estimada es igual a la pendiente estimada de la regresión.
+Esto es, la pendiente de la regresión es igual al valor de la correlación multiplicado por el resultado de la división de la desviación estándar de \(y\) sobre la desviación estándar de \(x\). Una cosa que nos dice esto es que cuando las desviaciones estándar de \(x\) y \(y\) son iguales (e.g.~cuando los datos han sido convertidos a puntajes Z), entonces la correlación estimada es igual a la pendiente estimada de la regresión.
 
 \hypertarget{errores-estuxe1ndar-de-los-modelos-de-regresiuxf3n}{%
 \subsection{Errores estándar de los modelos de regresión}\label{errores-estuxe1ndar-de-los-modelos-de-regresiuxf3n}}
 
-Si queremos realizar inferencias acerca de los parámetros estimados de regresión, entonces también necesitamos un estimado de su variabilidad. Para calcular esto, primero necesitamos calcular la \emph{varianza residual} o \emph{varianza de error} para el modelo -- esto es, cuánta variabilidad en la variable dependiente no es explicada por el modelo. Podemos calcular los residuales del modelo de la manera siguiente:
+Si queremos realizar inferencias acerca de los parámetros estimados de regresión, entonces también necesitamos un estimado de su variabilidad. Para calcular esto, primero necesitamos calcular la \emph{varianza residual} o \emph{varianza de error} del modelo -- esto es, cuánta variabilidad en la variable dependiente no es explicada por el modelo. Podemos calcular los residuales del modelo de la manera siguiente:
 
 \[
 residual = y - \hat{y} = y - (x*\hat{\beta_x} + \hat{\beta_0})
@@ -3924,13 +3924,13 @@ y de aquí podemos calcular la \emph{media del error cuadrático} (\emph{mean sq
 \[
 MS_{error} = \frac{SS_{error}}{df} = \frac{\sum_{i=1}^n{(y_i - \hat{y_i})^2} }{N - p}
 \]
-donde los grados de libertad (\(gl\), \emph{degrees of freedom}, \(df\)) se determinan al restar el número de parámetros estimados (2 en este caso: \(\hat{\beta_x}\) y \(\hat{\beta_0}\)) del número de observaciones (\(N\)). Una vez que tenemos la media del error cuadrático (MSE), podemos calcular el error estándar para el modelo de la siguiente manera:
+donde los grados de libertad (\(gl\), \emph{degrees of freedom}, \(df\)) se determinan al restar el número de parámetros estimados (2 en este caso: \(\hat{\beta_x}\) y \(\hat{\beta_0}\)) del número de observaciones (\(N\)). Una vez que tenemos la media del error cuadrático (MSE), podemos calcular el error estándar del modelo de la siguiente manera:
 
 \[
 SE_{model} = \sqrt{MS_{error}}
 \]
 
-Para poder obtener el error estándar para un parámetro estimado específico de la regresión, \(SE_{\beta_x}\), necesitamos reescalar el error estándar para el modelo mediante la raíz cuadrada de la suma de los cuadrados de la variable X:
+Para poder obtener el error estándar para un parámetro estimado específico de la regresión, \(SE_{\beta_x}\), necesitamos reescalar el error estándar del modelo mediante la raíz cuadrada de la suma de los cuadrados de la variable X:
 
 \[
 SE_{\hat{\beta}_x} = \frac{SE_{model}}{\sqrt{{\sum{(x_i - \bar{x})^2}}}}
@@ -3972,12 +3972,12 @@ En general usaríamos un software estadístico para calcular estos valores en lu
 ## F-statistic: 4.05 on 1 and 6 DF,  p-value: 0.0907
 \end{verbatim}
 
-En este caso podemos ver que la constante es significativamente diferente de cero (lo cual no es muy interesante) y que el efecto de studyTime sobre las calificaciones es marginalmente significativo (p = .09) -- el mismo valor p que el de la prueba de correlación que realizamos anteriormente.
+En este caso podemos ver que la constante es significativamente diferente de cero (lo cual no es muy interesante) y que el efecto de \emph{studyTime} sobre las calificaciones es marginalmente significativo (p = .09) -- el mismo valor p que el de la prueba de correlación que realizamos anteriormente.
 
 \hypertarget{cuantificar-la-bondad-de-adjuste-del-modelo}{%
 \subsection{Cuantificar la bondad de adjuste del modelo}\label{cuantificar-la-bondad-de-adjuste-del-modelo}}
 
-Algunas veces es útil cuantificar qué tan bien ajusta el modelo a los datos en general, y una manera de hacer esto es preguntar cuánta de la variabilidad en los datos es explicada por el modelo. Esto es cuantificado usando un valor llamado \(R^2\) (también conocido como \emph{coeficiente de determinación}, o \emph{coefficiente of determination} en inglés). Si sólo hay una variable x, entonces este valor es fácil de calcular al simplemente elevar al cuadrado el coeficiente de correlación:
+Algunas veces es útil cuantificar qué tan bien ajusta el modelo a los datos en general, y una manera de hacer esto es preguntar cuánta de la variabilidad en los datos es explicada por el modelo. Esto es cuantificado usando un valor llamado \(R^2\) (también conocido como \emph{coeficiente de determinación}, o \emph{coefficient of determination} en inglés). Si sólo hay una variable x, entonces este valor es fácil de calcular al simplemente elevar al cuadrado el coeficiente de correlación:
 
 \[
 R^2 = r^2
@@ -3987,12 +3987,12 @@ En el caso de nuestro ejemplo del tiempo de estudio, \(R^2\) = 0.4, que signific
 De manera más general, podemos pensar en \(R^2\) como una medida de la fracción de la varianza en nuestros datos que es explicada por el modelo, lo que puede ser calculado fraccionando la varianza en múltiples componentes:
 
 \[
-SS_{total} = SS_{model} + SS_{error}
+SS_{total} = SS_{modelo} + SS_{error}
 \]
 donde \(SS_{total}\) es la varianza de los datos (\(y\)) y \(SS_{model}\) y \(SS_{error}\) son calculadas como se vio previamente en este capítulo. Usando esto, podemos calcular el coeficiente de determinación como:
 
 \[
-R^2 = \frac{SS_{model}}{SS_{total}} = 1 - \frac{SS_{error}}{SS_{total}}
+R^2 = \frac{SS_{modelo}}{SS_{total}} = 1 - \frac{SS_{error}}{SS_{total}}
 \]
 
 Un valor pequeño de \(R^2\) nos dice que aún cuando el ajuste del modelo sea estadísticamente significativo, estaría explicando sólo una pequeña cantidad de información en los datos.
@@ -4000,12 +4000,12 @@ Un valor pequeño de \(R^2\) nos dice que aún cuando el ajuste del modelo sea e
 \hypertarget{ajustar-modelos-muxe1s-complejos}{%
 \section{Ajustar modelos más complejos}\label{ajustar-modelos-muxe1s-complejos}}
 
-Frecuentemente nos gustaría entender los efectos de múltiples variables sobre un resultado en particular, y cómo se relacionan unas con otras. En el contexto de nuestro ejemplo del tiempo de estudio, digamos que descubrimos que algunos de los estudiantes habían tomado un curso previo sobre el tema. Si graficamos sus calificaciones (ve la Figura \ref{fig:LinearRegressionByPriorClass}), podemos ver que aquellos que han tomado un curso previo obtuvieron un rendimiento más alto que aquellos que no, dado un mismo tiempo de estudio. Nos gustaría armar un modelo estadístico que tome eso en cuenta, lo cual podemos hacer expandiendo el modelo que construimos arriba:
+Frecuentemente nos gustaría entender los efectos de múltiples variables sobre un resultado en particular, y cómo se relacionan unas con otras. En el contexto de nuestro ejemplo del tiempo de estudio, digamos que descubrimos que algunos de los estudiantes habían tomado un curso previo sobre el tema (\emph{priorClass}). Si graficamos sus calificaciones (ve la Figura \ref{fig:LinearRegressionByPriorClass}), podemos ver que aquellos que han tomado un curso previo obtuvieron un rendimiento más alto que aquellos que no, dado un mismo tiempo de estudio. Nos gustaría armar un modelo estadístico que tome eso en cuenta, lo cual podemos hacer expandiendo el modelo que construimos arriba:
 
 \[
 \hat{y} = \hat{\beta_1}*studyTime + \hat{\beta_2}*priorClass + \hat{\beta_0}
 \]
-Para modelar si cada persona había tomado un curso previo o no, usamos lo que se conoce como \emph{dummy coding} (o \emph{codificación ficticia}) en donde creamos una nueva variable que tiene el valor de uno para representar que se ha tomado una clase previa, y cero si no. Esto significa que para las personas que han tomado una clase previa, simplemente añadiremos el valor \(\hat{\beta_2}\) a nuestro valor predicho para ellos -- esto es, el usar \emph{dummy coding} \(\hat{\beta_2}\) simplemente refleja la diferencia en medias entre los dos grupos. Nuestra estimación de \(\hat{\beta_1}\) refleja la pendiente de regresión a lo largo de todos los datos -- estamos asumiendo que la pendiente de regresión es la misma sin importar si las personas han tomado una clase previa o no (ve la Figura \ref{fig:LinearRegressionByPriorClass}).
+Para modelar si cada persona había tomado un curso previo o no, usamos lo que se conoce como \emph{dummy coding} (o \emph{codificación ficticia}) en donde creamos una nueva variable que tiene el valor igual a uno para representar que se ha tomado una clase previa, y un valor de cero si no. Esto significa que para las personas que han tomado una clase previa, simplemente añadiremos el valor \(\hat{\beta_2}\) a nuestro valor predicho para ellos -- esto es, el usar \emph{dummy coding} \(\hat{\beta_2}\) simplemente refleja la diferencia de las medias de los dos grupos. Nuestra estimación de \(\hat{\beta_1}\) refleja la pendiente de regresión a lo largo de todos los datos -- por el momento estamos asumiendo que la pendiente de regresión es la misma sin importar si las personas han tomado una clase previa o no (ve la Figura \ref{fig:LinearRegressionByPriorClass}).
 
 \begin{verbatim}
 ## 
@@ -4030,7 +4030,7 @@ Para modelar si cada persona había tomado un curso previo o no, usamos lo que s
 \end{verbatim}
 
 \begin{figure}
-\includegraphics[height=0.5\textheight]{StatsThinking21_files/figure-latex/LinearRegressionByPriorClass-1} \caption{The relation between study time and grade including prior experience as an additional component in the model.  The solid line relates study time to grades for students who have not had prior experience, and the dashed line relates grades to study time for students with prior experience. The dotted line corresponds to the difference in means between the two groups.}\label{fig:LinearRegressionByPriorClass}
+\includegraphics[height=0.5\textheight]{StatsThinking21_files/figure-latex/LinearRegressionByPriorClass-1} \caption{La relación entre tiempo de estudio y calificación incluyendo la experiencia previa como un componente adicional en el modelo. La línea sólida relaciona el tiempo de estudio con las calificaciones para los estudiantes que no tienen experiencia previa, y la línea discontinua relaciona las calificaciones con el tiempo de estudio para los estudiantes con experiencia previa. La línea punteada corresponde a la diferencia de las medias de ambos grupos.}\label{fig:LinearRegressionByPriorClass}
 \end{figure}
 
 \hypertarget{interacciones-entre-variables}{%
@@ -4113,7 +4113,7 @@ Aquí vemos que no hay efectos significativos de la cafeína ni de la ansiedad, 
 De estos resultados podemos ver que hay efectos significativos tanto de la cafeína como de la ansiedad (lo que llamamos \emph{efectos principales}, o \emph{main effects}) y también una interacción entre cafeína y ansiedad. El Panel C de la Figura \ref{fig:CaffeineAnxietyInteraction} muestra las líneas de regresión separadas para cada grupo.
 
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{StatsThinking21_files/figure-latex/CaffeineAnxietyInteraction-1} \caption{A: The relationship between caffeine and public speaking. B: The relationship between caffeine and public speaking, with anxiety represented by the shape of the data points. C: The relationship between public speaking and caffeine, including an interaction with anxiety.  This results in two lines that separately model the slope for each group (dashed for anxious, dotted for non-anxious).}\label{fig:CaffeineAnxietyInteraction}
+\includegraphics[width=0.8\linewidth]{StatsThinking21_files/figure-latex/CaffeineAnxietyInteraction-1} \caption{A: La relación entre cafeína y hablar en público. B: La relación entre cafeína y hablar en público, con la ansiedad representada en la forma de los puntos de los datos. C: La relación entre hablar en público y cafeína, incluyendo una interacción con la ansiedad. Esto resulta en dos líneas que modelan de manera separada la pendiente de cada grupo (discontinua para personas ansiosas, y punteada para personas no-ansiosas).}\label{fig:CaffeineAnxietyInteraction}
 \end{figure}
 
 Un punto importante por resaltar es que debemos ser muy cuidadosxs al interpretar un efecto principal significativo si también está presente una interacción significativa, porque la interacción sugiere que el efecto principal difiere de acuerdo con los valores de otra variable, por lo que no es fácilmente interpretable.
@@ -4142,49 +4142,30 @@ Es importante hacer notar que a pesar del hecho de que se llame modelo \emph{lin
 \hypertarget{model-criticism}{%
 \section{Criticar nuestro modelo y revisar suposiciones}\label{model-criticism}}
 
-El dicho ``si metes basura, sacas basura'' (``garbage in, garbage out'') es cierto para la estadística como en cualquier lugar. En el caso de modelos estadísticos, debemos asegurarnos de que nuestro modelo está especificado apropiadamente y que nuestros datos son apropiados para el modelo.
+El dicho ``si metes basura, sacas basura'' (``\emph{garbage in, garbage out}'') es cierto para la estadística como en cualquier lugar. En el caso de modelos estadísticos, debemos asegurarnos de que nuestro modelo está especificado apropiadamente y que nuestros datos son apropiados para el modelo.
 
-Cuando decimos que el modelo está ``especificado apropiadamente,'' queremos decir que hemos incluido el conjunto apropiado de variables independientes en el modelo. Ya hemos visto ejemplos de modelos mal especificados, en la Figura \ref{fig:childHeightLine}. Recuerda que vimos varios casos donde el modelo falló en explicar apropiadamente los datos, como cuando no se incluyó el intercepto. Cuando construimos un modelo, debemos asegurarnos que incluye todas las variables apropiadas.
+Cuando decimos que el modelo está ``especificado apropiadamente,'' queremos decir que hemos incluido el conjunto apropiado de variables independientes en el modelo. Ya hemos visto ejemplos de modelos mal especificados, en la Figura \ref{fig:childHeightLine}. Recuerda que vimos varios casos donde el modelo falló en explicar apropiadamente los datos, como cuando no se incluyó la constante. Cuando construimos un modelo, debemos asegurarnos que incluye todas las variables apropiadas.
 
-También debemos preocuparnos si nuestro modelo satisface las suposiciones de nuestros métodos estadísticos. Una de las suposiciones más importantes que hacemos cuando usamos el modelo lineal general es que los residuales (esto es, la diferencia entre las predicciones de nuestro modelo y los datos verdaderos) están normalmente distribuidas. Esto puede fallar en cumplirse por varias razones, puede ser porque el modelo no estaba apropiadamente especificado, o porque los datos que estamos modelando son inapropiados.
+También debemos preocuparnos si nuestro modelo satisface las suposiciones de nuestros métodos estadísticos. Una de las suposiciones más importantes que hacemos cuando usamos el modelo lineal general es que los residuales (esto es, la diferencia entre las predicciones de nuestro modelo y los datos verdaderos) están normalmente distribuidos. Esto puede no cumplirse por varias razones, puede ser porque el modelo no estaba apropiadamente especificado, o porque los datos que estamos modelando son inapropiados.
 
-Podemos usar algo conocido como una gráfica \emph{Q-Q} (quantile-quantile, Q-Q plot) para ver si nuestros residuales están normalmente distribuidos. Ya te has encontrado con los \emph{cuantiles} (\emph{quantiles}) --- son los valores que establecen un punto de corte para una proporción particular de una distribución acumulada. La gráfica Q-Q presenta los cuantiles de dos distribuciones una contra la otra; en este caso, presentaremos los cuantiles de los datos reales contra los cuantiles de una distribución normal ajustada a los mismos datos. La Figura \ref{fig:qqplots} muestra ejemplos de dos gráficas Q-Q. El panel izquierdo muestra una gráfica Q-Q para datos de una distribución normal, mientras que el panel derecho muestra una gráfica Q-Q de una distribución no normal. Los datos en el panel derecho se desvían sustancialmente de la línea diagonal, reflejando el hecho de que no están normalmente distribuidos.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{qq\_df }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{norm=}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{),}
-                \AttributeTok{unif=}\FunctionTok{runif}\NormalTok{(}\DecValTok{100}\NormalTok{))}
-
-\NormalTok{p1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(qq\_df,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{sample=}\NormalTok{norm)) }\SpecialCharTok{+} 
-  \FunctionTok{geom\_qq}\NormalTok{() }\SpecialCharTok{+} 
-  \FunctionTok{geom\_qq\_line}\NormalTok{() }\SpecialCharTok{+} 
-  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{\textquotesingle{}Normal data\textquotesingle{}}\NormalTok{)}
-
-\NormalTok{p2 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(qq\_df,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{sample=}\NormalTok{unif)) }\SpecialCharTok{+} 
-  \FunctionTok{geom\_qq}\NormalTok{() }\SpecialCharTok{+} 
-  \FunctionTok{geom\_qq\_line}\NormalTok{()}\SpecialCharTok{+} 
-  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{\textquotesingle{}Non{-}normal data\textquotesingle{}}\NormalTok{)}
-
-\FunctionTok{plot\_grid}\NormalTok{(p1,p2)}
-\end{Highlighting}
-\end{Shaded}
+Podemos usar algo conocido como una gráfica \emph{Q-Q} (\emph{quantile-quantile}, \emph{Q-Q plot}) para ver si nuestros residuales están distribuidos de manera normal. Ya te has encontrado con los \emph{cuantiles} (\emph{quantiles}) --- son los valores que establecen un punto de corte para una proporción particular de una distribución acumulada. La gráfica Q-Q presenta los cuantiles de dos distribuciones una contra la otra; en este caso, presentaremos los cuantiles de los datos reales contra los cuantiles de una distribución normal ajustada a los mismos datos. La Figura \ref{fig:qqplots} muestra ejemplos de dos gráficas Q-Q. El panel izquierdo muestra una gráfica Q-Q para datos de una distribución normal, mientras que el panel derecho muestra una gráfica Q-Q de una distribución no normal. Los datos en el panel derecho se desvían sustancialmente de la línea diagonal, reflejando el hecho de que no están normalmente distribuidos.
 
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{StatsThinking21_files/figure-latex/qqplots-1} \caption{Q-Q plotsof normal (left) and non-normal (right) data.  The line shows the point at which the x and y axes are equal.}\label{fig:qqplots}
+\includegraphics[width=0.8\linewidth]{StatsThinking21_files/figure-latex/qqplots-1} \caption{Gráficas Q-Q de datos distribuidos de manera normal (izquierda) y no normal (derecha). La línea diagonal muestra el punto en el que los ejes X y Y serían iguales, es decir, donde deberían caer los datos si se distribuyeran de manera normal.}\label{fig:qqplots}
 \end{figure}
 
-Herramientas para el diagnóstico de modelos serán exploradas en mayor detalle en el capítulo siguiente.
+Algunas herramientas para el diagnóstico de modelos serán exploradas en mayor detalle en el capítulo siguiente.
 
 \hypertarget{quuxe9-significa-realmente-predecir}{%
 \section{¿Qué significa realmente ``predecir?''}\label{quuxe9-significa-realmente-predecir}}
 
-Cuando hablamos de ``predicción'' en la vida diaria, generalmente nos referimos a la habilidad para estimar el valor de alguna variable antes de ver los datos. Sin embargo, el término frecuentemente es usado en el contexto de regresión lineal para referirse al ajuste de un modelo a los datos; los valores estimados (\(\hat{y}\)) en ocasiones son conocidos como ``predicciones'' y las variables independientes son conocidas como ``preditores.'' Esto tiene una connotación desafortunada, porque parece implicar que nuestro modelo debería ser capaz de predecir los valores de nuevos datos en el futuro. En realidad, el ajuste de un modelo al conjunto de datos usado para obtener sus parámetros casi siempre será mejor que el ajuste del mismo modelo a un nuevo conjunto de datos (\protect\hyperlink{ref-copa:1983}{Copas 1983}).
+Cuando hablamos de ``predicción'' en la vida diaria, generalmente nos referimos a la habilidad para estimar el valor de alguna variable antes de ver los datos. Sin embargo, el término frecuentemente es usado en el contexto de regresión lineal para referirse al ajuste de un modelo a los datos; los valores estimados (\(\hat{y}\)) en ocasiones son conocidos como ``predicciones'' y las variables independientes son conocidas como ``predictores.'' Esto tiene una connotación desafortunada, porque parece implicar que nuestro modelo debería ser capaz de predecir los valores de nuevos datos en el futuro. En realidad, el ajuste de un modelo al conjunto de datos usado para obtener sus parámetros casi siempre será mejor que el ajuste del mismo modelo a un nuevo conjunto de datos (\protect\hyperlink{ref-copa:1983}{Copas 1983}).
 
 Como ejemplo, tomemos una muestra de 48 niñxs de la base de datos NHANES y ajustemos un modelo de regresión para los datos de peso que incluya varios regresores (edad, altura, horas que pasan viendo TV y usando la computadora, e ingreso económico del hogar) junto con sus interacciones.
 
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-89}Root mean squared error for model applied to original data and new data, and after shuffling the order of the y variable (in essence making the null hypothesis true)}
+\caption{\label{tab:unnamed-chunk-89}Raíz del error cuadrático medio del modelo ajustado a los datos originales y luego ajustado a nuevos datos, y después de reordenar los valores de la variable Y (en esencia haciendo la hipótesis nula verdadera).}
 \centering
 \begin{tabular}[t]{l|r|r}
 \hline
@@ -4197,7 +4178,7 @@ Shuffled data & 7.8 & 59\\
 \end{tabular}
 \end{table}
 
-Aquí podemos ver que mientras que el modelo mostró un ajuste muy bueno en los datos originales (sólo con error de algunos kg por persona), el mismo modelo hace un peor trabajo prediciendo los datos del peso de nuevos niñxs muestreados de la misma población (con error de más de 25 kg por persona). Esto sucede porque nuestro modelo especificado es bastante complejo, ya que incluye no sólo las variables individuales, sino también todas las posibles combinaciones entre ellas (i.e.~sus \emph{interacciones}), resultando en un modelo con 32 parámetros. Como esto significa tener casi tantos coeficientes como datos en la muestra (i.e., las alturas de 48 niñxs), el modelo se \emph{sobreajusta} (\emph{overfits}) a los datos, justo como sucedió con nuestra curva polinomial compleja en nuestro ejemplo inicial sobre el sobreajuste en la Sección \ref{overfitting}.
+Aquí podemos ver que mientras que el modelo mostró un ajuste muy bueno en los datos originales (sólo con error de algunos kg por persona), el mismo modelo hace un peor trabajo prediciendo los datos del peso de nuevos niñxs muestreados de la misma población (con un error de más de 25 kg por persona en promedio). Esto sucede porque nuestro modelo especificado es bastante complejo, ya que incluye no sólo las variables individuales, sino también todas las posibles combinaciones entre ellas (i.e.~sus \emph{interacciones}), resultando en un modelo con 32 parámetros. Como esto significa tener casi tantos coeficientes como datos en la muestra (i.e., las alturas de 48 niñxs), el modelo se \emph{sobreajusta} (\emph{overfits}) a los datos, justo como sucedió con nuestra curva polinomial compleja en nuestro ejemplo inicial sobre el sobreajuste en la Sección \ref{overfitting}.
 
 Otra manera de ver los efectos del sobreajuste es el observar qué sucede si reordenamos aleatoriamente los valores de nuestra variable de peso (mostrada en la segunda fila de la tabla). El reordenar aleatoriamente los valores debería hacer imposible el predecir el peso a partir de otras variables, porque no tendrían ningún relación sistemática. Los resultados en la tabla muestran que incluso cuando no hay una verdadera relación a ser modelada (porque el reordenar aleatoriamente debería haber destruido cualquier relación), el modelo complejo aún muestra un error muy bajo en sus predicciones de los datos ajustados, porque termina ajustándose al error en nuestros datos específicos. Sin embargo, cuando el modelo es aplicado a nuevos datos, vemos que el error es mucho mayor, como debería suceder.
 
@@ -4207,14 +4188,14 @@ Otra manera de ver los efectos del sobreajuste es el observar qué sucede si reo
 Un método que ha sido desarrollado para ayudar a resolver el problema del sobreajuste es conocido como \emph{validación cruzada} (\emph{cross-validation}). Esta técnica es comúnmente usada en el campo del aprendizaje máquina (\emph{machine learning}), que está enfocado en construir modelos que puedan generalizarse bien a nuevos datos, incluso cuando no tenemos un nuevo conjunto de datos con el cual probar el modelo. La idea detrás de la validación cruzada es que ajustemos nuestro modelo repetidamente, cada vez dejando fuera un subconjunto de los datos, y luego probar la habilidad de nuestro modelo de predecir los valores en cada subconjunto de datos que se dejó fuera.
 
 \begin{figure}
-\includegraphics[width=45.74in,height=0.3\textheight]{images/crossvalidation} \caption{A schematic of the  cross-validation procedure.}\label{fig:crossvalidation}
+\includegraphics[width=45.74in,height=0.3\textheight]{images/crossvalidation} \caption{Un esquema del procedimiento de validación cruzada (cross-validation).}\label{fig:crossvalidation}
 \end{figure}
 
 Veamos cómo funcionaría en nuestro ejemplo de predicción de pesos. En este caso realizaremos una validación cruzada con 12 subconjuntos (en inglés: \emph{12-fold cross-validation}), lo que significa que dividiremos nuestros datos en 12 subconjuntos, y luego ajustaremos el modelo 12 veces, en cada caso dejando fuera uno de los subconjuntos y luego probando la habilidad del modelo de poder predecir el valor de la variable dependiente para cada uno de los datos que se dejaron fuera. La mayoría de los softwares estadísticos provee herramientas para aplicar validación cruzada. Usando esta función podemos realizar una validación cruzada en 100 muestras de nuestros datos de NHANES, y calcular el RMSE para la validación cruzada, junto con el RMSE para los datos originales y para un nuevo conjunto de datos, como lo hicimos arriba.
 
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-90}R-squared from cross-validation and new data, showing that cross-validation provides a reasonable estimate of the model's performance on new data.}
+\caption{\label{tab:unnamed-chunk-90}Coeficiente de determinación (R-squared) de la validación cruzada (cross-validation) y del ajuste a nuevos datos, mostrando que la validación cruzada provee una estimación razonable del rendimiento del modelo sobre nuevos datos.}
 \centering
 \begin{tabular}[t]{l|r}
 \hline
@@ -4229,7 +4210,7 @@ Cross-validation & 0.60\\
 \end{tabular}
 \end{table}
 
-Aquí vemos que la validación cruzada nos da una estimación de la precisión predictiva que está mucho más cercana a lo que vemos con un conjunto de datos completamente nuevo, en lugar de la precisión inflada que vemos con los datos originales -- de hecho, incluso es un poco más pesimista que el promedio para un nuevo conjunto de datos, probablemente porque sólo parte de los datos están siendo usados para entrenar cada uno de los modelos.
+Aquí vemos que la validación cruzada nos da una estimación de la precisión predictiva que está mucho más cercana a lo que obtenemos con un conjunto de datos completamente nuevo, en lugar de la precisión inflada que vemos con los datos originales -- de hecho, incluso en ocasiones puede ser un poco más pesimista que el promedio para un nuevo conjunto de datos, probablemente porque sólo una parte de los datos está siendo usada para entrenar cada uno de los modelos.
 
 Nota que el usar la validación cruzada apropiadamente es complicado, y es recomendable que consultes con un experto antes de usarlo en la práctica. Sin embargo, esperemos que esta sección te haya mostrado tres cosas:
 
@@ -4261,11 +4242,7 @@ Habiendo leído este capítulo, deberías ser capaz de:
 \hypertarget{lecturas-sugeridas-10}{%
 \section{Lecturas sugeridas}\label{lecturas-sugeridas-10}}
 
-\begin{itemize}
-\tightlist
-\item
-  \href{https://web.stanford.edu/~hastie/Papers/ESLII.pdf}{The Elements of Statistical Learning: Data Mining, Inference, and Prediction (2nd Edition)} - The ``bible'' of machine learning methods, available freely online.
-\end{itemize}
+\href{https://web.stanford.edu/~hastie/Papers/ESLII.pdf}{The Elements of Statistical Learning: Data Mining, Inference, and Prediction (2nd Edition)} - La ``biblia'' de los métodos de aprendizaje máquina, disponible en línea de manera libre.
 
 \hypertarget{apuxe9ndice-5}{%
 \section{Apéndice}\label{apuxe9ndice-5}}
@@ -4275,7 +4252,7 @@ Habiendo leído este capítulo, deberías ser capaz de:
 
 Generalmente estimamos los parámetros de un modelo lineal a partir de los datos usando \emph{álgebra lineal}, que es el tipo de álgebra que se aplica a vectores y matrices. Si no estás familiarizadx con el álgebra lineal, no te preocupes -- pues realmente no la necesitaremos usar aquí, porque R (o el programa estadístico que uses) hará el trabajo por nosotrxs. Sin embargo, una breve excursión dentro del álgebra lineal nos puede proveer algún insight a cómo son estimados los parámetros de los modelos en la práctica.
 
-Primero, presentemos la idea de vectores y matrices; ya los has encontrando en el contexto de R, pero los revisaremos aquí. Una matriz es un conjunto de números que están organizados en un cuadro o rectángulo, de manera que haya una o más \emph{dimensiones} a lo largo de las cuales la matriz varía. La costumbre es colocar las diferentes unidades de observación (como las personas que observamos) en las filas, y diferentes variables en las columnas. Tomemos nuestro ejemplo de tiempo de estudio anterior. Podríamos organizar nuestros números en una matriz, que tendría ocho renglones o filas (una por cada estudiante) y dos columnas (una para tiempo de estudio, y otra para calificación). Si estás pensando ``eso suena como un \emph{dataframe} de R'' (o de JASP) ¡estás totalmente en lo correcto! De hecho, un \emph{dataframe} es una versión especializada de una matriz, y podemos convertir un dataframe a una matriz usando la función \texttt{as.matrix()}.
+Primero, presentemos la idea de vectores y matrices; ya los has encontrando en el contexto de R, pero los revisaremos aquí. Una matriz es un conjunto de números que están organizados en un cuadro o rectángulo, de manera que haya una o más \emph{dimensiones} a lo largo de las cuales la matriz varía. La costumbre es colocar las diferentes unidades de observación (como las personas que observamos) en las filas, y las diferentes variables en las columnas. Tomemos nuestro ejemplo anterior sobre el tiempo de estudio. Podríamos organizar nuestros números en una matriz, que tendría ocho renglones o filas (una por cada estudiante) y dos columnas (una para tiempo de estudio, y otra para calificación). Si estás pensando ``eso suena como un \emph{dataframe} de R'' (o de JASP o Jamovi) ¡estás totalmente en lo correcto! De hecho, un \emph{dataframe} es una versión especializada de una matriz, y podemos convertir un dataframe a una matriz usando la función \texttt{as.matrix()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4303,12 +4280,13 @@ Podemos escribir el modelo lineal general en álgebra lineal de la siguiente man
 \[
 Y = X*\beta + E
 \]
-Esto se parece mucho a la ecuación que usamos anteriormente, a excepción de que las letras están todas en mayúsculas, lo que quiere expresar el hecho de que son vectores.
+
+Esto se parece mucho a la ecuación que usamos anteriormente, a excepción de que las letras están todas en mayúsculas, lo que quiere expresar el hecho de que son vectores o matrices.
 
 Sabemos que los datos de las calificaciones van en la matriz \(Y\), pero ¿qué va en la matriz \(X\)? Recuerda de nuestra discusión inicial sobre la regresión lineal que necesitamos añadir una constante además de nuestra variable independiente de interés, por lo que nuestra matriz \(X\) (que llamamos \emph{matriz de diseño}, o \emph{design matrix}) necesita incluir dos columnas: una representando la variable tiempo de estudio, y una columna con el mismo valor para cada persona (que generalmente llenamos con números uno). Podemos ver la matriz de diseño resultante de manera gráfica (ve la Figura \ref{fig:GLMmatrix}).
 
 \begin{figure}
-\includegraphics[width=16.67in]{images/glm_matrix} \caption{A depiction of the linear model for the study time data in terms of matrix algebra.}\label{fig:GLMmatrix}
+\includegraphics[width=16.67in]{images/glm_matrix} \caption{Una representación gráfica del modelo lineal del ejemplo de los datos del tiempo de estudio en términos de álgebra de matrices (o álgebra lineal).}\label{fig:GLMmatrix}
 \end{figure}
 
 Las reglas de multiplicación de matrices nos dicen que las dimensiones de las matrices deben coincidir unas con otras; en este caso, la matriz de diseño tiene dimensiones de 8 (filas) X 2 (columnas) y la variable \(Y\) tiene dimensiones de 8 X 1. Entonces, la matriz \(\beta\) necesita tener dimensiones 2 X 1, porque una matriz 8 X 2 multiplicada por una matriz 2 X 1 resulta en una matriz 8 X 1 (pues las dimensiones de en medio que coinciden terminan desapareciendo). La interpretación de los dos valores en la matriz \(\beta\) es que son los valores por los cuales multiplicar el tiempo de estudio y el valor de 1 respectivamente para obtener la estimación de calificación para cada persona en la muestra. También podemos ver el modelo lineal como un conjunto de ecuaciones individuales para cada persona:

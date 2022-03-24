@@ -425,7 +425,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#objetivos-de-aprendizaje-12"><i class="fa fa-check"></i><b>13.5</b> Objetivos de aprendizaje</a></li>
 <li class="chapter" data-level="13.6" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#lecturas-sugeridas-9"><i class="fa fa-check"></i><b>13.6</b> Lecturas sugeridas</a></li>
-<li class="chapter" data-level="13.7" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#apéndice-4"><i class="fa fa-check"></i><b>13.7</b> Apéndice:</a>
+<li class="chapter" data-level="13.7" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#apéndice-4"><i class="fa fa-check"></i><b>13.7</b> Apéndice</a>
 <ul>
 <li class="chapter" data-level="13.7.1" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#cuantificando-la-desigualdad-el-índice-gini"><i class="fa fa-check"></i><b>13.7.1</b> Cuantificando la desigualdad: El índice Gini</a></li>
 <li class="chapter" data-level="13.7.2" data-path="modeling-continuous-relationships.html"><a href="modeling-continuous-relationships.html#análisis-de-correlación-bayesiana"><i class="fa fa-check"></i><b>13.7.2</b> Análisis de correlación bayesiana</a></li>
@@ -548,10 +548,11 @@ div.csl-indent {
 <p>Digamos que estás caminando por la calle y unx amigx tuyx camina a tu lado pero no te saluda. Probablemente vas a tratar de decidir por qué pasó esto, ¿no te vieron? ¿están enojadxs contigo? ¿De repente traes una capa de invisibilidad y no te has dado cuenta? Una de las ideas básicas de la estadística Bayesiana es que queremos inferir los detalles de cómo son generados los datos, basándonos en los datos mismos. En este caso, tú quieres usar los datos (por ejemplo, el hecho de que tu amigx no te saludó), para inferir el proceso que generó esos datos (si de verdad no te vieron, cómo se sienten con respecto tuyo, etc.).</p>
 <!--The idea behind a generative model is that a *latent* (unseen) process generates the data we observe, usually with some amount of randomness in the process. When we take a sample of data from a population and estimate a parameter from the sample, what we are doing in essence is trying to learn the value of a latent variable (the population mean) that gives rise through sampling to the observed data (the sample mean).  Figure \@ref(fig:GenerativeModel) shows a schematic of this idea.-->
 <p>La idea detrás de los modelos generativos es que un proceso <em>latente</em> (que no se ha visto) genera los datos que observamos, usualmente con una cantidad de aleatoridad en el proceso. Cuando tomamos una muestra de datos de una población y estimamos el parámetro a partir de la muestra, lo que estamos haciendo en esencia es tratar de conocer el valor de la variable latente (la media de la población), la cual da lugar a través del muestreo a los datos observados (la media de la muestra). La Figura <a href="bayesian-statistics.html#fig:GenerativeModel">11.1</a> muestra un esquema de esta idea.</p>
+<!-- A schematic of the idea of a generative model. -->
 <div class="figure"><span style="display:block;" id="fig:GenerativeModel"></span>
-<img src="images/BayesianInference.png" alt="A schematic of the idea of a generative model." width="80%" />
+<img src="images/BayesianInference.png" alt="Una representación esquematizada de la idea de un modelo generativo." width="80%" />
 <p class="caption">
-Figura 11.1: A schematic of the idea of a generative model.
+Figura 11.1: Una representación esquematizada de la idea de un modelo generativo.
 </p>
 </div>
 <!--If we know the value of the latent variable, then it's easy to reconstruct what the observed data should look like.  For example, let's say that we are flipping a coin that we know to be fair, such that we would expect it to land on heads 50% of the time.  We can describe the coin by a binomial distribution with a value of $P_{heads}=0.5$, and then we could generate random samples from such a distribution in order to see what the observed data should look like. However, in general we are in the opposite situation: We don't know the value of the latent variable of interest, but we have some data that we would like to use to estimate it.-->
